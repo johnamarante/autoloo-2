@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  _commandPoints: 10
+  _commandPoints: 99
   goDeploymentMarker: {fileID: 2656369139334945981, guid: 03817e09ed0769546937325910fd942d, type: 3}
   listLeftDeploymentMarkers: []
   listRightDeploymentMarkers: []

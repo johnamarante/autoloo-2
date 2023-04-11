@@ -189,38 +189,14 @@ public class Deployment : MonoBehaviour
 
     public void ShiftUnits(int shiftWithRespectToPosition)
     {
-        //shiftWithRespectToPosition is the positionkey of an occupied deploymentmarker that someone is trying to barge into
         var _isThereRoominTheDeployQueueAndQueuePosition = IsThereAnEmptySpaceToShiftTo(shiftWithRespectToPosition);
         if (_isThereRoominTheDeployQueueAndQueuePosition.IsThereAnEmptySpaceToShiftTo)
         {
-            Debug.Log($"There IS room in the deploy queue! space: {_isThereRoominTheDeployQueueAndQueuePosition.PositionKey}");
-            var isDownShift = (_isThereRoominTheDeployQueueAndQueuePosition.PositionKey < shiftWithRespectToPosition);
-            var deploymentMarkersInShift = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey >= Math.Min(shiftWithRespectToPosition, _isThereRoominTheDeployQueueAndQueuePosition.PositionKey) && x.positionKey <= Math.Max(shiftWithRespectToPosition, _isThereRoominTheDeployQueueAndQueuePosition.PositionKey)).ToList();
-            var unitsInShift = FindObjectsOfType<Unit>().Where(x => deploymentMarkersInShift.Select(y => y.positionKey).ToList<int>().Contains(x.QueuePosition) && x.Deployed).ToList();
-            gameManager.selectedUnit.QueuePosition = shiftWithRespectToPosition;
-            unitsInShift.Add(gameManager.selectedUnit);
-            unitsInShift = unitsInShift.Distinct().ToList();
-            if (isDownShift)
-            {
-                deploymentMarkersInShift = deploymentMarkersInShift.OrderBy(x => x.positionKey).ToList();
-                unitsInShift = unitsInShift.OrderBy(y => y.QueuePosition).ToList();
-            }
-            else
-            {
-                deploymentMarkersInShift = deploymentMarkersInShift.OrderByDescending(x => x.positionKey).ToList();
-                unitsInShift = unitsInShift.OrderByDescending(y => y.QueuePosition).ToList();
-            }
-
-            //unitsInShift.Add(gameManager.selectedUnit);
-            //var unitsInShiftNoDupes = unitsInShift.Distinct().ToList();
-            foreach (var (aUnit, idx) in unitsInShift.Select((value, i) => (value, i)))
-            {
-                aUnit.DeployAndSnapToDeploymentQueue(deploymentMarkersInShift[idx]);
-            }
-            gameManager.Deselect();
-            return;
+            var userTargetedDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == shiftWithRespectToPosition).First();
+            var vaccantDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == _isThereRoominTheDeployQueueAndQueuePosition.PositionKey).First();
+            userTargetedDeployMarker.occupant.DeployAndSnapToDeploymentQueue(vaccantDeployMarker);
+            gameManager.selectedUnit.DeployAndSnapToDeploymentQueue(userTargetedDeployMarker);
         }
-        Debug.Log("There is NOT room in the deploy queue!");
     }
 
     public void TrySnapToDeploymentQueueSpace(Unit unit, GameObject belowGameObject, Vector3 startPosition)

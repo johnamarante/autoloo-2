@@ -616,6 +616,14 @@ PrefabInstance:
       propertyPath: playerSide
       value: left
       objectReference: {fileID: 0}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: LeftUnitRoster.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: LeftUnitRoster.Array.data[2]
+      value: 
+      objectReference: {fileID: 763226621151364323, guid: c69b90c098b8aa441b82b168c5851bf3, type: 3}
     - target: {fileID: 755904350544477791, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
