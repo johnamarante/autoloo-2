@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &755904350544477779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755904350544477791}
+  - component: {fileID: 755904350544477789}
+  - component: {fileID: 755904350544477790}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &755904350544477791
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755904350544477779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 32.177246}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.4840362, y: -1.9228878}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &755904350544477789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755904350544477779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e26bcde7e8259a478de92ff0112999c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftQueueUnits: []
+  RightQueueUnits: []
+  LeftUnitRoster:
+  - {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+  - {fileID: 3299282189271206082, guid: d50ca226b0baf624382ad6fe9a1ffba0, type: 3}
+  RightUnitRoster:
+  - {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+  - {fileID: 6443899396185200549, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+  actionTime: 0
+  period: 3
+  guiFontSize: 20
+  multiplayer: 0
+  playerSide: 
+  selectedUnit: {fileID: 0}
+  deployment: {fileID: 6085394689305071435, guid: c9f1ca05ce67d8144b451342644b7de2, type: 3}
+  rankSprites:
+  - {fileID: 3286163911610860551, guid: 0a4407356777fe84a9b16d72bce7f362, type: 3}
+  - {fileID: 3286163911610860551, guid: 6fc777eccdeb310408faca1f8075206b, type: 3}
+  - {fileID: 3286163911610860551, guid: 0fbf39a2d8ae82f4aaa7b3a584273e59, type: 3}
+  - {fileID: 3286163911610860551, guid: 7a1894976aa671344b6e17c3807b9c15, type: 3}
+  - {fileID: 3286163911610860551, guid: e514b8ec852fde24d93ec82cf86967ee, type: 3}
+  - {fileID: 3286163911610860551, guid: 249e196b7ed7fd64ebe695d056326718, type: 3}
+  - {fileID: 3286163911610860551, guid: 75d3a8c7c1a1831498ce3f1d3051cfd4, type: 3}
+  - {fileID: 3286163911610860551, guid: 3bc746b515782ea4db258a232993ab9a, type: 3}
+  - {fileID: 3286163911610860551, guid: eb7610a3d07b6cb43b6f620079093d8f, type: 3}
+  - {fileID: 3286163911610860551, guid: 0fda0ebd5d589fe4880e945e8f325f0e, type: 3}
+  InBattleModeAndNotDeploymentMode: 0
+--- !u!222 &755904350544477790
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755904350544477779}
+  m_CullTransparentMesh: 1

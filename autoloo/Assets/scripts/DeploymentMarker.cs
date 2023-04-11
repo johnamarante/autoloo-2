@@ -1,0 +1,81 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DeploymentMarker : MonoBehaviour
+{
+    public int positionKey;
+    public string side;
+    public Deployment deployment;
+    public Unit _occupant;
+    public Unit occupant
+    {
+        get { return _occupant; }
+        set
+        {
+            _occupant = value;
+            this?.OnOccupantChanged(_occupant);
+        }
+    }
+    public Action<Unit> OnOccupantChanged;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        OnOccupantChanged += (f) => ShowHoverIndicator(false);
+        if (positionKey < 0)
+        {
+            side = "left";
+        }
+        else 
+        {
+            side = "right";
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnMouseEnter()
+    {
+        ShowHoverIndicator(true);
+    }
+
+    private void OnMouseExit()
+    {
+        ShowHoverIndicator(false);
+    }
+
+    public void ShowHoverIndicator(bool show)
+    {
+        //deploymarkers only show mouse hover indicators when unoccupied
+        var activeValue = (show && (occupant == null));
+        transform.Find("hover_over_indicator").gameObject.SetActive(activeValue);
+    }
+
+    //Click and Click deployment Part 2
+    //... click.
+    private void OnMouseDown()
+    {
+        if (deployment.gameManager.selectedUnit != null)
+        {
+            var selectedUnit = deployment.gameManager.selectedUnit;
+            if (selectedUnit != null && (selectedUnit.CanAfford() || selectedUnit.Deployed))
+            {
+                if (occupant == null)
+                {
+                    selectedUnit.DeployAndSnapToDeploymentQueue(this);
+                }
+                else
+                {
+                    deployment.ShiftUnits(positionKey);
+                }
+                deployment.gameManager.Deselect();
+            }
+        }
+    }
+}
