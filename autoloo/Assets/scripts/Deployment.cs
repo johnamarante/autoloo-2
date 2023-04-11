@@ -197,6 +197,9 @@ public class Deployment : MonoBehaviour
             var isDownShift = (_isThereRoominTheDeployQueueAndQueuePosition.PositionKey < shiftWithRespectToPosition);
             var deploymentMarkersInShift = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey >= Math.Min(shiftWithRespectToPosition, _isThereRoominTheDeployQueueAndQueuePosition.PositionKey) && x.positionKey <= Math.Max(shiftWithRespectToPosition, _isThereRoominTheDeployQueueAndQueuePosition.PositionKey)).ToList();
             var unitsInShift = FindObjectsOfType<Unit>().Where(x => deploymentMarkersInShift.Select(y => y.positionKey).ToList<int>().Contains(x.QueuePosition) && x.Deployed).ToList();
+            gameManager.selectedUnit.QueuePosition = shiftWithRespectToPosition;
+            unitsInShift.Add(gameManager.selectedUnit);
+            unitsInShift = unitsInShift.Distinct().ToList();
             if (isDownShift)
             {
                 deploymentMarkersInShift = deploymentMarkersInShift.OrderBy(x => x.positionKey).ToList();
@@ -207,8 +210,10 @@ public class Deployment : MonoBehaviour
                 deploymentMarkersInShift = deploymentMarkersInShift.OrderByDescending(x => x.positionKey).ToList();
                 unitsInShift = unitsInShift.OrderByDescending(y => y.QueuePosition).ToList();
             }
-            unitsInShift.Add(gameManager.selectedUnit);
-            foreach (var (aUnit, idx) in unitsInShift.Select((value, i) => (value, i)).Distinct())
+
+            //unitsInShift.Add(gameManager.selectedUnit);
+            //var unitsInShiftNoDupes = unitsInShift.Distinct().ToList();
+            foreach (var (aUnit, idx) in unitsInShift.Select((value, i) => (value, i)))
             {
                 aUnit.DeployAndSnapToDeploymentQueue(deploymentMarkersInShift[idx]);
             }
