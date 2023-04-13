@@ -74,6 +74,18 @@ public class Unit : MonoBehaviour
     }
     public Action<bool> OnDeployedChanged;
 
+    public bool _reserved = false;
+    public bool Reserved
+    {
+        get { return _reserved;  }
+        set 
+        {
+            _reserved = value;
+            this?.OnReservededChanged(_reserved);
+        }
+    }
+    public Action<bool> OnReservededChanged;
+
     //Lerping START
     // Transforms to act as start and end markers for the journey.
     public Vector3 startMarker;
@@ -347,4 +359,5 @@ public class Unit : MonoBehaviour
     {
         return transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
     }
+
 }

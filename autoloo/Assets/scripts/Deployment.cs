@@ -88,8 +88,13 @@ public class Deployment : MonoBehaviour
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
             }
+            //FREEZE UNIT
+            if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(150, Screen.height - 50, 50, 50), "reserve"))
+            {
+                gameManager.selectedUnit.Reserved = !gameManager.selectedUnit.Reserved;
+            }
             //SELL UNIT
-            if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(100, Screen.height - 50, 50, 50), "sell"))
+            if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(100, Screen.height - 50, 50, 50), "dismiss"))
             {
                 Destroy(gameManager.selectedUnit.gameObject);
                 gameManager.Deselect();
@@ -194,8 +199,44 @@ public class Deployment : MonoBehaviour
         {
             var userTargetedDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == shiftWithRespectToPosition).First();
             var vaccantDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == _isThereRoominTheDeployQueueAndQueuePosition.PositionKey).First();
-            userTargetedDeployMarker.occupant.DeployAndSnapToDeploymentQueue(vaccantDeployMarker);
-            gameManager.selectedUnit.DeployAndSnapToDeploymentQueue(userTargetedDeployMarker);
+            var diff = Math.Abs(_isThereRoominTheDeployQueueAndQueuePosition.PositionKey - shiftWithRespectToPosition);
+            if (diff > 1)
+            {
+                var minPostion = Math.Min(_isThereRoominTheDeployQueueAndQueuePosition.PositionKey, shiftWithRespectToPosition);
+                var maxPostion = Math.Max(_isThereRoominTheDeployQueueAndQueuePosition.PositionKey, shiftWithRespectToPosition);
+                bool isDownShift = (shiftWithRespectToPosition > _isThereRoominTheDeployQueueAndQueuePosition.PositionKey);
+                
+                //need to determine up or down shift, who is involved in the shift
+                var deployMarkersInShift = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey >= minPostion && x.positionKey <= maxPostion).ToList();
+
+                //downshift? start at the bottom. upshift? start at the op.
+                if (isDownShift)
+                {
+                    deployMarkersInShift = deployMarkersInShift.OrderBy(x => x.positionKey).ToList();
+                }
+                else
+                {
+                    deployMarkersInShift = deployMarkersInShift.OrderByDescending(x => x.positionKey).ToList();
+                }
+
+                for (int i = 0; i < deployMarkersInShift.Count(); i++)
+                {
+                    try
+                    {
+                        deployMarkersInShift[i + 1].occupant.DeployAndSnapToDeploymentQueue(deployMarkersInShift[i]);
+                    }
+                    catch (Exception)
+                    {
+                        gameManager.selectedUnit.DeployAndSnapToDeploymentQueue(deployMarkersInShift[i]);
+                    }
+                }
+            }
+            else 
+            {
+                userTargetedDeployMarker.occupant.DeployAndSnapToDeploymentQueue(vaccantDeployMarker);
+                gameManager.selectedUnit.DeployAndSnapToDeploymentQueue(userTargetedDeployMarker);
+            }
+            
         }
     }
 

@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - DeploymentMarker
     - DragIt
     - GameManager
+    - PulseHover
     - Unit
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -59,27 +60,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1696}
     - Class: 114
-      Script: {instanceID: 2198}
+      Script: {instanceID: 1828}
     - Class: 114
-      Script: {instanceID: 2496}
+      Script: {instanceID: 2200}
     - Class: 114
-      Script: {instanceID: 2794}
+      Script: {instanceID: 2498}
     - Class: 114
-      Script: {instanceID: 3604}
+      Script: {instanceID: 2796}
     - Class: 114
-      Script: {instanceID: 3924}
+      Script: {instanceID: 3606}
     - Class: 114
-      Script: {instanceID: 4040}
+      Script: {instanceID: 3926}
     - Class: 114
-      Script: {instanceID: 4202}
+      Script: {instanceID: 4042}
     - Class: 114
-      Script: {instanceID: 4466}
+      Script: {instanceID: 4204}
     - Class: 114
-      Script: {instanceID: 5198}
+      Script: {instanceID: 4468}
     - Class: 114
-      Script: {instanceID: 5614}
+      Script: {instanceID: 5200}
     - Class: 114
-      Script: {instanceID: 5862}
+      Script: {instanceID: 5616}
+    - Class: 114
+      Script: {instanceID: 5864}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -123,7 +126,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: a040f52f53b7b07e02fded0651374fb2
+      Hash: 9608bff6bb79181544f15757b5f81699
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Deployment
@@ -151,6 +154,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionStayMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PulseHover
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -201,7 +210,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 0835ba3accb681f368d5e5ec9f372942
+      Hash: 1530b1ac0b505c16344078c79396cc4d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeploymentMarker
@@ -429,7 +438,7 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 128d0ffb8bc6609b63a3a05714f15105
+      Hash: 3351fb90bc45fb88d4bf46b012ed3a24
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -441,7 +450,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: a7e08e5cd9bc9cf2fb8bb407bb81ec44
+      Hash: 7d376b295068c63e8026e0496a8b09b0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unit
@@ -928,4 +937,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/projects/autoloo/build/autoloo.exe
+  playerPath: C:/projects/autoloo-2/autoloo/build/autoloo.exe
