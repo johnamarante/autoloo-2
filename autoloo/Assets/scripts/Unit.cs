@@ -87,7 +87,6 @@ public class Unit : MonoBehaviour
     public Action<bool> OnReservededChanged;
 
     //Lerping START
-    // Transforms to act as start and end markers for the journey.
     public Vector3 startMarker;
     public Vector3 endMarker;
     // Movement speed in units per second.
@@ -121,6 +120,7 @@ public class Unit : MonoBehaviour
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
         OnRankChanged += (e) => spriteRank.sprite = gameManager.rankSprites[Rank];
+        OnReservededChanged += (e) => Debug.Log(Reserved);
         costComponent.SetActive(!Deployed);
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
