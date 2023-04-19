@@ -20,19 +20,22 @@ public class Deployment : MonoBehaviour
     }
     public Action<int> OnCommandPointsChanged;
     public GameObject goDeploymentMarker;
+    public GameObject goShopMarker;
     public List<DeploymentMarker> listLeftDeploymentMarkers;
     public List<DeploymentMarker> listRightDeploymentMarkers;
+    public List<DeploymentShopMarker> listLeftDeploymentShopMarkers;
+    public List<DeploymentShopMarker> listRightDeploymentShopMarkers;
     public Unit unit1;
     public Unit unit2;
     public Unit unit3;
-    public Dictionary<int, Vector3> drawnHandQueuePositions;
+    public Dictionary<int, Vector3> deploymentShopQueuePositions;
     public Dictionary<int, Vector3> deploymentQueuePositions;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
-        drawnHandQueuePositions = SetDrawnHandPositionLocations();
+        deploymentShopQueuePositions = SetDrawnHandPositionLocations();
         SetCommandPointsDisplay();
         Roll(false);
         deploymentQueuePositions = SetDeploymentQueuePositionLocations();
@@ -54,7 +57,25 @@ public class Deployment : MonoBehaviour
             deplomentMarker.positionKey = position.Key;
             deplomentMarker.deployment = gameObject.GetComponent<Deployment>();
         }
+        //setup shop queues
+        foreach (var position in deploymentShopQueuePositions)
+        {
+            GameObject agoShopMarker = Instantiate(goShopMarker);
+            agoShopMarker.transform.position = position.Value;
+            var deplomentShopMarker = agoShopMarker.GetComponent<DeploymentShopMarker>();
+            if (position.Key < 0)
+            {
+                listLeftDeploymentShopMarkers.Add(deplomentShopMarker);
+            }
+            else
+            {
+                listRightDeploymentShopMarkers.Add(deplomentShopMarker);
+            }
+            deplomentShopMarker.positionKey = position.Key;
+            deplomentShopMarker.deployment = gameObject.GetComponent<Deployment>();
+        }
     }
+
 
     private void SetCommandPointsDisplay()
     {
@@ -147,7 +168,7 @@ public class Deployment : MonoBehaviour
         handQueue.Add(hand2);
         handQueue.Add(hand3);
         //gameManager.QueueUnits(handQueue);
-        gameManager.OrderUnitsInstantly(ref handQueue, drawnHandQueuePositions);
+        gameManager.OrderUnitsInstantly(ref handQueue, deploymentShopQueuePositions);
     }
 
     private Dictionary<int, Vector3> SetDeploymentQueuePositionLocations()

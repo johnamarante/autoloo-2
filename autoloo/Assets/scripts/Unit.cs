@@ -235,7 +235,7 @@ public class Unit : MonoBehaviour
                 && selectedUnitSpriteName != thisUnitSpriteName)
             {
                 var goDpeloymentMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == this.QueuePosition).First().gameObject;
-                var selectedunitStartPosition = gameManager.deployment.drawnHandQueuePositions[gameManager.selectedUnit.QueuePosition];
+                var selectedunitStartPosition = gameManager.deployment.deploymentShopQueuePositions[gameManager.selectedUnit.QueuePosition];
                 gameManager.deployment.TrySnapToDeploymentQueueSpace(gameManager.selectedUnit, goDpeloymentMarker, selectedunitStartPosition);
                 gameManager.Deselect();
             }
