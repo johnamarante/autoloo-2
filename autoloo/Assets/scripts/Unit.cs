@@ -104,6 +104,7 @@ public class Unit : MonoBehaviour
     private TextMeshPro textCost = new TextMeshPro();
     private GameObject costComponent;
     private GameObject rankComponent;
+    private GameObject freezeComponent;
     private SpriteRenderer spriteRank = new SpriteRenderer();
     //Stats display END
     private GameObject mouseHoverOverIndicator;
@@ -120,7 +121,7 @@ public class Unit : MonoBehaviour
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
         OnRankChanged += (e) => spriteRank.sprite = gameManager.rankSprites[Rank];
-        OnFreezedChanged += (e) => Debug.Log(Freezed);
+        OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
         costComponent.SetActive(!Deployed);
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
@@ -155,6 +156,7 @@ public class Unit : MonoBehaviour
                 spriteRank.sprite = gameManager.rankSprites[Rank];
             }
         }
+        freezeComponent = transform.Find("Freeze").gameObject;
     }
 
     // Update is called once per frame

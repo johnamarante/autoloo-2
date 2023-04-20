@@ -66,6 +66,7 @@
     <Compile Include="Assets\scripts\FriendpasteClient.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
     <Compile Include="Assets\scripts\DragIt.cs" />
+    <Compile Include="Assets\scripts\DeploymentShopMarker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
