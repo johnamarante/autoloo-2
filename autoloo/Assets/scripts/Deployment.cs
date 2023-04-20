@@ -112,7 +112,7 @@ public class Deployment : MonoBehaviour
             //FREEZE UNIT
             if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(150, Screen.height - 50, 50, 50), "reserve"))
             {
-                gameManager.selectedUnit.Reserved = !gameManager.selectedUnit.Reserved;
+                gameManager.selectedUnit.Freezed = !gameManager.selectedUnit.Freezed;
             }
             //SELL UNIT
             if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(100, Screen.height - 50, 50, 50), "dismiss"))
@@ -200,16 +200,16 @@ public class Deployment : MonoBehaviour
     private Dictionary<int, Vector3> SetDrawnHandPositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
-        dict.Add(-5, new Vector3(-100, -18, 1));
-        dict.Add(-4, new Vector3(-92, -18, 1));
+        //dict.Add(-5, new Vector3(-100, -18, 1));
+        //dict.Add(-4, new Vector3(-92, -18, 1));
         dict.Add(-3, new Vector3(-84, -18, 1));
         dict.Add(-2, new Vector3(-76, -18, 1));
         dict.Add(-1, new Vector3(-68, -18, 1));
         dict.Add(1, new Vector3(68, -18, 1));
         dict.Add(2, new Vector3(76, -18, 1));
         dict.Add(3, new Vector3(84, -18, 1));
-        dict.Add(4, new Vector3(92, -18, 1));
-        dict.Add(5, new Vector3(100, -18, 1));
+        //dict.Add(4, new Vector3(92, -18, 1));
+        //dict.Add(5, new Vector3(100, -18, 1));
         return dict;
     }
 

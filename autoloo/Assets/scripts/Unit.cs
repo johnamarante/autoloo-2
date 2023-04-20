@@ -74,17 +74,17 @@ public class Unit : MonoBehaviour
     }
     public Action<bool> OnDeployedChanged;
 
-    public bool _reserved = false;
-    public bool Reserved
+    public bool _freezed = false;
+    public bool Freezed
     {
-        get { return _reserved;  }
+        get { return _freezed;  }
         set 
         {
-            _reserved = value;
-            this?.OnReservededChanged(_reserved);
+            _freezed = value;
+            this?.OnFreezedChanged(_freezed);
         }
     }
-    public Action<bool> OnReservededChanged;
+    public Action<bool> OnFreezedChanged;
 
     //Lerping START
     public Vector3 startMarker;
@@ -120,7 +120,7 @@ public class Unit : MonoBehaviour
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
         OnRankChanged += (e) => spriteRank.sprite = gameManager.rankSprites[Rank];
-        OnReservededChanged += (e) => Debug.Log(Reserved);
+        OnFreezedChanged += (e) => Debug.Log(Freezed);
         costComponent.SetActive(!Deployed);
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
