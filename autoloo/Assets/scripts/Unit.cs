@@ -248,8 +248,8 @@ public class Unit : MonoBehaviour
             {
                 var pos1 = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == gameManager.selectedUnit.QueuePosition && x.side == gameManager.playerSide).First();
                 var pos2 = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == this.QueuePosition && x.side == gameManager.playerSide).First();
-                gameManager.selectedUnit.DeployAndSnapToDeploymentQueue(pos2);
-                this.DeployAndSnapToDeploymentQueue(pos1);
+                gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(pos2);
+                this.DeployAndSnapPositionToDeploymentMarker(pos1);
                 gameManager.Deselect();
 
             }
@@ -288,7 +288,7 @@ public class Unit : MonoBehaviour
         ShowSelectionIndicator(true);
     }
 
-    public void DeployAndSnapToDeploymentQueue(DeploymentMarker deploymentMarker)
+    public void DeployAndSnapPositionToDeploymentMarker(DeploymentMarker deploymentMarker)
     {
         //don't pay for a deployed unit twice
         if (!Deployed)
@@ -301,6 +301,8 @@ public class Unit : MonoBehaviour
         ClearOldDeployMarkerOccupancy();
         //Set New Deploy Marker Occupancy
         SetNewDeployMarkerOccupancy(deploymentMarker);
+        Deployed = true;
+        Freezed = false;
     }
 
     public void RankUp(Unit consumeUnit)
@@ -319,7 +321,6 @@ public class Unit : MonoBehaviour
     {
         QueuePosition = deploymentMarker.positionKey;
         deploymentMarker.occupant = this;
-        Deployed = true;
         deploymentMarker.ShowHoverIndicator(false);
     }
 

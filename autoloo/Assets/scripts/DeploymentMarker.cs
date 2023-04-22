@@ -34,12 +34,6 @@ public class DeploymentMarker : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnMouseEnter()
     {
         ShowHoverIndicator(true);
@@ -68,7 +62,7 @@ public class DeploymentMarker : MonoBehaviour
             {
                 if (occupant == null)
                 {
-                    selectedUnit.DeployAndSnapToDeploymentQueue(this);
+                    selectedUnit.DeployAndSnapPositionToDeploymentMarker(this);
                 }
                 else
                 {

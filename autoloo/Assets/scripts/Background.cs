@@ -11,11 +11,6 @@ public class Background : MonoBehaviour
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnMouseDown()
     {
         if (!gameManager.InBattleModeAndNotDeploymentMode)

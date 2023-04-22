@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeploymentShopMarker : MonoBehaviour
@@ -14,9 +12,19 @@ public class DeploymentShopMarker : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsFrozenShopUnitAboveMe()
     {
-        
+        Debug.DrawRay(transform.position + new Vector3(0,0,1), transform.TransformDirection(Vector3.back) * 1000f, Color.red, Mathf.Infinity);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + new Vector3(0, 0, 1), transform.TransformDirection(Vector3.back) * 1000f, out hit, Mathf.Infinity))
+        {
+            var unitHit = hit.collider.gameObject.GetComponent<Unit>();
+            Debug.Log($"ray hit {unitHit}");
+            if (unitHit.gameObject != null && unitHit.Freezed)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

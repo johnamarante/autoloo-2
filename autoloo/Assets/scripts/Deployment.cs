@@ -37,7 +37,7 @@ public class Deployment : MonoBehaviour
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         deploymentShopQueuePositions = SetDrawnHandPositionLocations();
         SetCommandPointsDisplay();
-        Roll(false);
+        
         deploymentQueuePositions = SetDeploymentQueuePositionLocations();
 
         //setup deployment queues
@@ -57,7 +57,7 @@ public class Deployment : MonoBehaviour
             deplomentMarker.positionKey = position.Key;
             deplomentMarker.deployment = gameObject.GetComponent<Deployment>();
         }
-        //setup shop queues
+        //setup shop queues and roll to populate shop
         foreach (var position in deploymentShopQueuePositions)
         {
             GameObject agoShopMarker = Instantiate(goShopMarker);
@@ -65,15 +65,18 @@ public class Deployment : MonoBehaviour
             var deplomentShopMarker = agoShopMarker.GetComponent<DeploymentShopMarker>();
             if (position.Key < 0)
             {
+                deplomentShopMarker.side = "left";
                 listLeftDeploymentShopMarkers.Add(deplomentShopMarker);
             }
             else
             {
+                deplomentShopMarker.side = "right";
                 listRightDeploymentShopMarkers.Add(deplomentShopMarker);
             }
             deplomentShopMarker.positionKey = position.Key;
             deplomentShopMarker.deployment = gameObject.GetComponent<Deployment>();
         }
+        Roll(false);
     }
 
 
@@ -83,11 +86,6 @@ public class Deployment : MonoBehaviour
         var textCommandpoints = (TextMeshPro)texMeshProComponent;
         textCommandpoints.text = CommandPoints.ToString();
         OnCommandPointsChanged += (e) => textCommandpoints.text = CommandPoints.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     private void OnGUI()
@@ -160,15 +158,18 @@ public class Deployment : MonoBehaviour
         //chose a random element on the roster
         System.Random rnd = new System.Random();
 
-        var hand1 = Instantiate(roster[rnd.Next(roster.Count)]);
-        var hand2 = Instantiate(roster[rnd.Next(roster.Count)]);
-        var hand3 = Instantiate(roster[rnd.Next(roster.Count)]);
-        var handQueue = new List<Unit>();
-        handQueue.Add(hand1);
-        handQueue.Add(hand2);
-        handQueue.Add(hand3);
-        //gameManager.QueueUnits(handQueue);
-        gameManager.OrderUnitsInstantly(ref handQueue, deploymentShopQueuePositions);
+        var shopMarkers = FindObjectsOfType<DeploymentShopMarker>().ToList().Where(x => x.side == gameManager.playerSide);
+        var shopQueue = new List<Unit>();
+        foreach (var shopMarker in shopMarkers)
+        {
+            if (!shopMarker.IsFrozenShopUnitAboveMe())
+            {
+                var shopItem = Instantiate(roster[rnd.Next(roster.Count)]);
+                shopQueue.Add(shopItem);
+            }
+        }
+
+        gameManager.OrderUnitsInstantly(ref shopQueue, deploymentShopQueuePositions);
     }
 
     private Dictionary<int, Vector3> SetDeploymentQueuePositionLocations()
@@ -244,18 +245,18 @@ public class Deployment : MonoBehaviour
                 {
                     try
                     {
-                        deployMarkersInShift[i + 1].occupant.DeployAndSnapToDeploymentQueue(deployMarkersInShift[i]);
+                        deployMarkersInShift[i + 1].occupant.DeployAndSnapPositionToDeploymentMarker(deployMarkersInShift[i]);
                     }
                     catch (Exception)
                     {
-                        gameManager.selectedUnit.DeployAndSnapToDeploymentQueue(deployMarkersInShift[i]);
+                        gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(deployMarkersInShift[i]);
                     }
                 }
             }
             else 
             {
-                userTargetedDeployMarker.occupant.DeployAndSnapToDeploymentQueue(vaccantDeployMarker);
-                gameManager.selectedUnit.DeployAndSnapToDeploymentQueue(userTargetedDeployMarker);
+                userTargetedDeployMarker.occupant.DeployAndSnapPositionToDeploymentMarker(vaccantDeployMarker);
+                gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(userTargetedDeployMarker);
             }
             
         }
@@ -271,7 +272,7 @@ public class Deployment : MonoBehaviour
             if (deploymentMarker.occupant == null)
             {
                 //either there is no one in the space, or...
-                unit.DeployAndSnapToDeploymentQueue(deploymentMarker);
+                unit.DeployAndSnapPositionToDeploymentMarker(deploymentMarker);
             }
             else if (deploymentMarker.occupant.GetUnitSpriteName() == unit.GetUnitSpriteName())
             {
