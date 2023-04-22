@@ -162,11 +162,12 @@ public class Deployment : MonoBehaviour
         var shopQueue = new List<Unit>();
         foreach (var shopMarker in shopMarkers)
         {
+            Unit shopItem = null;
             if (!shopMarker.IsFrozenShopUnitAboveMe())
             {
-                var shopItem = Instantiate(roster[rnd.Next(roster.Count)]);
-                shopQueue.Add(shopItem);
+                shopItem = Instantiate(roster[rnd.Next(roster.Count)]);
             }
+            shopQueue.Add(shopItem);
         }
 
         gameManager.OrderUnitsInstantly(ref shopQueue, deploymentShopQueuePositions);

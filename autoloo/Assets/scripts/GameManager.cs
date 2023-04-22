@@ -160,13 +160,16 @@ public class GameManager : MonoBehaviour
         //go through queue
         foreach (Unit unit in units)
         {
-            var indexModifier = 1;
-            if (unit.side == "left")
+            if (unit != null) //sometimes nulls are placed in the queue as placehoollders
             {
-                indexModifier = -1;
+                var indexModifier = 1;
+                if (unit.side == "left")
+                {
+                    indexModifier = -1;
+                }
+                unit.QueuePosition = indexModifier * idx;
+                unit.transform.position = queuePositions[indexModifier * idx];
             }
-            unit.QueuePosition = indexModifier * idx;
-            unit.transform.position = queuePositions[indexModifier * idx];
             idx++;
         }
     }
