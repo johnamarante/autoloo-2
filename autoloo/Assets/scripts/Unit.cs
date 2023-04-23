@@ -85,7 +85,7 @@ public class Unit : MonoBehaviour
         }
     }
     public Action<bool> OnFreezedChanged;
-
+    public string spriteName;
     //Lerping START
     public Vector3 startMarker;
     public Vector3 endMarker;
@@ -126,6 +126,7 @@ public class Unit : MonoBehaviour
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
+        spriteName = this.gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
     }
 
     private void ChangeRankIcon()
@@ -269,9 +270,8 @@ public class Unit : MonoBehaviour
                 && CanAfford()
                 && Rank < maxUnitRank)
             {
-                //TODO Write rank up function
-                //should rank up, but use the BUMP logic for now
                 RankUp(selectedUnit);
+                gameManager.Deselect();
             }
             //4. both are deployed AND are the same type (RANK UP)
             else if (selectedUnit != null && selectedUnit.Deployed
@@ -280,6 +280,7 @@ public class Unit : MonoBehaviour
                 && Rank < maxUnitRank)
             {
                 RankUp(selectedUnit);
+                gameManager.Deselect();
             }
             else 
             {

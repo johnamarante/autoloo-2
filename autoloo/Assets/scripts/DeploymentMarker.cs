@@ -19,6 +19,8 @@ public class DeploymentMarker : MonoBehaviour
         }
     }
     public Action<Unit> OnOccupantChanged;
+    public GameObject goArrow;
+    public GameObject goCombine;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,8 @@ public class DeploymentMarker : MonoBehaviour
         {
             side = "right";
         }
+        goArrow = this.gameObject.transform.Find("arrow").gameObject;
+        goCombine = this.gameObject.transform.Find("combine").gameObject;
     }
 
     private void OnMouseEnter()

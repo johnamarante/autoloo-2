@@ -286,7 +286,6 @@ public class Deployment : MonoBehaviour
                 var pos2 = deploymentMarker;
                 unit.DeployAndSnapPositionToDeploymentMarker(pos2);
                 occupant.DeployAndSnapPositionToDeploymentMarker(pos1);
-                gameManager.Deselect();
             }
             else
             {
@@ -298,6 +297,7 @@ public class Deployment : MonoBehaviour
             //snap back to start position
             unit.transform.position = startPosition;
         }
+        gameManager.Deselect();
     }
 
     private (bool IsThereAnEmptySpaceToShiftTo, int PositionKey) IsThereAnEmptySpaceToShiftTo(int shiftWithRespectToPosition)
@@ -359,21 +359,28 @@ public class Deployment : MonoBehaviour
 
     public void SetDeployMarkerArrows(Unit selectedUnit)
     {
-        if (selectedUnit != null)
+        if (selectedUnit != null && selectedUnit.CanAfford())
         {
             foreach (var deployMarker in listLeftDeploymentMarkers)
             {
-                //get child arrow and activate
-                deployMarker.gameObject.transform.Find("arrow").gameObject.SetActive(true);
+                if (deployMarker.occupant != null && selectedUnit.spriteName == deployMarker.occupant.spriteName)
+                {
+                    deployMarker.goCombine.SetActive(true);
+                }
+                else 
+                {
+                    deployMarker.goArrow.SetActive(true);
+                }
             }
         }
         else 
         {
             foreach (var deployMarker in listLeftDeploymentMarkers)
             {
-                //get child arrow and activate
-                deployMarker.gameObject.transform.Find("arrow").gameObject.SetActive(false);
+                deployMarker.goArrow.SetActive(false);
+                deployMarker.goCombine.SetActive(false);
             }
         }
     }
+
 }
