@@ -57,8 +57,8 @@ public class Unit : MonoBehaviour
             this?.OnRankChanged(_rank);
         }
     }
+    public const int maxUnitRank = 9;
     public Action<int> OnRankChanged;
-
     public string side = "";
     public Font myFont;
     public int QueuePosition = 0;
@@ -109,7 +109,7 @@ public class Unit : MonoBehaviour
     //Stats display END
     private GameObject mouseHoverOverIndicator;
     private GameObject selectedIndicator;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -120,12 +120,20 @@ public class Unit : MonoBehaviour
         OnHitPointsChanged += (e) => textHitPoints.text = HitPoints.ToString();
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
-        OnRankChanged += (e) => spriteRank.sprite = gameManager.rankSprites[Rank];
+        OnRankChanged += (e) =>  ChangeRankIcon();
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
         costComponent.SetActive(!Deployed);
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
+    }
+
+    private void ChangeRankIcon()
+    {
+        if (gameManager.rankSprites.Length > Rank)
+        {
+            spriteRank.sprite = gameManager.rankSprites[Rank];
+        }
     }
 
     private void SetUnitStatsDisplay()
@@ -258,20 +266,20 @@ public class Unit : MonoBehaviour
             else if (selectedUnit != null && !selectedUnit.Deployed 
                 && Deployed
                 && selectedUnitSpriteName == thisUnitSpriteName
-                && CanAfford())
+                && CanAfford()
+                && Rank < maxUnitRank)
             {
                 //TODO Write rank up function
                 //should rank up, but use the BUMP logic for now
-                RankUp(gameManager.selectedUnit);
+                RankUp(selectedUnit);
             }
             //4. both are deployed AND are the same type (RANK UP)
             else if (selectedUnit != null && selectedUnit.Deployed
                 && Deployed
-                && selectedUnitSpriteName == thisUnitSpriteName)
+                && selectedUnitSpriteName == thisUnitSpriteName
+                && Rank < maxUnitRank)
             {
-                //TODO Write rank up function
-                //should rank up, but use the BUMP logic for now
-                RankUp(gameManager.selectedUnit);
+                RankUp(selectedUnit);
             }
             else 
             {

@@ -270,31 +270,36 @@ public class Deployment : MonoBehaviour
             && deploymentMarker != null 
             && (unit.CanAfford() || unit.Deployed))
         {
-            if (deploymentMarker.occupant == null)
+            var occupant = deploymentMarker.occupant;
+            if (occupant == null)
             {
-                //either there is no one in the space, or...
                 unit.DeployAndSnapPositionToDeploymentMarker(deploymentMarker);
             }
-            else if (deploymentMarker.occupant.GetUnitSpriteName() == unit.GetUnitSpriteName())
+            else if (occupant.GetUnitSpriteName() == unit.GetUnitSpriteName() && occupant.Rank < Unit.maxUnitRank)
             {
-                deploymentMarker.occupant.RankUp(unit);
+                occupant.RankUp(unit);
             }
-            else 
+            //per feedback from Thomas, when occupant and selected units are both already deployedand they are adjacent (queueposition diff is 1), then this should be a swap action.
+            else if (unit.Deployed && Math.Abs(occupant.QueuePosition - unit.QueuePosition) == 1)
             {
-                //there is someone in the space, but there might be room to shift so that the selected unit can occupy this space
-                //Mar 8 2023 330pm: if a unit is dragged to an occupied space and mouseup'd then, contraty to the previous expectation, it will not snap back but remain in place
-                //the next step is to make shift units work. 
+                var pos1 = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition && x.side == unit.side).First();
+                var pos2 = deploymentMarker;
+                unit.DeployAndSnapPositionToDeploymentMarker(pos2);
+                occupant.DeployAndSnapPositionToDeploymentMarker(pos1);
+                gameManager.Deselect();
+            }
+            else
+            {
                 ShiftUnits(deploymentMarker.positionKey);
             }
         }
         else
         {
-            //snap back
+            //snap back to start position
             unit.transform.position = startPosition;
         }
     }
 
-    //possibly make this bool function a tuple (bool, int); which is (isPositionAvailable, positionKey)
     private (bool IsThereAnEmptySpaceToShiftTo, int PositionKey) IsThereAnEmptySpaceToShiftTo(int shiftWithRespectToPosition)
     {
         //is there even space to shift to?
