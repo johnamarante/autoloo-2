@@ -63,6 +63,15 @@ public class DragIt : MonoBehaviour
                     if (belowGameObject.GetComponent<DeploymentMarker>())
                     {
                         belowGameObject.GetComponent<DeploymentMarker>().ShowHoverIndicator(false);
+                        //if this is a deployed unit, then retain he assigned alue of the belowObject, which woiuld be adeployment marker.
+                        //that way, snap back will have a full effect and the hop-stack bug will not occur
+                        if (TryGetComponent(out Unit unit))
+                        {
+                            if (unit.Deployed)
+                            {
+                                return;
+                            }
+                        }
                         belowGameObject = null;
                     }
                 }
