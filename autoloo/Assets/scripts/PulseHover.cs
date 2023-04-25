@@ -42,6 +42,5 @@ public class PulseHover : MonoBehaviour
                 down = false;
             }
         }
-        Debug.Log(yValue);
     }
 }

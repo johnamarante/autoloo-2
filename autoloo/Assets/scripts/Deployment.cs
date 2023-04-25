@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -30,6 +31,8 @@ public class Deployment : MonoBehaviour
     public Unit unit3;
     public Dictionary<int, Vector3> deploymentShopQueuePositions;
     public Dictionary<int, Vector3> deploymentQueuePositions;
+
+    private bool writeToFriendPaste = false;
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +82,6 @@ public class Deployment : MonoBehaviour
         Roll(false);
     }
 
-
     private void SetCommandPointsDisplay()
     {
         var texMeshProComponent = Camera.main.gameObject.transform.GetComponentInChildren(typeof(TextMeshPro), true);
@@ -104,8 +106,14 @@ public class Deployment : MonoBehaviour
                 gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
                 gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right" &&  y.Deployed).OrderBy(x => x.QueuePosition).ToList();
 
+                //write data to save between turns
+                //var response = StartCoroutine(await FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", $"autoloo test post {Guid.NewGuid()}", gameManager.LeftQueueUnits[0].spriteName));
+                
+                writeToFriendPaste = true;
+
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
+                StartCoroutine("WriteToFriendPaste");
             }
             //FREEZE UNIT
             if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(150, Screen.height - 50, 50, 50), "reserve"))
@@ -125,6 +133,12 @@ public class Deployment : MonoBehaviour
                 Roll();
             }
         }
+    }
+
+    private async void WriteToFriendPaste()
+    {
+        var response = await FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", $"autoloo test post {Guid.NewGuid()}", gameManager.LeftQueueUnits[0].spriteName);
+        Debug.Log(response);
     }
 
     private void Roll(bool costOnePoint = true)
