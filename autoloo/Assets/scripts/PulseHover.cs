@@ -8,6 +8,7 @@ public class PulseHover : MonoBehaviour
     int i = 0;
     bool down = false;
     int regulate = 1;
+    public float yValue = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +26,12 @@ public class PulseHover : MonoBehaviour
             if (down)
             {
                 i--;
-                transform.position -= new Vector3(0f, 0.1f, 0f);
+                yValue -= 0.1f;
             }
             else
             {
                 i++;
-                transform.position += new Vector3(0f, 0.1f, 0f);
+                yValue += 0.1f;
             }
             if (i > 19)
             {
@@ -41,5 +42,6 @@ public class PulseHover : MonoBehaviour
                 down = false;
             }
         }
+        Debug.Log(yValue);
     }
 }
