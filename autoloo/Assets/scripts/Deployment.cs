@@ -102,12 +102,14 @@ public class Deployment : MonoBehaviour
                 gameManager.InBattleModeAndNotDeploymentMode = true;
                 gameManager.actionTime = Time.time;
 
+                //get data about opponent
+                //write data to save between turns
+                var britguy = Instantiate(gameManager.RightUnitRoster[1]);
+                //britguy.Deployed = true;
+
                 var allUnits = FindObjectsOfType<Unit>().ToList();
                 gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
-                gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right" &&  y.Deployed).OrderBy(x => x.QueuePosition).ToList();
-
-                //write data to save between turns
-                //var response = StartCoroutine(await FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", $"autoloo test post {Guid.NewGuid()}", gameManager.LeftQueueUnits[0].spriteName));
+                gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right").OrderBy(x => x.QueuePosition).ToList();
                 
                 writeToFriendPaste = true;
 
@@ -137,7 +139,7 @@ public class Deployment : MonoBehaviour
 
     private async void WriteToFriendPaste()
     {
-        var response = await FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", $"autoloo test post {Guid.NewGuid()}", gameManager.LeftQueueUnits[0].spriteName);
+        var response = await FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", $"autoloo test post {Guid.NewGuid()}", gameManager.LeftQueueUnits.Count.ToString());
         Debug.Log(response);
     }
 

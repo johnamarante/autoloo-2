@@ -416,7 +416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1450801898847554916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &801219028362080871
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,7 +1281,8 @@ MonoBehaviour:
   myFont: {fileID: 0}
   QueuePosition: 0
   _deployed: 0
-  _reserved: 0
+  _freezed: 0
+  spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
   speed: 40
