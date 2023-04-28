@@ -63,7 +63,6 @@ MonoBehaviour:
   guiFontSize: 20
   multiplayer: 0
   playerSide: 
-  selectedUnit: {fileID: 0}
   deployment: {fileID: 6085394689305071435, guid: c9f1ca05ce67d8144b451342644b7de2, type: 3}
   rankSprites:
   - {fileID: 3286163911610860551, guid: 0a4407356777fe84a9b16d72bce7f362, type: 3}
@@ -77,6 +76,8 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: eb7610a3d07b6cb43b6f620079093d8f, type: 3}
   - {fileID: 3286163911610860551, guid: 0fda0ebd5d589fe4880e945e8f325f0e, type: 3}
   InBattleModeAndNotDeploymentMode: 0
+  _selectedUnit: {fileID: 0}
+  resultPopup: {fileID: 5818834965362523167, guid: d80b0c52b06658f4d89600e74a7bd916, type: 3}
 --- !u!222 &755904350544477790
 CanvasRenderer:
   m_ObjectHideFlags: 0

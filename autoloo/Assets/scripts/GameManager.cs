@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public Action<Unit> OnSelectedUnitChanged;
+    public ResultPopup resultPopup;
 
     // Start is called before the first frame update
     void Start()
@@ -43,17 +44,6 @@ public class GameManager : MonoBehaviour
         cameraPositions = SetCameraPositionLocations();
         deployment = Instantiate(deployment);
         OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
-    }
-
-    private void SetFontSize()
-    {
-        guiFontSize = Screen.height switch
-        {
-            <= 800 => (int)(Screen.height * 0.035f),
-            <= 1080 => (int)(Screen.height * 0.04f),
-            <= 2200 => (int)(Screen.height * 0.045f),
-            > 2200 => (int)(Screen.height * 0.05f),
-        };
     }
 
     private Dictionary<int, Vector3> SetFightQueuePositionLocations()
@@ -112,11 +102,29 @@ public class GameManager : MonoBehaviour
             SetUpUnitsOnBattlefieldInOrder(ref RightQueueUnits, fightQueuePositions);
 
             actionTime += period;
+
+            if (LeftQueueUnits.Count == 0 || LeftQueueUnits.Count == 0)
+            {
+                //1. give result
+                Debug.Log("result is " + ((LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!"));
+                var result = Instantiate(resultPopup);
+                result.displayText = ((LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!");
+                result.gameManager = this;
+                //2. cleanup battlefield
+                CleanupBattlefield();
+                //3. reset player or end the game
+                InBattleModeAndNotDeploymentMode = false;
+                Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
+            }
         }
-        //if (LeftQueueUnits.Count < 1 || RightQueueUnits.Count < 1)
-        //{
-        //    InBattleModeAndNotDeploymentMode = false;
-        //}
+    }
+
+    public void CleanupBattlefield()
+    {
+        foreach (var rightUnit in RightQueueUnits)
+            Destroy(rightUnit.gameObject);
+        foreach (var leftUnit in LeftQueueUnits)
+            Destroy(leftUnit.gameObject);
     }
 
     private void OnGUI()

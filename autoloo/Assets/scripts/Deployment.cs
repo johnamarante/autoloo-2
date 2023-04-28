@@ -104,8 +104,7 @@ public class Deployment : MonoBehaviour
 
                 //get data about opponent
                 //write data to save between turns
-                var britguy = Instantiate(gameManager.RightUnitRoster[1]);
-                //britguy.Deployed = true;
+                OpponentGeneration.Generate();
 
                 var allUnits = FindObjectsOfType<Unit>().ToList();
                 gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
