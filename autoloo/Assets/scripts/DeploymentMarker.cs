@@ -62,15 +62,16 @@ public class DeploymentMarker : MonoBehaviour
         if (deployment.gameManager.selectedUnit != null)
         {
             var selectedUnit = deployment.gameManager.selectedUnit;
+            var isThereRoominTheDeployQueueAndQueuePosition = deployment.IsThereAnEmptySpaceToShiftTo(positionKey);
             if (selectedUnit != null && (selectedUnit.CanAfford() || selectedUnit.Deployed))
             {
                 if (occupant == null)
                 {
                     selectedUnit.DeployAndSnapPositionToDeploymentMarker(this);
                 }
-                else
+                else if (deployment.IsThereAnEmptySpaceToShiftTo(positionKey).IsThereAnEmptySpaceToShiftTo)
                 {
-                    deployment.ShiftUnits(positionKey);
+                    deployment.ShiftUnits(positionKey, isThereRoominTheDeployQueueAndQueuePosition.PositionKey);
                 }
                 deployment.gameManager.Deselect();
             }

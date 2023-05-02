@@ -1049,10 +1049,11 @@ MonoBehaviour:
   myFont: {fileID: 0}
   QueuePosition: 0
   _deployed: 0
-  _reserved: 0
+  _freezed: 0
+  spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 40
+  speed: 60
 --- !u!114 &7228646853880733535
 MonoBehaviour:
   m_ObjectHideFlags: 0

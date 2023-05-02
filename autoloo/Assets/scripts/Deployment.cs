@@ -114,7 +114,7 @@ public class Deployment : MonoBehaviour
 
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
-                StartCoroutine("WriteToFriendPaste");
+                //StartCoroutine("WriteToFriendPaste");
             }
             //FREEZE UNIT
             if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(150, Screen.height - 50, 50, 50), "reserve"))
@@ -230,54 +230,54 @@ public class Deployment : MonoBehaviour
         return dict;
     }
 
-    public void ShiftUnits(int shiftWithRespectToPosition)
+    public void ShiftUnits(int shiftWithRespectToPosition, int targetPositionKey)
     {
-        var _isThereRoominTheDeployQueueAndQueuePosition = IsThereAnEmptySpaceToShiftTo(shiftWithRespectToPosition);
-        if (_isThereRoominTheDeployQueueAndQueuePosition.IsThereAnEmptySpaceToShiftTo)
+        //var _isThereRoominTheDeployQueueAndQueuePosition = IsThereAnEmptySpaceToShiftTo(shiftWithRespectToPosition);
+        //need to snap back if this is false
+        //if (_isThereRoominTheDeployQueueAndQueuePosition.IsThereAnEmptySpaceToShiftTo)
+        //{
+        var userTargetedDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == shiftWithRespectToPosition).First();
+        var vaccantDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == targetPositionKey).First();
+        var diff = Math.Abs(targetPositionKey - shiftWithRespectToPosition);
+        if (diff > 1)
         {
-            var userTargetedDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == shiftWithRespectToPosition).First();
-            var vaccantDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == _isThereRoominTheDeployQueueAndQueuePosition.PositionKey).First();
-            var diff = Math.Abs(_isThereRoominTheDeployQueueAndQueuePosition.PositionKey - shiftWithRespectToPosition);
-            if (diff > 1)
+            var minPostion = Math.Min(targetPositionKey, shiftWithRespectToPosition);
+            var maxPostion = Math.Max(targetPositionKey, shiftWithRespectToPosition);
+            bool isDownShift = (shiftWithRespectToPosition > targetPositionKey);
+
+            //need to determine up or down shift, who is involved in the shift
+            var deployMarkersInShift = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey >= minPostion && x.positionKey <= maxPostion).ToList();
+
+            //downshift? start at the bottom. upshift? start at the op.
+            if (isDownShift)
             {
-                var minPostion = Math.Min(_isThereRoominTheDeployQueueAndQueuePosition.PositionKey, shiftWithRespectToPosition);
-                var maxPostion = Math.Max(_isThereRoominTheDeployQueueAndQueuePosition.PositionKey, shiftWithRespectToPosition);
-                bool isDownShift = (shiftWithRespectToPosition > _isThereRoominTheDeployQueueAndQueuePosition.PositionKey);
-                
-                //need to determine up or down shift, who is involved in the shift
-                var deployMarkersInShift = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey >= minPostion && x.positionKey <= maxPostion).ToList();
+                deployMarkersInShift = deployMarkersInShift.OrderBy(x => x.positionKey).ToList();
+            }
+            else
+            {
+                deployMarkersInShift = deployMarkersInShift.OrderByDescending(x => x.positionKey).ToList();
+            }
 
-                //downshift? start at the bottom. upshift? start at the op.
-                if (isDownShift)
+            for (int i = 0; i < deployMarkersInShift.Count(); i++)
+            {
+                try
                 {
-                    deployMarkersInShift = deployMarkersInShift.OrderBy(x => x.positionKey).ToList();
+                    deployMarkersInShift[i + 1].occupant.DeployAndSnapPositionToDeploymentMarker(deployMarkersInShift[i]);
                 }
-                else
+                catch (Exception)
                 {
-                    deployMarkersInShift = deployMarkersInShift.OrderByDescending(x => x.positionKey).ToList();
-                }
-
-                for (int i = 0; i < deployMarkersInShift.Count(); i++)
-                {
-                    try
-                    {
-                        deployMarkersInShift[i + 1].occupant.DeployAndSnapPositionToDeploymentMarker(deployMarkersInShift[i]);
-                    }
-                    catch (Exception)
-                    {
-                        gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(deployMarkersInShift[i]);
-                    }
+                    gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(deployMarkersInShift[i]);
                 }
             }
-            else 
-            {
-                userTargetedDeployMarker.occupant.DeployAndSnapPositionToDeploymentMarker(vaccantDeployMarker);
-                gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(userTargetedDeployMarker);
-            }
-            
         }
+        else
+        {
+            userTargetedDeployMarker.occupant.DeployAndSnapPositionToDeploymentMarker(vaccantDeployMarker);
+            gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(userTargetedDeployMarker);
+        }
+        //}
     }
-
+    //TODO: refactor TrySnapToDeploymentQueueSpace
     public void TrySnapToDeploymentQueueSpace(Unit unit, GameObject belowGameObject, Vector3 startPosition)
     {
         if (belowGameObject != null 
@@ -286,6 +286,7 @@ public class Deployment : MonoBehaviour
             && (unit.CanAfford() || unit.Deployed))
         {
             var occupant = deploymentMarker.occupant;
+            var _isThereRoominTheDeployQueueAndQueuePosition = IsThereAnEmptySpaceToShiftTo(deploymentMarker.positionKey);
             if (occupant == null)
             {
                 unit.DeployAndSnapPositionToDeploymentMarker(deploymentMarker);
@@ -294,7 +295,7 @@ public class Deployment : MonoBehaviour
             {
                 occupant.RankUp(unit);
             }
-            //per feedback from Thomas, when occupant and selected units are both already deployedand they are adjacent (queueposition diff is 1), then this should be a swap action.
+            //per feedback from Thomas, when occupant and selected units are both already deployed and they are adjacent (queueposition diff is 1), then this should be a swap action.
             else if (unit.Deployed && Math.Abs(occupant.QueuePosition - unit.QueuePosition) == 1)
             {
                 var pos1 = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition && x.side == unit.side).First();
@@ -302,9 +303,14 @@ public class Deployment : MonoBehaviour
                 unit.DeployAndSnapPositionToDeploymentMarker(pos2);
                 occupant.DeployAndSnapPositionToDeploymentMarker(pos1);
             }
-            else
+            else if (IsThereAnEmptySpaceToShiftTo(deploymentMarker.positionKey).IsThereAnEmptySpaceToShiftTo)
             {
-                ShiftUnits(deploymentMarker.positionKey);
+                ShiftUnits(deploymentMarker.positionKey, _isThereRoominTheDeployQueueAndQueuePosition.PositionKey);
+            }
+            else 
+            {
+                //snap back to start position
+                unit.transform.position = startPosition;
             }
         }
         else
@@ -315,7 +321,7 @@ public class Deployment : MonoBehaviour
         gameManager.Deselect();
     }
 
-    private (bool IsThereAnEmptySpaceToShiftTo, int PositionKey) IsThereAnEmptySpaceToShiftTo(int shiftWithRespectToPosition)
+    public (bool IsThereAnEmptySpaceToShiftTo, int PositionKey) IsThereAnEmptySpaceToShiftTo(int shiftWithRespectToPosition)
     {
         //is there even space to shift to?
         var relevantDeploymentMarkers = FindObjectsOfType<DeploymentMarker>().ToList();

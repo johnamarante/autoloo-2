@@ -11,7 +11,7 @@ public class DragIt : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 startPosition;
-    private GameObject belowGameObject;
+    public GameObject belowGameObject;
 
     void OnMouseDown()
     {
@@ -49,11 +49,11 @@ public class DragIt : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<DeploymentMarker>()) //.name.Contains("marker"))
             {
-                if (belowGameObject == null)
-                {
-                    belowGameObject = hit.collider.gameObject;
-                    belowGameObject.GetComponent<DeploymentMarker>().ShowHoverIndicator(true);
-                }
+                //if (belowGameObject == null)
+                //{
+                belowGameObject = hit.collider.gameObject;
+                belowGameObject.GetComponent<DeploymentMarker>().ShowHoverIndicator(true);
+                //}
             }
             else //backgroundPlane
             {
@@ -63,7 +63,7 @@ public class DragIt : MonoBehaviour
                     if (belowGameObject.GetComponent<DeploymentMarker>())
                     {
                         belowGameObject.GetComponent<DeploymentMarker>().ShowHoverIndicator(false);
-                        //if this is a deployed unit, then retain he assigned alue of the belowObject, which woiuld be adeployment marker.
+                        //if this is a deployed unit, then retain the assigned value of the belowObject, which would be a deployment marker.
                         //that way, snap back will have a full effect and the hop-stack bug will not occur
                         if (TryGetComponent(out Unit unit))
                         {

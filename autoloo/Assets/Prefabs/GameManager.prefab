@@ -59,7 +59,7 @@ MonoBehaviour:
   - {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
   - {fileID: 6443899396185200549, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
   actionTime: 0
-  period: 3
+  period: 1.5
   guiFontSize: 20
   multiplayer: 0
   playerSide: 

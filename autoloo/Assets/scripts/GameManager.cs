@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 
             actionTime += period;
 
-            if (LeftQueueUnits.Count == 0 || LeftQueueUnits.Count == 0)
+            if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
             {
                 //1. give result
                 Debug.Log("result is " + ((LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!"));

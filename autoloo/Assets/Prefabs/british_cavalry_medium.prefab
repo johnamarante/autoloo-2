@@ -906,17 +906,18 @@ MonoBehaviour:
   Chance: 10
   Level: 1
   _cost: 3
-  _attack: 6
+  _attack: 3
   _hitPoints: 3
   _rank: 0
   side: right
   myFont: {fileID: 0}
   QueuePosition: 0
   _deployed: 0
-  _reserved: 0
+  _freezed: 0
+  spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 40
+  speed: 60
 --- !u!114 &7628227270923445829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,6 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c2ba6222d91ee40a430bb2bf9fa6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  belowGameObject: {fileID: 0}
 --- !u!65 &476209391147351647
 BoxCollider:
   m_ObjectHideFlags: 0
