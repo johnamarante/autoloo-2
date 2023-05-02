@@ -320,6 +320,9 @@ public class Unit : MonoBehaviour
         {
             gameManager.deployment.CommandPoints -= consumeUnit.Cost;
         }
+        int currencyBump = (consumeUnit.Rank / 3);
+        Debug.Log($"currency bump {currencyBump}");
+        gameManager.deployment.CommandPoints += currencyBump;
         Destroy(consumeUnit.gameObject);
         HitPoints++;
         Attack++;

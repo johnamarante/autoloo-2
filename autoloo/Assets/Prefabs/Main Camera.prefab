@@ -101,6 +101,7 @@ MonoBehaviour:
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
   speed: 40
+  gameManager: {fileID: 0}
 --- !u!1 &4329076335356010465
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ GameObject:
   - component: {fileID: 6757217608311866717}
   - component: {fileID: 3386204516895976440}
   m_Layer: 0
-  m_Name: icon_bicorn
+  m_Name: icon_coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,8 +127,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4329076335356010465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029999733, y: -0.17000008, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: -4.6, y: -0.17000008, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1713735092779248034}
@@ -174,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 16c028077b6f77a4daa5769ba328f7a5, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: f47188f525adae143b1e7b6c91dc5859, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -222,7 +223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47.799995, y: 26.1}
+  m_AnchoredPosition: {x: -45, y: 27.1}
   m_SizeDelta: {x: 1, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7032452712972958941
@@ -296,8 +297,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278221449
-  m_fontColor: {r: 0.5377358, g: 0.47658157, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

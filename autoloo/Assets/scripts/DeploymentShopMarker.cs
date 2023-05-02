@@ -19,7 +19,7 @@ public class DeploymentShopMarker : MonoBehaviour
         if (Physics.Raycast(transform.position + new Vector3(0, 0, 1), transform.TransformDirection(Vector3.back) * 1000f, out hit, Mathf.Infinity))
         {
             var unitHit = hit.collider.gameObject.GetComponent<Unit>();
-            Debug.Log($"ray hit {unitHit}");
+            //Debug.Log($"ray hit {unitHit}");
             if (unitHit.gameObject != null && unitHit.Freezed)
             {
                 return true;

@@ -338,7 +338,7 @@ public class Deployment : MonoBehaviour
                     try { closestLesserNeighbor = relevantDeploymentMarkers.Where(y => y.positionKey < idxLesser && y.side == gameManager.playerSide).OrderByDescending(z => z.positionKey).First(); } catch (Exception ex) { Debug.Log(ex.Message); }
                     if (closestLesserNeighbor != null && closestLesserNeighbor.occupant == null)//if space exists and is vaccant
                     {
-                        Debug.Log($"closest lesser neighbor that is vacant has positionkey {closestLesserNeighbor.positionKey}");
+                        //Debug.Log($"closest lesser neighbor that is vacant has positionkey {closestLesserNeighbor.positionKey}");
                         return (true, closestLesserNeighbor.positionKey);
                     }
                     else
@@ -346,7 +346,7 @@ public class Deployment : MonoBehaviour
                         idxLesser--;
                     }
                 }
-                Debug.Log($"No lesser neighbor that is vacant was found.");
+                //Debug.Log($"No lesser neighbor that is vacant was found.");
 
                 //failing that, try to get the closest greater neighbor
                 var idxGreater = shiftWithRespectToPosition;
@@ -356,14 +356,14 @@ public class Deployment : MonoBehaviour
                     try { closestGreaterNeighbor = relevantDeploymentMarkers.Where(y => y.positionKey > idxGreater && y.side == gameManager.playerSide).OrderBy(z => z.positionKey).First(); } catch (Exception ex) { Debug.Log(ex.Message); }
                     if (closestGreaterNeighbor != null && closestGreaterNeighbor.occupant == null)//if space exists and is vaccant
                     {
-                        Debug.Log($"closest greater neighbor that is vacant has positionkey {closestGreaterNeighbor.positionKey}");
+                        //Debug.Log($"closest greater neighbor that is vacant has positionkey {closestGreaterNeighbor.positionKey}");
                         return (true, closestGreaterNeighbor.positionKey);
                     }
                     else {
                         idxGreater++;
                     }
                 }
-                Debug.Log($"No greater neighbor that is vacant was found.");
+                //Debug.Log($"No greater neighbor that is vacant was found.");
             }
         }
         else
