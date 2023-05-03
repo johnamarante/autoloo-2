@@ -182,7 +182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5373764153986622462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -882,7 +882,8 @@ MonoBehaviour:
   myFont: {fileID: 0}
   QueuePosition: 0
   _deployed: 0
-  _reserved: 0
+  _freezed: 0
+  spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
   speed: 40
@@ -898,6 +899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c2ba6222d91ee40a430bb2bf9fa6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  belowGameObject: {fileID: 0}
 --- !u!65 &1039731878321202066
 BoxCollider:
   m_ObjectHideFlags: 0

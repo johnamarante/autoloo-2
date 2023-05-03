@@ -122,7 +122,8 @@ public class Unit : MonoBehaviour
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
         OnRankChanged += (e) =>  ChangeRankIcon();
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
-        costComponent.SetActive(!Deployed);
+        //costComponent with old hat is going to be hidden, following SAP standard
+        //costComponent.SetActive(!Deployed);
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;

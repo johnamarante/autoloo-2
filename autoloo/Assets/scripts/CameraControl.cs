@@ -49,6 +49,7 @@ public class CameraControl : MonoBehaviour
         }
         //CommandPoints Icon
         this.transform.Find("CommandPoints").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
+        //sign that says reinforcements Icon
     }
 
     public void Move(Vector3 dest)

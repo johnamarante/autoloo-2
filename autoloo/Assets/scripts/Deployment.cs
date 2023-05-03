@@ -26,9 +26,6 @@ public class Deployment : MonoBehaviour
     public List<DeploymentMarker> listRightDeploymentMarkers;
     public List<DeploymentShopMarker> listLeftDeploymentShopMarkers;
     public List<DeploymentShopMarker> listRightDeploymentShopMarkers;
-    public Unit unit1;
-    public Unit unit2;
-    public Unit unit3;
     public Dictionary<int, Vector3> deploymentShopQueuePositions;
     public Dictionary<int, Vector3> deploymentQueuePositions;
 
@@ -191,16 +188,16 @@ public class Deployment : MonoBehaviour
     private Dictionary<int, Vector3> SetDeploymentQueuePositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
-        dict.Add(-5, new Vector3(-96, -4, 2));
-        dict.Add(-4, new Vector3(-88, -4, 2));
-        dict.Add(-3, new Vector3(-80, -4, 2));
-        dict.Add(-2, new Vector3(-72, -4, 2));
-        dict.Add(-1, new Vector3(-64, -4, 2));
-        dict.Add(1, new Vector3(64, -4, 2));
-        dict.Add(2, new Vector3(72, -4, 2));
-        dict.Add(3, new Vector3(80, -4, 2));
-        dict.Add(4, new Vector3(88, -4, 2));
-        dict.Add(5, new Vector3(96, -4, 2));
+        dict.Add(-5, new Vector3(-96, 7, 2));
+        dict.Add(-4, new Vector3(-88, 7, 2));
+        dict.Add(-3, new Vector3(-80, 7, 2));
+        dict.Add(-2, new Vector3(-72, 7, 2));
+        dict.Add(-1, new Vector3(-64, 7, 2));
+        dict.Add(1, new Vector3(64, 7, 2));
+        dict.Add(2, new Vector3(72, 7, 2));
+        dict.Add(3, new Vector3(80, 7, 2));
+        dict.Add(4, new Vector3(88, 7, 2));
+        dict.Add(5, new Vector3(96, 7, 2));
         return dict;
     }
 
@@ -219,12 +216,12 @@ public class Deployment : MonoBehaviour
         var dict = new Dictionary<int, Vector3>();
         //dict.Add(-5, new Vector3(-100, -18, 1));
         //dict.Add(-4, new Vector3(-92, -18, 1));
-        dict.Add(-3, new Vector3(-84, -18, 1));
-        dict.Add(-2, new Vector3(-76, -18, 1));
-        dict.Add(-1, new Vector3(-68, -18, 1));
-        dict.Add(1, new Vector3(68, -18, 1));
-        dict.Add(2, new Vector3(76, -18, 1));
-        dict.Add(3, new Vector3(84, -18, 1));
+        dict.Add(-3, new Vector3(-96, -10, 1));
+        dict.Add(-2, new Vector3(-88, -10, 1));
+        dict.Add(-1, new Vector3(-80, -10, 1));
+        dict.Add(1, new Vector3(80, -10, 1));
+        dict.Add(2, new Vector3(88, -10, 1));
+        dict.Add(3, new Vector3(96, -10, 1));
         //dict.Add(4, new Vector3(92, -18, 1));
         //dict.Add(5, new Vector3(100, -18, 1));
         return dict;
@@ -388,7 +385,7 @@ public class Deployment : MonoBehaviour
                 {
                     deployMarker.goCombine.SetActive(true);
                 }
-                else 
+                else //if (gameManager.LeftQueueUnits.Count < 5)   disable arrows when queue is full, but leave combines
                 {
                     deployMarker.goArrow.SetActive(true);
                 }
@@ -403,5 +400,4 @@ public class Deployment : MonoBehaviour
             }
         }
     }
-
 }
