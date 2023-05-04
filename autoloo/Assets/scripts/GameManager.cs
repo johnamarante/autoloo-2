@@ -117,6 +117,11 @@ public class GameManager : MonoBehaviour
                 Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
             }
         }
+
+        if (!InBattleModeAndNotDeploymentMode && selectedUnit != null)
+        {
+            selectedUnit.transform.position = new Vector3(selectedUnit.transform.position.x, selectedUnit.transform.position.y, 0);
+        }
     }
 
     public void CleanupBattlefield()
@@ -203,6 +208,7 @@ public class GameManager : MonoBehaviour
     {
         if (selectedUnit != null)
         {
+            selectedUnit.transform.position = new Vector3(selectedUnit.transform.position.x, selectedUnit.transform.position.y, 1);
             selectedUnit.ShowSelectionIndicator(false);
             selectedUnit = null;
         }
