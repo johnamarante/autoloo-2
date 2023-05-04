@@ -61,6 +61,7 @@
     <Compile Include="Assets\scripts\PulseHover.cs" />
     <Compile Include="Assets\scripts\DeploymentMarker.cs" />
     <Compile Include="Assets\scripts\Background.cs" />
+    <Compile Include="Assets\scripts\ResultPopup.cs" />
     <Compile Include="Assets\scripts\GameManager.cs" />
     <Compile Include="Assets\scripts\Unit.cs" />
     <Compile Include="Assets\scripts\DeploymentShopMarker.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Assets\scripts\FriendpasteClient.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
     <Compile Include="Assets\scripts\DragIt.cs" />
-    <Compile Include="Assets\scripts\ResultPopup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

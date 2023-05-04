@@ -1229,7 +1229,7 @@ GameObject:
   - component: {fileID: 5691792332634970000}
   - component: {fileID: 2430381780287868810}
   m_Layer: 0
-  m_Name: british_line
+  m_Name: british_light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
