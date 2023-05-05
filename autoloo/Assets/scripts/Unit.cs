@@ -305,7 +305,9 @@ public class Unit : MonoBehaviour
         {
             gameManager.deployment.CommandPoints -= Cost;
         }
-        transform.position = new Vector3(deploymentMarker.transform.position.x, deploymentMarker.transform.position.y, transform.position.z);
+        float pointPart = (float)Math.Abs(deploymentMarker.positionKey) / 10;
+        float zVal = 1f - pointPart;
+        transform.position = new Vector3(deploymentMarker.transform.position.x, deploymentMarker.transform.position.y, zVal);
 
         //Clear Old Deploy Marker Occupancy
         ClearOldDeployMarkerOccupancy();
