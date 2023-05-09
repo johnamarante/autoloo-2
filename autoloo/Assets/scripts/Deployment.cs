@@ -233,8 +233,8 @@ public class Deployment : MonoBehaviour
         //need to snap back if this is false
         //if (_isThereRoominTheDeployQueueAndQueuePosition.IsThereAnEmptySpaceToShiftTo)
         //{
-        var userTargetedDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == shiftWithRespectToPosition).First();
-        var vaccantDeployMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == targetPositionKey).First();
+        var userTargetedDeployMarker = listLeftDeploymentMarkers.Where(x => x.positionKey == shiftWithRespectToPosition).First();
+        var vaccantDeployMarker = listLeftDeploymentMarkers.Where(x => x.positionKey == targetPositionKey).First();
         var diff = Math.Abs(targetPositionKey - shiftWithRespectToPosition);
         if (diff > 1)
         {
@@ -243,7 +243,7 @@ public class Deployment : MonoBehaviour
             bool isDownShift = (shiftWithRespectToPosition > targetPositionKey);
 
             //need to determine up or down shift, who is involved in the shift
-            var deployMarkersInShift = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey >= minPostion && x.positionKey <= maxPostion).ToList();
+            var deployMarkersInShift = listLeftDeploymentMarkers.Where(x => x.positionKey >= minPostion && x.positionKey <= maxPostion).ToList();
 
             //downshift? start at the bottom. upshift? start at the op.
             if (isDownShift)
@@ -295,7 +295,7 @@ public class Deployment : MonoBehaviour
             //per feedback from Thomas, when occupant and selected units are both already deployed and they are adjacent (queueposition diff is 1), then this should be a swap action.
             else if (unit.Deployed && Math.Abs(occupant.QueuePosition - unit.QueuePosition) == 1)
             {
-                var pos1 = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition && x.side == unit.side).First();
+                var pos1 = listLeftDeploymentMarkers.Where(x => x.positionKey == unit.QueuePosition && x.side == unit.side).First();
                 var pos2 = deploymentMarker;
                 unit.DeployAndSnapPositionToDeploymentMarker(pos2);
                 occupant.DeployAndSnapPositionToDeploymentMarker(pos1);
@@ -321,7 +321,7 @@ public class Deployment : MonoBehaviour
     public (bool IsThereAnEmptySpaceToShiftTo, int PositionKey) IsThereAnEmptySpaceToShiftTo(int shiftWithRespectToPosition)
     {
         //is there even space to shift to?
-        var relevantDeploymentMarkers = FindObjectsOfType<DeploymentMarker>().ToList();
+        var relevantDeploymentMarkers = listLeftDeploymentMarkers;
         if (shiftWithRespectToPosition < 0)
         {
             if (relevantDeploymentMarkers.Where(x => x.positionKey < 0 && x.occupant == null).ToList().Count() > 0)

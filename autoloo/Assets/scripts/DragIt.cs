@@ -11,10 +11,12 @@ public class DragIt : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 startPosition;
+    private Deployment deployment;
     public GameObject belowGameObject;
 
     void OnMouseDown()
     {
+        deployment = (Deployment)FindObjectOfType(typeof(Deployment));
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
         startPosition = transform.position;
@@ -47,13 +49,18 @@ public class DragIt : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * 1000f, out hit, Mathf.Infinity))
         {
+            //TODO: refactor, should be a case statement
             if (hit.collider.gameObject.GetComponent<DeploymentMarker>()) //.name.Contains("marker"))
             {
-                //if (belowGameObject == null)
-                //{
                 belowGameObject = hit.collider.gameObject;
                 belowGameObject.GetComponent<DeploymentMarker>().ShowHoverIndicator(true);
-                //}
+                Debug.Log(hit.collider.gameObject.GetComponent<DeploymentMarker>().positionKey);
+            }
+            else if (hit.collider.gameObject.TryGetComponent(out Unit belowUnit) && belowUnit.Deployed)
+            {
+                belowGameObject = deployment.listLeftDeploymentMarkers.Where(x => x.positionKey == belowUnit.QueuePosition && x.side == belowUnit.side).First().gameObject;
+                belowGameObject.GetComponent<DeploymentMarker>().ShowHoverIndicator(true);
+                Debug.Log(hit.collider.gameObject.GetComponent<Unit>().GetUnitSpriteName());
             }
             else //backgroundPlane
             {

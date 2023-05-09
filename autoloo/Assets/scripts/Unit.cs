@@ -246,7 +246,7 @@ public class Unit : MonoBehaviour
                 && Deployed
                 && selectedUnitSpriteName != thisUnitSpriteName)
             {
-                var goDpeloymentMarker = FindObjectsOfType<DeploymentMarker>().ToList().Where(x => x.positionKey == this.QueuePosition).First().gameObject;
+                var goDpeloymentMarker = gameManager.deployment.listLeftDeploymentMarkers.Where(x => x.positionKey == this.QueuePosition).First().gameObject;
                 var selectedunitStartPosition = gameManager.deployment.deploymentShopQueuePositions[gameManager.selectedUnit.QueuePosition];
                 gameManager.deployment.TrySnapToDeploymentQueueSpace(gameManager.selectedUnit, goDpeloymentMarker, selectedunitStartPosition);
                 gameManager.Deselect();
@@ -256,8 +256,8 @@ public class Unit : MonoBehaviour
                 && Deployed
                 && selectedUnitSpriteName != thisUnitSpriteName)
             {
-                var pos1 = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == gameManager.selectedUnit.QueuePosition && x.side == gameManager.playerSide).First();
-                var pos2 = FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == this.QueuePosition && x.side == gameManager.playerSide).First();
+                var pos1 = gameManager.deployment.listLeftDeploymentMarkers.Where(x => x.positionKey == gameManager.selectedUnit.QueuePosition && x.side == gameManager.playerSide).First();
+                var pos2 = gameManager.deployment.listLeftDeploymentMarkers.Where(x => x.positionKey == this.QueuePosition && x.side == gameManager.playerSide).First();
                 gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(pos2);
                 this.DeployAndSnapPositionToDeploymentMarker(pos1);
                 gameManager.Deselect();
@@ -341,7 +341,7 @@ public class Unit : MonoBehaviour
 
     public void ClearOldDeployMarkerOccupancy()
     {
-        var oldDeployMarkers = FindObjectsOfType<DeploymentMarker>().Where(x => x.occupant != null && x.occupant.name == name);
+        var oldDeployMarkers = gameManager.deployment.listLeftDeploymentMarkers.Where(x => x.occupant != null && x.occupant.name == name);
         foreach (var oldDeployMarker in oldDeployMarkers)
         {
             oldDeployMarker.occupant = null;
