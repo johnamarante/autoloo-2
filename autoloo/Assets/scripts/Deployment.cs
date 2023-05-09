@@ -9,17 +9,17 @@ using UnityEngine;
 public class Deployment : MonoBehaviour
 {
     public GameManager gameManager;
-    public int _commandPoints;
-    public int CommandPoints
+    public int _gold;
+    public int gold
     {
-        get { return _commandPoints; }
+        get { return _gold; }
         set
         {
-            _commandPoints = value;
-            this?.OnCommandPointsChanged(_commandPoints);
+            _gold = value;
+            this?.OnGoldChanged(_gold);
         }
     }
-    public Action<int> OnCommandPointsChanged;
+    public Action<int> OnGoldChanged;
     public GameObject goDeploymentMarker;
     public GameObject goShopMarker;
     public List<DeploymentMarker> listLeftDeploymentMarkers;
@@ -83,8 +83,8 @@ public class Deployment : MonoBehaviour
     {
         var texMeshProComponent = Camera.main.gameObject.transform.GetComponentInChildren(typeof(TextMeshPro), true);
         var textCommandpoints = (TextMeshPro)texMeshProComponent;
-        textCommandpoints.text = CommandPoints.ToString();
-        OnCommandPointsChanged += (e) => textCommandpoints.text = CommandPoints.ToString();
+        textCommandpoints.text = gold.ToString();
+        OnGoldChanged += (e) => textCommandpoints.text = gold.ToString();
     }
 
     private void OnGUI()
@@ -123,7 +123,7 @@ public class Deployment : MonoBehaviour
             {
                 Destroy(gameManager.selectedUnit.gameObject);
                 gameManager.Deselect();
-                CommandPoints++;
+                gold++;
             }
             //START ROLL
             if (GUI.Button(new Rect(0, Screen.height - 50, 50, 50), "roll"))
@@ -143,11 +143,11 @@ public class Deployment : MonoBehaviour
     {
         if (costOnePoint)
         {
-            if (CommandPoints < 1)
+            if (gold < 1)
             {
                 return;
             }
-            CommandPoints--;
+            gold--;
         }
         if (gameManager.playerSide == "left")
         {

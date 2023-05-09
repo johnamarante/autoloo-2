@@ -303,7 +303,7 @@ public class Unit : MonoBehaviour
         //don't pay for a deployed unit twice
         if (!Deployed)
         {
-            gameManager.deployment.CommandPoints -= Cost;
+            gameManager.deployment.gold -= Cost;
         }
         float pointPart = (float)Math.Abs(deploymentMarker.positionKey) / 10;
         float zVal = 1f - pointPart;
@@ -321,11 +321,11 @@ public class Unit : MonoBehaviour
     {
         if (!consumeUnit.Deployed)
         {
-            gameManager.deployment.CommandPoints -= consumeUnit.Cost;
+            gameManager.deployment.gold -= consumeUnit.Cost;
         }
         int currencyBump = (consumeUnit.Rank / 3);
         Debug.Log($"currency bump {currencyBump}");
-        gameManager.deployment.CommandPoints += currencyBump;
+        gameManager.deployment.gold += currencyBump;
         Destroy(consumeUnit.gameObject);
         HitPoints++;
         Attack++;
@@ -350,7 +350,7 @@ public class Unit : MonoBehaviour
 
     public bool CanAfford()
     {
-        return (Cost <= gameManager.deployment.CommandPoints);
+        return (Cost <= gameManager.deployment.gold);
     }
 
     private void OnMouseEnter()
