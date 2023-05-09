@@ -323,13 +323,17 @@ public class Unit : MonoBehaviour
         {
             gameManager.deployment.gold -= consumeUnit.Cost;
         }
-        int currencyBump = (consumeUnit.Rank / 3);
-        Debug.Log($"currency bump {currencyBump}");
-        gameManager.deployment.gold += currencyBump;
+        gameManager.deployment.gold += CurrencyBumpBasedOnRank(consumeUnit.Rank);
         Destroy(consumeUnit.gameObject);
         HitPoints++;
         Attack++;
         Rank++;
+    }
+
+    public int CurrencyBumpBasedOnRank(int rank)
+    {
+        int currencyBumpBasedOnRank = (rank / 3);
+        return currencyBumpBasedOnRank;
     }
 
     private void SetNewDeployMarkerOccupancy(DeploymentMarker deploymentMarker)

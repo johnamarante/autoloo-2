@@ -121,9 +121,9 @@ public class Deployment : MonoBehaviour
             //SELL UNIT
             if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(100, Screen.height - 50, 50, 50), "dismiss"))
             {
+                gold = gold + 1 + gameManager.selectedUnit.CurrencyBumpBasedOnRank(gameManager.selectedUnit.Rank);
                 Destroy(gameManager.selectedUnit.gameObject);
                 gameManager.Deselect();
-                gold++;
             }
             //START ROLL
             if (GUI.Button(new Rect(0, Screen.height - 50, 50, 50), "roll"))
