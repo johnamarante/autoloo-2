@@ -137,8 +137,10 @@ public class GameManager : MonoBehaviour
         var screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
         screenPoint.z = 1f; //distance of the plane from the camera
         Camera.main.ScreenToWorldPoint(screenPoint);
-        GUI.Label(new Rect(10, 10, 300, 300), screenPoint.ToString(), new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
-        GUI.Label(new Rect(10, 30, 300, 300), $"W: {Screen.width} H: {Screen.height}", new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+        //GUI.Label(new Rect(10, 10, 300, 300), screenPoint.ToString(), new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+        //GUI.Label(new Rect(10, 30, 300, 300), $"W: {Screen.width} H: {Screen.height}", new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+        var selectionText = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
+        GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), selectionText, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
     }
 
     private void Fight(ref List<Unit> leftUnits, ref List<Unit> rightUnits)
@@ -208,7 +210,6 @@ public class GameManager : MonoBehaviour
     {
         if (selectedUnit != null)
         {
-            selectedUnit.transform.position = new Vector3(selectedUnit.transform.position.x, selectedUnit.transform.position.y, 1);
             selectedUnit.ShowSelectionIndicator(false);
             selectedUnit = null;
         }

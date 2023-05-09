@@ -127,7 +127,7 @@ public class Unit : MonoBehaviour
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
-        spriteName = this.gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
+        spriteName = gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
     }
 
     private void ChangeRankIcon()
@@ -226,8 +226,8 @@ public class Unit : MonoBehaviour
             //0. Make sure that the same unit has not been clicked twice. If so, then just deselect and exit
             if (selectedUnit != null)
             {
-                selectedUnitSpriteName = selectedUnit.GetUnitSpriteName();
-                thisUnitSpriteName = GetUnitSpriteName();
+                selectedUnitSpriteName = selectedUnit.spriteName;
+                thisUnitSpriteName = spriteName;
                 if (selectedUnit.name == name)
                 {
                     gameManager.Deselect();
@@ -322,6 +322,7 @@ public class Unit : MonoBehaviour
         if (!consumeUnit.Deployed)
         {
             gameManager.deployment.gold -= consumeUnit.Cost;
+            FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == consumeUnit.QueuePosition ).First().ShowHoverIndicator(false);
         }
         gameManager.deployment.gold += CurrencyBumpBasedOnRank(consumeUnit.Rank);
         Destroy(consumeUnit.gameObject);
@@ -376,10 +377,4 @@ public class Unit : MonoBehaviour
     {
         selectedIndicator.SetActive(show);
     }
-
-    public string GetUnitSpriteName()
-    {
-        return transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
-    }
-
 }

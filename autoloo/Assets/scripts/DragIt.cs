@@ -54,13 +54,13 @@ public class DragIt : MonoBehaviour
             {
                 belowGameObject = hit.collider.gameObject;
                 belowGameObject.GetComponent<DeploymentMarker>().ShowHoverIndicator(true);
-                Debug.Log(hit.collider.gameObject.GetComponent<DeploymentMarker>().positionKey);
+                //Debug.Log(hit.collider.gameObject.GetComponent<DeploymentMarker>().positionKey);
             }
             else if (hit.collider.gameObject.TryGetComponent(out Unit belowUnit) && belowUnit.Deployed)
             {
                 belowGameObject = deployment.listLeftDeploymentMarkers.Where(x => x.positionKey == belowUnit.QueuePosition && x.side == belowUnit.side).First().gameObject;
                 belowGameObject.GetComponent<DeploymentMarker>().ShowHoverIndicator(true);
-                Debug.Log(hit.collider.gameObject.GetComponent<Unit>().GetUnitSpriteName());
+                //Debug.Log(hit.collider.gameObject.GetComponent<Unit>().GetUnitSpriteName());
             }
             else //backgroundPlane
             {

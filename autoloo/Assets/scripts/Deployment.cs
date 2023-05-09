@@ -292,7 +292,7 @@ public class Deployment : MonoBehaviour
             {
                 unit.DeployAndSnapPositionToDeploymentMarker(deploymentMarker);
             }
-            else if (occupant.GetUnitSpriteName() == unit.GetUnitSpriteName() && occupant.Rank < Unit.maxUnitRank)
+            else if (occupant.spriteName == unit.spriteName && occupant.Rank < Unit.maxUnitRank)
             {
                 occupant.RankUp(unit);
             }
@@ -376,7 +376,7 @@ public class Deployment : MonoBehaviour
                 {
                     deployMarker.goCombine.SetActive(true);
                 }
-                else if (FindObjectsOfType<Unit>().Where(x => x.Deployed).Count() < 5)   //disable arrows when queue is full, but leave combines
+                else if (FindObjectsOfType<Unit>().Where(x => x.Deployed).Count() < 5 || selectedUnit.Deployed)
                 {
                     deployMarker.goArrow.SetActive(true);
                 }
