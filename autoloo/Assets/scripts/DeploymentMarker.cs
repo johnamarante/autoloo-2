@@ -51,7 +51,8 @@ public class DeploymentMarker : MonoBehaviour
     public void ShowHoverIndicator(bool show)
     {
         //deploymarkers only show mouse hover indicators when unoccupied
-        var activeValue = (show && (occupant == null));
+        //but is that ^ right? // && (occupant == null)
+        var activeValue = (show);
         transform.Find("hover_over_indicator").gameObject.SetActive(activeValue);
     }
 
