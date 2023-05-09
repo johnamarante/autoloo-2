@@ -308,14 +308,12 @@ public class Deployment : MonoBehaviour
             {
                 ShiftUnits(deploymentMarker.positionKey, _isThereRoominTheDeployQueueAndQueuePosition.PositionKey);
             }
-            else 
-            {
+            else {
                 //snap back to start position
                 unit.transform.position = startPosition;
             }
         }
-        else
-        {
+        else {
             //snap back to start position
             unit.transform.position = startPosition;
         }
@@ -342,12 +340,10 @@ public class Deployment : MonoBehaviour
                         //Debug.Log($"closest lesser neighbor that is vacant has positionkey {closestLesserNeighbor.positionKey}");
                         return (true, closestLesserNeighbor.positionKey);
                     }
-                    else
-                    {
+                    else {
                         idxLesser--;
                     }
                 }
-                //Debug.Log($"No lesser neighbor that is vacant was found.");
 
                 //failing that, try to get the closest greater neighbor
                 var idxGreater = shiftWithRespectToPosition;
@@ -364,15 +360,6 @@ public class Deployment : MonoBehaviour
                         idxGreater++;
                     }
                 }
-                //Debug.Log($"No greater neighbor that is vacant was found.");
-            }
-        }
-        else
-        {
-            if (relevantDeploymentMarkers.Where(x => x.positionKey > 0 && x.occupant == null).ToList().Count() > 0)
-            {
-                //(RIGHT/ALLIES) there is rooom
-                return (true, 0);
             }
         }
         //there is not room
@@ -384,12 +371,12 @@ public class Deployment : MonoBehaviour
         if (selectedUnit != null && selectedUnit.CanAfford())
         {
             foreach (var deployMarker in listLeftDeploymentMarkers)
-            {
+            { 
                 if (deployMarker.occupant != null && selectedUnit.spriteName == deployMarker.occupant.spriteName)
                 {
                     deployMarker.goCombine.SetActive(true);
                 }
-                else //if (gameManager.LeftQueueUnits.Count < 5)   disable arrows when queue is full, but leave combines
+                else if (FindObjectsOfType<Unit>().Where(x => x.Deployed).Count() < 5)   //disable arrows when queue is full, but leave combines
                 {
                     deployMarker.goArrow.SetActive(true);
                 }
