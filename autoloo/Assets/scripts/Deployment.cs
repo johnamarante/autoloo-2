@@ -95,10 +95,7 @@ public class Deployment : MonoBehaviour
             if (GUI.Button(new Rect(Screen.width - 50, Screen.height - 50, 50, 50), "start"))
             {
                 gameManager.Deselect();
-                foreach (var deploymarker in listLeftDeploymentMarkers)
-                {
-                    deploymarker.ShowHoverIndicator(false);
-                }
+
                 Camera.main.GetComponent<CameraControl>().Move(gameManager.cameraPositions[0]);
                 gameManager.InBattleModeAndNotDeploymentMode = true;
                 gameManager.actionTime = Time.time;

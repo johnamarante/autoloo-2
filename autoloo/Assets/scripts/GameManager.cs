@@ -213,5 +213,9 @@ public class GameManager : MonoBehaviour
             selectedUnit.ShowSelectionIndicator(false);
             selectedUnit = null;
         }
+        foreach (var deploymarker in deployment.listLeftDeploymentMarkers)
+        {
+            deploymarker.ShowHoverIndicator(false);
+        }
     }
 }
