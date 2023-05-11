@@ -107,7 +107,9 @@ public class Deployment : MonoBehaviour
                 var allUnits = FindObjectsOfType<Unit>().ToList();
                 gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
                 gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right").OrderBy(x => x.QueuePosition).ToList();
-                
+
+                StoreAndLoadArmyDetails.Store(gameManager.LeftQueueUnits);
+
                 writeToFriendPaste = true;
 
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);

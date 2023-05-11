@@ -9,8 +9,6 @@ public class Unit : MonoBehaviour
 {
     public GameManager gameManager;
     public int Chance = 0;
-    public int Level = 1;
-
     public int _cost;
     public int Cost
     {

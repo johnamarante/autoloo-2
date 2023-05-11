@@ -364,6 +364,7 @@
 "Assets/scripts/OpponentGeneration.cs"
 "Assets/scripts/PulseHover.cs"
 "Assets/scripts/ResultPopup.cs"
+"Assets/scripts/StoreAndLoadArmyDetails.cs"
 "Assets/scripts/Unit.cs"
 -langversion:9.0
 
