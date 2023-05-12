@@ -10,7 +10,7 @@ public class Deployment : MonoBehaviour
 {
     public GameManager gameManager;
     public int _gold;
-    public int gold
+    public int Gold
     {
         get { return _gold; }
         set
@@ -28,7 +28,7 @@ public class Deployment : MonoBehaviour
     public List<DeploymentShopMarker> listRightDeploymentShopMarkers;
     public Dictionary<int, Vector3> deploymentShopQueuePositions;
     public Dictionary<int, Vector3> deploymentQueuePositions;
-
+    public GUIStyle defaultGuiStyle; 
     private bool writeToFriendPaste = false;
 
     // Start is called before the first frame update
@@ -37,9 +37,15 @@ public class Deployment : MonoBehaviour
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         deploymentShopQueuePositions = SetDrawnHandPositionLocations();
         SetCommandPointsDisplay();
-        
         deploymentQueuePositions = SetDeploymentQueuePositionLocations();
-
+        defaultGuiStyle = new GUIStyle()
+        {
+            alignment = TextAnchor.MiddleLeft,
+            margin = new RectOffset(2,2,2,2),
+            padding = new RectOffset(2,2,2,2),
+            fontSize = 15,
+            fontStyle = FontStyle.Bold
+        };
         //setup deployment queues
         foreach (var position in deploymentQueuePositions)
         {
@@ -83,8 +89,8 @@ public class Deployment : MonoBehaviour
     {
         var texMeshProComponent = Camera.main.gameObject.transform.GetComponentInChildren(typeof(TextMeshPro), true);
         var textCommandpoints = (TextMeshPro)texMeshProComponent;
-        textCommandpoints.text = gold.ToString();
-        OnGoldChanged += (e) => textCommandpoints.text = gold.ToString();
+        textCommandpoints.text = Gold.ToString();
+        OnGoldChanged += (e) => textCommandpoints.text = Gold.ToString();
     }
 
     private void OnGUI()
@@ -92,7 +98,7 @@ public class Deployment : MonoBehaviour
         if (gameManager.InBattleModeAndNotDeploymentMode == false)
         {
             //START FIGHT
-            if (GUI.Button(new Rect(Screen.width - 50, Screen.height - 50, 50, 50), "start"))
+            if (GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 250, 150), "start", defaultGuiStyle))
             {
                 gameManager.Deselect();
 
@@ -117,19 +123,19 @@ public class Deployment : MonoBehaviour
                 //StartCoroutine("WriteToFriendPaste");
             }
             //FREEZE UNIT
-            if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(150, Screen.height - 50, 50, 50), "reserve"))
+            if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 150, 250, 150), "reserve", defaultGuiStyle))
             {
                 gameManager.selectedUnit.Freezed = !gameManager.selectedUnit.Freezed;
             }
             //SELL UNIT
-            if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(100, Screen.height - 50, 50, 50), "dismiss"))
+            if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 150, 250, 150), "dismiss", defaultGuiStyle))
             {
-                gold = gold + 1 + gameManager.selectedUnit.CurrencyBumpBasedOnRank(gameManager.selectedUnit.Rank);
+                Gold = Gold + 1 + gameManager.selectedUnit.CurrencyBumpBasedOnRank(gameManager.selectedUnit.Rank);
                 Destroy(gameManager.selectedUnit.gameObject);
                 gameManager.Deselect();
             }
             //START ROLL
-            if (GUI.Button(new Rect(0, Screen.height - 50, 50, 50), "roll"))
+            if (GUI.Button(new Rect(0, Screen.height - 150, 250, 150), "roll", defaultGuiStyle))
             {
                 Roll();
             }
@@ -142,15 +148,15 @@ public class Deployment : MonoBehaviour
         Debug.Log(response);
     }
 
-    private void Roll(bool costOnePoint = true)
+    public void Roll(bool costOnePoint = true)
     {
         if (costOnePoint)
         {
-            if (gold < 1)
+            if (Gold < 1)
             {
                 return;
             }
-            gold--;
+            Gold--;
         }
         if (gameManager.playerSide == "left")
         {

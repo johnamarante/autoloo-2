@@ -67,7 +67,11 @@ public class Unit : MonoBehaviour
         set
         {
             _deployed = value;
-            this?.OnDeployedChanged(_deployed);
+            if (this?.OnDeployedChanged != null)
+            {
+                //the Deployed property is always true for an already deployed unit
+                this?.OnDeployedChanged(_deployed);
+            }
         }
     }
     public Action<bool> OnDeployedChanged;
@@ -79,7 +83,11 @@ public class Unit : MonoBehaviour
         set 
         {
             _freezed = value;
-            this?.OnFreezedChanged(_freezed);
+            if (this?.OnFreezedChanged != null)
+            {
+                //the Freezed property is always true for an already deployed unit
+                this?.OnFreezedChanged(_freezed);
+            }
         }
     }
     public Action<bool> OnFreezedChanged;
@@ -313,7 +321,7 @@ public class Unit : MonoBehaviour
         //don't pay for a deployed unit twice
         if (!Deployed)
         {
-            gameManager.deployment.gold -= Cost;
+            gameManager.deployment.Gold -= Cost;
         }
         float pointPart = (float)Math.Abs(deploymentMarker.positionKey) / 10;
         float zVal = 1f - pointPart;
@@ -331,10 +339,10 @@ public class Unit : MonoBehaviour
     {
         if (!consumeUnit.Deployed)
         {
-            gameManager.deployment.gold -= consumeUnit.Cost;
+            gameManager.deployment.Gold -= consumeUnit.Cost;
             FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == consumeUnit.QueuePosition ).First().ShowHoverIndicator(false);
         }
-        gameManager.deployment.gold += CurrencyBumpBasedOnRank(consumeUnit.Rank);
+        gameManager.deployment.Gold += CurrencyBumpBasedOnRank(consumeUnit.Rank);
         Destroy(consumeUnit.gameObject);
         HitPoints++;
         Attack++;
@@ -365,7 +373,7 @@ public class Unit : MonoBehaviour
 
     public bool CanAfford()
     {
-        return (Cost <= gameManager.deployment.gold);
+        return (Cost <= gameManager.deployment.Gold);
     }
 
     private void OnMouseEnter()

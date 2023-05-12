@@ -17,16 +17,31 @@ public static class StoreAndLoadArmyDetails
         File.WriteAllText($"{ Directory.GetCurrentDirectory()}\\UnitDetails.json", strJsonUnitDetails);
     }
 
-    public static void Load(List<Unit> unitRoster)
+    public static void Load(List<Unit> unitRoster, GameManager gameManager)
     {
         string strJsonUnitDetails = File.ReadAllText($"{ Directory.GetCurrentDirectory()}\\UnitDetails.json").Replace("[","").Replace("]","");
         foreach (var detail in strJsonUnitDetails.Split("~"))
         {
-            var unitDetails = JsonUtility.FromJson<UnitDetail>(detail);
-            Debug.Log(unitDetails);
+            GenerateReloadedUnitFromDetail(unitRoster, gameManager, detail);
         }
-        
+
         //var ag = unitRoster.Find(i => i.GetSpriteName() == unitDetails.SpriteName);
         //Object.Instantiate(ag);
+    }
+
+    private static void GenerateReloadedUnitFromDetail(List<Unit> unitRoster, GameManager gameManager, string detail)
+    {
+        var unitDetails = JsonUtility.FromJson<UnitDetail>(detail);
+        var rosterItem = unitRoster.Where(x => x.GetSpriteName() == unitDetails.SpriteName).First();
+        var unit = Object.Instantiate(rosterItem);
+        unit.name = unitDetails.Name;
+        unit._attack = unitDetails.Attack;
+        unit._hitPoints = unitDetails.HitPoints;
+        unit._rank = unitDetails.Rank;
+        unit.side = unitDetails.Side;
+        unit.QueuePosition = unitDetails.QueuePosition;
+        unit._deployed = true;
+        unit.gameManager = gameManager;
+        unit.DeployAndSnapPositionToDeploymentMarker(Object.FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition).First());
     }
 }

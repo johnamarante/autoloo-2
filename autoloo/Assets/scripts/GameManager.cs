@@ -115,8 +115,9 @@ public class GameManager : MonoBehaviour
                 //3. reset player or end the game
                 InBattleModeAndNotDeploymentMode = false;
                 Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
-                //try loading mah_shit.json
-                StoreAndLoadArmyDetails.Load(LeftUnitRoster);
+                StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
+                deployment.Roll(false);
+                deployment.Gold = 10;
             }
         }
 
