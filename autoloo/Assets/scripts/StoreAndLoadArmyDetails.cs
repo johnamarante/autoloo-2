@@ -19,9 +19,13 @@ public static class StoreAndLoadArmyDetails
 
     public static void Load(List<Unit> unitRoster)
     {
-        string strJsonUnitDetails = File.ReadAllText($"{ Directory.GetCurrentDirectory()}\\UnitDetails.json");
-
-        var unitDetails = JsonUtility.FromJson<UnitDetail>(strJsonUnitDetails);
+        string strJsonUnitDetails = File.ReadAllText($"{ Directory.GetCurrentDirectory()}\\UnitDetails.json").Replace("[","").Replace("]","");
+        foreach (var detail in strJsonUnitDetails.Split("~"))
+        {
+            var unitDetails = JsonUtility.FromJson<UnitDetail>(detail);
+            Debug.Log(unitDetails);
+        }
+        
         //var ag = unitRoster.Find(i => i.GetSpriteName() == unitDetails.SpriteName);
         //Object.Instantiate(ag);
     }
