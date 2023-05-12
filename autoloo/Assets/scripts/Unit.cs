@@ -107,11 +107,24 @@ public class Unit : MonoBehaviour
     //Stats display END
     private GameObject mouseHoverOverIndicator;
     private GameObject selectedIndicator;
-    
+
+    // Awake
+    void Awake()
+    {
+        name = $"unit_{side}_{Guid.NewGuid()}";
+        spriteName = GetSpriteName();
+    }
+
+    public string GetSpriteName()
+    {
+        //this needs to be a seperate function so that it can be called from roster prefab
+        var spriteName = gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
+        return spriteName;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        name = $"unit_{side}_{Guid.NewGuid()}";
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         SetUnitStatsDisplay();
         OnAttackChanged += (e) => textAttack.text = Attack.ToString();
@@ -125,7 +138,6 @@ public class Unit : MonoBehaviour
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
-        spriteName = gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
     }
 
     private void ChangeRankIcon()
@@ -374,5 +386,18 @@ public class Unit : MonoBehaviour
     public void ShowSelectionIndicator(bool show)
     {
         selectedIndicator.SetActive(show);
+    }
+    public UnitDetail GetDetail()
+    {
+        return new UnitDetail()
+        {
+            Attack = Attack,
+            HitPoints = HitPoints,
+            Name = name,
+            QueuePosition = QueuePosition,
+            Rank = Rank,
+            Side = side,
+            SpriteName = spriteName
+        };
     }
 }

@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
                 InBattleModeAndNotDeploymentMode = false;
                 Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
                 //try loading mah_shit.json
-                StoreAndLoadArmyDetails.Load();
+                StoreAndLoadArmyDetails.Load(LeftUnitRoster);
             }
         }
 

@@ -154,15 +154,15 @@ public class Deployment : MonoBehaviour
         }
         if (gameManager.playerSide == "left")
         {
-            GenerateShopQueueUnitsFromRoster(gameManager.LeftUnitRoster.OrderBy(x => x.Chance).ToList(), ref gameManager.LeftQueueUnits);
+            GenerateShopQueueUnitsFromRoster(gameManager.LeftUnitRoster.OrderBy(x => x.Chance).ToList());
         }
         else //right
         {
-            GenerateShopQueueUnitsFromRoster(gameManager.RightUnitRoster.OrderBy(x => x.Chance).ToList(), ref gameManager.RightQueueUnits);
+            GenerateShopQueueUnitsFromRoster(gameManager.RightUnitRoster.OrderBy(x => x.Chance).ToList());
         }
     }
 
-    public void GenerateShopQueueUnitsFromRoster(List<Unit> roster, ref List<Unit> queueUnits)
+    public void GenerateShopQueueUnitsFromRoster(List<Unit> roster)
     {
         var oldShop = FindObjectsOfType<Unit>().ToList().Where(x => x.side == gameManager.playerSide && !x.Deployed && !x.Freezed);
         foreach (GameObject old in oldShop.Select(x => x.gameObject))
@@ -184,7 +184,6 @@ public class Deployment : MonoBehaviour
             }
             shopQueue.Add(shopItem);
         }
-
         gameManager.OrderUnitsInstantly(ref shopQueue, deploymentShopQueuePositions);
     }
 
