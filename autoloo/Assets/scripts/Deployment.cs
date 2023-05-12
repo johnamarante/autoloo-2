@@ -28,7 +28,11 @@ public class Deployment : MonoBehaviour
     public List<DeploymentShopMarker> listRightDeploymentShopMarkers;
     public Dictionary<int, Vector3> deploymentShopQueuePositions;
     public Dictionary<int, Vector3> deploymentQueuePositions;
-    public GUIStyle defaultGuiStyle; 
+    public GUIStyle defaultGuiStyle;
+    public Texture btnEndTurn;
+    public Texture btnFreeze;
+    public Texture btnSell;
+    public Texture btnRoll;
     private bool writeToFriendPaste = false;
 
     // Start is called before the first frame update
@@ -98,10 +102,9 @@ public class Deployment : MonoBehaviour
         if (gameManager.InBattleModeAndNotDeploymentMode == false)
         {
             //START FIGHT
-            if (GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 250, 150), "start", defaultGuiStyle))
+            if (GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 253, 175), btnEndTurn, defaultGuiStyle))
             {
                 gameManager.Deselect();
-
                 Camera.main.GetComponent<CameraControl>().Move(gameManager.cameraPositions[0]);
                 gameManager.InBattleModeAndNotDeploymentMode = true;
                 gameManager.actionTime = Time.time;
@@ -123,19 +126,19 @@ public class Deployment : MonoBehaviour
                 //StartCoroutine("WriteToFriendPaste");
             }
             //FREEZE UNIT
-            if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 150, 250, 150), "reserve", defaultGuiStyle))
+            if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 165, 250, 150), btnFreeze, defaultGuiStyle))
             {
                 gameManager.selectedUnit.Freezed = !gameManager.selectedUnit.Freezed;
             }
             //SELL UNIT
-            if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 150, 250, 150), "dismiss", defaultGuiStyle))
+            if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 165, 250, 150), btnSell, defaultGuiStyle))
             {
                 Gold = Gold + 1 + gameManager.selectedUnit.CurrencyBumpBasedOnRank(gameManager.selectedUnit.Rank);
                 Destroy(gameManager.selectedUnit.gameObject);
                 gameManager.Deselect();
             }
             //START ROLL
-            if (GUI.Button(new Rect(0, Screen.height - 150, 250, 150), "roll", defaultGuiStyle))
+            if (GUI.Button(new Rect(0, Screen.height - 165, 250, 150), btnRoll, defaultGuiStyle))
             {
                 Roll();
             }

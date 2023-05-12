@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,7 +23,15 @@ public static class StoreAndLoadArmyDetails
         string strJsonUnitDetails = File.ReadAllText($"{ Directory.GetCurrentDirectory()}\\UnitDetails.json").Replace("[","").Replace("]","");
         foreach (var detail in strJsonUnitDetails.Split("~"))
         {
-            GenerateReloadedUnitFromDetail(unitRoster, gameManager, detail);
+            try
+            {
+                GenerateReloadedUnitFromDetail(unitRoster, gameManager, detail);
+            }
+            catch (Exception ex)
+            {
+                Debug.Log($"an exception occured on the JSON {detail} with the following exception");
+                Debug.Log(ex.ToString());
+            }
         }
 
         //var ag = unitRoster.Find(i => i.GetSpriteName() == unitDetails.SpriteName);
@@ -33,7 +42,7 @@ public static class StoreAndLoadArmyDetails
     {
         var unitDetails = JsonUtility.FromJson<UnitDetail>(detail);
         var rosterItem = unitRoster.Where(x => x.GetSpriteName() == unitDetails.SpriteName).First();
-        var unit = Object.Instantiate(rosterItem);
+        var unit = UnityEngine.Object.Instantiate(rosterItem);
         unit.name = unitDetails.Name;
         unit._attack = unitDetails.Attack;
         unit._hitPoints = unitDetails.HitPoints;
@@ -42,6 +51,6 @@ public static class StoreAndLoadArmyDetails
         unit.QueuePosition = unitDetails.QueuePosition;
         unit._deployed = true;
         unit.gameManager = gameManager;
-        unit.DeployAndSnapPositionToDeploymentMarker(Object.FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition).First());
+        unit.DeployAndSnapPositionToDeploymentMarker(UnityEngine.Object.FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition).First());
     }
 }
