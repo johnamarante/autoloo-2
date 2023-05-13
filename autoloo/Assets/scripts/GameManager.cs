@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, Vector3> SetFightQueuePositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
-        dict.Add(-5, new Vector3(-36, 7, 1));
-        dict.Add(-4, new Vector3(-28, 7, 1));
-        dict.Add(-3, new Vector3(-20, 7, 1));
-        dict.Add(-2, new Vector3(-12, 7, 1));
+        dict.Add(-5, new Vector3(-36, 7, 0.6f));
+        dict.Add(-4, new Vector3(-28, 7, 0.7f));
+        dict.Add(-3, new Vector3(-20, 7, 0.8f));
+        dict.Add(-2, new Vector3(-12, 7, 0.9f));
         dict.Add(-1, new Vector3(-4, 7, 1));
         dict.Add(1, new Vector3(4, 7, 1));
         dict.Add(2, new Vector3(12, 7, 1));
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     {
         var dict = new Dictionary<int, Vector3>();
         dict.Add(-1, new Vector3(-60, 0, -10));
-        dict.Add(0, new Vector3(0, 0, -10));
+        dict.Add(0, new Vector3(0, 16, -10));
         dict.Add(1, new Vector3(60, 0, -10));
         return dict;
     }

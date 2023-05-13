@@ -227,9 +227,9 @@ public class Deployment : MonoBehaviour
         var dict = new Dictionary<int, Vector3>();
         //dict.Add(-5, new Vector3(-100, -18, 1));
         //dict.Add(-4, new Vector3(-92, -18, 1));
-        dict.Add(-3, new Vector3(-96, -10, 0));
-        dict.Add(-2, new Vector3(-88, -10, 0.1f));
-        dict.Add(-1, new Vector3(-80, -10, 0.2f));
+        dict.Add(-3, new Vector3(-96, -10, 0.8f));
+        dict.Add(-2, new Vector3(-88, -10, 0.9f));
+        dict.Add(-1, new Vector3(-80, -10, 1));
         dict.Add(1, new Vector3(80, -10, 1));
         dict.Add(2, new Vector3(88, -10, 1));
         dict.Add(3, new Vector3(96, -10, 1));
