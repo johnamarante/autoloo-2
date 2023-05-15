@@ -240,10 +240,6 @@ public class Deployment : MonoBehaviour
 
     public void ShiftUnits(int shiftWithRespectToPosition, int targetPositionKey)
     {
-        //var _isThereRoominTheDeployQueueAndQueuePosition = IsThereAnEmptySpaceToShiftTo(shiftWithRespectToPosition);
-        //need to snap back if this is false
-        //if (_isThereRoominTheDeployQueueAndQueuePosition.IsThereAnEmptySpaceToShiftTo)
-        //{
         var userTargetedDeployMarker = listLeftDeploymentMarkers.Where(x => x.positionKey == shiftWithRespectToPosition).First();
         var vaccantDeployMarker = listLeftDeploymentMarkers.Where(x => x.positionKey == targetPositionKey).First();
         var diff = Math.Abs(targetPositionKey - shiftWithRespectToPosition);
@@ -286,18 +282,15 @@ public class Deployment : MonoBehaviour
         //}
     }
     //TODO: refactor TrySnapToDeploymentQueueSpace
-    public void TrySnapToDeploymentQueueSpace(Unit unit, GameObject belowGameObject, Vector3 startPosition)
+    public void TrySnapToDeploymentQueueSpace(Unit unit, DeploymentMarker belowDeploymentMarker, Vector3 startPosition)
     {
-        if (belowGameObject != null 
-            && belowGameObject.TryGetComponent(out DeploymentMarker deploymentMarker)
-            && deploymentMarker != null 
-            && (unit.CanAfford() || unit.Deployed))
+        
+        if (unit.CanAfford() || unit.Deployed)
         {
-            var occupant = deploymentMarker.occupant;
-            var _isThereRoominTheDeployQueueAndQueuePosition = IsThereAnEmptySpaceToShiftTo(deploymentMarker.positionKey);
+            var occupant = belowDeploymentMarker.occupant;
             if (occupant == null)
             {
-                unit.DeployAndSnapPositionToDeploymentMarker(deploymentMarker);
+                unit.DeployAndSnapPositionToDeploymentMarker(belowDeploymentMarker);
             }
             else if (occupant.spriteName == unit.spriteName && occupant.Rank < Unit.maxUnitRank)
             {
@@ -307,27 +300,30 @@ public class Deployment : MonoBehaviour
             else if (unit.Deployed && Math.Abs(occupant.QueuePosition - unit.QueuePosition) == 1)
             {
                 var pos1 = listLeftDeploymentMarkers.Where(x => x.positionKey == unit.QueuePosition && x.side == unit.side).First();
-                var pos2 = deploymentMarker;
+                var pos2 = belowDeploymentMarker;
                 unit.DeployAndSnapPositionToDeploymentMarker(pos2);
                 occupant.DeployAndSnapPositionToDeploymentMarker(pos1);
             }
-            else if (IsThereAnEmptySpaceToShiftTo(deploymentMarker.positionKey).IsThereAnEmptySpaceToShiftTo)
+            else if (IsThereAnEmptySpaceToShiftTo(belowDeploymentMarker.positionKey, out int ShiftPositionKey))
             {
-                ShiftUnits(deploymentMarker.positionKey, _isThereRoominTheDeployQueueAndQueuePosition.PositionKey);
+                ShiftUnits(belowDeploymentMarker.positionKey, ShiftPositionKey);
             }
-            else {
+            else
+            {
                 //snap back to start position
+                //TODO need a message for the user "sell units to make more room"
                 unit.transform.position = startPosition;
             }
         }
         else {
             //snap back to start position
+            //TODO: need a message for the user containing a message if CanAfford() == false
             unit.transform.position = startPosition;
         }
         gameManager.Deselect();
     }
 
-    public (bool IsThereAnEmptySpaceToShiftTo, int PositionKey) IsThereAnEmptySpaceToShiftTo(int shiftWithRespectToPosition)
+    public bool IsThereAnEmptySpaceToShiftTo(int shiftWithRespectToPosition, out int ShiftPositionKey)
     {
         //is there even space to shift to?
         var relevantDeploymentMarkers = listLeftDeploymentMarkers;
@@ -344,15 +340,14 @@ public class Deployment : MonoBehaviour
                     try { closestLesserNeighbor = relevantDeploymentMarkers.Where(y => y.positionKey < idxLesser && y.side == gameManager.playerSide).OrderByDescending(z => z.positionKey).First(); } catch (Exception ex) { Debug.Log(ex.Message); }
                     if (closestLesserNeighbor != null && closestLesserNeighbor.occupant == null)//if space exists and is vaccant
                     {
-                        //Debug.Log($"closest lesser neighbor that is vacant has positionkey {closestLesserNeighbor.positionKey}");
-                        return (true, closestLesserNeighbor.positionKey);
+                        ShiftPositionKey = closestLesserNeighbor.positionKey;
+                        return true;
                     }
                     else {
                         idxLesser--;
                     }
                 }
-
-                //failing that, try to get the closest greater neighbor
+                //if the previous steps in this function found no closest lesser neighbor, then try to get the closest greater neighbor
                 var idxGreater = shiftWithRespectToPosition;
                 while (idxGreater < 0)
                 {
@@ -360,8 +355,8 @@ public class Deployment : MonoBehaviour
                     try { closestGreaterNeighbor = relevantDeploymentMarkers.Where(y => y.positionKey > idxGreater && y.side == gameManager.playerSide).OrderBy(z => z.positionKey).First(); } catch (Exception ex) { Debug.Log(ex.Message); }
                     if (closestGreaterNeighbor != null && closestGreaterNeighbor.occupant == null)//if space exists and is vaccant
                     {
-                        //Debug.Log($"closest greater neighbor that is vacant has positionkey {closestGreaterNeighbor.positionKey}");
-                        return (true, closestGreaterNeighbor.positionKey);
+                        ShiftPositionKey = closestGreaterNeighbor.positionKey;
+                        return true;
                     }
                     else {
                         idxGreater++;
@@ -370,7 +365,8 @@ public class Deployment : MonoBehaviour
             }
         }
         //there is not room
-        return (false, 0);
+        ShiftPositionKey = 0;
+        return false;
     }
 
     public void SetDeployMarkerArrows(Unit selectedUnit)

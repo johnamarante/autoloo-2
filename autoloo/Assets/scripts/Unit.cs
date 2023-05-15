@@ -264,9 +264,9 @@ public class Unit : MonoBehaviour
                 && Deployed
                 && selectedUnitSpriteName != thisUnitSpriteName)
             {
-                var goDpeloymentMarker = gameManager.deployment.listLeftDeploymentMarkers.Where(x => x.positionKey == this.QueuePosition).First().gameObject;
+                var deploymentMarker = gameManager.deployment.listLeftDeploymentMarkers.Where(x => x.positionKey == this.QueuePosition).First();
                 var selectedunitStartPosition = gameManager.deployment.deploymentShopQueuePositions[gameManager.selectedUnit.QueuePosition];
-                gameManager.deployment.TrySnapToDeploymentQueueSpace(gameManager.selectedUnit, goDpeloymentMarker, selectedunitStartPosition);
+                gameManager.deployment.TrySnapToDeploymentQueueSpace(gameManager.selectedUnit, deploymentMarker, selectedunitStartPosition);
                 gameManager.Deselect();
             }
             //2. SWAP first click deployed unit, then click this deployed unit => swap deployment queue positions

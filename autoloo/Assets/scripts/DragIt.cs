@@ -89,11 +89,18 @@ public class DragIt : MonoBehaviour
     private void OnMouseUp()
     {
         if (TryGetComponent(out Unit unit)
+            && belowGameObject != null
+            && belowGameObject.TryGetComponent(out DeploymentMarker deploymentMarker)
+            && deploymentMarker != null
             && wasConfirmedDrag)
         {
-            unit.gameManager.deployment.TrySnapToDeploymentQueueSpace(unit, belowGameObject, startPosition);
+            unit.gameManager.deployment.TrySnapToDeploymentQueueSpace(unit, deploymentMarker, startPosition);
             unit.gameManager.Deselect();
             wasConfirmedDrag = false;
+        }
+        else
+        {
+            transform.position = startPosition;
         }
     }
 }
