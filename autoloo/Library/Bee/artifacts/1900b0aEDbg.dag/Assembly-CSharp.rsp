@@ -366,6 +366,7 @@
 "Assets/scripts/ResultPopup.cs"
 "Assets/scripts/StoreAndLoadArmyDetails.cs"
 "Assets/scripts/Unit.cs"
+"Assets/scripts/UnitDetail.cs"
 -langversion:9.0
 
 /deterministic
