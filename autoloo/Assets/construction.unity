@@ -521,7 +521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0912354c06d4a574d93bf2326a2ba080, type: 3}
---- !u!1001 &280616699083837214
+--- !u!1001 &1676573809
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -534,11 +534,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.230003
+      value: 17.679996
       objectReference: {fileID: 0}
     - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -578,8 +578,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6680284302248847397, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
       propertyPath: m_Name
+      value: british_highlander (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+--- !u!1001 &280616699083837214
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1477159237772846847, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428177481585375912, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938762845143752151, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938762845143752151, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6680284302248847397, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_Name
       value: british_highlander
       objectReference: {fileID: 0}
+    - target: {fileID: 9011902617917059120, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3286163911610860551, guid: 50e572639685f1b4a96f9d67f948161d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
 --- !u!1001 &2656369138825335028
