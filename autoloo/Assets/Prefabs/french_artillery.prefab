@@ -873,10 +873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   Chance: 10
-  Level: 1
   _cost: 3
-  _attack: 3
-  _hitPoints: 2
+  _attack: 4
+  _hitPoints: 1
   _rank: 0
   side: left
   myFont: {fileID: 0}
@@ -1488,6 +1487,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2650699945112362623}
     m_Modifications:
+    - target: {fileID: 6188141978581787057, guid: f748c012ff66a7948b8a9e0af14f2ce9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188141978581787057, guid: f748c012ff66a7948b8a9e0af14f2ce9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.71
+      objectReference: {fileID: 0}
     - target: {fileID: 6188141978592150948, guid: f748c012ff66a7948b8a9e0af14f2ce9, type: 3}
       propertyPath: m_Name
       value: cannon

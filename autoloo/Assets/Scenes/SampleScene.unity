@@ -350,7 +350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: LeftUnitRoster.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: RightUnitRoster.Array.size
@@ -376,6 +376,10 @@ PrefabInstance:
       propertyPath: LeftUnitRoster.Array.data[5]
       value: 
       objectReference: {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: LeftUnitRoster.Array.data[6]
+      value: 
+      objectReference: {fileID: 6635745498971468658, guid: 8f6eca73f72ef2c44b61679357423514, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: RightUnitRoster.Array.data[2]
       value: 

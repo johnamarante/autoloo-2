@@ -473,7 +473,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 34a63e57f08ff4d4ab9a0c72557cd5e9, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 7c1e5837359b55e48854e88c60786c0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -624,7 +624,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   Chance: 10
-  Level: 1
   _cost: 3
   _attack: 8
   _hitPoints: 8
