@@ -1229,7 +1229,7 @@ GameObject:
   - component: {fileID: 5691792332634970000}
   - component: {fileID: 2430381780287868810}
   m_Layer: 0
-  m_Name: british_light
+  m_Name: british_line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1272,7 +1272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   Chance: 10
-  Level: 1
   _cost: 3
   _attack: 2
   _hitPoints: 3
@@ -1286,6 +1285,9 @@ MonoBehaviour:
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
   speed: 60
+  svgsprite: {fileID: 0}
+  Lsprite: {fileID: 3286163911610860551, guid: 9dc46926da576e643bc84e27e0095aa5, type: 3}
+  Rsprite: {fileID: 3286163911610860551, guid: 22728cfea2c37d64e87c4a5ebb5af656, type: 3}
 --- !u!114 &5691792332634970000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,8 +1423,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9187881366048709224}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.48, y: 1.12, z: 0}
-  m_LocalScale: {x: 2.4, y: 2.4, z: 1}
+  m_LocalPosition: {x: 0.48, y: 1.2, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 801219028362080871}
@@ -1469,7 +1471,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 3499a3fffb4bacb4e9db09e713e27383, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 9dc46926da576e643bc84e27e0095aa5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

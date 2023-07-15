@@ -103,7 +103,9 @@ public class Unit : MonoBehaviour
     private float journeyLength;
     private bool inMoveMode = false;
     //Lerping END
-
+    public SpriteRenderer svgsprite;
+    public Sprite Lsprite;
+    public Sprite Rsprite;
     //Stats display START
     private TextMeshPro textAttack = new TextMeshPro();
     private TextMeshPro textHitPoints = new TextMeshPro();
@@ -120,13 +122,15 @@ public class Unit : MonoBehaviour
     void Awake()
     {
         name = $"unit_{side}_{Guid.NewGuid()}";
+        svgsprite = gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>();
+        SetSprite();
         spriteName = GetSpriteName();
     }
 
     public string GetSpriteName()
     {
         //this needs to be a seperate function so that it can be called from roster prefab
-        var spriteName = gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
+        var spriteName = svgsprite.sprite.name;
         return spriteName;
     }
 
@@ -146,6 +150,18 @@ public class Unit : MonoBehaviour
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
+    }
+
+    private void SetSprite()
+    {
+        if (side == "left")
+        {
+            svgsprite.sprite = Lsprite;
+        }
+        else 
+        {
+            svgsprite.sprite = Rsprite;
+        }
     }
 
     private void ChangeRankIcon()

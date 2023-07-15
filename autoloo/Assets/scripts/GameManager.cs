@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public List<Unit> RightQueueUnits;
     public List<Unit> LeftUnitRoster;
     public List<Unit> RightUnitRoster;
+    public List<Unit> FrenchUnitRoster;
+    public List<Unit> BritishUnitRoster;
     public Dictionary<int, Vector3> fightQueuePositions;
     public Dictionary<int, Vector3> cameraPositions;
     public float actionTime;
@@ -42,8 +44,18 @@ public class GameManager : MonoBehaviour
     {
         fightQueuePositions = SetFightQueuePositionLocations();
         cameraPositions = SetCameraPositionLocations();
-        deployment = Instantiate(deployment);
         OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
+        LeftUnitRoster = BritishUnitRoster;
+        foreach (var un in LeftUnitRoster)
+        {
+            un.side = "left";
+        }
+        RightUnitRoster = FrenchUnitRoster;
+        foreach (var un in RightUnitRoster)
+        {
+            un.side = "right";
+        }
+        deployment = Instantiate(deployment);
     }
 
     private Dictionary<int, Vector3> SetFightQueuePositionLocations()
