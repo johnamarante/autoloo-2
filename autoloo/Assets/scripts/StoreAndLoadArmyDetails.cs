@@ -41,7 +41,7 @@ public static class StoreAndLoadArmyDetails
     private static void GenerateReloadedUnitFromDetail(List<Unit> unitRoster, GameManager gameManager, string detail)
     {
         var unitDetails = JsonUtility.FromJson<UnitDetail>(detail);
-        var rosterItem = unitRoster.Where(x => x.GetSpriteName() == unitDetails.SpriteName).First();
+        var rosterItem = unitRoster.Where(x => x.GetSpriteName().Split("_")[1] == unitDetails.SpriteName.Split("_")[1]).First();
         var unit = UnityEngine.Object.Instantiate(rosterItem);
         unit.name = unitDetails.Name;
         unit._attack = unitDetails.Attack;

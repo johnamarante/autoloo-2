@@ -189,6 +189,7 @@ public class Deployment : MonoBehaviour
             Unit shopItem = null;
             if (!shopMarker.IsFrozenShopUnitAboveMe())
             {
+                Debug.Log($"roster random {rnd.Next(roster.Count)}");
                 shopItem = Instantiate(roster[rnd.Next(roster.Count)]);
             }
             shopQueue.Add(shopItem);

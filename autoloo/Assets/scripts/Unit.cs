@@ -118,7 +118,6 @@ public class Unit : MonoBehaviour
     private GameObject mouseHoverOverIndicator;
     private GameObject selectedIndicator;
 
-    // Awake
     void Awake()
     {
         name = $"unit_{side}_{Guid.NewGuid()}";
@@ -129,8 +128,8 @@ public class Unit : MonoBehaviour
 
     public string GetSpriteName()
     {
-        //this needs to be a seperate function so that it can be called from roster prefab
-        var spriteName = svgsprite.sprite.name;
+        //DO NOT use svgsprite.sprite.name for below, this causes errors when instntiating from rosters
+        var spriteName = gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>().sprite.name;
         return spriteName;
     }
 
@@ -157,11 +156,13 @@ public class Unit : MonoBehaviour
         if (side == "left")
         {
             svgsprite.sprite = Lsprite;
+            
         }
         else 
         {
             svgsprite.sprite = Rsprite;
         }
+        svgsprite.transform.position = new Vector3(Int32.Parse(svgsprite.sprite.name.Split("_")[3]), Int32.Parse(svgsprite.sprite.name.Split("_")[4]), 0);
     }
 
     private void ChangeRankIcon()

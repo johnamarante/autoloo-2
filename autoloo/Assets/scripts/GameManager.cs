@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     //public Unit selectedUnit;
     public Deployment deployment;
     public Sprite[] rankSprites;
+    public Texture playAsFrance;
+    public Texture playAsGreatBritain;
 
     public bool InBattleModeAndNotDeploymentMode = false;
     
@@ -44,7 +46,12 @@ public class GameManager : MonoBehaviour
     {
         fightQueuePositions = SetFightQueuePositionLocations();
         cameraPositions = SetCameraPositionLocations();
-        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
+
+        
+    }
+
+    private void PlayAsGreatBritian()
+    {
         LeftUnitRoster = BritishUnitRoster;
         foreach (var un in LeftUnitRoster)
         {
@@ -56,6 +63,22 @@ public class GameManager : MonoBehaviour
             un.side = "right";
         }
         deployment = Instantiate(deployment);
+        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
+    }
+    private void PlayAsFrance()
+    {
+        LeftUnitRoster = FrenchUnitRoster;
+        foreach (var un in LeftUnitRoster)
+        {
+            un.side = "left";
+        }
+        RightUnitRoster = BritishUnitRoster;
+        foreach (var un in RightUnitRoster)
+        {
+            un.side = "right";
+        }
+        deployment = Instantiate(deployment);
+        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
     }
 
     private Dictionary<int, Vector3> SetFightQueuePositionLocations()
@@ -149,13 +172,29 @@ public class GameManager : MonoBehaviour
 
     private void OnGUI()
     {
-        var screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
-        screenPoint.z = 1f; //distance of the plane from the camera
-        Camera.main.ScreenToWorldPoint(screenPoint);
-        //GUI.Label(new Rect(10, 10, 300, 300), screenPoint.ToString(), new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
-        //GUI.Label(new Rect(10, 30, 300, 300), $"W: {Screen.width} H: {Screen.height}", new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
-        var selectionText = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
-        GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), selectionText, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+        if (playerSide.Length > 0)
+        {
+            var screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+            screenPoint.z = 1f; //distance of the plane from the camera
+            Camera.main.ScreenToWorldPoint(screenPoint);
+            //GUI.Label(new Rect(10, 10, 300, 300), screenPoint.ToString(), new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+            //GUI.Label(new Rect(10, 30, 300, 300), $"W: {Screen.width} H: {Screen.height}", new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+            var selectionText = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
+            GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), selectionText, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+        }
+        else
+        {
+            if (GUI.Button(new Rect(0, 0, (int)(Screen.width/2), Screen.height), playAsFrance))
+            {
+                playerSide = "left";
+                PlayAsFrance();
+            }
+            if (GUI.Button(new Rect((int)(Screen.width / 2), 0, (int)(Screen.width / 2), Screen.height), playAsGreatBritain))
+            {
+                playerSide = "left";
+                PlayAsGreatBritian();
+            }
+        }
     }
 
     private void Fight(ref List<Unit> leftUnits, ref List<Unit> rightUnits)
