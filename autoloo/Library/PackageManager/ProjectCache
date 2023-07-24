@@ -106,6 +106,8 @@ m_ResolvedPackages:
     - 2.0.0-preview.22
     - 2.0.0
     - 2.0.1
+    - 2.0.3
+    - 2.0.4
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
@@ -133,6 +135,8 @@ m_ResolvedPackages:
     - 2.0.0-preview.22
     - 2.0.0
     - 2.0.1
+    - 2.0.3
+    - 2.0.4
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
@@ -325,6 +329,8 @@ m_ResolvedPackages:
     - 3.0.16
     - 3.0.17
     - 3.0.18
+    - 3.0.20
+    - 3.0.21
     compatible:
     - 3.0.7
     - 3.0.9
@@ -336,7 +342,9 @@ m_ResolvedPackages:
     - 3.0.16
     - 3.0.17
     - 3.0.18
-    verified: 3.0.18
+    - 3.0.20
+    - 3.0.21
+    verified: 3.0.21
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -406,13 +414,15 @@ m_ResolvedPackages:
     - 2.0.15
     - 2.0.16
     - 2.0.17
+    - 2.0.18
     compatible:
     - 2.0.12
     - 2.0.14
     - 2.0.15
     - 2.0.16
     - 2.0.17
-    verified: 2.0.17
+    - 2.0.18
+    verified: 2.0.18
   dependencies:
   - name: com.unity.test-framework
     version: 1.1.9
@@ -460,7 +470,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: Code editor integration for supporting Visual Studio Code as code
     editor for unity. Adds support for generating csproj files for intellisense purposes,
     auto discovery of installations, etc.
@@ -495,7 +505,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637660806170000000
   documentationUrl: 
@@ -566,6 +576,7 @@ m_ResolvedPackages:
     - 1.3.1
     - 1.3.2
     - 1.3.3
+    - 1.3.4
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -579,6 +590,7 @@ m_ResolvedPackages:
     - 1.3.1
     - 1.3.2
     - 1.3.3
+    - 1.3.4
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -878,27 +890,33 @@ m_ResolvedPackages:
     - 1.6.2
     - 1.6.3
     - 1.6.4
+    - 1.6.5
     - 1.7.0-pre.1
     - 1.7.0-pre.2
     - 1.7.0
     - 1.7.1
     - 1.7.2
     - 1.7.3
+    - 1.7.4
     - 1.8.0
     - 1.8.1
+    - 1.8.2
     compatible:
     - 1.6.2
     - 1.6.3
     - 1.6.4
+    - 1.6.5
     - 1.7.0-pre.1
     - 1.7.0-pre.2
     - 1.7.0
     - 1.7.1
     - 1.7.2
     - 1.7.3
+    - 1.7.4
     - 1.8.0
     - 1.8.1
-    verified: 1.6.4
+    - 1.8.2
+    verified: 1.6.5
   dependencies:
   - name: com.unity.modules.director
     version: 1.0.0
@@ -967,6 +985,7 @@ m_ResolvedPackages:
   versions:
     all:
     - 1.0.0
+    - 3.0.0-exp.1
     compatible:
     - 1.0.0
     verified: 1.0.0
@@ -1019,7 +1038,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: The vector graphics package provides an SVG importer and runtime vector
     graphics APIs.
   status: 4
@@ -1062,6 +1081,7 @@ m_ResolvedPackages:
     - 2.0.0-preview.18
     - 2.0.0-preview.19
     - 2.0.0-preview.20
+    - 2.0.0-preview.21
     compatible:
     - 2.0.0-preview.2
     - 2.0.0-preview.3
@@ -1082,6 +1102,7 @@ m_ResolvedPackages:
     - 2.0.0-preview.18
     - 2.0.0-preview.19
     - 2.0.0-preview.20
+    - 2.0.0-preview.21
     verified: 
   dependencies:
   - name: com.unity.2d.sprite
@@ -1109,7 +1130,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637172301290000000
   documentationUrl: 
@@ -3016,7 +3037,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: Libraries
-  type: 
+  type: asset
   description: Custom version of the nunit package build to work with Unity. Used
     by the Unity Test Framework.
   status: 4
@@ -3049,7 +3070,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637429759280000000
   documentationUrl: 
@@ -3076,7 +3097,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: 'The editor coroutines package allows developers to start constructs
     similar to Unity''s monobehaviour based coroutines within the editor using abitrary
     objects. '
@@ -3107,7 +3128,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637232611380000000
   documentationUrl: 
@@ -3236,6 +3257,7 @@ m_ResolvedPackages:
     - 1.2.0
     - 1.2.1
     - 1.2.2
+    - 1.2.3
     compatible:
     - 1.0.1
     - 1.1.0
@@ -3250,6 +3272,7 @@ m_ResolvedPackages:
     - 1.2.0
     - 1.2.1
     - 1.2.2
+    - 1.2.3
     verified: 1.0.1
   dependencies:
   - name: com.unity.test-framework
@@ -3306,7 +3329,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: library
   description: 'Newtonsoft Json for use in Unity projects and Unity packages. Currently
     synced to version 12.0.2.
 
@@ -3334,12 +3357,16 @@ m_ResolvedPackages:
     - 2.0.2
     - 3.0.1
     - 3.0.2
+    - 3.1.0
+    - 3.2.0
     compatible:
     - 2.0.0
     - 2.0.1-preview.1
     - 2.0.2
     - 3.0.1
     - 3.0.2
+    - 3.1.0
+    - 3.2.0
     verified: 2.0.2
   dependencies: []
   resolvedDependencies: []
@@ -3407,6 +3434,8 @@ m_ResolvedPackages:
     - 1.6.0
     - 1.7.0
     - 1.7.1
+    - 1.8.1
+    - 1.8.2
     compatible:
     - 1.0.1
     - 1.1.0-pre.7
@@ -3427,6 +3456,8 @@ m_ResolvedPackages:
     - 1.6.0
     - 1.7.0
     - 1.7.1
+    - 1.8.1
+    - 1.8.2
     verified: 1.0.1
   dependencies:
   - name: com.unity.modules.unitywebrequest
@@ -3469,7 +3500,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: A framework for making any serializable field a setting, complete
     with a pre-built settings interface.
   status: 4

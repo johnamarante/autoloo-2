@@ -459,7 +459,7 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 7fe7c5d6be5a04bfc14b2dd5b3bc8d62
+      Hash: 03f9540ef2f5ea9579dda2ffa98bed82
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -471,7 +471,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: f5434855472764ec09e061efad0e7492
+      Hash: f735e128e73c834848aed0b7ff5002b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unit
