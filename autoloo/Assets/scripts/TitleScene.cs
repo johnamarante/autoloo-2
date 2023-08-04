@@ -6,24 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class TitleScene : MonoBehaviour
 {
-    public static float PlannedSceneLengthInSeconds = 4;
+    public static float PlannedSceneLengthInSeconds = 5;
     float camStartZ;
     Material maskingPlaneMaterial;
+    AudioSource titleAudioSource;
     // Start is called before the first frame update
     void Start()
     {
         camStartZ = Camera.main.transform.position.z;
         maskingPlaneMaterial = GameObject.Find("Plane1").GetComponent<Renderer>().material; // .material.color.a = 0.5f
+        titleAudioSource = GetComponent<AudioSource>();
+        titleAudioSource.volume = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, camStartZ + Time.realtimeSinceStartup);
-        ChangeAlpha(maskingPlaneMaterial, CalculateLoHiLoAlphaBasedOnPlannedSceneLength());
+        var loHiLoAlpha = CalculateLoHiLoAlphaBasedOnPlannedSceneLength();
+        ChangeAlpha(maskingPlaneMaterial, loHiLoAlpha);
+        //volume and title alpha should be synched
+        titleAudioSource.volume = 1 - loHiLoAlpha;
         if (Time.timeSinceLevelLoad > PlannedSceneLengthInSeconds)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("login");
         }
     }
 
@@ -31,7 +37,6 @@ public class TitleScene : MonoBehaviour
     {
         Color oldColor = mat.color;
         Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, alphaValue);
-        Debug.Log(alphaValue);
         mat.SetColor("_Color", newColor);
     }
 
