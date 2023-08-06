@@ -143,7 +143,12 @@
         135,
         136,
         137,
-        138
+        138,
+        139,
+        140,
+        141,
+        142,
+        143
       ],
       "AllowUnexpectedOutput": true,
       "DebugActionIndex": 0
@@ -204,6 +209,28 @@
       "DebugActionIndex": 5
     },
     {
+      "Annotation": "CopyFiles build32bit/autoloo_Data/level1",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win/Data/level1"
+      ],
+      "Outputs": [
+        "build32bit/autoloo_Data/level1"
+      ],
+      "DebugActionIndex": 6
+    },
+    {
+      "Annotation": "CopyFiles build32bit/autoloo_Data/level1.resS",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win/Data/level1.resS"
+      ],
+      "Outputs": [
+        "build32bit/autoloo_Data/level1.resS"
+      ],
+      "DebugActionIndex": 7
+    },
+    {
       "Annotation": "CopyFiles build32bit/autoloo_Data/resources.assets",
       "ActionType": "CopyFiles",
       "Inputs": [
@@ -212,7 +239,18 @@
       "Outputs": [
         "build32bit/autoloo_Data/resources.assets"
       ],
-      "DebugActionIndex": 6
+      "DebugActionIndex": 8
+    },
+    {
+      "Annotation": "CopyFiles build32bit/autoloo_Data/resources.assets.resS",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win/Data/resources.assets.resS"
+      ],
+      "Outputs": [
+        "build32bit/autoloo_Data/resources.assets.resS"
+      ],
+      "DebugActionIndex": 9
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/RuntimeInitializeOnLoads.json",
@@ -223,7 +261,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/RuntimeInitializeOnLoads.json"
       ],
-      "DebugActionIndex": 7
+      "DebugActionIndex": 10
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/ScriptingAssemblies.json",
@@ -234,7 +272,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/ScriptingAssemblies.json"
       ],
-      "DebugActionIndex": 8
+      "DebugActionIndex": 11
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/sharedassets0.assets",
@@ -245,18 +283,40 @@
       "Outputs": [
         "build32bit/autoloo_Data/sharedassets0.assets"
       ],
-      "DebugActionIndex": 9
+      "DebugActionIndex": 12
     },
     {
-      "Annotation": "CopyFiles build32bit/autoloo_Data/sharedassets0.assets.resS",
+      "Annotation": "CopyFiles build32bit/autoloo_Data/sharedassets0.resource",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "Library/PlayerDataCache/Win/Data/sharedassets0.assets.resS"
+        "Library/PlayerDataCache/Win/Data/sharedassets0.resource"
       ],
       "Outputs": [
-        "build32bit/autoloo_Data/sharedassets0.assets.resS"
+        "build32bit/autoloo_Data/sharedassets0.resource"
       ],
-      "DebugActionIndex": 10
+      "DebugActionIndex": 13
+    },
+    {
+      "Annotation": "CopyFiles build32bit/autoloo_Data/sharedassets1.assets",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win/Data/sharedassets1.assets"
+      ],
+      "Outputs": [
+        "build32bit/autoloo_Data/sharedassets1.assets"
+      ],
+      "DebugActionIndex": 14
+    },
+    {
+      "Annotation": "CopyFiles build32bit/autoloo_Data/sharedassets1.assets.resS",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win/Data/sharedassets1.assets.resS"
+      ],
+      "Outputs": [
+        "build32bit/autoloo_Data/sharedassets1.assets.resS"
+      ],
+      "DebugActionIndex": 15
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Resources/unity_builtin_extra",
@@ -267,7 +327,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Resources/unity_builtin_extra"
       ],
-      "DebugActionIndex": 11
+      "DebugActionIndex": 16
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Assembly-CSharp.dll",
@@ -278,7 +338,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Assembly-CSharp.dll"
       ],
-      "DebugActionIndex": 12
+      "DebugActionIndex": 17
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Mono.Security.dll",
@@ -289,7 +349,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Mono.Security.dll"
       ],
-      "DebugActionIndex": 13
+      "DebugActionIndex": 18
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/mscorlib.dll",
@@ -300,7 +360,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/mscorlib.dll"
       ],
-      "DebugActionIndex": 14
+      "DebugActionIndex": 19
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/netstandard.dll",
@@ -311,7 +371,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/netstandard.dll"
       ],
-      "DebugActionIndex": 15
+      "DebugActionIndex": 20
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Newtonsoft.Json.dll",
@@ -322,7 +382,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Newtonsoft.Json.dll"
       ],
-      "DebugActionIndex": 16
+      "DebugActionIndex": 21
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.ComponentModel.Composition.dll",
@@ -333,7 +393,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.ComponentModel.Composition.dll"
       ],
-      "DebugActionIndex": 17
+      "DebugActionIndex": 22
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Configuration.dll",
@@ -344,7 +404,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Configuration.dll"
       ],
-      "DebugActionIndex": 18
+      "DebugActionIndex": 23
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Core.dll",
@@ -355,7 +415,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Core.dll"
       ],
-      "DebugActionIndex": 19
+      "DebugActionIndex": 24
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Data.DataSetExtensions.dll",
@@ -366,7 +426,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Data.DataSetExtensions.dll"
       ],
-      "DebugActionIndex": 20
+      "DebugActionIndex": 25
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Data.dll",
@@ -377,7 +437,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Data.dll"
       ],
-      "DebugActionIndex": 21
+      "DebugActionIndex": 26
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.dll",
@@ -388,7 +448,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.dll"
       ],
-      "DebugActionIndex": 22
+      "DebugActionIndex": 27
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Drawing.dll",
@@ -399,7 +459,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Drawing.dll"
       ],
-      "DebugActionIndex": 23
+      "DebugActionIndex": 28
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.EnterpriseServices.dll",
@@ -410,7 +470,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.EnterpriseServices.dll"
       ],
-      "DebugActionIndex": 24
+      "DebugActionIndex": 29
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.IO.Compression.dll",
@@ -421,7 +481,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.IO.Compression.dll"
       ],
-      "DebugActionIndex": 25
+      "DebugActionIndex": 30
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.IO.Compression.FileSystem.dll",
@@ -432,7 +492,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.IO.Compression.FileSystem.dll"
       ],
-      "DebugActionIndex": 26
+      "DebugActionIndex": 31
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Net.Http.dll",
@@ -443,7 +503,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Net.Http.dll"
       ],
-      "DebugActionIndex": 27
+      "DebugActionIndex": 32
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Numerics.dll",
@@ -454,7 +514,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Numerics.dll"
       ],
-      "DebugActionIndex": 28
+      "DebugActionIndex": 33
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Runtime.Serialization.dll",
@@ -465,7 +525,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Runtime.Serialization.dll"
       ],
-      "DebugActionIndex": 29
+      "DebugActionIndex": 34
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Security.dll",
@@ -476,7 +536,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Security.dll"
       ],
-      "DebugActionIndex": 30
+      "DebugActionIndex": 35
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.ServiceModel.Internals.dll",
@@ -487,7 +547,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.ServiceModel.Internals.dll"
       ],
-      "DebugActionIndex": 31
+      "DebugActionIndex": 36
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Transactions.dll",
@@ -498,7 +558,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Transactions.dll"
       ],
-      "DebugActionIndex": 32
+      "DebugActionIndex": 37
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Xml.dll",
@@ -509,7 +569,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Xml.dll"
       ],
-      "DebugActionIndex": 33
+      "DebugActionIndex": 38
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/System.Xml.Linq.dll",
@@ -520,7 +580,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/System.Xml.Linq.dll"
       ],
-      "DebugActionIndex": 34
+      "DebugActionIndex": 39
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Unity.InternalAPIEngineBridge.003.dll",
@@ -531,7 +591,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Unity.InternalAPIEngineBridge.003.dll"
       ],
-      "DebugActionIndex": 35
+      "DebugActionIndex": 40
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Unity.TextMeshPro.dll",
@@ -542,7 +602,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Unity.TextMeshPro.dll"
       ],
-      "DebugActionIndex": 36
+      "DebugActionIndex": 41
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Unity.Timeline.dll",
@@ -553,7 +613,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Unity.Timeline.dll"
       ],
-      "DebugActionIndex": 37
+      "DebugActionIndex": 42
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Unity.VectorGraphics.dll",
@@ -564,7 +624,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Unity.VectorGraphics.dll"
       ],
-      "DebugActionIndex": 38
+      "DebugActionIndex": 43
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll",
@@ -575,7 +635,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll"
       ],
-      "DebugActionIndex": 39
+      "DebugActionIndex": 44
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Unity.VisualScripting.Core.dll",
@@ -586,7 +646,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Unity.VisualScripting.Core.dll"
       ],
-      "DebugActionIndex": 40
+      "DebugActionIndex": 45
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Unity.VisualScripting.Flow.dll",
@@ -597,7 +657,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Unity.VisualScripting.Flow.dll"
       ],
-      "DebugActionIndex": 41
+      "DebugActionIndex": 46
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/Unity.VisualScripting.State.dll",
@@ -608,7 +668,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/Unity.VisualScripting.State.dll"
       ],
-      "DebugActionIndex": 42
+      "DebugActionIndex": 47
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.AccessibilityModule.dll",
@@ -619,7 +679,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.AccessibilityModule.dll"
       ],
-      "DebugActionIndex": 43
+      "DebugActionIndex": 48
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.AIModule.dll",
@@ -630,7 +690,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.AIModule.dll"
       ],
-      "DebugActionIndex": 44
+      "DebugActionIndex": 49
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.AndroidJNIModule.dll",
@@ -641,7 +701,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.AndroidJNIModule.dll"
       ],
-      "DebugActionIndex": 45
+      "DebugActionIndex": 50
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.AnimationModule.dll",
@@ -652,7 +712,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.AnimationModule.dll"
       ],
-      "DebugActionIndex": 46
+      "DebugActionIndex": 51
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.ARModule.dll",
@@ -663,7 +723,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.ARModule.dll"
       ],
-      "DebugActionIndex": 47
+      "DebugActionIndex": 52
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.AssetBundleModule.dll",
@@ -674,7 +734,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.AssetBundleModule.dll"
       ],
-      "DebugActionIndex": 48
+      "DebugActionIndex": 53
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.AudioModule.dll",
@@ -685,7 +745,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.AudioModule.dll"
       ],
-      "DebugActionIndex": 49
+      "DebugActionIndex": 54
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.ClothModule.dll",
@@ -696,7 +756,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.ClothModule.dll"
       ],
-      "DebugActionIndex": 50
+      "DebugActionIndex": 55
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.ClusterInputModule.dll",
@@ -707,7 +767,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.ClusterInputModule.dll"
       ],
-      "DebugActionIndex": 51
+      "DebugActionIndex": 56
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.ClusterRendererModule.dll",
@@ -718,7 +778,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.ClusterRendererModule.dll"
       ],
-      "DebugActionIndex": 52
+      "DebugActionIndex": 57
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.CoreModule.dll",
@@ -729,7 +789,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.CoreModule.dll"
       ],
-      "DebugActionIndex": 53
+      "DebugActionIndex": 58
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.CrashReportingModule.dll",
@@ -740,7 +800,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.CrashReportingModule.dll"
       ],
-      "DebugActionIndex": 54
+      "DebugActionIndex": 59
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.DirectorModule.dll",
@@ -751,7 +811,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.DirectorModule.dll"
       ],
-      "DebugActionIndex": 55
+      "DebugActionIndex": 60
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.dll",
@@ -762,7 +822,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.dll"
       ],
-      "DebugActionIndex": 56
+      "DebugActionIndex": 61
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.DSPGraphModule.dll",
@@ -773,7 +833,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.DSPGraphModule.dll"
       ],
-      "DebugActionIndex": 57
+      "DebugActionIndex": 62
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.GameCenterModule.dll",
@@ -784,7 +844,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.GameCenterModule.dll"
       ],
-      "DebugActionIndex": 58
+      "DebugActionIndex": 63
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.GIModule.dll",
@@ -795,7 +855,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.GIModule.dll"
       ],
-      "DebugActionIndex": 59
+      "DebugActionIndex": 64
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.GridModule.dll",
@@ -806,7 +866,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.GridModule.dll"
       ],
-      "DebugActionIndex": 60
+      "DebugActionIndex": 65
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.HotReloadModule.dll",
@@ -817,7 +877,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.HotReloadModule.dll"
       ],
-      "DebugActionIndex": 61
+      "DebugActionIndex": 66
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.ImageConversionModule.dll",
@@ -828,7 +888,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.ImageConversionModule.dll"
       ],
-      "DebugActionIndex": 62
+      "DebugActionIndex": 67
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.IMGUIModule.dll",
@@ -839,7 +899,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.IMGUIModule.dll"
       ],
-      "DebugActionIndex": 63
+      "DebugActionIndex": 68
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.InputLegacyModule.dll",
@@ -850,7 +910,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.InputLegacyModule.dll"
       ],
-      "DebugActionIndex": 64
+      "DebugActionIndex": 69
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.InputModule.dll",
@@ -861,7 +921,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.InputModule.dll"
       ],
-      "DebugActionIndex": 65
+      "DebugActionIndex": 70
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.JSONSerializeModule.dll",
@@ -872,7 +932,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.JSONSerializeModule.dll"
       ],
-      "DebugActionIndex": 66
+      "DebugActionIndex": 71
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.LocalizationModule.dll",
@@ -883,7 +943,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.LocalizationModule.dll"
       ],
-      "DebugActionIndex": 67
+      "DebugActionIndex": 72
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.NVIDIAModule.dll",
@@ -894,7 +954,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.NVIDIAModule.dll"
       ],
-      "DebugActionIndex": 68
+      "DebugActionIndex": 73
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.ParticleSystemModule.dll",
@@ -905,7 +965,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.ParticleSystemModule.dll"
       ],
-      "DebugActionIndex": 69
+      "DebugActionIndex": 74
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
@@ -916,7 +976,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.PerformanceReportingModule.dll"
       ],
-      "DebugActionIndex": 70
+      "DebugActionIndex": 75
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.Physics2DModule.dll",
@@ -927,7 +987,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.Physics2DModule.dll"
       ],
-      "DebugActionIndex": 71
+      "DebugActionIndex": 76
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.PhysicsModule.dll",
@@ -938,7 +998,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.PhysicsModule.dll"
       ],
-      "DebugActionIndex": 72
+      "DebugActionIndex": 77
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.ProfilerModule.dll",
@@ -949,7 +1009,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.ProfilerModule.dll"
       ],
-      "DebugActionIndex": 73
+      "DebugActionIndex": 78
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
@@ -960,7 +1020,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll"
       ],
-      "DebugActionIndex": 74
+      "DebugActionIndex": 79
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
@@ -971,7 +1031,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.ScreenCaptureModule.dll"
       ],
-      "DebugActionIndex": 75
+      "DebugActionIndex": 80
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.SharedInternalsModule.dll",
@@ -982,7 +1042,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.SharedInternalsModule.dll"
       ],
-      "DebugActionIndex": 76
+      "DebugActionIndex": 81
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.SpriteMaskModule.dll",
@@ -993,7 +1053,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.SpriteMaskModule.dll"
       ],
-      "DebugActionIndex": 77
+      "DebugActionIndex": 82
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.SpriteShapeModule.dll",
@@ -1004,7 +1064,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.SpriteShapeModule.dll"
       ],
-      "DebugActionIndex": 78
+      "DebugActionIndex": 83
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.StreamingModule.dll",
@@ -1015,7 +1075,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.StreamingModule.dll"
       ],
-      "DebugActionIndex": 79
+      "DebugActionIndex": 84
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.SubstanceModule.dll",
@@ -1026,7 +1086,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.SubstanceModule.dll"
       ],
-      "DebugActionIndex": 80
+      "DebugActionIndex": 85
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.SubsystemsModule.dll",
@@ -1037,7 +1097,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.SubsystemsModule.dll"
       ],
-      "DebugActionIndex": 81
+      "DebugActionIndex": 86
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.TerrainModule.dll",
@@ -1048,7 +1108,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.TerrainModule.dll"
       ],
-      "DebugActionIndex": 82
+      "DebugActionIndex": 87
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
@@ -1059,7 +1119,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.TerrainPhysicsModule.dll"
       ],
-      "DebugActionIndex": 83
+      "DebugActionIndex": 88
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
@@ -1070,7 +1130,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll"
       ],
-      "DebugActionIndex": 84
+      "DebugActionIndex": 89
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
@@ -1081,7 +1141,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll"
       ],
-      "DebugActionIndex": 85
+      "DebugActionIndex": 90
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.TextRenderingModule.dll",
@@ -1092,7 +1152,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.TextRenderingModule.dll"
       ],
-      "DebugActionIndex": 86
+      "DebugActionIndex": 91
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.TilemapModule.dll",
@@ -1103,7 +1163,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.TilemapModule.dll"
       ],
-      "DebugActionIndex": 87
+      "DebugActionIndex": 92
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.TLSModule.dll",
@@ -1114,7 +1174,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.TLSModule.dll"
       ],
-      "DebugActionIndex": 88
+      "DebugActionIndex": 93
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UaaLAnalyticsModule.dll",
@@ -1125,7 +1185,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UaaLAnalyticsModule.dll"
       ],
-      "DebugActionIndex": 89
+      "DebugActionIndex": 94
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UI.dll",
@@ -1136,7 +1196,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UI.dll"
       ],
-      "DebugActionIndex": 90
+      "DebugActionIndex": 95
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UIElementsModule.dll",
@@ -1147,7 +1207,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UIElementsModule.dll"
       ],
-      "DebugActionIndex": 91
+      "DebugActionIndex": 96
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UIElementsNativeModule.dll",
@@ -1158,7 +1218,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UIElementsNativeModule.dll"
       ],
-      "DebugActionIndex": 92
+      "DebugActionIndex": 97
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UIModule.dll",
@@ -1169,7 +1229,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UIModule.dll"
       ],
-      "DebugActionIndex": 93
+      "DebugActionIndex": 98
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UmbraModule.dll",
@@ -1180,7 +1240,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UmbraModule.dll"
       ],
-      "DebugActionIndex": 94
+      "DebugActionIndex": 99
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UNETModule.dll",
@@ -1191,7 +1251,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UNETModule.dll"
       ],
-      "DebugActionIndex": 95
+      "DebugActionIndex": 100
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
@@ -1202,7 +1262,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityAnalyticsModule.dll"
       ],
-      "DebugActionIndex": 96
+      "DebugActionIndex": 101
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityConnectModule.dll",
@@ -1213,7 +1273,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityConnectModule.dll"
       ],
-      "DebugActionIndex": 97
+      "DebugActionIndex": 102
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityCurlModule.dll",
@@ -1224,7 +1284,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityCurlModule.dll"
       ],
-      "DebugActionIndex": 98
+      "DebugActionIndex": 103
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
@@ -1235,7 +1295,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityTestProtocolModule.dll"
       ],
-      "DebugActionIndex": 99
+      "DebugActionIndex": 104
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
@@ -1246,7 +1306,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll"
       ],
-      "DebugActionIndex": 100
+      "DebugActionIndex": 105
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
@@ -1257,7 +1317,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll"
       ],
-      "DebugActionIndex": 101
+      "DebugActionIndex": 106
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
@@ -1268,7 +1328,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestModule.dll"
       ],
-      "DebugActionIndex": 102
+      "DebugActionIndex": 107
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
@@ -1279,7 +1339,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll"
       ],
-      "DebugActionIndex": 103
+      "DebugActionIndex": 108
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
@@ -1290,7 +1350,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll"
       ],
-      "DebugActionIndex": 104
+      "DebugActionIndex": 109
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.VehiclesModule.dll",
@@ -1301,7 +1361,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.VehiclesModule.dll"
       ],
-      "DebugActionIndex": 105
+      "DebugActionIndex": 110
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.VFXModule.dll",
@@ -1312,7 +1372,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.VFXModule.dll"
       ],
-      "DebugActionIndex": 106
+      "DebugActionIndex": 111
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.VideoModule.dll",
@@ -1323,7 +1383,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.VideoModule.dll"
       ],
-      "DebugActionIndex": 107
+      "DebugActionIndex": 112
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
@@ -1334,7 +1394,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.VirtualTexturingModule.dll"
       ],
-      "DebugActionIndex": 108
+      "DebugActionIndex": 113
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.VRModule.dll",
@@ -1345,7 +1405,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.VRModule.dll"
       ],
-      "DebugActionIndex": 109
+      "DebugActionIndex": 114
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.WindModule.dll",
@@ -1356,7 +1416,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.WindModule.dll"
       ],
-      "DebugActionIndex": 110
+      "DebugActionIndex": 115
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Managed/UnityEngine.XRModule.dll",
@@ -1367,7 +1427,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Managed/UnityEngine.XRModule.dll"
       ],
-      "DebugActionIndex": 111
+      "DebugActionIndex": 116
     },
     {
       "Annotation": "WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info",
@@ -1378,7 +1438,7 @@
         "Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info"
       ],
       "AllowUnwrittenOutputFiles": true,
-      "DebugActionIndex": 112
+      "DebugActionIndex": 117
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/app.info",
@@ -1390,9 +1450,9 @@
         "build32bit/autoloo_Data/app.info"
       ],
       "ToBuildDependencies": [
-        112
+        117
       ],
-      "DebugActionIndex": 113
+      "DebugActionIndex": 118
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo_Data/Resources/unity default resources",
@@ -1403,7 +1463,7 @@
       "Outputs": [
         "build32bit/autoloo_Data/Resources/unity default resources"
       ],
-      "DebugActionIndex": 114
+      "DebugActionIndex": 119
     },
     {
       "Annotation": "CopyFiles build32bit/autoloo.exe",
@@ -1414,7 +1474,7 @@
       "Outputs": [
         "build32bit/autoloo.exe"
       ],
-      "DebugActionIndex": 115
+      "DebugActionIndex": 120
     },
     {
       "Annotation": "CopyFiles build32bit/UnityCrashHandler32.exe",
@@ -1425,7 +1485,7 @@
       "Outputs": [
         "build32bit/UnityCrashHandler32.exe"
       ],
-      "DebugActionIndex": 116
+      "DebugActionIndex": 121
     },
     {
       "Annotation": "CopyFiles build32bit/UnityPlayer.dll",
@@ -1436,7 +1496,7 @@
       "Outputs": [
         "build32bit/UnityPlayer.dll"
       ],
-      "DebugActionIndex": 117
+      "DebugActionIndex": 122
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -1447,7 +1507,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll"
       ],
-      "DebugActionIndex": 118
+      "DebugActionIndex": 123
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
@@ -1458,7 +1518,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll"
       ],
-      "DebugActionIndex": 119
+      "DebugActionIndex": 124
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/browscap.ini",
@@ -1469,7 +1529,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/browscap.ini"
       ],
-      "DebugActionIndex": 120
+      "DebugActionIndex": 125
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/config",
@@ -1480,7 +1540,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/config"
       ],
-      "DebugActionIndex": 121
+      "DebugActionIndex": 126
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
@@ -1491,7 +1551,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 122
+      "DebugActionIndex": 127
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/2.0/machine.config",
@@ -1502,7 +1562,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/2.0/machine.config"
       ],
-      "DebugActionIndex": 123
+      "DebugActionIndex": 128
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/2.0/settings.map",
@@ -1513,7 +1573,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/2.0/settings.map"
       ],
-      "DebugActionIndex": 124
+      "DebugActionIndex": 129
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/2.0/web.config",
@@ -1524,7 +1584,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/2.0/web.config"
       ],
-      "DebugActionIndex": 125
+      "DebugActionIndex": 130
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
@@ -1535,7 +1595,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 126
+      "DebugActionIndex": 131
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
@@ -1546,7 +1606,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 127
+      "DebugActionIndex": 132
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.0/machine.config",
@@ -1557,7 +1617,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.0/machine.config"
       ],
-      "DebugActionIndex": 128
+      "DebugActionIndex": 133
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.0/settings.map",
@@ -1568,7 +1628,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.0/settings.map"
       ],
-      "DebugActionIndex": 129
+      "DebugActionIndex": 134
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.0/web.config",
@@ -1579,7 +1639,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.0/web.config"
       ],
-      "DebugActionIndex": 130
+      "DebugActionIndex": 135
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
@@ -1590,7 +1650,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 131
+      "DebugActionIndex": 136
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
@@ -1601,7 +1661,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 132
+      "DebugActionIndex": 137
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.5/machine.config",
@@ -1612,7 +1672,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.5/machine.config"
       ],
-      "DebugActionIndex": 133
+      "DebugActionIndex": 138
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.5/settings.map",
@@ -1623,7 +1683,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.5/settings.map"
       ],
-      "DebugActionIndex": 134
+      "DebugActionIndex": 139
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.5/web.config",
@@ -1634,7 +1694,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.5/web.config"
       ],
-      "DebugActionIndex": 135
+      "DebugActionIndex": 140
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
@@ -1645,7 +1705,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 136
+      "DebugActionIndex": 141
     },
     {
       "Annotation": "CopyFiles build32bit/MonoBleedingEdge/etc/mono/mconfig/config.xml",
@@ -1656,7 +1716,7 @@
       "Outputs": [
         "build32bit/MonoBleedingEdge/etc/mono/mconfig/config.xml"
       ],
-      "DebugActionIndex": 137
+      "DebugActionIndex": 142
     },
     {
       "Annotation": "Player",
@@ -1775,11 +1835,11 @@
         109,
         110,
         111,
+        112,
         113,
         114,
         115,
         116,
-        117,
         118,
         119,
         120,
@@ -1799,10 +1859,15 @@
         134,
         135,
         136,
-        137
+        137,
+        138,
+        139,
+        140,
+        141,
+        142
       ],
       "AllowUnexpectedOutput": true,
-      "DebugActionIndex": 138
+      "DebugActionIndex": 143
     }
   ],
   "FileSignatures": [
@@ -2011,7 +2076,7 @@
   "EmitDataForBeeWhy": 1,
         "NamedNodes": {
           "all_tundra_nodes": 0,
-          "Player": 138
+          "Player": 143
         }
 ,  "DefaultNodes": [
     0

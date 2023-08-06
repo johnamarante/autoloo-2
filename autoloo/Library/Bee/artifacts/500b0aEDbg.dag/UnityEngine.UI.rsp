@@ -118,6 +118,14 @@
 -define:PACKAGE_UITOOLKIT
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Assembly/Auth0.AuthenticationApi.dll"
+-r:"Assets/Assembly/Auth0.Core.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.JsonWebTokens.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.Logging.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.Protocols.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.Tokens.dll"
+-r:"Assets/Assembly/System.IdentityModel.Tokens.Jwt.dll"
 -r:"C:/projects/autoloo-2/autoloo/Library/PackageCache/com.unity.collab-proxy@1.15.4/Lib/Editor/PlasticSCM/log4netPlastic.dll"
 -r:"C:/projects/autoloo-2/autoloo/Library/PackageCache/com.unity.collab-proxy@1.15.4/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll"
 -r:"C:/projects/autoloo-2/autoloo/Library/PackageCache/com.unity.collab-proxy@1.15.4/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll"

@@ -43,3 +43,12 @@ The following packages were added:
   com.unity.visualscripting@1.7.5
 The following packages were updated:
   com.unity.collab-proxy from version 1.13.5 to 1.15.4
+
+=== Sat Aug  5 16:56:16 2023
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.xr.management@4.2.1
+  com.unity.xr.oculus@1.11.2

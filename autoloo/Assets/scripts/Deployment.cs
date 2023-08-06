@@ -33,7 +33,6 @@ public class Deployment : MonoBehaviour
     public Texture btnFreeze;
     public Texture btnSell;
     public Texture btnRoll;
-    private bool writeToFriendPaste = false;
 
     // Start is called before the first frame update
     void Start()
@@ -118,8 +117,6 @@ public class Deployment : MonoBehaviour
                 gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right").OrderBy(x => x.QueuePosition).ToList();
 
                 StoreAndLoadArmyDetails.Store(gameManager.LeftQueueUnits);
-
-                writeToFriendPaste = true;
 
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
                 gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);

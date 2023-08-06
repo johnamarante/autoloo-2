@@ -1,11 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
+using System;
+using System.Threading.Tasks;
 
 public class LoginScreen : MonoBehaviour
 {
 
     private string usernameOrEmail = "";
     private string password = "";
+
+    static string domain = "dev-shghx702iga4r13k.us.auth0.com";
+    static string clientId = "by9THw2o1yHJpJksTstQlvesHk8IbMW1";
+    static string clientSecret = "UvYtVbH6Zc1d__pWJaB454t6Jg95YFL4mG-tjMksOFyVVRoPCrSeCX5laY-SFZAL";
+    static AuthenticationApiClient authApiClient = new AuthenticationApiClient(new Uri($"https://{domain}/"));
 
     void Start()
     {
@@ -15,7 +24,7 @@ public class LoginScreen : MonoBehaviour
     {
         
     }
-    private void OnGUI()
+    private async Task OnGUI()
     {
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
@@ -46,7 +55,8 @@ public class LoginScreen : MonoBehaviour
 
         if (GUI.Button(new Rect(centerX, buttonRowY, buttonWidth, buttonHeight), "Login"))
         {
-            // Handle login button click here
+            var ag = await Login("john.amarante8888@gmail.com", "assgrenade");
+            Debug.Log(ag.ToString());
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY, buttonWidth, buttonHeight), "Register"))
@@ -62,6 +72,31 @@ public class LoginScreen : MonoBehaviour
         if (GUI.Button(new Rect(centerX, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Play as Guest"))
         {
             // Handle play as guest button click here
+        }
+    }
+
+    static async Task<string> Login(string username, string password)
+    {
+        var request = new ResourceOwnerTokenRequest
+        {
+            ClientId = clientId,
+            ClientSecret = clientSecret,
+            Scope = "openid",
+            Audience = $"https://{domain}/api/v2/",
+            Realm = "Username-Password-Authentication",
+            Username = username,
+            Password = password
+        };
+
+        try
+        {
+            var tokenResponse = await authApiClient.GetTokenAsync(request);
+            return tokenResponse.AccessToken;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Login error: {ex.Message}");
+            return null;
         }
     }
 
