@@ -52,7 +52,6 @@ public class LoginScreen : MonoBehaviour
         // Draw UI elements
         usernameOrEmail = GUI.TextField(new Rect(centerX, usernameY, fieldWidth, fieldHeight), usernameOrEmail);
         password = GUI.PasswordField(new Rect(centerX, passwordY, fieldWidth, fieldHeight), password, "*"[0]);
-
         if (GUI.Button(new Rect(centerX, buttonRowY, buttonWidth, buttonHeight), "Login"))
         {
             var ag = await Login("john.amarante8888@gmail.com", "assgrenade");
@@ -61,7 +60,8 @@ public class LoginScreen : MonoBehaviour
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY, buttonWidth, buttonHeight), "Register"))
         {
-            // Handle register button click here
+            var hupu = RegisterUser(usernameOrEmail, password);
+            Debug.Log(hupu.ToString());
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Forgot Password"))
@@ -95,7 +95,30 @@ public class LoginScreen : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Login error: {ex.Message}");
+            Debug.Log($"Login error: {ex.Message}");
+            return null;
+        }
+    }
+
+    static async Task<SignupUserResponse> RegisterUser(string email, string password)
+    {
+        var signupUserRequest = new SignupUserRequest
+        {
+            ClientId = clientId,
+            Email = email,
+            Password = password,
+            Connection = "Username-Password-Authentication" // Replace with the desired connection name
+        };
+
+        try
+        {
+            //var result = await authApiClient.SignupUserAsync(signupUserRequest);
+            //return result;
+            return await authApiClient.SignupUserAsync(signupUserRequest);
+        }
+        catch (Exception ex)
+        {
+            Debug.Log($"Registration error: {ex.Message}");
             return null;
         }
     }
