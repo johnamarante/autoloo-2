@@ -29,6 +29,10 @@ public class LoginScreen : MonoBehaviour
         {
             loginMessage = $"logged in as {userInfo.UserId} with email {userInfo.Email}";
             Debug.Log($"logged in as {userInfo.UserId} with email {userInfo.Email}");
+            //TODO: make an instance of a calss that simply inherits userinfo, maybe call it autoloo useinfo, and preserve that, not this entire thing. 
+            //clean code or some shit like that... 
+            DontDestroyOnLoad(this);
+            loginMessage = "in new scene";
             SceneManager.LoadScene("mainmenu");
         }
     }
@@ -188,5 +192,4 @@ public class LoginScreen : MonoBehaviour
         Debug.Log("An error occurred while processing the forgot password request.");
         return false;
     }
-
 }
