@@ -4,17 +4,20 @@ using Auth0.AuthenticationApi;
 using Auth0.AuthenticationApi.Models;
 using System;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class LoginScreen : MonoBehaviour
 {
-
     private string usernameOrEmail = "";
     private string password = "";
+
+    private static string loginMessage = "";
 
     static string domain = "dev-shghx702iga4r13k.us.auth0.com";
     static string clientId = "by9THw2o1yHJpJksTstQlvesHk8IbMW1";
     static string clientSecret = "UvYtVbH6Zc1d__pWJaB454t6Jg95YFL4mG-tjMksOFyVVRoPCrSeCX5laY-SFZAL";
     static AuthenticationApiClient authApiClient = new AuthenticationApiClient(new Uri($"https://{domain}/"));
+    private static UserInfo userInfo;
 
     void Start()
     {
@@ -22,7 +25,12 @@ public class LoginScreen : MonoBehaviour
     }
     private void Update()
     {
-        
+        if (userInfo != null && !string.IsNullOrEmpty(userInfo.UserId))
+        {
+            loginMessage = $"logged in as {userInfo.UserId} with email {userInfo.Email}";
+            Debug.Log($"logged in as {userInfo.UserId} with email {userInfo.Email}");
+            SceneManager.LoadScene("mainmenu");
+        }
     }
     private async Task OnGUI()
     {
@@ -30,52 +38,71 @@ public class LoginScreen : MonoBehaviour
         float screenHeight = Screen.height;
 
         // Set the dimensions of UI elements
-        float fieldWidth = 400f;
-        float fieldHeight = 50f;
-        float buttonWidth = 200f;
-        float buttonHeight = 60f;
-        float spacing = 20f;
+        float labelWidth = 250f; // Increased label width
+        float fieldWidth = 800f;
+        float fieldHeight = 100f;
+        float buttonWidth = 400f;
+        float buttonHeight = 120f;
+        float spacing = 40f;
 
         // Calculate the total width of UI elements and spacings
         float totalWidth = (3 * buttonWidth) + (2 * spacing);
 
         // Calculate positions for UI elements
-        float centerX = (screenWidth - totalWidth) * 0.5f;
+        float centerX = (screenWidth - totalWidth) * 0.5f + 50f; // Shifted to the right
         float centerY = screenHeight * 0.5f;
+        float labelY = centerY - fieldHeight - buttonHeight - spacing;
         float usernameY = centerY - fieldHeight - buttonHeight - spacing;
         float passwordY = usernameY + fieldHeight + spacing;
         float buttonRowY = passwordY + fieldHeight + spacing;
 
-        // Set the larger font size for text in input fields
-        GUI.skin.textField.fontSize = 24;
+        // Set the larger font size for text in input fields and buttons
+        int fontSize = 48;
+        Color fontColor = Color.black;
+        GUI.skin.textField.fontSize = fontSize;
+        GUI.skin.button.fontSize = fontSize;
+        GUI.skin.label.fontSize = fontSize;
+        GUI.skin.label.normal.textColor = fontColor;
 
         // Draw UI elements
+        GUI.Label(new Rect(centerX - labelWidth - spacing, labelY, labelWidth, fieldHeight), "Email");
         usernameOrEmail = GUI.TextField(new Rect(centerX, usernameY, fieldWidth, fieldHeight), usernameOrEmail);
+        GUI.Label(new Rect(centerX - labelWidth - spacing, passwordY, labelWidth, fieldHeight), "Password");
         password = GUI.PasswordField(new Rect(centerX, passwordY, fieldWidth, fieldHeight), password, "*"[0]);
         if (GUI.Button(new Rect(centerX, buttonRowY, buttonWidth, buttonHeight), "Login"))
         {
-            var ag = await Login("john.amarante8888@gmail.com", "assgrenade");
-            Debug.Log(ag.ToString());
+            userInfo =  await Login(usernameOrEmail, password);
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY, buttonWidth, buttonHeight), "Register"))
         {
-            var hupu = RegisterUser(usernameOrEmail, password);
-            Debug.Log(hupu.ToString());
+            userInfo = await RegisterUser(usernameOrEmail, password);
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Forgot Password"))
         {
-            // Handle forgot password button click here
+            var forgotPasswordSuccess = await ForgotPassword(usernameOrEmail);
+            if (forgotPasswordSuccess)
+            {
+                loginMessage = "Password reset instructions sent to the provided email address.";
+                Debug.Log("Password reset instructions sent to the provided email address.");
+            }
+            else
+            {
+                loginMessage = "Password reset instructions sent to the provided email address.";
+                Debug.Log("An error occurred while processing the forgot password request.");
+            }
         }
 
         if (GUI.Button(new Rect(centerX, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Play as Guest"))
         {
             // Handle play as guest button click here
         }
+
+        GUI.Label(new Rect(10, Screen.height - 60, 30, 1000), loginMessage, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = fontSize });
     }
 
-    static async Task<string> Login(string username, string password)
+    static async Task<UserInfo> Login(string username, string password)
     {
         var request = new ResourceOwnerTokenRequest
         {
@@ -91,16 +118,18 @@ public class LoginScreen : MonoBehaviour
         try
         {
             var tokenResponse = await authApiClient.GetTokenAsync(request);
-            return tokenResponse.AccessToken;
+            var userInfo = await authApiClient.GetUserInfoAsync(tokenResponse.AccessToken);
+            return userInfo;
         }
         catch (Exception ex)
         {
+            loginMessage = $"Login error: {ex.Message}";
             Debug.Log($"Login error: {ex.Message}");
             return null;
         }
     }
 
-    static async Task<SignupUserResponse> RegisterUser(string email, string password)
+    static async Task<UserInfo> RegisterUser(string email, string password)
     {
         var signupUserRequest = new SignupUserRequest
         {
@@ -112,15 +141,52 @@ public class LoginScreen : MonoBehaviour
 
         try
         {
-            //var result = await authApiClient.SignupUserAsync(signupUserRequest);
-            //return result;
-            return await authApiClient.SignupUserAsync(signupUserRequest);
+            var signupResponse = await authApiClient.SignupUserAsync(signupUserRequest);
+
+            if (signupResponse.Id != null)
+            {
+                loginMessage = $"New user has been registered with ID {signupResponse.Id}";
+                Debug.Log($"New user has been registered with ID {signupResponse.Id}");
+                return await Login(email, password);
+            }
         }
         catch (Exception ex)
         {
+            loginMessage = $"Registration error: {ex.Message}"; 
             Debug.Log($"Registration error: {ex.Message}");
-            return null;
         }
+        loginMessage = $"There was a problem registering a new user";
+        Debug.Log($"There was a problem registering a new user");
+        return null;
+    }
+
+    static async Task<bool> ForgotPassword(string email)
+    {
+        var request = new ChangePasswordRequest
+        {
+            ClientId = clientId,
+            Connection = "Username-Password-Authentication",
+            Email = email
+        };
+
+        try
+        {
+            var changePasswordResponse = await authApiClient.ChangePasswordAsync(request);
+            if (changePasswordResponse != null)
+            {
+                loginMessage = "Password reset instructions sent to the provided email address.";
+                Debug.Log("Password reset instructions sent to the provided email address.");
+                return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            loginMessage = $"Forgot password error: {ex.Message}";
+            Debug.Log($"Forgot password error: {ex.Message}");
+        }
+        loginMessage = "An error occurred while processing the forgot password request.";
+        Debug.Log("An error occurred while processing the forgot password request.");
+        return false;
     }
 
 }
