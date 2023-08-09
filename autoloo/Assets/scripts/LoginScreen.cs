@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class LoginScreen : MonoBehaviour
 {
+    public AutolooUserInfo autolooUserInfo;
     private string usernameOrEmail = "";
     private string password = "";
 
@@ -17,7 +18,6 @@ public class LoginScreen : MonoBehaviour
     static string clientId = "by9THw2o1yHJpJksTstQlvesHk8IbMW1";
     static string clientSecret = "UvYtVbH6Zc1d__pWJaB454t6Jg95YFL4mG-tjMksOFyVVRoPCrSeCX5laY-SFZAL";
     static AuthenticationApiClient authApiClient = new AuthenticationApiClient(new Uri($"https://{domain}/"));
-    private static UserInfo userInfo;
 
     void Start()
     {
@@ -25,13 +25,11 @@ public class LoginScreen : MonoBehaviour
     }
     private void Update()
     {
-        if (userInfo != null && !string.IsNullOrEmpty(userInfo.UserId))
+        if (autolooUserInfo.userInfo != null && !string.IsNullOrEmpty(autolooUserInfo.userInfo.UserId))
         {
-            loginMessage = $"logged in as {userInfo.UserId} with email {userInfo.Email}";
-            Debug.Log($"logged in as {userInfo.UserId} with email {userInfo.Email}");
-            //TODO: make an instance of a calss that simply inherits userinfo, maybe call it autoloo useinfo, and preserve that, not this entire thing. 
-            //clean code or some shit like that... 
-            DontDestroyOnLoad(this);
+            loginMessage = $"logged in as {autolooUserInfo.userInfo.UserId} with email {autolooUserInfo.userInfo.Email}";
+            Debug.Log($"logged in as {autolooUserInfo.userInfo.UserId} with email {autolooUserInfo.userInfo.Email}");
+            DontDestroyOnLoad(autolooUserInfo);
             loginMessage = "in new scene";
             SceneManager.LoadScene("mainmenu");
         }
@@ -75,12 +73,12 @@ public class LoginScreen : MonoBehaviour
         password = GUI.PasswordField(new Rect(centerX, passwordY, fieldWidth, fieldHeight), password, "*"[0]);
         if (GUI.Button(new Rect(centerX, buttonRowY, buttonWidth, buttonHeight), "Login"))
         {
-            userInfo =  await Login(usernameOrEmail, password);
+            autolooUserInfo.userInfo =  await Login(usernameOrEmail, password);
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY, buttonWidth, buttonHeight), "Register"))
         {
-            userInfo = await RegisterUser(usernameOrEmail, password);
+            autolooUserInfo.userInfo = await RegisterUser(usernameOrEmail, password);
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Forgot Password"))
