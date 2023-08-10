@@ -69,13 +69,14 @@
     <Compile Include="Assets\scripts\Unit.cs" />
     <Compile Include="Assets\scripts\DeploymentShopMarker.cs" />
     <Compile Include="Assets\scripts\OpponentGeneration.cs" />
+    <Compile Include="Assets\scripts\AutolooUserInfo.cs" />
     <Compile Include="Assets\scripts\keytest.cs" />
+    <Compile Include="Assets\scripts\MainMenu.cs" />
     <Compile Include="Assets\scripts\FriendpasteClient.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
     <Compile Include="Assets\scripts\DragIt.cs" />
     <Compile Include="Assets\scripts\StoreAndLoadArmyDetails.cs" />
-    <Compile Include="Assets\scripts\AutolooUserInfo.cs" />
-    <Compile Include="Assets\scripts\MainMenu.cs" />
+    <Compile Include="Assets\scripts\AutolooUserInfoUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
