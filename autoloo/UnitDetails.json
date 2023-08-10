@@ -1,1 +1,23 @@
-[{"Name":"unit_left_adbec575-9ea7-42d7-bfbf-fd9ea3a0f8dc","Attack":4,"HitPoints":3,"Rank":1,"Side":"left","QueuePosition":-1,"SpriteName":"french_line_left_2_1_Sprite"}~{"Name":"unit_left_a39dab47-2fbe-4adc-8baa-55c5d146e349","Attack":4,"HitPoints":3,"Rank":0,"Side":"left","QueuePosition":-2,"SpriteName":"french_linevoltiguer_left_2_-1_Sprite"}]
+{
+	"playername":"hupu",
+    "UnitDetails": [
+        {
+            "Name": "unit_left_ea4c1c86-262c-4868-9a49-8fa3dccb1f03",
+            "Attack": 4,
+            "HitPoints": 3,
+            "Rank": 0,
+            "Side": "left",
+            "QueuePosition": -1,
+            "SpriteName": "french_linevoltiguer_left_2_-1_Sprite"
+        },
+        {
+            "Name": "unit_left_fb735f17-706d-42b0-a0a3-5061554e33b4",
+            "Attack": 3,
+            "HitPoints": 2,
+            "Rank": 0,
+            "Side": "left",
+            "QueuePosition": -2,
+            "SpriteName": "french_line_left_2_1_Sprite"
+        }
+    ]
+}

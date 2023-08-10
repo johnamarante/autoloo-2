@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using UnityEngine;
 
     public static class FriendpasteClient
     {
+        public const string baseURL = "https://friendpaste.com/";
         public static async Task<string> PostDataAsync(string postURL, string title, string body)
         {
             var request = CreateWebRequest(postURL, "POST");
@@ -63,7 +65,6 @@ using UnityEngine;
         public static async Task<string> GetDataAsync(string postURL)
         {
             var request = CreateWebRequest(postURL, "GET");
-
             var response = await request.GetResponseAsync();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return responseString;

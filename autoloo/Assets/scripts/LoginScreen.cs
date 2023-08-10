@@ -25,10 +25,10 @@ public class LoginScreen : MonoBehaviour
     }
     private void Update()
     {
-        if (autolooUserInfo.userInfo != null && !string.IsNullOrEmpty(autolooUserInfo.userInfo.UserId))
+        if (autolooUserInfo.UserInfo != null && !string.IsNullOrEmpty(autolooUserInfo.UserInfo.UserId))
         {
-            loginMessage = $"logged in as {autolooUserInfo.userInfo.UserId} with email {autolooUserInfo.userInfo.Email}";
-            Debug.Log($"logged in as {autolooUserInfo.userInfo.UserId} with email {autolooUserInfo.userInfo.Email}");
+            loginMessage = $"logged in as {autolooUserInfo.UserInfo.UserId} with email {autolooUserInfo.UserInfo.Email}";
+            Debug.Log($"logged in as {autolooUserInfo.UserInfo.UserId} with email {autolooUserInfo.UserInfo.Email}");
             DontDestroyOnLoad(autolooUserInfo);
             loginMessage = "in new scene";
             SceneManager.LoadScene("mainmenu");
@@ -73,12 +73,12 @@ public class LoginScreen : MonoBehaviour
         password = GUI.PasswordField(new Rect(centerX, passwordY, fieldWidth, fieldHeight), password, "*"[0]);
         if (GUI.Button(new Rect(centerX, buttonRowY, buttonWidth, buttonHeight), "Login"))
         {
-            autolooUserInfo.userInfo =  await Login(usernameOrEmail, password);
+            autolooUserInfo.UserInfo =  await Login(usernameOrEmail, password);
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY, buttonWidth, buttonHeight), "Register"))
         {
-            autolooUserInfo.userInfo = await RegisterUser(usernameOrEmail, password);
+            autolooUserInfo.UserInfo = await RegisterUser(usernameOrEmail, password);
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Forgot Password"))
@@ -149,6 +149,7 @@ public class LoginScreen : MonoBehaviour
             {
                 loginMessage = $"New user has been registered with ID {signupResponse.Id}";
                 Debug.Log($"New user has been registered with ID {signupResponse.Id}");
+
                 return await Login(email, password);
             }
         }

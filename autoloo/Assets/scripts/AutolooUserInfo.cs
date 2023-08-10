@@ -3,24 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//this class must inherit Monobehaviour so that it can be preserved between scenes as a Unity gameObject using dontDestroyOnLoad()
 public class AutolooUserInfo : MonoBehaviour
 {
-    public UserInfo userInfo { get; set; }
+    public UserInfo UserInfo { get; set; }
+    public string PlayerName;
 
     private void Awake()
     {
-        userInfo = new UserInfo();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        UserInfo = new UserInfo();
     }
 }
