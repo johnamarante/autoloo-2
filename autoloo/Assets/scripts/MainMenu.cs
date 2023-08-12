@@ -11,11 +11,14 @@ public class MainMenu : MonoBehaviour
 {
     private static string menuMessage = "";
     public static AutolooUserInfo autolooUserInfo;
+    public string directoryUrl = "";
+    public string directoryData = "";
+    public string directoryTitle = "";
     public string userId = "";
-    public string userData = "";
     public string playerName = "";
+    public string playerData = "";
     private bool newUserSetup = false;
-    private GUIStyle guiStyle;// = new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = 48 };
+    private GUIStyle guiStyle;
 
     private void Awake()
     {
@@ -27,16 +30,28 @@ public class MainMenu : MonoBehaviour
     { 
         autolooUserInfo = FindObjectOfType<AutolooUserInfo>();
         userId = autolooUserInfo.UserInfo.UserId.Split("|")[1];
-        
+
         //Get the user directory data based on the first char of the userid from Auth0
-        var directoryData = await FriendpasteClient.GetDataAsync(AutolooUserInfoUtil.GetUserDirectoryURLBasedOnUserID(userId));
+        directoryUrl = AutolooUserInfoUtil.GetUserDirectoryURLBasedOnUserID(userId);
+        directoryData = await FriendpasteClient.FriendpasteClient.GetDataAsync(directoryUrl);
 
         //check if the user is already in the directoy
-        var pasteId = GetPasteIdByUserId(directoryData, userId);
-        //if they are, then PUT the user data
-        if (pasteId is not null)
+        var pasteURL = GetPasteIdByUserId(directoryData, userId);
+        //if the user is already present in the directory are, then GET the user data
+        if (pasteURL is not null)
         {
-            autolooUserInfo.PlayerName = await FriendpasteClient.GetDataAsync($"https://friendpaste.com/{pasteId}");
+            var playerData = await FriendpasteClient.FriendpasteClient.GetDataAsync(pasteURL);
+            // Deserialize the main JSON object
+            JObject mainObject = JObject.Parse(playerData);
+
+            // Get the "snippet" property as a JSON string
+            string snippetJsonString = (string)mainObject["snippet"];
+
+            // Deserialize the inner JSON object within the "snippet" property
+            JObject snippetObject = JObject.Parse( FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse( snippetJsonString));
+
+            // Now you can access properties within the inner JSON object
+            autolooUserInfo.PlayerName = (string)snippetObject["playername"];
         }
         else {
             //otherwise, do new user setup, which is
@@ -46,8 +61,6 @@ public class MainMenu : MonoBehaviour
             playerName = autolooUserInfo.UserInfo.Email.Split("@")[0];
             newUserSetup = true;
         }
-
-
         menuMessage = $"logged in as {(String.IsNullOrEmpty(autolooUserInfo.PlayerName) ? autolooUserInfo.UserInfo.Email : autolooUserInfo.PlayerName)}, id {userId}";
     }
 
@@ -97,43 +110,45 @@ public class MainMenu : MonoBehaviour
             );
 
             string jsonString = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
-            var newPlayerPostResponse = await FriendpasteClient.PostDataAsync(FriendpasteClient.baseURL, autolooUserInfo.UserInfo.UserId, jsonString);
+            var newPlayerPostResponse = await FriendpasteClient.FriendpasteClient.PostDataAsync(FriendpasteClient.FriendpasteClient.baseURL, userId, FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(jsonString));
 
-            // Button click logic (you can implement your own logic here)
-            Debug.Log("Player name set to: " + playerName);
+            var updatedJSON = AddUserIdAndPasteIdToDirectoryData(directoryData, userId, JObject.Parse(newPlayerPostResponse).Value<string>("url"));
+            char firstChar = char.ToLower(userId[0]);
+            await FriendpasteClient.FriendpasteClient.PutDataAsyncWithTimeout(directoryUrl, $"AutolooUserDirectory{firstChar}" , FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(updatedJSON));
+
+            Debug.Log($"Player name set to {playerName} and paste is at {newPlayerPostResponse}");
             newUserSetup = false;
         }
     }
 
     static string GetPasteIdByUserId(string jsonString, string userId)
     {
-        JObject jsonObject = JObject.Parse(jsonString);
-        JArray usersArray = (JArray)jsonObject["users"];
+        JObject outerObject = JObject.Parse(jsonString);
+        JObject innerObject = JObject.Parse(FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse(outerObject["snippet"].ToString()));
+        JArray usersArray = (JArray)innerObject["data"];
 
-        foreach (JToken user in usersArray)
+        foreach (JObject user in usersArray)
         {
             string currentUserId = user["userId"].ToString();
             if (currentUserId == userId)
             {
-                return user["pasteId"].ToString();
+                return user["pasteid"].ToString();
             }
         }
-
         return null; // Return null if userId is not found
     }
 
-    static string AddUserToPasteSnip(string jsonString, string newUserId, string newPasteId)
+    static string AddUserIdAndPasteIdToDirectoryData(string jsonString, string userId, string pasteId)
     {
-        JObject jsonObject = JsonConvert.DeserializeObject<JObject>(jsonString);
-
-        JArray usersArray = (JArray)jsonObject["users"];
-
-        JObject newUser = new JObject();
-        newUser["userId"] = newUserId;
-        newUser["pasteId"] = newPasteId;
-
-        usersArray.Add(newUser);
-
-        return jsonObject.ToString();
+        var newElement = new JObject
+        {
+            ["userId"] = userId,
+            ["pasteid"] = pasteId
+        };
+        JObject anotherJsonObject = JObject.Parse(FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse(JObject.Parse(jsonString)["snippet"].ToString()));
+        anotherJsonObject["data"][0].AddBeforeSelf(newElement);
+        string serializedAnotherJson = JsonConvert.SerializeObject(anotherJsonObject, Formatting.Indented);
+        return serializedAnotherJson;
     }
+
 }

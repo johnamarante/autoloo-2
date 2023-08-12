@@ -28,12 +28,12 @@ public class keytest : MonoBehaviour
         if (Input.GetKeyDown("a"))
         {
             vText.text = vText.text + "a";
-            await FriendpasteClient.PutDataAsync(postUrl, "TEST", vText.text + "a");
+            await FriendpasteClient.FriendpasteClient.PutDataAsyncWithTimeout(postUrl, "TEST", vText.text + "a");
         }
     }
 
     private async Task<string> FireItUp()
     {
-        return await FriendpasteClient.PostDataAsync(friendpasteUrl, "TEST", expectedPost);
+        return await FriendpasteClient.FriendpasteClient.PostDataAsync(friendpasteUrl, "TEST", expectedPost);
     }
 }
