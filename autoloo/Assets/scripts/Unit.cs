@@ -256,7 +256,7 @@ public class Unit : MonoBehaviour
         if (!gameManager.InBattleModeAndNotDeploymentMode)
         {
             var selectedUnit = gameManager.selectedUnit;
-            string selectedUnitSpriteName = string.Empty;
+            string selectedUnitSpriteName = string.Empty; //if we ever need to improve performance, we should give units numeric IDs to compare
             string thisUnitSpriteName = string.Empty;
             //0. Make sure that the same unit has not been clicked twice. If so, then just deselect and exit
             if (selectedUnit != null)
