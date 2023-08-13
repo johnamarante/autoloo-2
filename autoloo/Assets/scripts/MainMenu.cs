@@ -29,24 +29,33 @@ public class MainMenu : MonoBehaviour
     private async void Start()
     {
         autolooUserInfo = FindObjectOfType<AutolooUserInfo>();
-        userId = autolooUserInfo.UserInfo.UserId.Split("|")[1];
-
-        directoryUrl = AutolooUserInfoUtil.GetUserDirectoryURLBasedOnUserID(userId);
-        directoryData = await FriendpasteClient.FriendpasteClient.GetDataAsync(directoryUrl);
-
-        var pasteURL = GetPasteIdByUserId(directoryData, userId);
-        if (!string.IsNullOrEmpty(pasteURL))
+        if (autolooUserInfo.UserInfo.UserId == "guest")
         {
-            var playerData = await FriendpasteClient.FriendpasteClient.GetDataAsync(pasteURL);
-            autolooUserInfo.PlayerName = ExtractPlayerNameFromData(playerData);
+            userId = autolooUserInfo.UserInfo.UserId;
+            newUserSetup = false;
         }
         else
         {
-            playerName = autolooUserInfo.UserInfo.Email.Split("@")[0];
-            newUserSetup = true;
-        }
+            userId = autolooUserInfo.UserInfo.UserId.Split("|")[1];
 
-        menuMessage = $"Logged in as {GetPlayerDisplayName()}, id {userId}";
+            directoryUrl = AutolooUserInfoUtil.GetUserDirectoryURLBasedOnUserID(userId);
+            directoryData = await FriendpasteClient.FriendpasteClient.GetDataAsync(directoryUrl);
+
+            var pasteURL = GetPasteIdByUserId(directoryData, userId);
+            if (!string.IsNullOrEmpty(pasteURL))
+            {
+                var playerData = await FriendpasteClient.FriendpasteClient.GetDataAsync(pasteURL);
+                autolooUserInfo.PlayerName = ExtractPlayerNameFromData(playerData);
+                //load other returning player data (current game turn number)
+            }
+            else
+            {
+                playerName = autolooUserInfo.UserInfo.Email.Split("@")[0];
+                newUserSetup = true;
+            }
+
+            menuMessage = $"Logged in as {GetPlayerDisplayName()}, id {userId}";
+        }
     }
 
     private string GetPlayerDisplayName()
@@ -61,6 +70,10 @@ public class MainMenu : MonoBehaviour
         if (newUserSetup)
         {
             await ShowNewUserSetupDialogue();
+        }
+        else
+        {
+            //if this is a returning user
         }
     }
 
