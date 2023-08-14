@@ -1,31 +1,49 @@
 {
     "UnitDetails": [
         {
-            "Name": "unit_left_de9eaa8b-0bb0-4b81-8ea6-4b334e76bc9c",
-            "Attack": 5,
+            "Name": "unit_left_9e2afb00-8cc8-4c79-af84-bd117b6dc7b5",
+            "Attack": 4,
             "HitPoints": 4,
-            "Rank": 2,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -1,
-            "SpriteName": "french_line_left_2_1_Sprite"
+            "SpriteName": "british_guardgrenadier_left_2_0_Sprite"
         },
         {
-            "Name": "unit_left_95aaaf68-45d0-431f-b416-bc7e8367da79",
-            "Attack": 6,
-            "HitPoints": 5,
-            "Rank": 3,
+            "Name": "unit_left_c0c4c1ed-b9d3-40a2-a0d0-8a94d392d583",
+            "Attack": 3,
+            "HitPoints": 3,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -2,
-            "SpriteName": "french_line_left_2_1_Sprite"
+            "SpriteName": "british_highlander_left_2_0_Sprite"
         },
         {
-            "Name": "unit_left_c3e72a37-ecec-4730-aec7-efed28ce7ce1",
-            "Attack": 4,
+            "Name": "unit_left_9199b370-140c-4ebf-856b-a1d9736e9c0c",
+            "Attack": 3,
             "HitPoints": 3,
             "Rank": 0,
             "Side": "left",
             "QueuePosition": -3,
-            "SpriteName": "french_linegrenadier_left_2_1_Sprite"
+            "SpriteName": "british_highlander_left_2_0_Sprite"
+        },
+        {
+            "Name": "unit_left_6c20ce3e-0ab6-4d03-94dd-4fb37713505b",
+            "Attack": 2,
+            "HitPoints": 3,
+            "Rank": 0,
+            "Side": "left",
+            "QueuePosition": -4,
+            "SpriteName": "british_footgrenadier_left_3_1_Sprite"
+        },
+        {
+            "Name": "unit_left_441ab695-8bed-4372-b415-b2317cb991e9",
+            "Attack": 4,
+            "HitPoints": 4,
+            "Rank": 1,
+            "Side": "left",
+            "QueuePosition": -5,
+            "SpriteName": "british_highlander_left_2_0_Sprite"
         }
     ]
 }

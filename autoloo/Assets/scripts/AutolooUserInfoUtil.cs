@@ -36,15 +36,16 @@ public static class AutolooUserInfoUtil
             throw new ArgumentException("Input string cannot be null or empty.");
         }
 
-        char firstChar = char.ToLower(input[0]);
+        char lastChar = char.ToLower(input[input.Length - 1]); // Get the last character of the input string
 
-        if (UserDirectoryURLs.ContainsKey(firstChar))
+        if (UserDirectoryURLs.ContainsKey(lastChar))
         {
-            return UserDirectoryURLs[firstChar];
+            return UserDirectoryURLs[lastChar];
         }
         else
         {
             throw new ArgumentException("Input string does not correspond to a valid URL.");
         }
     }
+
 }
