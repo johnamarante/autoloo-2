@@ -54,7 +54,7 @@ public class MainMenu : MonoBehaviour
                 newUserSetup = true;
             }
 
-            menuMessage = $"Logged in as {GetPlayerDisplayName()}, id {userId}";
+            menuMessage = $"Logged in as {GetPlayerDisplayName()}";
         }
     }
 

@@ -29,7 +29,7 @@ public class LoginScreen : MonoBehaviour
         {
             string loginMessage = autolooUserInfo.UserInfo.UserId == "guest"
                 ? "logged in as guest"
-                : $"logged in as {autolooUserInfo.UserInfo.UserId} with email {autolooUserInfo.UserInfo.Email}";
+                : $"logged in with email {autolooUserInfo.UserInfo.Email}";
             DontDestroyOnLoad(autolooUserInfo);
             loginMessage = "in new scene";
             SceneManager.LoadScene("mainmenu");
