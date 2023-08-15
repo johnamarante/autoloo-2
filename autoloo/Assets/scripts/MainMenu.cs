@@ -4,11 +4,17 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    
+    public Texture2D britainFlag;
+    public Texture2D franceFlag;
     private static string menuMessage = "";
     public static AutolooUserInfo autolooUserInfo;
+    public AutolooUserGameData autolooUserGameData;
     private string userId = "";
     private bool newUserSetup = false;
     private bool isSettingUpUser = false;
@@ -20,7 +26,7 @@ public class MainMenu : MonoBehaviour
 
     [Header("Player")]
     public string playerName = "";
-    private string playerData = "";
+    //private string playerData = "";
 
     private void Awake()
     {
@@ -29,6 +35,7 @@ public class MainMenu : MonoBehaviour
 
     private async void Start()
     {
+        GUI.enabled = false;
         autolooUserInfo = FindObjectOfType<AutolooUserInfo>();
         if (autolooUserInfo.UserInfo.UserId == "guest")
         {
@@ -57,6 +64,7 @@ public class MainMenu : MonoBehaviour
 
             menuMessage = $"Logged in as {GetPlayerDisplayName()}";
         }
+        GUI.enabled = true;
     }
 
     private string GetPlayerDisplayName()
@@ -75,6 +83,10 @@ public class MainMenu : MonoBehaviour
         else
         {
             //if this is a returning user
+            //then load their data from game they left off
+            //and win/loss record
+            //or custom deck data (DLC)
+            ShowChooseNation();
         }
     }
     
@@ -107,6 +119,39 @@ public class MainMenu : MonoBehaviour
         GUI.enabled = true; // Enable the button again
     }
 
+    private void ShowChooseNation()
+    {
+        float centerX = Screen.width * 0.5f;
+        float centerY = Screen.height * 0.5f;
+
+        float inputWidth = 500;
+        float inputHeight = 60;
+        float buttonWidth = 500;
+        float buttonHeight = 250;
+
+        float inputX = centerX - inputWidth * 0.5f;
+        float inputY = centerY - inputHeight * 0.5f;
+        float buttonX = centerX - buttonWidth * 0.5f;
+        float buttonY = inputY + inputHeight + 20;
+
+        if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth/2, buttonHeight), franceFlag))
+        {
+            LoadGame("France");
+
+        }
+        if (GUI.Button(new Rect(buttonX + (buttonWidth / 2), buttonY, buttonWidth/2, buttonHeight), britainFlag))
+        {
+            LoadGame("Britain");
+        }
+    }
+
+    public void LoadGame(string playerRoster)
+    {
+        autolooUserGameData.PlayerRoster = playerRoster;
+        DontDestroyOnLoad(autolooUserGameData);
+        SceneManager.LoadScene("SampleScene");
+    }
+
     private async Task SetupNewUser()
     {
         JObject jsonObject = new JObject(
@@ -122,6 +167,8 @@ public class MainMenu : MonoBehaviour
         await FriendpasteClient.FriendpasteClient.PutDataAsyncWithTimeout(directoryUrl, $"AutolooUserDirectory{firstChar}", FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(updatedJSON));
 
         Debug.Log($"Player name set to {playerName} and paste is at {newPlayerPostResponse}");
+        autolooUserInfo.PlayerName = playerName;
+        menuMessage = $"Logged in as {GetPlayerDisplayName()}";
         newUserSetup = false;
     }
 

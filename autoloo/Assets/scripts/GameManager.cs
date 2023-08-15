@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float period = 1f;
     public int guiFontSize = 20;
     public bool multiplayer = false;
-    public string playerSide;
+    public string playerSide = "left";
     //public Unit selectedUnit;
     public Deployment deployment;
     public Sprite[] rankSprites;
@@ -46,11 +46,22 @@ public class GameManager : MonoBehaviour
     {
         fightQueuePositions = SetFightQueuePositionLocations();
         cameraPositions = SetCameraPositionLocations();
-
-        
+        string sRoster = FindObjectOfType<AutolooUserGameData>().PlayerRoster;
+        switch (sRoster)
+        {
+            case "France":
+                PlayAsFrance();
+                break;
+            case "Britain":
+                PlayAsBritian();
+                break;
+            default:
+                Console.WriteLine("Roster not found");
+                break;
+        }
     }
 
-    private void PlayAsGreatBritian()
+    private void PlayAsBritian()
     {
         LeftUnitRoster = BritishUnitRoster;
         foreach (var un in LeftUnitRoster)
@@ -181,19 +192,6 @@ public class GameManager : MonoBehaviour
             //GUI.Label(new Rect(10, 30, 300, 300), $"W: {Screen.width} H: {Screen.height}", new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
             var selectionText = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
             GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), selectionText, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
-        }
-        else
-        {
-            if (GUI.Button(new Rect(0, 0, (int)(Screen.width/2), Screen.height), playAsFrance))
-            {
-                playerSide = "left";
-                PlayAsFrance();
-            }
-            if (GUI.Button(new Rect((int)(Screen.width / 2), 0, (int)(Screen.width / 2), Screen.height), playAsGreatBritain))
-            {
-                playerSide = "left";
-                PlayAsGreatBritian();
-            }
         }
     }
 
