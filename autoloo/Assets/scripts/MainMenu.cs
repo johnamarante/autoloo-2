@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public static AutolooUserInfo autolooUserInfo;
     private string userId = "";
     private bool newUserSetup = false;
+    private bool isSettingUpUser = false;
     private GUIStyle guiStyle;
 
     [Header("Directory")]
@@ -76,7 +77,7 @@ public class MainMenu : MonoBehaviour
             //if this is a returning user
         }
     }
-
+    
     private async Task ShowNewUserSetupDialogue()
     {
         float centerX = Screen.width * 0.5f;
@@ -94,10 +95,16 @@ public class MainMenu : MonoBehaviour
 
         playerName = GUI.TextField(new Rect(inputX, inputY, inputWidth, inputHeight), playerName);
 
+        GUI.enabled = !isSettingUpUser; // Disable the button while setting up user
         if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth, buttonHeight), "Set Name"))
         {
+            isSettingUpUser = true; // Start setting up user
+
             await SetupNewUser();
+
+            isSettingUpUser = false; // Finish setting up user
         }
+        GUI.enabled = true; // Enable the button again
     }
 
     private async Task SetupNewUser()
