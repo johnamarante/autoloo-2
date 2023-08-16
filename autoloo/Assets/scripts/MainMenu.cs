@@ -80,12 +80,8 @@ public class MainMenu : MonoBehaviour
         {
             await ShowNewUserSetupDialogue();
         }
-        else
+        if (autolooUserInfo.PlayerName.Length > 0)
         {
-            //if this is a returning user
-            //then load their data from game they left off
-            //and win/loss record
-            //or custom deck data (DLC)
             ShowChooseNation();
         }
     }

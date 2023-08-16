@@ -97,6 +97,7 @@ public class LoginScreen : MonoBehaviour
 
         if (GUI.Button(new Rect(centerX, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Play as Guest"))
         {
+            autolooUserInfo.PlayerName = "guest";
             autolooUserInfo.UserInfo = new() { UserId = "guest" };
         }
 
