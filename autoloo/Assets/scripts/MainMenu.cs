@@ -80,7 +80,7 @@ public class MainMenu : MonoBehaviour
         {
             await ShowNewUserSetupDialogue();
         }
-        if (autolooUserInfo.PlayerName.Length > 0)
+        if (!string.IsNullOrEmpty(autolooUserInfo.PlayerName))
         {
             ShowChooseNation();
         }

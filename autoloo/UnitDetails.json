@@ -1,49 +1,31 @@
 {
     "UnitDetails": [
         {
-            "Name": "unit_left_9e2afb00-8cc8-4c79-af84-bd117b6dc7b5",
-            "Attack": 4,
-            "HitPoints": 4,
-            "Rank": 0,
-            "Side": "left",
-            "QueuePosition": -1,
-            "SpriteName": "british_guardgrenadier_left_2_0_Sprite"
-        },
-        {
-            "Name": "unit_left_c0c4c1ed-b9d3-40a2-a0d0-8a94d392d583",
-            "Attack": 3,
-            "HitPoints": 3,
-            "Rank": 0,
-            "Side": "left",
-            "QueuePosition": -2,
-            "SpriteName": "british_highlander_left_2_0_Sprite"
-        },
-        {
-            "Name": "unit_left_9199b370-140c-4ebf-856b-a1d9736e9c0c",
-            "Attack": 3,
-            "HitPoints": 3,
-            "Rank": 0,
-            "Side": "left",
-            "QueuePosition": -3,
-            "SpriteName": "british_highlander_left_2_0_Sprite"
-        },
-        {
-            "Name": "unit_left_6c20ce3e-0ab6-4d03-94dd-4fb37713505b",
+            "Name": "unit_left_a4665e48-d8af-485f-96dd-b25acacfe676",
             "Attack": 2,
             "HitPoints": 3,
             "Rank": 0,
             "Side": "left",
-            "QueuePosition": -4,
+            "QueuePosition": -1,
             "SpriteName": "british_footgrenadier_left_3_1_Sprite"
         },
         {
-            "Name": "unit_left_441ab695-8bed-4372-b415-b2317cb991e9",
-            "Attack": 4,
-            "HitPoints": 4,
-            "Rank": 1,
+            "Name": "unit_left_5a9f8fd4-0da1-4f53-bbb1-f7ce8dc0c1d2",
+            "Attack": 2,
+            "HitPoints": 3,
+            "Rank": 0,
             "Side": "left",
-            "QueuePosition": -5,
-            "SpriteName": "british_highlander_left_2_0_Sprite"
+            "QueuePosition": -2,
+            "SpriteName": "british_footgrenadier_left_3_1_Sprite"
+        },
+        {
+            "Name": "unit_left_b1f20bed-a69c-4979-b03e-79eacb0fa940",
+            "Attack": 2,
+            "HitPoints": 3,
+            "Rank": 0,
+            "Side": "left",
+            "QueuePosition": -3,
+            "SpriteName": "british_footgrenadier_left_3_1_Sprite"
         }
     ]
 }
