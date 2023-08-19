@@ -25,9 +25,18 @@ public class GameManager : MonoBehaviour
     public Sprite[] rankSprites;
     public Texture playAsFrance;
     public Texture playAsGreatBritain;
-
-    public bool InBattleModeAndNotDeploymentMode = false;
-    
+    public bool _InBattleModeAndNotDeploymentMode;
+    public bool InBattleModeAndNotDeploymentMode
+    {
+        get { return _InBattleModeAndNotDeploymentMode; }
+        set
+        {
+            _InBattleModeAndNotDeploymentMode = value;
+            this?.InBattleModeAndNotDeploymentModeChanged(_InBattleModeAndNotDeploymentMode);
+        }
+    }
+    public AudioClip melee8;
+    AudioSource generalAudioSource;
     public Unit _selectedUnit;
     public Unit selectedUnit
     {
@@ -39,6 +48,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public Action<Unit> OnSelectedUnitChanged;
+    public Action<bool> InBattleModeAndNotDeploymentModeChanged;
     public ResultPopup resultPopup;
 
     // Start is called before the first frame update
@@ -46,6 +56,9 @@ public class GameManager : MonoBehaviour
     {
         fightQueuePositions = SetFightQueuePositionLocations();
         cameraPositions = SetCameraPositionLocations();
+        generalAudioSource = Camera.main.GetComponent<AudioSource>();
+        generalAudioSource.volume = 0.7f;
+        generalAudioSource.clip = melee8;
         string sRoster = FindObjectOfType<AutolooUserGameData>().PlayerRoster;
         switch (sRoster)
         {
@@ -59,6 +72,20 @@ public class GameManager : MonoBehaviour
                 Console.WriteLine("Roster not found");
                 break;
         }
+        deployment = Instantiate(deployment);
+        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
+        InBattleModeAndNotDeploymentModeChanged += (e) => { 
+            string lupu = InBattleModeAndNotDeploymentMode ? "in battle mode" : "in deployment mode" ;  
+            Debug.Log($"{lupu}");
+            if (InBattleModeAndNotDeploymentMode)
+            {
+                generalAudioSource.Play();
+            }
+            else
+            {
+                generalAudioSource.Stop();
+            }
+        };
     }
 
     private void PlayAsBritian()
@@ -73,8 +100,7 @@ public class GameManager : MonoBehaviour
         {
             un.side = "right";
         }
-        deployment = Instantiate(deployment);
-        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
+
     }
     private void PlayAsFrance()
     {
@@ -88,8 +114,6 @@ public class GameManager : MonoBehaviour
         {
             un.side = "right";
         }
-        deployment = Instantiate(deployment);
-        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
     }
 
     private Dictionary<int, Vector3> SetFightQueuePositionLocations()
@@ -132,6 +156,7 @@ public class GameManager : MonoBehaviour
         { 
             //Single Player mode
             Fight(ref LeftQueueUnits, ref RightQueueUnits);
+
             var leftEliminatedIndecies = EliminateUnitsWithZeroHitPoints(ref LeftQueueUnits);
             var rightEliminatedIndecies = EliminateUnitsWithZeroHitPoints(ref RightQueueUnits);
 

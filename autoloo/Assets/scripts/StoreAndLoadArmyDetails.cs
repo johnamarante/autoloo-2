@@ -40,6 +40,7 @@ public static class StoreAndLoadArmyDetails
 
     private static void GenerateReloadedUnitFromDetail(List<Unit> unitRoster, GameManager gameManager, UnitDetail unitDetails)
     {
+        var spriteB = unitDetails.SpriteName.Split('_')[1];
         var rosterItem = unitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitDetails.SpriteName.Split('_')[1]);
 
         if (rosterItem != null)
