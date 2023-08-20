@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
         }
     }
     public AudioClip melee8;
+    public AudioClip distBattle1;
+    public AudioClip distBattle2;
+    public AudioClip distBattle3;
+    public AudioClip distBattle4;
     AudioSource generalAudioSource;
     public Unit _selectedUnit;
     public Unit selectedUnit
@@ -58,7 +62,7 @@ public class GameManager : MonoBehaviour
         cameraPositions = SetCameraPositionLocations();
         generalAudioSource = Camera.main.GetComponent<AudioSource>();
         generalAudioSource.volume = 0.7f;
-        generalAudioSource.clip = melee8;
+        generalAudioSource.loop = false;
         string sRoster = FindObjectOfType<AutolooUserGameData>().PlayerRoster;
         switch (sRoster)
         {
