@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         deployment = Instantiate(deployment);
         OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
         InBattleModeAndNotDeploymentModeChanged += (e) => { 
-            string mode = InBattleModeAndNotDeploymentMode ? "in battle mode" : "in deployment mode" ;  
+            string mode = InBattleModeAndNotDeploymentMode ? "in battle mode" : "in deployment mode";  
             Debug.Log($"{mode}");
             if (InBattleModeAndNotDeploymentMode)
             {
