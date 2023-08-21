@@ -19,15 +19,28 @@ public class GameManager : MonoBehaviour
     public float period = 1f;
     public int guiFontSize = 20;
     public bool multiplayer = false;
-    public string playerSide;
+    public string playerSide = "left";
     //public Unit selectedUnit;
     public Deployment deployment;
     public Sprite[] rankSprites;
     public Texture playAsFrance;
     public Texture playAsGreatBritain;
+    public bool _InBattleModeAndNotDeploymentMode;
+    public bool InBattleModeAndNotDeploymentMode
+    {
+        get { return _InBattleModeAndNotDeploymentMode; }
+        set
+        {
+            _InBattleModeAndNotDeploymentMode = value;
+            this?.InBattleModeAndNotDeploymentModeChanged(_InBattleModeAndNotDeploymentMode);
+        }
+    }
 
-    public bool InBattleModeAndNotDeploymentMode = false;
-    
+    public AudioClip melee8;
+    public AudioClip[] distBattle1AudioClips;
+    private int currentClipIndex;
+    AudioSource generalAudioSource;
+
     public Unit _selectedUnit;
     public Unit selectedUnit
     {
@@ -39,18 +52,56 @@ public class GameManager : MonoBehaviour
         }
     }
     public Action<Unit> OnSelectedUnitChanged;
+    public Action<bool> InBattleModeAndNotDeploymentModeChanged;
     public ResultPopup resultPopup;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         fightQueuePositions = SetFightQueuePositionLocations();
         cameraPositions = SetCameraPositionLocations();
-
-        
+        generalAudioSource = Camera.main.GetComponent<AudioSource>();
+        generalAudioSource.volume = 0.5f;
+        generalAudioSource.loop = false;
+        string sRoster = FindObjectOfType<AutolooUserGameData>().PlayerRoster;
+        switch (sRoster)
+        {
+            case "France":
+                PlayAsFrance();
+                break;
+            case "Britain":
+                PlayAsBritian();
+                break;
+            default:
+                Console.WriteLine("Roster not found");
+                break;
+        }
+        deployment = Instantiate(deployment);
+        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
+        InBattleModeAndNotDeploymentModeChanged += (e) => { 
+            string mode = InBattleModeAndNotDeploymentMode ? "in battle mode" : "in deployment mode" ;  
+            Debug.Log($"{mode}");
+            if (InBattleModeAndNotDeploymentMode)
+            {
+                generalAudioSource.Stop();
+                generalAudioSource.clip = melee8;
+                generalAudioSource.volume = 0.7f;
+                generalAudioSource.loop = true;
+                generalAudioSource.Play();
+            }
+            else
+            {
+                generalAudioSource.Stop();
+                generalAudioSource.volume = 0.5f;
+                generalAudioSource.loop=false;
+                generalAudioSource.clip = distBattle1AudioClips[0];
+                generalAudioSource.Play();
+            }
+        };
     }
 
-    private void PlayAsGreatBritian()
+    private void PlayAsBritian()
     {
         LeftUnitRoster = BritishUnitRoster;
         foreach (var un in LeftUnitRoster)
@@ -62,8 +113,7 @@ public class GameManager : MonoBehaviour
         {
             un.side = "right";
         }
-        deployment = Instantiate(deployment);
-        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
+
     }
     private void PlayAsFrance()
     {
@@ -77,8 +127,6 @@ public class GameManager : MonoBehaviour
         {
             un.side = "right";
         }
-        deployment = Instantiate(deployment);
-        OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
     }
 
     private Dictionary<int, Vector3> SetFightQueuePositionLocations()
@@ -116,51 +164,89 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //need spring loaded unit quese to keep units moving to center of screen for fight
-        if (Time.time > (actionTime + period)  && InBattleModeAndNotDeploymentMode)
-        { 
-            //Single Player mode
-            Fight(ref LeftQueueUnits, ref RightQueueUnits);
-            var leftEliminatedIndecies = EliminateUnitsWithZeroHitPoints(ref LeftQueueUnits);
-            var rightEliminatedIndecies = EliminateUnitsWithZeroHitPoints(ref RightQueueUnits);
-
-            //cleanup and reorder queues
-            foreach (int i in leftEliminatedIndecies)
+        if (InBattleModeAndNotDeploymentMode)
+        {
+            if (Time.time > (actionTime + period))
             {
-                LeftQueueUnits.RemoveAt(i);
-            }
-            foreach (int i in rightEliminatedIndecies)
-            {
-                RightQueueUnits.RemoveAt(i);
-            }
-            SetUpUnitsOnBattlefieldInOrder(ref LeftQueueUnits, fightQueuePositions);
-            SetUpUnitsOnBattlefieldInOrder(ref RightQueueUnits, fightQueuePositions);
-
-            actionTime += period;
-
-            if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
-            {
-                //1. give result
-                Debug.Log("result is " + ((LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!"));
-                var result = Instantiate(resultPopup);
-                result.displayText = ((LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!");
-                result.gameManager = this;
-                //2. cleanup battlefield
-                CleanupBattlefield();
-                //3. reset player or end the game
-                InBattleModeAndNotDeploymentMode = false;
-                Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
-                StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
-                deployment.Roll(false);
-                deployment.Gold = 10;
+                BattlePhase();
+                actionTime += period;
             }
         }
-
-        if (!InBattleModeAndNotDeploymentMode && selectedUnit != null)
+        else 
         {
-            selectedUnit.transform.position = new Vector3(selectedUnit.transform.position.x, selectedUnit.transform.position.y, 0);
+            if (selectedUnit != null)
+            {
+                AdjustSelectedUnitPosition();
+            }
+            if (!generalAudioSource.isPlaying)
+            {
+                if (!generalAudioSource.isPlaying)
+                {
+                    // Move to the next audio clip
+                    currentClipIndex = (currentClipIndex + 1) % distBattle1AudioClips.Length;
+                    generalAudioSource.clip = distBattle1AudioClips[currentClipIndex];
+                    generalAudioSource.Play();
+                }
+            }
         }
     }
+
+    void BattlePhase()
+    {
+        Fight(ref LeftQueueUnits, ref RightQueueUnits);
+
+        List<int> leftEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref LeftQueueUnits);
+        List<int> rightEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref RightQueueUnits);
+
+        CleanupEliminatedUnits(leftEliminatedIndices, ref LeftQueueUnits);
+        CleanupEliminatedUnits(rightEliminatedIndices, ref RightQueueUnits);
+
+        SetUpUnitsOnBattlefieldInOrder(ref LeftQueueUnits, fightQueuePositions);
+        SetUpUnitsOnBattlefieldInOrder(ref RightQueueUnits, fightQueuePositions);
+
+        if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
+        {
+            HandleBattleResult();
+        }
+    }
+
+    void CleanupEliminatedUnits(List<int> indices, ref List<Unit> queueUnits)
+    {
+        indices.Sort((a, b) => b.CompareTo(a)); // Sort indices in descending order
+        foreach (int index in indices)
+        {
+            queueUnits.RemoveAt(index);
+        }
+    }
+
+    void HandleBattleResult()
+    {
+        string resultText = (LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!";
+        Debug.Log("Result is " + resultText);
+
+        ShowResultPopup(resultText);
+
+        CleanupBattlefield();
+        InBattleModeAndNotDeploymentMode = false;
+        Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
+        StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
+        deployment.Roll(false);
+        deployment.Gold = 10;
+    }
+
+    void ShowResultPopup(string resultText)
+    {
+        Debug.Log("Result is " + resultText);
+        var result = Instantiate(resultPopup);
+        result.displayText = resultText;
+        result.gameManager = this;
+    }
+
+    void AdjustSelectedUnitPosition()
+    {
+        selectedUnit.transform.position = new Vector3(selectedUnit.transform.position.x, selectedUnit.transform.position.y, 0);
+    }
+
 
     public void CleanupBattlefield()
     {
@@ -181,19 +267,6 @@ public class GameManager : MonoBehaviour
             //GUI.Label(new Rect(10, 30, 300, 300), $"W: {Screen.width} H: {Screen.height}", new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
             var selectionText = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
             GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), selectionText, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
-        }
-        else
-        {
-            if (GUI.Button(new Rect(0, 0, (int)(Screen.width/2), Screen.height), playAsFrance))
-            {
-                playerSide = "left";
-                PlayAsFrance();
-            }
-            if (GUI.Button(new Rect((int)(Screen.width / 2), 0, (int)(Screen.width / 2), Screen.height), playAsGreatBritain))
-            {
-                playerSide = "left";
-                PlayAsGreatBritian();
-            }
         }
     }
 

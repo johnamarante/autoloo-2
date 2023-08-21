@@ -156,7 +156,6 @@ public class Unit : MonoBehaviour
         if (side == "left")
         {
             svgsprite.sprite = Lsprite;
-            
         }
         else 
         {

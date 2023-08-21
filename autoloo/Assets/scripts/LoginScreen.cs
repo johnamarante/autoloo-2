@@ -27,8 +27,9 @@ public class LoginScreen : MonoBehaviour
     {
         if (autolooUserInfo.UserInfo != null && !string.IsNullOrEmpty(autolooUserInfo.UserInfo.UserId))
         {
-            loginMessage = $"logged in as {autolooUserInfo.UserInfo.UserId} with email {autolooUserInfo.UserInfo.Email}";
-            Debug.Log($"logged in as {autolooUserInfo.UserInfo.UserId} with email {autolooUserInfo.UserInfo.Email}");
+            string loginMessage = autolooUserInfo.UserInfo.UserId == "guest"
+                ? "logged in as guest"
+                : $"logged in with email {autolooUserInfo.UserInfo.Email}";
             DontDestroyOnLoad(autolooUserInfo);
             loginMessage = "in new scene";
             SceneManager.LoadScene("mainmenu");
@@ -87,18 +88,17 @@ public class LoginScreen : MonoBehaviour
             if (forgotPasswordSuccess)
             {
                 loginMessage = "Password reset instructions sent to the provided email address.";
-                Debug.Log("Password reset instructions sent to the provided email address.");
             }
             else
             {
                 loginMessage = "Password reset instructions sent to the provided email address.";
-                Debug.Log("An error occurred while processing the forgot password request.");
             }
         }
 
         if (GUI.Button(new Rect(centerX, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Play as Guest"))
         {
-            // Handle play as guest button click here
+            autolooUserInfo.PlayerName = "guest";
+            autolooUserInfo.UserInfo = new() { UserId = "guest" };
         }
 
         GUI.Label(new Rect(10, Screen.height - 60, 30, 1000), loginMessage, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = fontSize });
@@ -126,7 +126,6 @@ public class LoginScreen : MonoBehaviour
         catch (Exception ex)
         {
             loginMessage = $"Login error: {ex.Message}";
-            Debug.Log($"Login error: {ex.Message}");
             return null;
         }
     }
@@ -148,18 +147,14 @@ public class LoginScreen : MonoBehaviour
             if (signupResponse.Id != null)
             {
                 loginMessage = $"New user has been registered with ID {signupResponse.Id}";
-                Debug.Log($"New user has been registered with ID {signupResponse.Id}");
-
                 return await Login(email, password);
             }
         }
         catch (Exception ex)
         {
             loginMessage = $"Registration error: {ex.Message}"; 
-            Debug.Log($"Registration error: {ex.Message}");
         }
         loginMessage = $"There was a problem registering a new user";
-        Debug.Log($"There was a problem registering a new user");
         return null;
     }
 
@@ -178,17 +173,14 @@ public class LoginScreen : MonoBehaviour
             if (changePasswordResponse != null)
             {
                 loginMessage = "Password reset instructions sent to the provided email address.";
-                Debug.Log("Password reset instructions sent to the provided email address.");
                 return true;
             }
         }
         catch (Exception ex)
         {
             loginMessage = $"Forgot password error: {ex.Message}";
-            Debug.Log($"Forgot password error: {ex.Message}");
         }
         loginMessage = "An error occurred while processing the forgot password request.";
-        Debug.Log("An error occurred while processing the forgot password request.");
         return false;
     }
 }
