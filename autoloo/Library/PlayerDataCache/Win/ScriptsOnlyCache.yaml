@@ -2,6 +2,8 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ArrowHover
+    - AutolooUserGameData
+    - AutolooUserInfo
     - Background
     - CameraControl
     - Deployment
@@ -9,6 +11,8 @@ ScriptsOnlyBuild:
     - DeploymentShopMarker
     - DragIt
     - GameManager
+    - LoginScreen
+    - MainMenu
     - PulseHover
     - ResultPopup
     - TitleScene
@@ -21,10 +25,15 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshPro
+    Unity.XR.Management.Editor.dll:
+    - UnityEditor.XR.Management.XRGeneralSettingsPerBuildTarget
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -53,40 +62,46 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1696}
+      Script: {instanceID: 1746}
     - Class: 114
-      Script: {instanceID: 1820}
+      Script: {instanceID: 1870}
     - Class: 114
-      Script: {instanceID: 1830}
+      Script: {instanceID: 1880}
     - Class: 114
-      Script: {instanceID: 2204}
+      Script: {instanceID: 2272}
     - Class: 114
-      Script: {instanceID: 2502}
+      Script: {instanceID: 2582}
     - Class: 114
-      Script: {instanceID: 2800}
+      Script: {instanceID: 2892}
     - Class: 114
-      Script: {instanceID: 2928}
+      Script: {instanceID: 3032}
     - Class: 114
-      Script: {instanceID: 3612}
+      Script: {instanceID: 3742}
     - Class: 114
-      Script: {instanceID: 3932}
+      Script: {instanceID: 4072}
     - Class: 114
-      Script: {instanceID: 4048}
+      Script: {instanceID: 4192}
     - Class: 114
-      Script: {instanceID: 4060}
+      Script: {instanceID: 4204}
     - Class: 114
-      Script: {instanceID: 4476}
+      Script: {instanceID: 4636}
     - Class: 114
-      Script: {instanceID: 5210}
+      Script: {instanceID: 5418}
     - Class: 114
-      Script: {instanceID: 5626}
+      Script: {instanceID: 5854}
     - Class: 114
-      Script: {instanceID: 5874}
+      Script: {instanceID: 6106}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -102,6 +117,96 @@ ScriptsOnlyBuild:
     - Class: 222
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    Assets/login.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 2492}
+    - Class: 114
+      Script: {instanceID: 3742}
+    - Class: 114
+      Script: {instanceID: 5054}
+    - Class: 114
+      Script: {instanceID: 5418}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/mainmenu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 2730}
+    - Class: 114
+      Script: {instanceID: 2876}
+    - Class: 114
+      Script: {instanceID: 5320}
+    - Class: 114
+      Script: {instanceID: 6526}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
       Script: {instanceID: 0}
     Assets/title.unity:
     - Class: 1
@@ -139,17 +244,17 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2204}
+      Script: {instanceID: 2272}
     - Class: 114
-      Script: {instanceID: 3612}
+      Script: {instanceID: 2546}
     - Class: 114
-      Script: {instanceID: 4212}
+      Script: {instanceID: 3742}
     - Class: 114
-      Script: {instanceID: 4476}
+      Script: {instanceID: 4360}
     - Class: 114
-      Script: {instanceID: 5210}
+      Script: {instanceID: 4636}
     - Class: 114
-      Script: {instanceID: 26336}
+      Script: {instanceID: 5418}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -173,6 +278,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 04e4a8b0447477cc4e933d9e5311188f
+    assemblyName: UnityEngine.XR.LegacyInputHelpers.dll
+    namespaceName: UnityEngine.XR.LegacyInputHelpers
+    className: ArmModel
+  - hash:
+      serializedVersion: 2
+      Hash: d8e2a52ca99d0258e884ab7d896395ea
+    assemblyName: Unity.XR.Oculus.dll
+    namespaceName: Unity.XR.Oculus
+    className: OculusSettings
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -277,6 +394,18 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 6af0b5a7ca259f8707454d2f0b813fef
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LoginScreen
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TitleScene
+  - hash:
+      serializedVersion: 2
       Hash: b72b16f7c6fd017e159118131a47a9d5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -323,6 +452,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 2ead4dd1c68490ed51fdf762851a69d4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AutolooUserGameData
   - hash:
       serializedVersion: 2
       Hash: 62e040979f1bcc5cfdb183bf34b809bf
@@ -475,6 +610,12 @@ ScriptsOnlyBuild:
     className: UnityOnControllerColliderHitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 98aa0a0c8ff2910eb12af89c7e0eb661
+    assemblyName: Unity.XR.Management.dll
+    namespaceName: UnityEngine.XR.Management
+    className: XRGeneralSettings
+  - hash:
+      serializedVersion: 2
       Hash: 27ec3360f0c0a6803ba71cc3106480b8
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -491,6 +632,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionExit2DMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 8ab9295d94483c961936d82d233d3df2
+    assemblyName: Unity.XR.Management.dll
+    namespaceName: UnityEngine.XR.Management
+    className: XRManagerSettings
   - hash:
       serializedVersion: 2
       Hash: 2574ac7d50617d23cdefe4ad22f5e1ad
@@ -511,7 +658,7 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 03f9540ef2f5ea9579dda2ffa98bed82
+      Hash: eddad6e56022ed823ecbcb095bdc2641
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -643,10 +790,22 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: a9d9808116fb06908ae60d7ede624403
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AutolooUserInfo
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnEndDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 24c74cc0d527a06113f2b967042769f0
+    assemblyName: UnityEngine.XR.LegacyInputHelpers.dll
+    namespaceName: UnityEditor.XR.LegacyInputHelpers
+    className: CameraOffset
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -673,6 +832,12 @@ ScriptsOnlyBuild:
     className: keytest
   - hash:
       serializedVersion: 2
+      Hash: 52bcb9c2a78bdd8d98a59e915c346e75
+    assemblyName: UnityEngine.XR.LegacyInputHelpers.dll
+    namespaceName: UnityEngine.XR.LegacyInputHelpers
+    className: TransitionArmModel
+  - hash:
+      serializedVersion: 2
       Hash: bcaee4c2a83047257b5f47d6ed264b75
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -685,16 +850,22 @@ ScriptsOnlyBuild:
     className: GlobalMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 21a9c6dbf300fc1f6dc15ca7e2c39a37
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Slider
+      Hash: cca190ef4ddad5ee55aece84d3503c71
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainMenu
   - hash:
       serializedVersion: 2
       Hash: 3164bc883ff663a5cdb32d1ef7e7c0c5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: HorizontalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 21a9c6dbf300fc1f6dc15ca7e2c39a37
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Slider
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -860,6 +1031,18 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Unity.XR.Oculus.dll
+    namespaceName: Unity.XR.Oculus
+    className: OculusLoader
+  - hash:
+      serializedVersion: 2
+      Hash: d251bf88db6c95a6b1aa0b69298da9ef
+    assemblyName: UnityEngine.SpatialTracking.dll
+    namespaceName: UnityEngine.SpatialTracking
+    className: TrackedPoseDriver
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionExitMessageListener
@@ -949,6 +1132,12 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: 893dbdbfe611d62e230a686ea89f1efd
+    assemblyName: UnityEngine.XR.LegacyInputHelpers.dll
+    namespaceName: UnityEngine.XR.LegacyInputHelpers
+    className: SwingArmModel
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -1013,14 +1202,10 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: TitleScene
   platform: 5
   scenePathNames:
   - Assets/title.unity
   - Assets/Scenes/SampleScene.unity
+  - Assets/mainmenu.unity
+  - Assets/login.unity
   playerPath: C:/projects/autoloo-2/autoloo/build32bit/autoloo.exe

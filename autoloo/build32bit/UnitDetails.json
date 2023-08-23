@@ -1,1 +1,31 @@
-[{"Name":"unit_left_2dcd5bab-159b-4e49-9227-9d4d2e7fa61f","Attack":8,"HitPoints":7,"Rank":4,"Side":"left","QueuePosition":-1,"SpriteName":"french_linevoltiguer_left_2_-1_Sprite"}~{"Name":"unit_left_f33f7e2d-51aa-4333-a11f-d78762411444","Attack":6,"HitPoints":5,"Rank":2,"Side":"left","QueuePosition":-2,"SpriteName":"french_linegrenadier_left_2_1_Sprite"}~{"Name":"unit_left_cae82bae-65f6-4e42-b35d-9d480a76bbd2","Attack":12,"HitPoints":11,"Rank":9,"Side":"left","QueuePosition":-3,"SpriteName":"french_line_left_2_1_Sprite"}~{"Name":"unit_left_eb4c9c14-050b-4497-81af-f29e17a32312","Attack":4,"HitPoints":3,"Rank":1,"Side":"left","QueuePosition":-4,"SpriteName":"french_line_left_2_1_Sprite"}~{"Name":"unit_left_9bec52e2-38f1-4e8c-b493-4856aa36c9e9","Attack":4,"HitPoints":3,"Rank":0,"Side":"left","QueuePosition":-5,"SpriteName":"french_linegrenadier_left_2_1_Sprite"}]
+{
+    "UnitDetails": [
+        {
+            "Name": "unit_left_ffc20495-c7b6-4b6e-b486-4473f13362dc",
+            "Attack": 3,
+            "HitPoints": 3,
+            "Rank": 0,
+            "Side": "left",
+            "QueuePosition": -1,
+            "SpriteName": "british_highlander_left_2_0_Sprite"
+        },
+        {
+            "Name": "unit_left_76466e47-a059-45b8-9604-a87dfe1d9db6",
+            "Attack": 4,
+            "HitPoints": 4,
+            "Rank": 0,
+            "Side": "left",
+            "QueuePosition": -2,
+            "SpriteName": "british_guardgrenadier_left_2_0_Sprite"
+        },
+        {
+            "Name": "unit_left_efb3199b-221f-4af1-8798-89683b6705ac",
+            "Attack": 3,
+            "HitPoints": 3,
+            "Rank": 0,
+            "Side": "left",
+            "QueuePosition": -3,
+            "SpriteName": "british_highlander_left_2_0_Sprite"
+        }
+    ]
+}

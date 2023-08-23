@@ -270,8 +270,8 @@ MonoBehaviour:
   endMarker: {x: 0, y: 0, z: 0}
   speed: 60
   svgsprite: {fileID: 0}
-  Lsprite: {fileID: 3286163911610860551, guid: 57648fa2c8b7c6140b5768f763f07149, type: 3}
-  Rsprite: {fileID: 3286163911610860551, guid: a81155992ea86cc4b9fe34f0bc500627, type: 3}
+  Lsprite: {fileID: 3286163911610860551, guid: 3b72e8d3a8d06a34588c776ed21069fe, type: 3}
+  Rsprite: {fileID: 3286163911610860551, guid: e7449b268e61bc041b169336035385f4, type: 3}
 --- !u!114 &4608663256898886863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ Transform:
   m_GameObject: {fileID: 1047620470186578231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2, y: 1, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8797373258307189048}
@@ -455,7 +455,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: a81155992ea86cc4b9fe34f0bc500627, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: e7449b268e61bc041b169336035385f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

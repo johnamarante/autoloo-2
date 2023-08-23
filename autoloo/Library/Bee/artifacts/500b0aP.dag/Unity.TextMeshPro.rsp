@@ -102,6 +102,14 @@
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Assembly/Auth0.AuthenticationApi.dll"
+-r:"Assets/Assembly/Auth0.Core.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.JsonWebTokens.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.Logging.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.Protocols.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
+-r:"Assets/Assembly/Microsoft.IdentityModel.Tokens.dll"
+-r:"Assets/Assembly/System.IdentityModel.Tokens.Jwt.dll"
 -r:"C:/projects/autoloo-2/autoloo/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/AOT/Newtonsoft.Json.dll"
 -r:"C:/projects/autoloo-2/autoloo/Library/PackageCache/com.unity.visualscripting@1.7.5/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"C:/Unity/2021.2.5f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll"

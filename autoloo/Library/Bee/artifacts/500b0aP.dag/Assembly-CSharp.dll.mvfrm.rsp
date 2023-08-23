@@ -1,11 +1,16 @@
 Library\Bee\artifacts\mvdfrm\Unity.InternalAPIEngineBridge.003.ref.dll_60F5E81D21E462BF.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Subsystem.Registration.ref.dll_7E1683160166E5DC.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.TextMeshPro.ref.dll_D74C6454D181A815.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Timeline.ref.dll_EA0CCD5730F0C835.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.VectorGraphics.ref.dll_13BDE8171236F602.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.VisualScripting.Core.ref.dll_2AFC7DF372FB4A1A.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.VisualScripting.Flow.ref.dll_720D5E49F504BEC9.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.VisualScripting.State.ref.dll_A5027B8C2D1691DC.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.XR.Management.ref.dll_1AB5276B45A603C9.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.XR.Oculus.ref.dll_D9767EE29B932B4F.mvfrm
+Library\Bee\artifacts\mvdfrm\UnityEngine.SpatialTracking.ref.dll_E13DF5642241C48F.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.UI.ref.dll_90EE99AF760AE606.mvfrm
+Library\Bee\artifacts\mvdfrm\UnityEngine.XR.LegacyInputHelpers.ref.dll_B9E6CCAE8A83AEBC.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.VisualScripting.Antlr3.Runtime.dll_390CE5DC98E28AA5.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.AccessibilityModule.dll_F8BC22CF7C3F039A.mvfrm
 Library\Bee\artifacts\mvdfrm\UnityEngine.AIModule.dll_15C247CF4CDAB9C0.mvfrm

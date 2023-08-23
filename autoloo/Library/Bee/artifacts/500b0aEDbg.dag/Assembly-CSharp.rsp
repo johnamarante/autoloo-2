@@ -367,6 +367,7 @@
 -r:"Library/Bee/artifacts/500b0aEDbg.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/500b0aEDbg.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
 "Assets/scripts/ArrowHover.cs"
+"Assets/scripts/AutolooUserGameData.cs"
 "Assets/scripts/AutolooUserInfo.cs"
 "Assets/scripts/AutolooUserInfoUtil.cs"
 "Assets/scripts/Background.cs"
