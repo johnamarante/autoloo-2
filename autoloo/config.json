@@ -1,5 +1,0 @@
-﻿{
-    "version": "0.2.0", //unity does not readily support version/build numbers. DW9K to research a github hook to prompt incrementing this on check in
-    "devMode": false //unused for now, we may want to add infinite lives/money for development purposes
-    //friendpaste and similar configurations should probably go in this file as well
-}

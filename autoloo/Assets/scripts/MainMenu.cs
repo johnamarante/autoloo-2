@@ -68,7 +68,7 @@ public class MainMenu : MonoBehaviour
                 newUserSetup = true;
             }
 
-            menuMessage = $"Logged in as {GetPlayerDisplayName()}";// version {configuration.version}";
+            menuMessage = $"Logged in as {GetPlayerDisplayName()}";
         }
         GUI.enabled = true;
     }
