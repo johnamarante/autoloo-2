@@ -132,16 +132,16 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, Vector3> SetFightQueuePositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
-        dict.Add(-5, new Vector3(-36, 7, 0.6f));
-        dict.Add(-4, new Vector3(-28, 7, 0.7f));
-        dict.Add(-3, new Vector3(-20, 7, 0.8f));
-        dict.Add(-2, new Vector3(-12, 7, 0.9f));
-        dict.Add(-1, new Vector3(-4, 7, 1));
-        dict.Add(1, new Vector3(4, 7, 1));
-        dict.Add(2, new Vector3(12, 7, 1));
-        dict.Add(3, new Vector3(20, 7, 1));
-        dict.Add(4, new Vector3(28, 7, 1));
-        dict.Add(5, new Vector3(36, 7, 1));
+        dict.Add(-5, new Vector3(-45, 7, 0.6f));
+        dict.Add(-4, new Vector3(-35, 7, 0.7f));
+        dict.Add(-3, new Vector3(-25, 7, 0.8f));
+        dict.Add(-2, new Vector3(-15, 7, 0.9f));
+        dict.Add(-1, new Vector3(-5, 7, 1));
+        dict.Add(1, new Vector3(5, 7, 1));
+        dict.Add(2, new Vector3(15, 7, 1));
+        dict.Add(3, new Vector3(25, 7, 1));
+        dict.Add(4, new Vector3(35, 7, 1));
+        dict.Add(5, new Vector3(45, 7, 1));
         return dict;
     }
 

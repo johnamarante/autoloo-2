@@ -196,11 +196,11 @@ public class Deployment : MonoBehaviour
     private Dictionary<int, Vector3> SetDeploymentQueuePositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
-        dict.Add(-5, new Vector3(-96, 7, 2));
-        dict.Add(-4, new Vector3(-88, 7, 2));
+        dict.Add(-5, new Vector3(-100, 7, 2));
+        dict.Add(-4, new Vector3(-90, 7, 2));
         dict.Add(-3, new Vector3(-80, 7, 2));
-        dict.Add(-2, new Vector3(-72, 7, 2));
-        dict.Add(-1, new Vector3(-64, 7, 2));
+        dict.Add(-2, new Vector3(-70, 7, 2));
+        dict.Add(-1, new Vector3(-60, 7, 2));
         dict.Add(1, new Vector3(64, 7, 2));
         dict.Add(2, new Vector3(72, 7, 2));
         dict.Add(3, new Vector3(80, 7, 2));
@@ -224,9 +224,9 @@ public class Deployment : MonoBehaviour
         var dict = new Dictionary<int, Vector3>();
         //dict.Add(-5, new Vector3(-100, -18, 1));
         //dict.Add(-4, new Vector3(-92, -18, 1));
-        dict.Add(-3, new Vector3(-96, -10, 0.8f));
-        dict.Add(-2, new Vector3(-88, -10, 0.9f));
-        dict.Add(-1, new Vector3(-80, -10, 1));
+        dict.Add(-3, new Vector3(-95, -10, 0.8f));
+        dict.Add(-2, new Vector3(-85, -10, 0.9f));
+        dict.Add(-1, new Vector3(-75, -10, 1));
         dict.Add(1, new Vector3(80, -10, 1));
         dict.Add(2, new Vector3(88, -10, 1));
         dict.Add(3, new Vector3(96, -10, 1));
