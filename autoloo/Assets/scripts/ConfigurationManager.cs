@@ -8,11 +8,11 @@ public class Configuration
     public bool devMode;
 }
 
-public class ConfigurationManager
+public class ConfigurationManager : MonoBehaviour
 {
     public Configuration config = new Configuration();
 
-    private void Start()
+    public void Awake()
     {
         LoadConfiguration();
         Debug.Log("Version Number: " + config.version);
