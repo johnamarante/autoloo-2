@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509243200443853749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.7, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -270,6 +270,7 @@ MonoBehaviour:
   endMarker: {x: 0, y: 0, z: 0}
   speed: 60
   svgsprite: {fileID: 0}
+  svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: 3b72e8d3a8d06a34588c776ed21069fe, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: e7449b268e61bc041b169336035385f4, type: 3}
 --- !u!114 &4608663256898886863

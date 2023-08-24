@@ -104,6 +104,7 @@ public class Unit : MonoBehaviour
     private bool inMoveMode = false;
     //Lerping END
     public SpriteRenderer svgsprite;
+    public SpriteRenderer svgspritebackground;
     public Sprite Lsprite;
     public Sprite Rsprite;
     //Stats display START
