@@ -21,7 +21,7 @@ public class ConfigurationManager : MonoBehaviour
 
     private void LoadConfiguration()
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, "config.json");
+        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "config.json");
         try
         {
             string json = File.ReadAllText(filePath);
