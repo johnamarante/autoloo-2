@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
     private static string menuMessage = "";
     public static AutolooUserInfo autolooUserInfo;
     public AutolooUserGameData autolooUserGameData;
+    public ConfigurationManager configManager;
+    public Configuration configuration;
     private string userId = "";
     private bool newUserSetup = false;
     private bool isSettingUpUser = false;
@@ -37,6 +39,10 @@ public class MainMenu : MonoBehaviour
     {
         GUI.enabled = false;
         autolooUserInfo = FindObjectOfType<AutolooUserInfo>();
+        configManager = FindObjectOfType<ConfigurationManager>();
+        configuration = configManager.config;
+        DontDestroyOnLoad(configManager);
+
         if (autolooUserInfo.UserInfo.UserId == "guest")
         {
             userId = autolooUserInfo.UserInfo.UserId;
@@ -75,6 +81,7 @@ public class MainMenu : MonoBehaviour
     private async void OnGUI()
     {
         GUI.Label(new Rect(10, Screen.height - 60, 30, 1000), menuMessage, guiStyle);
+        GUI.Label(new Rect(10, 0, 30, 1000), $"version {configuration.version}", guiStyle);
 
         if (newUserSetup)
         {
