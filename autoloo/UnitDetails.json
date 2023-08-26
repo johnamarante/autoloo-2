@@ -1,31 +1,49 @@
 {
     "UnitDetails": [
         {
-            "Name": "unit_left_3b0d7def-5db1-49e3-b999-2338b2939109",
-            "Attack": 6,
-            "HitPoints": 5,
-            "Rank": 2,
+            "Name": "unit_left_bad77981-f59a-41d4-883e-669ba3e63bc1",
+            "Attack": 4,
+            "HitPoints": 3,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -1,
             "SpriteName": "french_linevoltiguer_left_2_-1_Sprite"
         },
         {
-            "Name": "unit_left_74280e4c-1329-4ba6-a689-d38caa3fb40a",
-            "Attack": 6,
-            "HitPoints": 5,
-            "Rank": 2,
+            "Name": "unit_left_dc93b3dd-420d-4620-a4e1-bff2c8834f42",
+            "Attack": 3,
+            "HitPoints": 2,
+            "Rank": 0,
             "Side": "left",
-            "QueuePosition": -4,
-            "SpriteName": "french_linegrenadier_left_2_1_Sprite"
+            "QueuePosition": -2,
+            "SpriteName": "french_line_left_2_1_Sprite"
         },
         {
-            "Name": "unit_left_5190b4e0-9607-4960-b44d-2d823d3858ae",
-            "Attack": 6,
-            "HitPoints": 5,
-            "Rank": 3,
+            "Name": "unit_left_d89ae8a1-1116-47be-be6a-16c3bd001668",
+            "Attack": 4,
+            "HitPoints": 3,
+            "Rank": 1,
+            "Side": "left",
+            "QueuePosition": -3,
+            "SpriteName": "french_chasseur_left_3_1_Sprite"
+        },
+        {
+            "Name": "unit_left_47402fe0-403f-46e5-ad7f-f09415755ba3",
+            "Attack": 1,
+            "HitPoints": 4,
+            "Rank": 0,
+            "Side": "left",
+            "QueuePosition": -4,
+            "SpriteName": "french_heavyartillery_left_0_1_Sprite"
+        },
+        {
+            "Name": "unit_left_ee161eff-0163-4e4c-8793-150060d6a68b",
+            "Attack": 4,
+            "HitPoints": 3,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -5,
-            "SpriteName": "french_chasseur_left_2_1_Sprite"
+            "SpriteName": "french_linegrenadier_left_2_1_Sprite"
         }
     ]
 }

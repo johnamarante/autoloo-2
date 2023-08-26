@@ -522,6 +522,7 @@ MonoBehaviour:
   endMarker: {x: 0, y: 0, z: 0}
   speed: 60
   svgsprite: {fileID: 0}
+  svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: a42883115645ba44ab77730672e7da80, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: 50e572639685f1b4a96f9d67f948161d, type: 3}
 --- !u!114 &1685192276980752165

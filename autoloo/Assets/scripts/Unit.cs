@@ -107,6 +107,8 @@ public class Unit : MonoBehaviour
     public SpriteRenderer svgspritebackground;
     public Sprite Lsprite;
     public Sprite Rsprite;
+    public Sprite Lspritebackground;
+    public Sprite Rspritebackground;
     //Stats display START
     private TextMeshPro textAttack = new TextMeshPro();
     private TextMeshPro textHitPoints = new TextMeshPro();
@@ -123,8 +125,11 @@ public class Unit : MonoBehaviour
     {
         name = $"unit_{side}_{Guid.NewGuid()}";
         svgsprite = gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>();
+        svgspritebackground = gameObject.transform.Find("svgbackgroundsprite") != null ? gameObject.transform.Find("svgbackgroundsprite").GetComponent<SpriteRenderer>() : null;
         SetSprite();
         spriteName = GetSpriteName();
+        
+
     }
 
     public string GetSpriteName()
@@ -157,12 +162,24 @@ public class Unit : MonoBehaviour
         if (side == "left")
         {
             svgsprite.sprite = Lsprite;
+            if (svgspritebackground != null)
+            {
+                svgspritebackground.sprite = Lspritebackground;
+            }
         }
         else 
         {
             svgsprite.sprite = Rsprite;
+            if (svgspritebackground != null)
+            {
+                svgspritebackground.sprite = Rspritebackground;
+            }
         }
-        svgsprite.transform.position = new Vector3(Int32.Parse(svgsprite.sprite.name.Split("_")[3]), Int32.Parse(svgsprite.sprite.name.Split("_")[4]), 0);
+        svgsprite.transform.position = new Vector3(Int32.Parse(svgsprite.sprite.name.Split("_")[3]), Int32.Parse(svgsprite.sprite.name.Split("_")[4]), svgsprite.transform.position.z);
+        if (svgspritebackground != null)
+        {
+            svgspritebackground.transform.position = new Vector3(Int32.Parse(svgsprite.sprite.name.Split("_")[3]), Int32.Parse(svgsprite.sprite.name.Split("_")[4]), svgspritebackground.transform.position.z);
+        }
     }
 
     private void ChangeRankIcon()

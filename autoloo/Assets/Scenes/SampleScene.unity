@@ -390,7 +390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.size
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: BritishUnitRoster.Array.size
@@ -476,6 +476,26 @@ PrefabInstance:
       propertyPath: BritishUnitRoster.Array.data[2]
       value: 
       objectReference: {fileID: 8585731507051703820, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: FrenchUnitRoster.Array.data[10]
+      value: 
+      objectReference: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: FrenchUnitRoster.Array.data[11]
+      value: 
+      objectReference: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: FrenchUnitRoster.Array.data[12]
+      value: 
+      objectReference: {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: FrenchUnitRoster.Array.data[13]
+      value: 
+      objectReference: {fileID: 3126649275751001086, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: FrenchUnitRoster.Array.data[14]
+      value: 
+      objectReference: {fileID: 4037890922184864950, guid: 7dcd936be32270c4e995ccab5c8699ef, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: distBattle1AudioClips.Array.size
       value: 4
