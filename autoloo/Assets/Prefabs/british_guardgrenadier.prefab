@@ -1273,8 +1273,8 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   Chance: 10
   _cost: 3
-  _attack: 4
-  _hitPoints: 4
+  _attack: 5
+  _hitPoints: 5
   _rank: 0
   side: left
   myFont: {fileID: 0}
@@ -1289,6 +1289,8 @@ MonoBehaviour:
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: 7a1d15bf25c872345bad8ab5548d5143, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: f07f262320ff3414f8671959934fd736, type: 3}
+  Lspritebackground: {fileID: 0}
+  Rspritebackground: {fileID: 0}
 --- !u!114 &5339757392773342966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,8 +1426,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8891801775657003790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 2.75, z: 1}
+  m_LocalPosition: {x: -2, y: 1, z: 0}
+  m_LocalScale: {x: 2.75, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1151073779514114817}
@@ -1472,7 +1474,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 7a1d15bf25c872345bad8ab5548d5143, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: f07f262320ff3414f8671959934fd736, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

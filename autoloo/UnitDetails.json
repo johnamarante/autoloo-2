@@ -1,13 +1,49 @@
 {
     "UnitDetails": [
         {
-            "Name": "unit_left_0fa1ca61-c0c4-4a60-9717-664781e048f0",
-            "Attack": 3,
-            "HitPoints": 3,
-            "Rank": 0,
+            "Name": "unit_left_bf7f5718-8860-4aec-8fbd-29705c84c161",
+            "Attack": 4,
+            "HitPoints": 4,
+            "Rank": 1,
             "Side": "left",
             "QueuePosition": -1,
             "SpriteName": "british_highlander_left_2_0_Sprite"
+        },
+        {
+            "Name": "unit_left_52efa94b-fbe0-4e83-85ff-17784ba711a7",
+            "Attack": 3,
+            "HitPoints": 4,
+            "Rank": 1,
+            "Side": "left",
+            "QueuePosition": -2,
+            "SpriteName": "british_scottsgreys_left_0_2_Sprite"
+        },
+        {
+            "Name": "unit_left_49e799a9-96b7-4a4b-a756-16ecd152f0c6",
+            "Attack": 4,
+            "HitPoints": 5,
+            "Rank": 2,
+            "Side": "left",
+            "QueuePosition": -3,
+            "SpriteName": "british_rifleman_left_1_0_Sprite"
+        },
+        {
+            "Name": "unit_left_eaba3a28-7a77-4c81-bc25-2f91aedb2164",
+            "Attack": 4,
+            "HitPoints": 5,
+            "Rank": 2,
+            "Side": "left",
+            "QueuePosition": -4,
+            "SpriteName": "british_hannoverianfoot_left_2_0_Sprite"
+        },
+        {
+            "Name": "unit_left_8a7b4dae-e23a-4145-8dd9-a0788078debe",
+            "Attack": 3,
+            "HitPoints": 4,
+            "Rank": 1,
+            "Side": "left",
+            "QueuePosition": -5,
+            "SpriteName": "british_rockettrooper_left_0_2_Sprite"
         }
     ]
 }

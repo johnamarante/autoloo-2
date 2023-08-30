@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - AutolooUserInfo
     - Background
     - CameraControl
+    - ConfigurationManager
     - Deployment
     - DeploymentMarker
     - DeploymentShopMarker
@@ -65,8 +66,6 @@ ScriptsOnlyBuild:
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
-      Script: {instanceID: 0}
-    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -141,8 +140,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -188,8 +185,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -202,6 +197,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 5320}
     - Class: 114
       Script: {instanceID: 6526}
+    - Class: 114
+      Script: {instanceID: 7772}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -236,8 +233,6 @@ ScriptsOnlyBuild:
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
-      Script: {instanceID: 0}
-    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -658,7 +653,7 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: eddad6e56022ed823ecbcb095bdc2641
+      Hash: bef7bde567166e0c16ebcb2b909dd5cc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -670,7 +665,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: f735e128e73c834848aed0b7ff5002b4
+      Hash: 7d9d9239814735af3113ae83fa49e5a5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unit
@@ -850,7 +845,7 @@ ScriptsOnlyBuild:
     className: GlobalMessageListener
   - hash:
       serializedVersion: 2
-      Hash: cca190ef4ddad5ee55aece84d3503c71
+      Hash: 3b7c68dc5287485404a44202f1c237c6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenu
@@ -1130,6 +1125,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 44688e805fdf50403312d28e5de663a1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ConfigurationManager
   - hash:
       serializedVersion: 2
       Hash: 893dbdbfe611d62e230a686ea89f1efd

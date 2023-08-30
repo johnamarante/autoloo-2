@@ -1441,7 +1441,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   Chance: 10
   _cost: 3
-  _attack: 3
+  _attack: 2
   _hitPoints: 2
   _rank: 0
   side: right
@@ -1457,6 +1457,8 @@ MonoBehaviour:
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: 57648fa2c8b7c6140b5768f763f07149, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: a81155992ea86cc4b9fe34f0bc500627, type: 3}
+  Lspritebackground: {fileID: 0}
+  Rspritebackground: {fileID: 0}
 --- !u!114 &5956813910743459481
 MonoBehaviour:
   m_ObjectHideFlags: 0

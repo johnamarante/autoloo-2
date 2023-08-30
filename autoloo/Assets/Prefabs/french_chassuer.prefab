@@ -257,7 +257,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   Chance: 10
   _cost: 3
-  _attack: 3
+  _attack: 2
   _hitPoints: 2
   _rank: 0
   side: right
