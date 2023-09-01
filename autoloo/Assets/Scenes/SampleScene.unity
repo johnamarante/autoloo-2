@@ -390,11 +390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: BritishUnitRoster.Array.size
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: LeftUnitRoster.Array.data[1]
@@ -477,6 +477,34 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8585731507051703820, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[3]
+      value: 
+      objectReference: {fileID: 6574580541872489291, guid: f6de32be7297117438f7067a82acbd66, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[4]
+      value: 
+      objectReference: {fileID: 8481972906151960825, guid: 328af3c13eef9ac49a4ed8dcc1b5377a, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[5]
+      value: 
+      objectReference: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[6]
+      value: 
+      objectReference: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[7]
+      value: 
+      objectReference: {fileID: 8813113358586556008, guid: efe774cade657934dbfd0db2d6c470a8, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[8]
+      value: 
+      objectReference: {fileID: 8398345442847202300, guid: f0813e7a15660cb42b4082ab5e49c03d, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[9]
+      value: 
+      objectReference: {fileID: 631644304311794899, guid: 8bc3520893dfd6e4f87c49a82a8da672, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[10]
       value: 
       objectReference: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
@@ -497,8 +525,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4037890922184864950, guid: 7dcd936be32270c4e995ccab5c8699ef, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: FrenchUnitRoster.Array.data[15]
+      value: 
+      objectReference: {fileID: 5218138999814808912, guid: f248de271fc78ca46aa0d426d2fc39e5, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: distBattle1AudioClips.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: distBattle1AudioClips.Array.data[0]
@@ -511,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: distBattle1AudioClips.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 940bfc9da6a272f49ad9fba10f5eaf79, type: 3}
+      objectReference: {fileID: 8300000, guid: d8c1baa33199953488a702f50c612a80, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: distBattle1AudioClips.Array.data[3]
       value: 

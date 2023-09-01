@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/autoloo/Temp
+/autoloo/Temp/*
+/autoloo/autoloo/Library/*
+/autoloo/autoloo/Logs/*
+/autoloo/autoloo/New folder/*

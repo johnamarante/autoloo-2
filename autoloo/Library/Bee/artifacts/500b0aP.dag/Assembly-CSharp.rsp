@@ -319,6 +319,7 @@
 "Assets/scripts/AutolooUserInfoUtil.cs"
 "Assets/scripts/Background.cs"
 "Assets/scripts/CameraControl.cs"
+"Assets/scripts/ConfigurationManager.cs"
 "Assets/scripts/Deployment.cs"
 "Assets/scripts/DeploymentMarker.cs"
 "Assets/scripts/DeploymentShopMarker.cs"

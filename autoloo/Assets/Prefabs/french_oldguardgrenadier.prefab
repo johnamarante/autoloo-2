@@ -672,8 +672,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   Chance: 10
-  _cost: 3
-  _attack: 3
+  _cost: 8
+  _attack: 8
   _hitPoints: 2
   _rank: 0
   side: right
@@ -689,6 +689,8 @@ MonoBehaviour:
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: 7c1e5837359b55e48854e88c60786c0e, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: 159196d74ec381b4a9b6ba03f510aa02, type: 3}
+  Lspritebackground: {fileID: 0}
+  Rspritebackground: {fileID: 0}
 --- !u!114 &375342731887459404
 MonoBehaviour:
   m_ObjectHideFlags: 0
