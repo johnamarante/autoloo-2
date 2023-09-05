@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, Vector3> SetCameraPositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
-        dict.Add(-1, new Vector3(-60, 0, -10));
+        dict.Add(-1, new Vector3(-60, 3, -10));
         dict.Add(0, new Vector3(0, 16, -10));
         dict.Add(1, new Vector3(60, 0, -10));
         return dict;
@@ -166,6 +166,10 @@ public class GameManager : MonoBehaviour
     {
         if (InBattleModeAndNotDeploymentMode)
         {
+            if (Time.time > (actionTime + (period/2)))
+            {
+                PreBattlePhase();
+            }
             if (Time.time > (actionTime + period))
             {
                 BattlePhase();
@@ -189,6 +193,12 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    void PreBattlePhase()
+    {
+        //get all units with a prebattle event
+        //fire those prebattle events in the order Artillery, position
     }
 
     void BattlePhase()
@@ -231,7 +241,7 @@ public class GameManager : MonoBehaviour
         Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
         StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
         deployment.Roll(false);
-        deployment.Gold = 10;
+        deployment.coin = 10;
     }
 
     void ShowResultPopup(string resultText)
@@ -246,7 +256,6 @@ public class GameManager : MonoBehaviour
     {
         selectedUnit.transform.position = new Vector3(selectedUnit.transform.position.x, selectedUnit.transform.position.y, 0);
     }
-
 
     public void CleanupBattlefield()
     {

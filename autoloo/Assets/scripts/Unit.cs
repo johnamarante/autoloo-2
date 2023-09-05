@@ -128,8 +128,6 @@ public class Unit : MonoBehaviour
         svgspritebackground = gameObject.transform.Find("svgbackgroundsprite") != null ? gameObject.transform.Find("svgbackgroundsprite").GetComponent<SpriteRenderer>() : null;
         SetSprite();
         spriteName = GetSpriteName();
-        
-
     }
 
     public string GetSpriteName()
@@ -355,7 +353,7 @@ public class Unit : MonoBehaviour
         //don't pay for a deployed unit twice
         if (!Deployed)
         {
-            gameManager.deployment.Gold -= Cost;
+            gameManager.deployment.coin -= Cost;
         }
         float pointPart = (float)Math.Abs(deploymentMarker.positionKey) / 10;
         float zVal = 1f - pointPart;
@@ -373,10 +371,10 @@ public class Unit : MonoBehaviour
     {
         if (!consumeUnit.Deployed)
         {
-            gameManager.deployment.Gold -= consumeUnit.Cost;
+            gameManager.deployment.coin -= consumeUnit.Cost;
             FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == consumeUnit.QueuePosition ).First().ShowHoverIndicator(false);
         }
-        gameManager.deployment.Gold += CurrencyBumpBasedOnRank(consumeUnit.Rank);
+        gameManager.deployment.coin += CurrencyBumpBasedOnRank(consumeUnit.Rank);
         Destroy(consumeUnit.gameObject);
         HitPoints++;
         Attack++;
@@ -407,7 +405,7 @@ public class Unit : MonoBehaviour
 
     public bool CanAfford()
     {
-        return (Cost <= gameManager.deployment.Gold);
+        return (Cost <= gameManager.deployment.coin);
     }
 
     private void OnMouseEnter()

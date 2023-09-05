@@ -47,8 +47,8 @@ public class CameraControl : MonoBehaviour
                 transform.position = endMarker;
             }
         }
-        //CommandPoints Icon
-        this.transform.Find("CommandPoints").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
+        //ResourcePoints Icon
+        this.transform.Find("ResourcePoints").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         //sign that says reinforcements Icon
     }
 

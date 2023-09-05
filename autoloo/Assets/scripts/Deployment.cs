@@ -9,17 +9,17 @@ using UnityEngine;
 public class Deployment : MonoBehaviour
 {
     public GameManager gameManager;
-    public int _gold;
-    public int Gold
+    public int _coin;
+    public int coin
     {
-        get { return _gold; }
+        get { return _coin; }
         set
         {
-            _gold = value;
-            this?.OnGoldChanged(_gold);
+            _coin = value;
+            this?.OnCoinChanged(_coin);
         }
     }
-    public Action<int> OnGoldChanged;
+    public Action<int> OnCoinChanged;
     public GameObject goDeploymentMarker;
     public GameObject goShopMarker;
     public List<DeploymentMarker> listLeftDeploymentMarkers;
@@ -39,7 +39,7 @@ public class Deployment : MonoBehaviour
     {
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         deploymentShopQueuePositions = SetDrawnHandPositionLocations();
-        SetCommandPointsDisplay();
+        SetResourcePointsDisplay();
         deploymentQueuePositions = SetDeploymentQueuePositionLocations();
         defaultGuiStyle = new GUIStyle()
         {
@@ -88,12 +88,12 @@ public class Deployment : MonoBehaviour
         Roll(false);
     }
 
-    private void SetCommandPointsDisplay()
+    private void SetResourcePointsDisplay()
     {
         var texMeshProComponent = Camera.main.gameObject.transform.GetComponentInChildren(typeof(TextMeshPro), true);
-        var textCommandpoints = (TextMeshPro)texMeshProComponent;
-        textCommandpoints.text = Gold.ToString();
-        OnGoldChanged += (e) => textCommandpoints.text = Gold.ToString();
+        var textResourcePoints = (TextMeshPro)texMeshProComponent;
+        textResourcePoints.text = coin.ToString();
+        OnCoinChanged += (e) => textResourcePoints.text = coin.ToString();
     }
 
     private void OnGUI()
@@ -130,7 +130,7 @@ public class Deployment : MonoBehaviour
             //SELL UNIT
             if (gameManager.selectedUnit != null && gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 165, 250, 150), btnSell, defaultGuiStyle))
             {
-                Gold = Gold + 1 + gameManager.selectedUnit.CurrencyBumpBasedOnRank(gameManager.selectedUnit.Rank);
+                coin = coin + 1 + gameManager.selectedUnit.CurrencyBumpBasedOnRank(gameManager.selectedUnit.Rank);
                 Destroy(gameManager.selectedUnit.gameObject);
                 gameManager.Deselect();
             }
@@ -152,11 +152,11 @@ public class Deployment : MonoBehaviour
     {
         if (costOnePoint)
         {
-            if (Gold < 1)
+            if (coin < 1)
             {
                 return;
             }
-            Gold--;
+            coin--;
         }
         if (gameManager.playerSide == "left")
         {
