@@ -118,8 +118,8 @@ public class Deployment : MonoBehaviour
 
                 StoreAndLoadArmyDetails.Store(gameManager.LeftQueueUnits);
 
-                gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
-                gameManager.SetUpUnitsOnBattlefieldInOrder(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
+                gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
+                gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
                 //StartCoroutine("WriteToFriendPaste");
             }
             //FREEZE UNIT
@@ -190,7 +190,7 @@ public class Deployment : MonoBehaviour
             }
             shopQueue.Add(shopItem);
         }
-        gameManager.OrderUnitsInstantly(ref shopQueue, deploymentShopQueuePositions);
+        gameManager.ArrangeUnitsInstantly(ref shopQueue, deploymentShopQueuePositions);
     }
 
     private Dictionary<int, Vector3> SetDeploymentQueuePositionLocations()

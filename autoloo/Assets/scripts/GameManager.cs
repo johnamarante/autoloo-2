@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             this?.InBattleModeAndNotDeploymentModeChanged(_InBattleModeAndNotDeploymentMode);
         }
     }
-
+    public bool preBattlePhaseFired = false;
     public AudioClip melee8;
     public AudioClip[] distBattle1AudioClips;
     private int currentClipIndex;
@@ -154,24 +154,19 @@ public class GameManager : MonoBehaviour
         return dict;
     }
 
-    public void QueueUnits()
-    {
-        var units = FindObjectsOfType<Unit>().ToList();
-        LeftQueueUnits = units.Where(x => x.side == "left").ToList();
-        RightQueueUnits = units.Where(x => x.side == "right").ToList();
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (InBattleModeAndNotDeploymentMode)
         {
-            if (Time.time > (actionTime + (period/2)))
+            if (Time.time > (actionTime + (period/2)) && !preBattlePhaseFired)
             {
                 PreBattlePhase();
+                preBattlePhaseFired = true;
             }
             if (Time.time > (actionTime + period))
             {
+                preBattlePhaseFired = false;
                 BattlePhase();
                 actionTime += period;
             }
@@ -197,8 +192,44 @@ public class GameManager : MonoBehaviour
 
     void PreBattlePhase()
     {
-        //get all units with a prebattle event
-        //fire those prebattle events in the order Artillery, position
+        //get all units with a prebattle event and fire those prebattle events in the order Artillery, position
+        var leftArtillery = GetArtilleryFromQueue(LeftQueueUnits);
+        var rightArtillery = GetArtilleryFromQueue(RightQueueUnits);
+        var allArtilleryUnits = new List<Unit>();
+        foreach (var item in leftArtillery)
+        {
+            allArtilleryUnits.Add(item);
+        }
+        foreach (var item in rightArtillery)
+        {
+            allArtilleryUnits.Add(item);
+        }
+        allArtilleryUnits.OrderBy(item => Math.Abs(item.QueuePosition)).ToList();
+        foreach (var item in allArtilleryUnits)
+        {
+            Debug.Log(item.name);
+            if (item.side == "left")
+            {
+                item.gameObject.GetComponent<Artillery>().Fire(RightQueueUnits[0]);
+            }
+            else
+            {
+                item.gameObject.GetComponent<Artillery>().Fire(LeftQueueUnits[0]);
+            }
+        }
+    }
+
+    List<Unit> GetArtilleryFromQueue(List<Unit> units)
+    {
+        var artilleryUnits = new List<Unit>();
+        foreach (Unit unit in units)
+        {
+            if (unit.gameObject.GetComponent<Artillery>())
+            {
+                artilleryUnits.Add(unit);
+            }
+        }
+        return artilleryUnits;
     }
 
     void BattlePhase()
@@ -211,8 +242,8 @@ public class GameManager : MonoBehaviour
         CleanupEliminatedUnits(leftEliminatedIndices, ref LeftQueueUnits);
         CleanupEliminatedUnits(rightEliminatedIndices, ref RightQueueUnits);
 
-        SetUpUnitsOnBattlefieldInOrder(ref LeftQueueUnits, fightQueuePositions);
-        SetUpUnitsOnBattlefieldInOrder(ref RightQueueUnits, fightQueuePositions);
+        SetUpUnitsOnBattlefieldInArrangement(ref LeftQueueUnits, fightQueuePositions);
+        SetUpUnitsOnBattlefieldInArrangement(ref RightQueueUnits, fightQueuePositions);
 
         if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
         {
@@ -288,7 +319,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetUpUnitsOnBattlefieldInOrder(ref List<Unit> units, Dictionary<int, Vector3> queuePositions)
+    public void SetUpUnitsOnBattlefieldInArrangement(ref List<Unit> units, Dictionary<int, Vector3> queuePositions)
     {
         int idx = 1;
         //go through queue
@@ -305,7 +336,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OrderUnitsInstantly(ref List<Unit> units, Dictionary<int, Vector3> queuePositions)
+    public void ArrangeUnitsInstantly(ref List<Unit> units, Dictionary<int, Vector3> queuePositions)
     {
         int idx = 1;
         //go through queue

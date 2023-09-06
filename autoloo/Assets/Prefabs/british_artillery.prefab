@@ -1112,6 +1112,7 @@ GameObject:
   - component: {fileID: 6574580541872489291}
   - component: {fileID: 7350330291660393393}
   - component: {fileID: 668401736434193323}
+  - component: {fileID: -6220763713668617297}
   m_Layer: 0
   m_Name: british_artillery
   m_TagString: Untagged
@@ -1202,6 +1203,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6220763713668617297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838132583227817163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa86fa50ad40764a93b1fed280de2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  range: 3
 --- !u!1 &7058282181507912768
 GameObject:
   m_ObjectHideFlags: 0

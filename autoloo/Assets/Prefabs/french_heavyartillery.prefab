@@ -1648,6 +1648,7 @@ GameObject:
   - component: {fileID: 7731642665731895206}
   - component: {fileID: 6228571012670383964}
   - component: {fileID: 4122880495872606022}
+  - component: {fileID: -8058642401096224836}
   m_Layer: 0
   m_Name: french_heavyartillery
   m_TagString: Untagged
@@ -1738,3 +1739,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8058642401096224836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968037052961001510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa86fa50ad40764a93b1fed280de2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  range: 5
