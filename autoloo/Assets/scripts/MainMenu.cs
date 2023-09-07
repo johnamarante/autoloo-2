@@ -138,9 +138,8 @@ public class MainMenu : MonoBehaviour
         float buttonY = inputY + inputHeight + 20;
 
         if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth/2, buttonHeight), franceFlag))
-        {
+        { 
             LoadGame("France");
-
         }
         if (GUI.Button(new Rect(buttonX + (buttonWidth / 2), buttonY, buttonWidth/2, buttonHeight), britainFlag))
         {

@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944197362482153966}
-  m_LocalRotation: {x: -0, y: -0, z: 0.21562316, w: 0.9764767}
-  m_LocalPosition: {x: -0.2500031, y: 0.3800001, z: 0}
-  m_LocalScale: {x: 0.25, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7739593141735078276}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 24.904}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4539976735479955772
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: b7aba2774a28ec04fac26a76c2bed0b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1700,7 +1700,7 @@ MonoBehaviour:
   _rank: 0
   side: right
   myFont: {fileID: 0}
-  QueuePosition: 0
+  _queuePosition: 0
   _deployed: 0
   _freezed: 0
   spriteName: 
@@ -1713,6 +1713,12 @@ MonoBehaviour:
   Rsprite: {fileID: 3286163911610860551, guid: 5b42d49d82d315c4889a94e471cbf23f, type: 3}
   Lspritebackground: {fileID: 3286163911610860551, guid: 531282701fe12ae42a353da1a36a8db3, type: 3}
   Rspritebackground: {fileID: 3286163911610860551, guid: bf9185c827f4cd347bd554ef8f9332bc, type: 3}
+  textAttack: {fileID: 0}
+  textHitPoints: {fileID: 0}
+  textCost: {fileID: 0}
+  costComponent: {fileID: 0}
+  rankComponent: {fileID: 0}
+  freezeComponent: {fileID: 0}
 --- !u!114 &6228571012670383964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1753,3 +1759,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
   range: 5
+  grapeMode: 0
+  ball: {fileID: 3286163911610860551, guid: b7aba2774a28ec04fac26a76c2bed0b9, type: 3}
+  grape: {fileID: 3286163911610860551, guid: ecfc3d877b9d5fc4aa7268ff9599f0cd, type: 3}

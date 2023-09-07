@@ -217,6 +217,7 @@ public class GameManager : MonoBehaviour
                 item.gameObject.GetComponent<Artillery>().Fire(LeftQueueUnits[0]);
             }
         }
+        CleanupAndMove();
     }
 
     List<Unit> GetArtilleryFromQueue(List<Unit> units)
@@ -236,6 +237,16 @@ public class GameManager : MonoBehaviour
     {
         Fight(ref LeftQueueUnits, ref RightQueueUnits);
 
+        CleanupAndMove();
+
+        if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
+        {
+            HandleBattleResult();
+        }
+    }
+
+    private void CleanupAndMove()
+    {
         List<int> leftEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref LeftQueueUnits);
         List<int> rightEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref RightQueueUnits);
 
@@ -244,11 +255,6 @@ public class GameManager : MonoBehaviour
 
         SetUpUnitsOnBattlefieldInArrangement(ref LeftQueueUnits, fightQueuePositions);
         SetUpUnitsOnBattlefieldInArrangement(ref RightQueueUnits, fightQueuePositions);
-
-        if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
-        {
-            HandleBattleResult();
-        }
     }
 
     void CleanupEliminatedUnits(List<int> indices, ref List<Unit> queueUnits)
@@ -314,8 +320,8 @@ public class GameManager : MonoBehaviour
     {
         if (leftUnits.Count > 0 && rightUnits.Count > 0)
         {
-            leftUnits[0].HitPoints -= rightUnits[0].Attack;
-            rightUnits[0].HitPoints -= leftUnits[0].Attack;
+            leftUnits[0].HitPoints -= (rightUnits[0].Attack + rightUnits[0].AttackBonus);
+            rightUnits[0].HitPoints -= (leftUnits[0].Attack + leftUnits[0].AttackBonus);
         }
     }
 

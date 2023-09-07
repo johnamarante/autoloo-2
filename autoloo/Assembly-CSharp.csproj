@@ -67,6 +67,7 @@
     <Compile Include="Assets\scripts\Background.cs" />
     <Compile Include="Assets\scripts\ResultPopup.cs" />
     <Compile Include="Assets\scripts\AutolooUserInfoUtil.cs" />
+    <Compile Include="Assets\scripts\Artillery.cs" />
     <Compile Include="Assets\scripts\GameManager.cs" />
     <Compile Include="Assets\scripts\Unit.cs" />
     <Compile Include="Assets\scripts\DeploymentShopMarker.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="Assets\scripts\DragIt.cs" />
     <Compile Include="Assets\scripts\ConfigurationManager.cs" />
     <Compile Include="Assets\scripts\StoreAndLoadArmyDetails.cs" />
-    <Compile Include="Assets\scripts\Artillery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

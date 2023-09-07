@@ -33,6 +33,18 @@ public class Unit : MonoBehaviour
     }
     public Action<int> OnAttackChanged;
 
+    public int _attackBonus;
+    public int AttackBonus
+    {
+        get { return _attackBonus; }
+        set
+        {
+            _attackBonus = value;
+            this?.OnAttackBonusChanged(_attackBonus);
+        }
+    }
+    public Action<int> OnAttackBonusChanged;
+
     public int _hitPoints;
     public int HitPoints
     {
@@ -44,7 +56,7 @@ public class Unit : MonoBehaviour
         }
     }
     public Action<int> OnHitPointsChanged;
-    
+
     public int _rank = 0;
     public int Rank
     {
@@ -59,7 +71,21 @@ public class Unit : MonoBehaviour
     public Action<int> OnRankChanged;
     public string side = "";
     public Font myFont;
-    public int QueuePosition = 0;
+    public int _queuePosition = 0;
+    public int QueuePosition
+    {
+        get {return _queuePosition;}
+        set
+        {
+            _queuePosition = value;
+            if (this?.OnQueuePositionChanged != null)
+            {
+                this?.OnQueuePositionChanged(_queuePosition);
+            }
+        }
+    }
+    public Action<int> OnQueuePositionChanged;
+
     public bool _deployed = false;
     public bool Deployed 
     {
@@ -110,12 +136,12 @@ public class Unit : MonoBehaviour
     public Sprite Lspritebackground;
     public Sprite Rspritebackground;
     //Stats display START
-    private TextMeshPro textAttack = new TextMeshPro();
-    private TextMeshPro textHitPoints = new TextMeshPro();
-    private TextMeshPro textCost = new TextMeshPro();
-    private GameObject costComponent;
-    private GameObject rankComponent;
-    private GameObject freezeComponent;
+    public TextMeshPro textAttack = new();
+    public TextMeshPro textHitPoints = new();
+    public TextMeshPro textCost = new();
+    public GameObject costComponent;
+    public GameObject rankComponent;
+    public GameObject freezeComponent;
     private SpriteRenderer spriteRank = new SpriteRenderer();
     //Stats display END
     private GameObject mouseHoverOverIndicator;
@@ -142,12 +168,14 @@ public class Unit : MonoBehaviour
     {
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         SetUnitStatsDisplay();
-        OnAttackChanged += (e) => textAttack.text = Attack.ToString();
+        OnAttackChanged += (e) => textAttack.text = (Attack + AttackBonus).ToString();
+        OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
         OnHitPointsChanged += (e) => textHitPoints.text = HitPoints.ToString();
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
         OnRankChanged += (e) =>  ChangeRankIcon();
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
+        OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
         //costComponent with old hat is going to be hidden, following SAP standard
         //costComponent.SetActive(!Deployed);
         rankComponent.SetActive(Deployed);
@@ -185,6 +213,14 @@ public class Unit : MonoBehaviour
         if (gameManager.rankSprites.Length > Rank)
         {
             spriteRank.sprite = gameManager.rankSprites[Rank];
+        }
+    }
+
+    private void ApplyQueuePositionChangeEffect(int queuePosition)
+    {
+        if (gameObject.GetComponent<Artillery>()) 
+        { 
+            gameObject.GetComponent<Artillery>().SetAttackByQueue(queuePosition); 
         }
     }
 
