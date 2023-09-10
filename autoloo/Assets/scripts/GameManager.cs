@@ -218,6 +218,7 @@ public class GameManager : MonoBehaviour
             }
         }
         CleanupAndMove();
+        CheckForAndHandleBattleResult();
     }
 
     List<Unit> GetArtilleryFromQueue(List<Unit> units)
@@ -239,10 +240,7 @@ public class GameManager : MonoBehaviour
 
         CleanupAndMove();
 
-        if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
-        {
-            HandleBattleResult();
-        }
+        CheckForAndHandleBattleResult();
     }
 
     private void CleanupAndMove()
@@ -266,19 +264,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void HandleBattleResult()
+    void CheckForAndHandleBattleResult()
     {
-        string resultText = (LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!";
-        Debug.Log("Result is " + resultText);
+        if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
+        {
+            string resultText = (LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!";
+            Debug.Log("Result is " + resultText);
 
-        ShowResultPopup(resultText);
+            ShowResultPopup(resultText);
 
-        CleanupBattlefield();
-        InBattleModeAndNotDeploymentMode = false;
-        Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
-        StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
-        deployment.Roll(false);
-        deployment.coin = 10;
+            CleanupBattlefield();
+            InBattleModeAndNotDeploymentMode = false;
+            Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
+            StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
+            deployment.Roll(false);
+            deployment.coin = 10;
+        }
     }
 
     void ShowResultPopup(string resultText)

@@ -2,10 +2,12 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ArrowHover
+    - Artillery
     - AutolooUserGameData
     - AutolooUserInfo
     - Background
     - CameraControl
+    - Cannonball
     - ConfigurationManager
     - Deployment
     - DeploymentMarker
@@ -88,19 +90,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3742}
     - Class: 114
-      Script: {instanceID: 4072}
+      Script: {instanceID: 4048}
     - Class: 114
-      Script: {instanceID: 4192}
+      Script: {instanceID: 4074}
     - Class: 114
-      Script: {instanceID: 4204}
+      Script: {instanceID: 4194}
     - Class: 114
-      Script: {instanceID: 4636}
+      Script: {instanceID: 4206}
     - Class: 114
-      Script: {instanceID: 5418}
+      Script: {instanceID: 4638}
     - Class: 114
-      Script: {instanceID: 5854}
+      Script: {instanceID: 5420}
     - Class: 114
-      Script: {instanceID: 6106}
+      Script: {instanceID: 5856}
+    - Class: 114
+      Script: {instanceID: 6108}
+    - Class: 114
+      Script: {instanceID: 28410}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -149,9 +155,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3742}
     - Class: 114
-      Script: {instanceID: 5054}
+      Script: {instanceID: 5056}
     - Class: 114
-      Script: {instanceID: 5418}
+      Script: {instanceID: 5420}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -194,11 +200,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 5320}
+      Script: {instanceID: 5322}
     - Class: 114
-      Script: {instanceID: 6526}
+      Script: {instanceID: 6528}
     - Class: 114
-      Script: {instanceID: 7772}
+      Script: {instanceID: 7774}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -245,11 +251,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3742}
     - Class: 114
-      Script: {instanceID: 4360}
+      Script: {instanceID: 4362}
     - Class: 114
-      Script: {instanceID: 4636}
+      Script: {instanceID: 4638}
     - Class: 114
-      Script: {instanceID: 5418}
+      Script: {instanceID: 5420}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -299,7 +305,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: be3655360b033b6bc3f09d6ea04eeaba
+      Hash: 4b2516c533050befec864e405bc3618e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Deployment
@@ -653,7 +659,13 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: bef7bde567166e0c16ebcb2b909dd5cc
+      Hash: d78dcf09ea9a9e1bcc58381e014c2665
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Artillery
+  - hash:
+      serializedVersion: 2
+      Hash: 19bb3f586c5db514bacff0d592b3515c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -665,7 +677,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 7d9d9239814735af3113ae83fa49e5a5
+      Hash: 26868c9a9e526b4e6b7e688195c4f417
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unit
@@ -1203,6 +1215,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Cannonball
   platform: 5
   scenePathNames:
   - Assets/title.unity

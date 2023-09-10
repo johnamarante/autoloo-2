@@ -1,49 +1,40 @@
 {
     "UnitDetails": [
         {
-            "Name": "unit_left_bf7f5718-8860-4aec-8fbd-29705c84c161",
-            "Attack": 4,
-            "HitPoints": 4,
-            "Rank": 1,
+            "Name": "unit_left_4b63aef9-8ca0-41af-95bb-e592f1da4ef8",
+            "Attack": 3,
+            "HitPoints": 2,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -1,
-            "SpriteName": "british_highlander_left_2_0_Sprite"
+            "SpriteName": "french_chasseuervoltiguere_left_3_1_Sprite"
         },
         {
-            "Name": "unit_left_52efa94b-fbe0-4e83-85ff-17784ba711a7",
-            "Attack": 3,
-            "HitPoints": 4,
-            "Rank": 1,
+            "Name": "unit_left_14282eb5-0c4f-4e81-b907-8cf7376c39f1",
+            "Attack": 4,
+            "HitPoints": 3,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -2,
-            "SpriteName": "british_scottsgreys_left_0_2_Sprite"
+            "SpriteName": "french_linevoltiguer_left_2_-1_Sprite"
         },
         {
-            "Name": "unit_left_49e799a9-96b7-4a4b-a756-16ecd152f0c6",
-            "Attack": 4,
-            "HitPoints": 5,
-            "Rank": 2,
+            "Name": "unit_left_e7fa2aba-0238-40e6-b697-7567c8474d2a",
+            "Attack": 2,
+            "HitPoints": 2,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -3,
-            "SpriteName": "british_rifleman_left_1_0_Sprite"
+            "SpriteName": "french_chasseur_left_3_1_Sprite"
         },
         {
-            "Name": "unit_left_eaba3a28-7a77-4c81-bc25-2f91aedb2164",
-            "Attack": 4,
-            "HitPoints": 5,
-            "Rank": 2,
+            "Name": "unit_left_399c7f51-6b37-4dda-932d-ac4298b3fea2",
+            "Attack": 1,
+            "HitPoints": 4,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -4,
-            "SpriteName": "british_hannoverianfoot_left_2_0_Sprite"
-        },
-        {
-            "Name": "unit_left_8a7b4dae-e23a-4145-8dd9-a0788078debe",
-            "Attack": 3,
-            "HitPoints": 4,
-            "Rank": 1,
-            "Side": "left",
-            "QueuePosition": -5,
-            "SpriteName": "british_rockettrooper_left_0_2_Sprite"
+            "SpriteName": "french_heavyartillery_left_0_1_Sprite"
         }
     ]
 }
