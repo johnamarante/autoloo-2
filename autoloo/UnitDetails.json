@@ -1,25 +1,25 @@
 {
     "UnitDetails": [
         {
-            "Name": "unit_left_4b63aef9-8ca0-41af-95bb-e592f1da4ef8",
+            "Name": "unit_left_b12b6478-3d71-4b83-8e5b-edba2fa9c2e4",
             "Attack": 3,
-            "HitPoints": 2,
-            "Rank": 0,
+            "HitPoints": 3,
+            "Rank": 1,
             "Side": "left",
             "QueuePosition": -1,
-            "SpriteName": "french_chasseuervoltiguere_left_3_1_Sprite"
+            "SpriteName": "french_line_left_2_1_Sprite"
         },
         {
-            "Name": "unit_left_14282eb5-0c4f-4e81-b907-8cf7376c39f1",
+            "Name": "unit_left_9d872ab8-916c-4c8b-81d9-6a5d86f5b7c0",
             "Attack": 4,
-            "HitPoints": 3,
+            "HitPoints": 4,
             "Rank": 0,
             "Side": "left",
             "QueuePosition": -2,
-            "SpriteName": "french_linevoltiguer_left_2_-1_Sprite"
+            "SpriteName": "french_carabineracheval_left_0_2_Sprite"
         },
         {
-            "Name": "unit_left_e7fa2aba-0238-40e6-b697-7567c8474d2a",
+            "Name": "unit_left_9cf7878a-2411-42ee-8056-45fde2bb9cda",
             "Attack": 2,
             "HitPoints": 2,
             "Rank": 0,
@@ -28,12 +28,21 @@
             "SpriteName": "french_chasseur_left_3_1_Sprite"
         },
         {
-            "Name": "unit_left_399c7f51-6b37-4dda-932d-ac4298b3fea2",
-            "Attack": 1,
-            "HitPoints": 4,
+            "Name": "unit_left_68aa0eaa-36ff-4c46-9dc4-8ea344740ec4",
+            "Attack": 4,
+            "HitPoints": 3,
             "Rank": 0,
             "Side": "left",
             "QueuePosition": -4,
+            "SpriteName": "french_linegrenadier_left_2_1_Sprite"
+        },
+        {
+            "Name": "unit_left_9d541b83-4562-41e5-8a62-62f011c6c476",
+            "Attack": 2,
+            "HitPoints": 5,
+            "Rank": 1,
+            "Side": "left",
+            "QueuePosition": -5,
             "SpriteName": "french_heavyartillery_left_0_1_Sprite"
         }
     ]
