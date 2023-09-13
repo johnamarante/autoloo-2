@@ -63,6 +63,8 @@ MonoBehaviour:
   BritishUnitRoster: []
   actionTime: 0
   period: 4
+  realFPS: 60
+  cleanupFrame: 30
   guiFontSize: 20
   multiplayer: 0
   playerSide: 
@@ -78,12 +80,30 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: 3bc746b515782ea4db258a232993ab9a, type: 3}
   - {fileID: 3286163911610860551, guid: eb7610a3d07b6cb43b6f620079093d8f, type: 3}
   - {fileID: 3286163911610860551, guid: 0fda0ebd5d589fe4880e945e8f325f0e, type: 3}
-  playAsFrance: {fileID: 0}
-  playAsGreatBritain: {fileID: 0}
   _InBattleModeAndNotDeploymentMode: 0
   preBattlePhaseFired: 0
-  melee8: {fileID: 0}
-  distBattle1AudioClips: []
+  preBattlePhaseCleanupFired: 0
+  melee8: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
+  distBattle1AudioClips:
+  - {fileID: 8300000, guid: d56976a342f3c214a8f53b668c689087, type: 3}
+  - {fileID: 8300000, guid: 9d91387a3c7e83c47bd2d10b65aa3992, type: 3}
+  - {fileID: 8300000, guid: 940bfc9da6a272f49ad9fba10f5eaf79, type: 3}
+  - {fileID: 8300000, guid: d8c1baa33199953488a702f50c612a80, type: 3}
+  cannonFire:
+  - {fileID: 8300000, guid: ac58600959146ce4f96ce76321ef5699, type: 3}
+  - {fileID: 8300000, guid: de5c401f30117364daf7f86ea12b6334, type: 3}
+  - {fileID: 8300000, guid: a65eaab026525d547b2c7e2c3abb6980, type: 3}
+  - {fileID: 8300000, guid: fd3b31e11955d0f4d9a0ea1487b322f9, type: 3}
+  - {fileID: 8300000, guid: 99f6ac29d9975a0428beb54bb02ca9c7, type: 3}
+  - {fileID: 8300000, guid: 2219586ef177ca14cac6e77917927cba, type: 3}
+  - {fileID: 8300000, guid: 2cab19993c0c7f54cb4d232ef9f997ca, type: 3}
+  - {fileID: 8300000, guid: 7dd8b0299167cd248a476e51fe601dd1, type: 3}
+  - {fileID: 8300000, guid: c80a4f982c9b0524e837f069f4420bfd, type: 3}
+  - {fileID: 8300000, guid: 6418cfd0a5a8af84ab4a75e376083505, type: 3}
+  cannonballHits:
+  - {fileID: 8300000, guid: 273ae2e88921da0439b323c902a10e8d, type: 3}
+  - {fileID: 8300000, guid: ff47899cd9ff7f348b3d85859efc6e38, type: 3}
+  - {fileID: 8300000, guid: c461a93515b4a0644b6b8837db97817c, type: 3}
   _selectedUnit: {fileID: 0}
   resultPopup: {fileID: 5818834965362523167, guid: d80b0c52b06658f4d89600e74a7bd916, type: 3}
 --- !u!222 &755904350544477790

@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
     //public Unit selectedUnit;
     public Deployment deployment;
     public Sprite[] rankSprites;
-    public Texture playAsFrance;
-    public Texture playAsGreatBritain;
     public bool _InBattleModeAndNotDeploymentMode;
     public bool InBattleModeAndNotDeploymentMode
     {
@@ -41,6 +39,8 @@ public class GameManager : MonoBehaviour
     public bool preBattlePhaseCleanupFired = false;
     public AudioClip melee8;
     public AudioClip[] distBattle1AudioClips;
+    public AudioClip[] cannonFire;
+    public AudioClip[] cannonballHits;
     private int currentClipIndex;
     AudioSource generalAudioSource;
 
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     {
         fightQueuePositions = SetFightQueuePositionLocations();
         cameraPositions = SetCameraPositionLocations();
-        generalAudioSource = Camera.main.GetComponent<AudioSource>();
+        generalAudioSource = Camera.main.gameObject.AddComponent<AudioSource>();
         generalAudioSource.volume = 0.5f;
         generalAudioSource.loop = false;
         string sRoster = FindObjectOfType<AutolooUserGameData>().PlayerRoster;
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
             if (InBattleModeAndNotDeploymentMode)
             {
                 generalAudioSource.Stop();
-                generalAudioSource.clip = melee8;
+                generalAudioSource.clip = distBattle1AudioClips[0];
                 generalAudioSource.volume = 0.7f;
                 generalAudioSource.loop = true;
                 generalAudioSource.Play();
@@ -101,8 +101,22 @@ public class GameManager : MonoBehaviour
                 generalAudioSource.loop=false;
                 generalAudioSource.clip = distBattle1AudioClips[0];
                 generalAudioSource.Play();
+                RemoveAudioSourcesOnGameManager();
             }
         };
+    }
+
+    private void RemoveAudioSourcesOnGameManager()
+    {
+        //This method is used to clear off any audio sources added to the enduring gamemanager object
+        //by non-enduring objects like units or cannonballs in the battle phase.
+        //This enduring objet gamemanager is used for the audio sources because without it the audio sources will 
+        //not complete playing to the end of theri respective tracks, which is a disruptive effect for the player.
+        AudioSource[] componentsToRemove = this.gameObject.GetComponents<AudioSource>();
+        foreach (AudioSource component in componentsToRemove)
+        {
+            Destroy(component);
+        }
     }
 
     private void PlayAsBritian()
@@ -408,5 +422,27 @@ public class GameManager : MonoBehaviour
         {
             deploymarker.ShowHoverIndicator(false);
         }
+    }
+
+    public void PlayCannonballFire()
+    {
+        System.Random random = new System.Random();
+        int randomIndex = random.Next(0, cannonFire.Length);
+        PlayTransientAudioClip(cannonFire[randomIndex]);
+    }
+
+    public void PlayCannonballHit()
+    {
+        System.Random random = new System.Random();
+        int randomIndex = random.Next(0, cannonballHits.Length);
+        PlayTransientAudioClip(cannonballHits[randomIndex]);
+    }
+
+    public void PlayTransientAudioClip(AudioClip transientAudioClip)
+    {
+        var boomAudio = this.gameObject.AddComponent<AudioSource>();
+        boomAudio.loop = false;
+        boomAudio.clip = transientAudioClip;
+        boomAudio.Play();
     }
 }

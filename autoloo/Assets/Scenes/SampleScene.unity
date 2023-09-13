@@ -341,12 +341,16 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: boom
+      value: 
+      objectReference: {fileID: 8300000, guid: 273ae2e88921da0439b323c902a10e8d, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: melee8
       value: 
       objectReference: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: period
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: deployment
@@ -377,12 +381,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: 7c71226137974694c9cb896cde461121, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonballHit
+      value: 
+      objectReference: {fileID: 8300000, guid: 273ae2e88921da0439b323c902a10e8d, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: playAsGreatBritain
       value: 
       objectReference: {fileID: 2800000, guid: 638cebb65b4f0a342a426c3387b3e131, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ac58600959146ce4f96ce76321ef5699, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: LeftUnitRoster.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonballHits.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: RightUnitRoster.Array.size
@@ -420,6 +440,14 @@ PrefabInstance:
       propertyPath: LeftUnitRoster.Array.data[6]
       value: 
       objectReference: {fileID: 6635745498971468658, guid: 8f6eca73f72ef2c44b61679357423514, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonballHits.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1de3056571ca47b4ba41bc7624c676a4, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonballHits.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 273ae2e88921da0439b323c902a10e8d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: RightUnitRoster.Array.data[2]
       value: 

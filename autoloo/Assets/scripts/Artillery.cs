@@ -60,11 +60,13 @@ public class Artillery : MonoBehaviour
         cannonballComponent.damage = unit.Attack;
         cannonballComponent.target = target;
         cannonballComponent.manager = unit.gameManager;
+        target.gameManager.PlayCannonballFire();
     }
 
 
     public void ShootGrape(Unit target)
     {
+        //add the voice audio
         Debug.Log($"will fire grape at {target.name}...");
         //the deduction of enemy HP for grape shot is done in the Battle Phase
     }

@@ -25,6 +25,7 @@ public class Cannonball : MonoBehaviour
         if (i == FlightpathPoints.Count)
         {
             target.HitPoints -= damage;
+            target.gameManager.PlayCannonballHit();
             Destroy(this.gameObject);
         }
     }
