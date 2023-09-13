@@ -346,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: period
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: deployment

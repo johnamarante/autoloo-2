@@ -20,7 +20,7 @@ public class PulseHover : MonoBehaviour
     {
         //probably need to get the framerate in order for this to look consistent across different devices and mchines
         regulate++;
-        if (regulate % 4 == 0)
+        if (regulate % 2 == 0)
         {
             regulate = 1;
             if (down)

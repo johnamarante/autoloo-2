@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public Dictionary<int, Vector3> cameraPositions;
     public float actionTime;
     public float period = 1f;
+    public int realFPS = 60;
+    public int cleanupFrame = 30;
     public int guiFontSize = 20;
     public bool multiplayer = false;
     public string playerSide = "left";
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public bool preBattlePhaseFired = false;
+    public bool preBattlePhaseCleanupFired = false;
     public AudioClip melee8;
     public AudioClip[] distBattle1AudioClips;
     private int currentClipIndex;
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
     public Action<bool> InBattleModeAndNotDeploymentModeChanged;
     public ResultPopup resultPopup;
     
+    private int frameCountFromStartOfLastPrebattlePhase = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -157,21 +161,37 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Application.targetFrameRate = 60;
+        realFPS = (int)(1.0f / Time.deltaTime);
         if (InBattleModeAndNotDeploymentMode)
         {
-            if (Time.time > (actionTime + (period/2)) && !preBattlePhaseFired)
+            if (Time.time > (actionTime + (period / 2)) && !preBattlePhaseFired)
             {
+                //ALL PRE BATTLE PHASE ACTIONS MUST BE FIXED TO COMPLETE IN LESS THAN 22 FRAMES
                 PreBattlePhase();
                 preBattlePhaseFired = true;
+                cleanupFrame = (int)(realFPS / 2);
             }
-            if (Time.time > (actionTime + period))
+            if (preBattlePhaseFired)
+            {
+                frameCountFromStartOfLastPrebattlePhase++;
+                if (frameCountFromStartOfLastPrebattlePhase == cleanupFrame)
+                {
+                    CleanupAndMove();
+                    CheckForAndHandleBattleResult();
+                    preBattlePhaseCleanupFired = true;
+                }
+            }
+            if (Time.time > (actionTime + period) && preBattlePhaseCleanupFired)
             {
                 preBattlePhaseFired = false;
+                preBattlePhaseCleanupFired = false;
+                frameCountFromStartOfLastPrebattlePhase = 0;
                 BattlePhase();
                 actionTime += period;
             }
         }
-        else 
+        else
         {
             if (selectedUnit != null)
             {
@@ -217,8 +237,6 @@ public class GameManager : MonoBehaviour
                 item.gameObject.GetComponent<Artillery>().Fire(LeftQueueUnits[0]);
             }
         }
-        CleanupAndMove();
-        CheckForAndHandleBattleResult();
     }
 
     List<Unit> GetArtilleryFromQueue(List<Unit> units)
@@ -237,13 +255,11 @@ public class GameManager : MonoBehaviour
     void BattlePhase()
     {
         Fight(ref LeftQueueUnits, ref RightQueueUnits);
-
         CleanupAndMove();
-
         CheckForAndHandleBattleResult();
     }
 
-    private void CleanupAndMove()
+    public void CleanupAndMove()
     {
         List<int> leftEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref LeftQueueUnits);
         List<int> rightEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref RightQueueUnits);
@@ -264,7 +280,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void CheckForAndHandleBattleResult()
+    public void CheckForAndHandleBattleResult()
     {
         if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
         {
@@ -312,8 +328,9 @@ public class GameManager : MonoBehaviour
             Camera.main.ScreenToWorldPoint(screenPoint);
             //GUI.Label(new Rect(10, 10, 300, 300), screenPoint.ToString(), new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
             //GUI.Label(new Rect(10, 30, 300, 300), $"W: {Screen.width} H: {Screen.height}", new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
-            var selectionText = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
-            GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), selectionText, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+            var developerMessage = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
+            developerMessage += $" real FPS: {realFPS}";
+            GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), developerMessage, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
         }
     }
 

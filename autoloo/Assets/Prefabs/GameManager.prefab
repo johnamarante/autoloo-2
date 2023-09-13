@@ -59,8 +59,10 @@ MonoBehaviour:
   RightUnitRoster:
   - {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
   - {fileID: 6443899396185200549, guid: d6b33e93d5d866145a17416ad750177c, type: 3}
+  FrenchUnitRoster: []
+  BritishUnitRoster: []
   actionTime: 0
-  period: 1.5
+  period: 4
   guiFontSize: 20
   multiplayer: 0
   playerSide: 
@@ -76,7 +78,12 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: 3bc746b515782ea4db258a232993ab9a, type: 3}
   - {fileID: 3286163911610860551, guid: eb7610a3d07b6cb43b6f620079093d8f, type: 3}
   - {fileID: 3286163911610860551, guid: 0fda0ebd5d589fe4880e945e8f325f0e, type: 3}
-  InBattleModeAndNotDeploymentMode: 0
+  playAsFrance: {fileID: 0}
+  playAsGreatBritain: {fileID: 0}
+  _InBattleModeAndNotDeploymentMode: 0
+  preBattlePhaseFired: 0
+  melee8: {fileID: 0}
+  distBattle1AudioClips: []
   _selectedUnit: {fileID: 0}
   resultPopup: {fileID: 5818834965362523167, guid: d80b0c52b06658f4d89600e74a7bd916, type: 3}
 --- !u!222 &755904350544477790

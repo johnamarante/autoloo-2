@@ -6,6 +6,9 @@ public class Cannonball : MonoBehaviour
 {
     int i = 0;
     public List<(double, double)> FlightpathPoints;
+    public Unit target;
+    public int damage;
+    public GameManager manager;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +24,8 @@ public class Cannonball : MonoBehaviour
         i++;
         if (i == FlightpathPoints.Count)
         {
-            Destroy(gameObject);
+            target.HitPoints -= damage;
+            Destroy(this.gameObject);
         }
     }
 }

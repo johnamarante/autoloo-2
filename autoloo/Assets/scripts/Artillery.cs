@@ -47,19 +47,21 @@ public class Artillery : MonoBehaviour
 
     public void ShootBall(Unit target)
     {
-        //get the enemy
-        //the enemy is the guy where the queue position is -1 * (myqueueposition/math.abs(myqueueposition))
-        //CHECK THAT
-        Debug.Log($"firing a ball at {target.name}");
-        target.HitPoints -= unit.Attack;
-        var dist = (target.transform.position.x - unit.transform.position.x);
-        var flyingball = Instantiate(cannonball);
-        flyingball.transform.position = this.transform.position;
-        flyingball.GetComponent<Cannonball>().FlightpathPoints = CannonballFlightpath(50, 12, dist);
-        //the target can be known at the time fire is called from Gamemanager PreBattlePhase() ( see how it is done in gamemanager Fight()  )
-        //do not do the damage until the "flying ball" collides with the enemy unit
-        //the flying ball needs to get there before the attack pahse goes off (need to delay next beat? yes)
+        Debug.Log($"Firing a ball at {target.name}");
+
+        // Calculate the distance to the target
+        float distanceToTarget = target.transform.position.x - unit.transform.position.x;
+
+        // Create a new cannonball and set its properties
+        GameObject flyingBall = Instantiate(cannonball, transform.position, Quaternion.identity);
+        Cannonball cannonballComponent = flyingBall.GetComponent<Cannonball>();
+
+        cannonballComponent.FlightpathPoints = CannonballFlightpath(50, 12, distanceToTarget, (int)(unit.gameManager.realFPS/3));
+        cannonballComponent.damage = unit.Attack;
+        cannonballComponent.target = target;
+        cannonballComponent.manager = unit.gameManager;
     }
+
 
     public void ShootGrape(Unit target)
     {
@@ -83,7 +85,7 @@ public class Artillery : MonoBehaviour
         }
     }
 
-    private static List<(double, double)> CannonballFlightpath(double muzzleVelocity, double weightInPounds, double targetDistance)
+    private static List<(double, double)> CannonballFlightpath(double muzzleVelocity, double weightInPounds, double targetDistance, int cannonballFrames)
     {
         List<(double, double)> flightpathPoints = new List<(double, double)>();
         // Constants
@@ -104,12 +106,19 @@ public class Artillery : MonoBehaviour
         // Calculate the horizontal range (arc length)
         double range = (muzzleVelocity * muzzleVelocity * Math.Sin(2 * angleInRadians)) / gravitationalAcceleration;
 
+        //calculate iteration step
+        var interationStep = (int)(100 / cannonballFrames);
+
         // Calculate and output heights at various horizontal distances
-        for (int i = 5; i <= 100; i += 5)
+        for (int i = interationStep; i <= 100; i += interationStep)
         {
             double horizontalDistance = Math.Round((i / 100.0) * range, 4);
             double verticalHeight = Math.Round(initialHeight + horizontalDistance * Math.Tan(angleInRadians) - (gravitationalAcceleration * horizontalDistance * horizontalDistance) / (2 * Math.Pow(muzzleVelocity * Math.Cos(angleInRadians), 2)), 4);
             flightpathPoints.Add(new(horizontalDistance, verticalHeight * 5));
+            if ((i/5) >= cannonballFrames)
+            {
+                break;
+            }
         }
 
         return flightpathPoints;
