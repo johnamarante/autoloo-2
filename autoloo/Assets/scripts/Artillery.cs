@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 
@@ -9,9 +10,16 @@ public class Artillery : MonoBehaviour
     public Unit unit;
     public int range;
     public bool grapeMode = false;
+    public bool showEffect = false;
+    public int effectFrame = 0;
     public Sprite ball;
     public Sprite grape;
+    public Sprite flashEffectLeft;
+    public Sprite flashEffectRight;
+    public Sprite smokeEffectLeft;
+    public Sprite smokeEffectRight;
     public GameObject cannonball;
+    public SpriteRenderer effectsComponent;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,17 +32,21 @@ public class Artillery : MonoBehaviour
         {
             range = 3;
         }
-        //unit.textAttack.gameObject.GetComponent<SpriteRenderer>().sprite = ball;
+        effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (showEffect)
+        {
+            
+        }
     }
 
     public void Fire(Unit target)
     {
+        showEffect = true;
         if (Math.Abs(unit.QueuePosition) == 1)
         {
             ShootGrape(target);
@@ -108,7 +120,7 @@ public class Artillery : MonoBehaviour
         // Calculate the horizontal range (arc length)
         double range = (muzzleVelocity * muzzleVelocity * Math.Sin(2 * angleInRadians)) / gravitationalAcceleration;
 
-        //calculate iteration step
+        // Calculate iteration step
         var interationStep = (int)(100 / cannonballFrames);
 
         // Calculate and output heights at various horizontal distances
@@ -126,4 +138,8 @@ public class Artillery : MonoBehaviour
         return flightpathPoints;
     }
 
+    public void FireEffect()
+    {
+
+    }
 }

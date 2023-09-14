@@ -150,16 +150,16 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, Vector3> SetFightQueuePositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
-        dict.Add(-5, new Vector3(-45, 7, 0.6f));
-        dict.Add(-4, new Vector3(-35, 7, 0.7f));
-        dict.Add(-3, new Vector3(-25, 7, 0.8f));
-        dict.Add(-2, new Vector3(-15, 7, 0.9f));
-        dict.Add(-1, new Vector3(-5, 7, 1));
-        dict.Add(1, new Vector3(5, 7, 1));
-        dict.Add(2, new Vector3(15, 7, 1));
-        dict.Add(3, new Vector3(25, 7, 1));
-        dict.Add(4, new Vector3(35, 7, 1));
-        dict.Add(5, new Vector3(45, 7, 1));
+        dict.Add(-5, new Vector3(-50, 7, 0.6f));
+        dict.Add(-4, new Vector3(-40, 7, 0.7f));
+        dict.Add(-3, new Vector3(-30, 7, 0.8f));
+        dict.Add(-2, new Vector3(-20, 7, 0.9f));
+        dict.Add(-1, new Vector3(-10, 7, 1));
+        dict.Add(1, new Vector3(10, 7, 1));
+        dict.Add(2, new Vector3(20, 7, 0.9f));
+        dict.Add(3, new Vector3(30, 7, 0.8f));
+        dict.Add(4, new Vector3(40, 7, 0.7f));
+        dict.Add(5, new Vector3(50, 7, 0.6f));
         return dict;
     }
 
@@ -175,7 +175,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Application.targetFrameRate = 60;
         realFPS = (int)(1.0f / Time.deltaTime);
         if (InBattleModeAndNotDeploymentMode)
         {
