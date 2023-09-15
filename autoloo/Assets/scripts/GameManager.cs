@@ -351,6 +351,8 @@ public class GameManager : MonoBehaviour
     {
         if (leftUnits.Count > 0 && rightUnits.Count > 0)
         {
+            PlayTransientAudioClip(leftUnits[0].acAttackSFX);
+            PlayTransientAudioClip(rightUnits[0].acAttackSFX);
             leftUnits[0].HitPoints -= (rightUnits[0].Attack + rightUnits[0].AttackBonus);
             rightUnits[0].HitPoints -= (leftUnits[0].Attack + leftUnits[0].AttackBonus);
         }

@@ -20,6 +20,7 @@ public class Artillery : MonoBehaviour
     public Sprite smokeEffectRight;
     public GameObject cannonball;
     public SpriteRenderer effectsComponent;
+    public AudioClip acLoadGrapShot;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +41,7 @@ public class Artillery : MonoBehaviour
     {
         if (showEffect)
         {
-            
+            FireEffect();
         }
     }
 
@@ -79,6 +80,7 @@ public class Artillery : MonoBehaviour
     public void ShootGrape(Unit target)
     {
         //add the voice audio
+        unit.gameManager.PlayTransientAudioClip(acLoadGrapShot);
         Debug.Log($"will fire grape at {target.name}...");
         //the deduction of enemy HP for grape shot is done in the Battle Phase
     }
@@ -140,6 +142,39 @@ public class Artillery : MonoBehaviour
 
     public void FireEffect()
     {
+        switch (effectFrame)
+        {
+            case 1:
+                ShowFlashEffect();
+                break;
+            case 10:
+                ShowSmokeEffect();
+                break;
+        }
 
+        effectFrame++;
+
+        if (effectFrame > 60)
+        {
+            HideEffect();
+        }
+    }
+
+    private void ShowFlashEffect()
+    {
+        effectsComponent.enabled = true;
+        effectsComponent.sprite = (unit.side == "left") ? flashEffectLeft : flashEffectRight;
+    }
+
+    private void ShowSmokeEffect()
+    {
+        effectsComponent.sprite = (unit.side == "left") ? smokeEffectLeft : smokeEffectRight;
+    }
+
+    private void HideEffect()
+    {
+        showEffect = false;
+        effectsComponent.enabled = false;
+        effectFrame = 0;
     }
 }

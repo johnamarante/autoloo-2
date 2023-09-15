@@ -814,6 +814,7 @@ MonoBehaviour:
   costComponent: {fileID: 0}
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
+  acAttackSFX: {fileID: 8300000, guid: 9d1d1a6b5c46d924182e4630b961f1b1, type: 3}
 --- !u!114 &1610057400686584580
 MonoBehaviour:
   m_ObjectHideFlags: 0

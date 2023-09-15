@@ -390,19 +390,51 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: 638cebb65b4f0a342a426c3387b3e131, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: cannonFire.Array.size
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: cannonFire.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: ac58600959146ce4f96ce76321ef5699, type: 3}
+      objectReference: {fileID: 8300000, guid: de5c401f30117364daf7f86ea12b6334, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a65eaab026525d547b2c7e2c3abb6980, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: fd3b31e11955d0f4d9a0ea1487b322f9, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2219586ef177ca14cac6e77917927cba, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2cab19993c0c7f54cb4d232ef9f997ca, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: c80a4f982c9b0524e837f069f4420bfd, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6418cfd0a5a8af84ab4a75e376083505, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6418cfd0a5a8af84ab4a75e376083505, type: 3}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cannonFire.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6418cfd0a5a8af84ab4a75e376083505, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: LeftUnitRoster.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: cannonballHits.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: RightUnitRoster.Array.size

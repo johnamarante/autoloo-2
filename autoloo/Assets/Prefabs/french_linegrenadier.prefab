@@ -622,11 +622,12 @@ MonoBehaviour:
   Chance: 10
   _cost: 3
   _attack: 4
+  _attackBonus: 0
   _hitPoints: 3
   _rank: 0
   side: right
   myFont: {fileID: 0}
-  QueuePosition: 0
+  _queuePosition: 0
   _deployed: 0
   _freezed: 0
   spriteName: 
@@ -634,8 +635,18 @@ MonoBehaviour:
   endMarker: {x: 0, y: 0, z: 0}
   speed: 60
   svgsprite: {fileID: 0}
+  svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: 17309370597e90d4a94c102da8783a3e, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: f89522ddfcfdb264d84b29fec98f7b7d, type: 3}
+  Lspritebackground: {fileID: 0}
+  Rspritebackground: {fileID: 0}
+  textAttack: {fileID: 0}
+  textHitPoints: {fileID: 0}
+  textCost: {fileID: 0}
+  costComponent: {fileID: 0}
+  rankComponent: {fileID: 0}
+  freezeComponent: {fileID: 0}
+  acAttackSFX: {fileID: 8300000, guid: 9d1d1a6b5c46d924182e4630b961f1b1, type: 3}
 --- !u!114 &1984001713188768883
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -146,6 +146,7 @@ public class Unit : MonoBehaviour
     //Stats display END
     private GameObject mouseHoverOverIndicator;
     private GameObject selectedIndicator;
+    public AudioClip acAttackSFX;
 
     void Awake()
     {
