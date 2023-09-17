@@ -17,6 +17,7 @@ public static class StoreAndLoadArmyDetails
 
         string strJsonUnitDetails = JsonUtility.ToJson(new UnitDetailListWrapper { UnitDetails = unitDetailsList }, true);
         File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "UnitDetails.json"), strJsonUnitDetails);
+        WriteToFriendPaste(strJsonUnitDetails);
     }
 
     public static void Load(List<Unit> unitRoster, GameManager gameManager)
@@ -60,6 +61,13 @@ public static class StoreAndLoadArmyDetails
         {
             Debug.LogWarning($"No roster item found for unit details: {unitDetails.SpriteName}");
         }
+    }
+
+    private static async void WriteToFriendPaste(string armyDetails)
+    {
+        armyDetails = FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(armyDetails);
+        var response = await FriendpasteClient.FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", "title", armyDetails);
+        Debug.Log(response);
     }
 
     [Serializable]
