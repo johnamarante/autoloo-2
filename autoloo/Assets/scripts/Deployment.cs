@@ -142,12 +142,6 @@ public class Deployment : MonoBehaviour
         }
     }
 
-    private async void WriteToFriendPaste()
-    {
-        var response = await FriendpasteClient.FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", $"autoloo test post {Guid.NewGuid()}", gameManager.LeftQueueUnits.Count.ToString());
-        Debug.Log(response);
-    }
-
     public void Roll(bool costOnePoint = true)
     {
         if (costOnePoint)
