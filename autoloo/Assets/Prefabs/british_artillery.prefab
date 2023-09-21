@@ -803,7 +803,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4069617535745897250}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1269,7 +1269,7 @@ MonoBehaviour:
   costComponent: {fileID: 0}
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
-  acAttack: {fileID: 8300000, guid: ac58600959146ce4f96ce76321ef5699, type: 3}
+  acAttackSFX: {fileID: 0}
 --- !u!114 &7350330291660393393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1315,10 +1315,10 @@ MonoBehaviour:
   effectFrame: 0
   ball: {fileID: 3286163911610860551, guid: b7aba2774a28ec04fac26a76c2bed0b9, type: 3}
   grape: {fileID: 3286163911610860551, guid: ecfc3d877b9d5fc4aa7268ff9599f0cd, type: 3}
-  flashEffectLeft: {fileID: 3286163911610860551, guid: 23bea9f33212e1d43b05ec39fd404116, type: 3}
-  flashEffectRight: {fileID: 3286163911610860551, guid: 2b0cbc512496084458d6ca3c9bee7883, type: 3}
-  smokeEffectLeft: {fileID: 3286163911610860551, guid: a3918fb969df6bb44ae2b4c507f9c9ab, type: 3}
-  smokeEffectRight: {fileID: 3286163911610860551, guid: eae3a8b754450854287e74d4f3447294, type: 3}
+  flashEffectLeft: {fileID: 3286163911610860551, guid: 54579774e6811ec45a1de47e1060f2c6, type: 3}
+  flashEffectRight: {fileID: 3286163911610860551, guid: 2976f34d3d642a2418e1d413e4358df9, type: 3}
+  smokeEffectLeft: {fileID: 3286163911610860551, guid: 4310a53bd28ac24499ed54e98bca3568, type: 3}
+  smokeEffectRight: {fileID: 3286163911610860551, guid: 751b292e27f6f6641977c15523ebd009, type: 3}
   cannonball: {fileID: 3539072912326682233, guid: 98dcb02081f324941b623b916335758f, type: 3}
   effectsComponent: {fileID: 0}
   acLoadGrapShot: {fileID: 8300000, guid: deaeaf6a0feee7249be89ee6ac94e8b1, type: 3}

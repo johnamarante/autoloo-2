@@ -164,6 +164,7 @@ public class Artillery : MonoBehaviour
     {
         effectsComponent.enabled = true;
         effectsComponent.sprite = (unit.side == "left") ? flashEffectLeft : flashEffectRight;
+        effectsComponent.transform.position = new Vector3(gameObject.transform.position.x + Int32.Parse(effectsComponent.sprite.name.Split("_")[3]), gameObject.transform.position.y + Int32.Parse(effectsComponent.sprite.name.Split("_")[4]), effectsComponent.transform.position.z);
     }
 
     private void ShowSmokeEffect()

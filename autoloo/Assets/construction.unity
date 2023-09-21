@@ -524,6 +524,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 514258229905436, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3286163911610860551, guid: 23bea9f33212e1d43b05ec39fd404116, type: 3}
+    - target: {fileID: 514258229905436, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1410641376398443179, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -568,9 +576,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7603508309903380315, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3286163911610860551, guid: 531282701fe12ae42a353da1a36a8db3, type: 3}
     - target: {fileID: 7968037052961001510, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
       propertyPath: m_Name
       value: french_heavyartillery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8923686369077515670, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8923686369077515670, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
