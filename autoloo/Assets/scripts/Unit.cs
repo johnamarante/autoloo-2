@@ -135,6 +135,8 @@ public class Unit : MonoBehaviour
     public Sprite Rsprite;
     public Sprite Lspritebackground;
     public Sprite Rspritebackground;
+    public Sprite fightEffect1;
+    public Sprite fightEffect2;
     //Stats display START
     public TextMeshPro textAttack = new();
     public TextMeshPro textHitPoints = new();
@@ -476,5 +478,9 @@ public class Unit : MonoBehaviour
             Side = side,
             SpriteName = spriteName
         };
+    }
+    public void FightVisualEffects()
+    {
+        
     }
 }

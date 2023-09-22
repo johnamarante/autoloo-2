@@ -47,7 +47,6 @@ public class Artillery : MonoBehaviour
 
     public void Fire(Unit target)
     {
-        showEffect = true;
         if (Math.Abs(unit.QueuePosition) == 1)
         {
             ShootGrape(target);
@@ -60,6 +59,7 @@ public class Artillery : MonoBehaviour
 
     public void ShootBall(Unit target)
     {
+        showEffect = true;
         Debug.Log($"Firing a ball at {target.name}");
 
         // Calculate the distance to the target
