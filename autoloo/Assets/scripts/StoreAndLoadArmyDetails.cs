@@ -17,6 +17,7 @@ public static class StoreAndLoadArmyDetails
 
         string strJsonUnitDetails = JsonUtility.ToJson(new UnitDetailListWrapper { UnitDetails = unitDetailsList }, true);
         File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "UnitDetails.json"), strJsonUnitDetails);
+        //TODO don't call this if the payer is a guest
         WriteToFriendPaste(strJsonUnitDetails);
     }
 
@@ -66,8 +67,10 @@ public static class StoreAndLoadArmyDetails
     private static async void WriteToFriendPaste(string armyDetails)
     {
         armyDetails = FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(armyDetails);
-        var response = await FriendpasteClient.FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", "title", armyDetails);
-        Debug.Log(response);
+        //var response = await FriendpasteClient.FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", "title", armyDetails);
+        //var response = await FriendpasteClient.FriendpasteClient.PutDataFireAndForget()
+        //Debug.Log(response);
+        await System.Threading.Tasks.Task.CompletedTask;
     }
 
     [Serializable]

@@ -100,7 +100,7 @@ public class Deployment : MonoBehaviour
     {
         if (gameManager.InBattleModeAndNotDeploymentMode == false)
         {
-            //START FIGHT
+            //START FIGHT end turn
             if (GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 253, 175), btnEndTurn, defaultGuiStyle))
             {
                 gameManager.Deselect();
