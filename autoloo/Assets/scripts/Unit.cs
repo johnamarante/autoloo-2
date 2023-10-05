@@ -71,6 +71,7 @@ public class Unit : MonoBehaviour
     public Action<int> OnRankChanged;
     public string side = "";
     public Font myFont;
+    public int effectFrame = 0;
     public int _queuePosition = 0;
     public int QueuePosition
     {
@@ -135,6 +136,8 @@ public class Unit : MonoBehaviour
     public Sprite Rsprite;
     public Sprite Lspritebackground;
     public Sprite Rspritebackground;
+    //for infantry fight effects, left/right is decided dynamically by fliping the sprite renderer x property
+    public bool showEffect = false;
     public Sprite fightEffect1;
     public Sprite fightEffect2;
     //Stats display START
@@ -144,6 +147,9 @@ public class Unit : MonoBehaviour
     public GameObject costComponent;
     public GameObject rankComponent;
     public GameObject freezeComponent;
+    public SpriteRenderer effectsComponent;
+    public Vector3 effectPlacementLeft;
+    public Vector3 effectPlacementRight;
     private SpriteRenderer spriteRank = new SpriteRenderer();
     //Stats display END
     private GameObject mouseHoverOverIndicator;
@@ -184,6 +190,8 @@ public class Unit : MonoBehaviour
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
+        effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
+        effectsComponent.flipX = (side == "left") ? false : true;
     }
 
     private void SetSprite()
@@ -262,7 +270,13 @@ public class Unit : MonoBehaviour
     void Update()
     {
         if (inMoveMode)
+        { 
             Move();
+        }
+        if (showEffect)
+        {
+            ShowFightEffects();
+        }
     }
 
     private void Move()
@@ -479,8 +493,43 @@ public class Unit : MonoBehaviour
             SpriteName = spriteName
         };
     }
-    public void FightVisualEffects()
+    public void ShowFightEffects()
     {
-        
+        switch (effectFrame)
+        {
+            case 1:
+                ShowFlashEffect();
+                break;
+            case 10:
+                ShowSmokeEffect();
+                break;
+        }
+
+        effectFrame++;
+
+        if (effectFrame > 60)
+        {
+            HideEffect();
+        }
+    }
+
+    private void ShowFlashEffect()
+    {
+        effectsComponent.enabled = true;
+        effectsComponent.sprite = fightEffect1;
+        var uniteffectscomponentspritename = effectsComponent.sprite.name;
+        effectsComponent.transform.position = gameObject.transform.position +  ((side == "left") ? effectPlacementLeft : effectPlacementRight);
+    }
+
+    private void ShowSmokeEffect()
+    {
+        effectsComponent.sprite = fightEffect2;
+    }
+
+    private void HideEffect()
+    {
+        showEffect = false;
+        effectsComponent.enabled = false;
+        effectFrame = 0;
     }
 }

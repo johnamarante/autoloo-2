@@ -1,48 +1,30 @@
 {
     "UnitDetails": [
         {
-            "Name": "unit_left_b12b6478-3d71-4b83-8e5b-edba2fa9c2e4",
-            "Attack": 3,
-            "HitPoints": 3,
-            "Rank": 1,
+            "Name": "unit_left_daf48e5d-336b-47d5-9fa8-b6c740270f4b",
+            "Attack": 2,
+            "HitPoints": 2,
+            "Rank": 0,
             "Side": "left",
             "QueuePosition": -1,
             "SpriteName": "french_line_left_2_1_Sprite"
         },
         {
-            "Name": "unit_left_9d872ab8-916c-4c8b-81d9-6a5d86f5b7c0",
-            "Attack": 4,
-            "HitPoints": 4,
-            "Rank": 0,
-            "Side": "left",
-            "QueuePosition": -2,
-            "SpriteName": "french_carabineracheval_left_0_2_Sprite"
-        },
-        {
-            "Name": "unit_left_9cf7878a-2411-42ee-8056-45fde2bb9cda",
+            "Name": "unit_left_85188e6d-6cf5-4e1f-8ec7-f313165af561",
             "Attack": 2,
             "HitPoints": 2,
             "Rank": 0,
             "Side": "left",
-            "QueuePosition": -3,
-            "SpriteName": "french_chasseur_left_3_1_Sprite"
+            "QueuePosition": -2,
+            "SpriteName": "french_line_left_2_1_Sprite"
         },
         {
-            "Name": "unit_left_68aa0eaa-36ff-4c46-9dc4-8ea344740ec4",
-            "Attack": 4,
-            "HitPoints": 3,
+            "Name": "unit_left_3d5efb44-4719-4351-81d0-2a4a9c5a46e3",
+            "Attack": 1,
+            "HitPoints": 20,
             "Rank": 0,
             "Side": "left",
-            "QueuePosition": -4,
-            "SpriteName": "french_linegrenadier_left_2_1_Sprite"
-        },
-        {
-            "Name": "unit_left_9d541b83-4562-41e5-8a62-62f011c6c476",
-            "Attack": 2,
-            "HitPoints": 5,
-            "Rank": 1,
-            "Side": "left",
-            "QueuePosition": -5,
+            "QueuePosition": -3,
             "SpriteName": "french_heavyartillery_left_0_1_Sprite"
         }
     ]

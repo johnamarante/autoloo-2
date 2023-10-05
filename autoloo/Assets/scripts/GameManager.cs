@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
         realFPS = (int)(1.0f / Time.deltaTime);
         if (InBattleModeAndNotDeploymentMode)
         {
-            if (Time.time > (actionTime + (period / 2)) && !preBattlePhaseFired)
+            if (Time.time > (actionTime + (period / 4)) && !preBattlePhaseFired)
             {
                 //ALL PRE BATTLE PHASE ACTIONS MUST BE FIXED TO COMPLETE IN LESS THAN 22 FRAMES
                 PreBattlePhase();
@@ -193,9 +193,10 @@ public class GameManager : MonoBehaviour
                     CleanupAndMove();
                     CheckForAndHandleBattleResult();
                     preBattlePhaseCleanupFired = true;
+                    FightEffects(ref LeftQueueUnits, ref RightQueueUnits);
                 }
             }
-            if (Time.time > (actionTime + period) && preBattlePhaseCleanupFired)
+            if (Time.time > (actionTime + 3*(period / 4)))
             {
                 preBattlePhaseFired = false;
                 preBattlePhaseCleanupFired = false;
@@ -212,13 +213,10 @@ public class GameManager : MonoBehaviour
             }
             if (!generalAudioSource.isPlaying)
             {
-                if (!generalAudioSource.isPlaying)
-                {
-                    // Move to the next audio clip
-                    currentClipIndex = (currentClipIndex + 1) % distBattle1AudioClips.Length;
-                    generalAudioSource.clip = distBattle1AudioClips[currentClipIndex];
-                    generalAudioSource.Play();
-                }
+                // Move to the next audio clip
+                currentClipIndex = (currentClipIndex + 1) % distBattle1AudioClips.Length;
+                generalAudioSource.clip = distBattle1AudioClips[currentClipIndex];
+                generalAudioSource.Play();
             }
         }
     }
@@ -257,7 +255,7 @@ public class GameManager : MonoBehaviour
         var artilleryUnits = new List<Unit>();
         foreach (Unit unit in units)
         {
-            if (unit.gameObject.GetComponent<Artillery>())
+            if (unit.gameObject.GetComponent<Artillery>() && unit.Deployed)
             {
                 artilleryUnits.Add(unit);
             }
@@ -298,6 +296,7 @@ public class GameManager : MonoBehaviour
         if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
         {
             string resultText = (LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!";
+            preBattlePhaseFired = false;
             Debug.Log("Result is " + resultText);
 
             ShowResultPopup(resultText);
@@ -351,10 +350,32 @@ public class GameManager : MonoBehaviour
     {
         if (leftUnits.Count > 0 && rightUnits.Count > 0)
         {
-            PlayTransientAudioClip(leftUnits[0].acAttackSFX);
-            PlayTransientAudioClip(rightUnits[0].acAttackSFX);
             leftUnits[0].HitPoints -= (rightUnits[0].Attack + rightUnits[0].AttackBonus);
             rightUnits[0].HitPoints -= (leftUnits[0].Attack + leftUnits[0].AttackBonus);
+        }
+    }
+
+    private void FightEffects(ref List<Unit> leftUnits, ref List<Unit> rightUnits)
+    {
+        if (leftUnits.Count == 0 || rightUnits.Count == 0) return;
+
+        ApplyEffect(leftUnits[0]);
+        ApplyEffect(rightUnits[0]);
+    }
+
+    private void ApplyEffect(Unit unit)
+    {
+        if (unit.GetComponent<Artillery>())
+        {
+            unit.GetComponent<Artillery>().ShowEffect();
+        }
+        else
+        {
+            PlayTransientAudioClip(unit.acAttackSFX);
+            if (!unit.GetComponent<Artillery>())
+            {
+                unit.showEffect = true;
+            }
         }
     }
 

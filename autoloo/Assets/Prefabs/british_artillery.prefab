@@ -1246,10 +1246,11 @@ MonoBehaviour:
   _cost: 3
   _attack: 1
   _attackBonus: 0
-  _hitPoints: 1
+  _hitPoints: 20
   _rank: 0
   side: left
   myFont: {fileID: 0}
+  effectFrame: 0
   _queuePosition: 0
   _deployed: 0
   _freezed: 0
@@ -1263,13 +1264,19 @@ MonoBehaviour:
   Rsprite: {fileID: 3286163911610860551, guid: 9641b29b48badd842898981c808fc121, type: 3}
   Lspritebackground: {fileID: 3286163911610860551, guid: 210f2815ef8830d4391757393bd5d6e2, type: 3}
   Rspritebackground: {fileID: 3286163911610860551, guid: 049c533e21945f64fb8b96952e94a0e9, type: 3}
+  showEffect: 0
+  fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
+  fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
   costComponent: {fileID: 0}
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
-  acAttackSFX: {fileID: 0}
+  effectsComponent: {fileID: 0}
+  effectPlacementLeft: {x: 0, y: 0, z: 0}
+  effectPlacementRight: {x: 0, y: 0, z: 0}
+  acAttackSFX: {fileID: 8300000, guid: fd3b31e11955d0f4d9a0ea1487b322f9, type: 3}
 --- !u!114 &7350330291660393393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,7 +1318,7 @@ MonoBehaviour:
   unit: {fileID: 0}
   range: 3
   grapeMode: 0
-  showEffect: 0
+  showArtilleryEffect: 0
   effectFrame: 0
   ball: {fileID: 3286163911610860551, guid: b7aba2774a28ec04fac26a76c2bed0b9, type: 3}
   grape: {fileID: 3286163911610860551, guid: ecfc3d877b9d5fc4aa7268ff9599f0cd, type: 3}
@@ -1320,7 +1327,6 @@ MonoBehaviour:
   smokeEffectLeft: {fileID: 3286163911610860551, guid: 4310a53bd28ac24499ed54e98bca3568, type: 3}
   smokeEffectRight: {fileID: 3286163911610860551, guid: 751b292e27f6f6641977c15523ebd009, type: 3}
   cannonball: {fileID: 3539072912326682233, guid: 98dcb02081f324941b623b916335758f, type: 3}
-  effectsComponent: {fileID: 0}
   acLoadGrapShot: {fileID: 8300000, guid: deaeaf6a0feee7249be89ee6ac94e8b1, type: 3}
 --- !u!1 &7058282181507912768
 GameObject:

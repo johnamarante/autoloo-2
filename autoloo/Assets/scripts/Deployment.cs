@@ -106,7 +106,7 @@ public class Deployment : MonoBehaviour
                 gameManager.Deselect();
                 Camera.main.GetComponent<CameraControl>().Move(gameManager.cameraPositions[0]);
                 gameManager.InBattleModeAndNotDeploymentMode = true;
-                gameManager.actionTime = Time.time;
+                gameManager.actionTime = Time.time + (1*gameManager.period);
 
                 //get data about opponent
                 //write data to save between turns

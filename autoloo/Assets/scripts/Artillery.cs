@@ -10,7 +10,7 @@ public class Artillery : MonoBehaviour
     public Unit unit;
     public int range;
     public bool grapeMode = false;
-    public bool showEffect = false;
+    public bool showArtilleryEffect = false;
     public int effectFrame = 0;
     public Sprite ball;
     public Sprite grape;
@@ -19,7 +19,6 @@ public class Artillery : MonoBehaviour
     public Sprite smokeEffectLeft;
     public Sprite smokeEffectRight;
     public GameObject cannonball;
-    public SpriteRenderer effectsComponent;
     public AudioClip acLoadGrapShot;
     // Start is called before the first frame update
     void Start()
@@ -33,15 +32,14 @@ public class Artillery : MonoBehaviour
         {
             range = 3;
         }
-        effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (showEffect)
+        if (showArtilleryEffect)
         {
-            FireEffect();
+            FireCannonEffect();
         }
     }
 
@@ -59,7 +57,7 @@ public class Artillery : MonoBehaviour
 
     public void ShootBall(Unit target)
     {
-        showEffect = true;
+        ShowEffect();
         Debug.Log($"Firing a ball at {target.name}");
 
         // Calculate the distance to the target
@@ -73,7 +71,6 @@ public class Artillery : MonoBehaviour
         cannonballComponent.damage = unit.Attack;
         cannonballComponent.target = target;
         cannonballComponent.manager = unit.gameManager;
-        target.gameManager.PlayCannonballFire();
     }
 
 
@@ -140,11 +137,12 @@ public class Artillery : MonoBehaviour
         return flightpathPoints;
     }
 
-    public void FireEffect()
+    public void FireCannonEffect()
     {
         switch (effectFrame)
         {
             case 1:
+                unit.gameManager.PlayCannonballFire();
                 ShowFlashEffect();
                 break;
             case 10:
@@ -162,20 +160,26 @@ public class Artillery : MonoBehaviour
 
     private void ShowFlashEffect()
     {
-        effectsComponent.enabled = true;
-        effectsComponent.sprite = (unit.side == "left") ? flashEffectLeft : flashEffectRight;
-        effectsComponent.transform.position = new Vector3(gameObject.transform.position.x + Int32.Parse(effectsComponent.sprite.name.Split("_")[3]), gameObject.transform.position.y + Int32.Parse(effectsComponent.sprite.name.Split("_")[4]), effectsComponent.transform.position.z);
+        unit.effectsComponent.enabled = true;
+        unit.effectsComponent.sprite = (unit.side == "left") ? flashEffectLeft : flashEffectRight;
+        var uniteffectscomponentspritename = unit.effectsComponent.sprite.name;
+        unit.effectsComponent.transform.position = new Vector3(gameObject.transform.position.x + Int32.Parse(uniteffectscomponentspritename.Split("_")[3]), gameObject.transform.position.y + Int32.Parse(uniteffectscomponentspritename.Split("_")[4]), unit.effectsComponent.transform.position.z);
     }
 
     private void ShowSmokeEffect()
     {
-        effectsComponent.sprite = (unit.side == "left") ? smokeEffectLeft : smokeEffectRight;
+        unit.effectsComponent.sprite = (unit.side == "left") ? smokeEffectLeft : smokeEffectRight;
     }
 
     private void HideEffect()
     {
-        showEffect = false;
-        effectsComponent.enabled = false;
+        showArtilleryEffect = false;
+        unit.effectsComponent.enabled = false;
         effectFrame = 0;
+    }
+
+    public void ShowEffect()
+    {
+        showArtilleryEffect = true;
     }
 }

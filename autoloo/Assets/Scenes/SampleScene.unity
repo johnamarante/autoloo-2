@@ -434,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: cannonballHits.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: RightUnitRoster.Array.size
@@ -475,11 +475,11 @@ PrefabInstance:
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: cannonballHits.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 1de3056571ca47b4ba41bc7624c676a4, type: 3}
+      objectReference: {fileID: 8300000, guid: 99f6ac29d9975a0428beb54bb02ca9c7, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: cannonballHits.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 273ae2e88921da0439b323c902a10e8d, type: 3}
+      objectReference: {fileID: 8300000, guid: 7dd8b0299167cd248a476e51fe601dd1, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: RightUnitRoster.Array.data[2]
       value: 

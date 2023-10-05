@@ -12,7 +12,8 @@ public static class OpponentGeneration
         System.Random rnd = new System.Random();
         for (int i = 0; i < 5; i++)
         {
-            Object.Instantiate(gameManager.RightUnitRoster[rnd.Next(rosterSize)]);
+            var opposingUnit = Object.Instantiate(gameManager.RightUnitRoster[rnd.Next(rosterSize)]);
+            opposingUnit.GetComponent<Unit>().Deployed = true;
         }
     }
 }
