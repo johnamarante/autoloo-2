@@ -13,8 +13,7 @@ public class MainMenu : MonoBehaviour
     public Texture2D britainFlag;
     public Texture2D franceFlag;
     private static string menuMessage = "";
-    public static AutolooUserInfo autolooUserInfo;
-    public AutolooUserGameData autolooUserGameData;
+    public static AutolooPlayerData autolooPlayerData;
     public ConfigurationManager configManager;
     public Configuration configuration;
     private string userId = "";
@@ -38,19 +37,19 @@ public class MainMenu : MonoBehaviour
     private async void Start()
     {
         GUI.enabled = false;
-        autolooUserInfo = FindObjectOfType<AutolooUserInfo>();
+        autolooPlayerData = FindObjectOfType<AutolooPlayerData>();
         configManager = FindObjectOfType<ConfigurationManager>();
         configuration = configManager.config;
         DontDestroyOnLoad(configManager);
 
-        if (autolooUserInfo.UserInfo.UserId == "guest")
+        if (autolooPlayerData.Auth0UserInfo.UserId == "guest")
         {
-            userId = autolooUserInfo.UserInfo.UserId;
+            userId = autolooPlayerData.Auth0UserInfo.UserId;
             newUserSetup = false;
         }
         else
         {
-            userId = autolooUserInfo.UserInfo.UserId.Split("|")[1];
+            userId = autolooPlayerData.Auth0UserInfo.UserId.Split("|")[1];
 
             directoryUrl = AutolooUserInfoUtil.GetUserDirectoryURLBasedOnUserID(userId);
             directoryData = await FriendpasteClient.FriendpasteClient.GetDataAsync(directoryUrl);
@@ -59,12 +58,14 @@ public class MainMenu : MonoBehaviour
             if (!string.IsNullOrEmpty(pasteURL))
             {
                 var playerData = await FriendpasteClient.FriendpasteClient.GetDataAsync(pasteURL);
-                autolooUserInfo.PlayerName = ExtractPlayerNameFromData(playerData);
+                autolooPlayerData.PlayerName = ExtractPlayerNameFromData(playerData);
+                autolooPlayerData.PlayerData = playerData;
+                autolooPlayerData.PlayerDataPasteURL = pasteURL;
                 //load other returning player data (current game turn number)
             }
             else
             {
-                playerName = autolooUserInfo.UserInfo.Email.Split("@")[0];
+                playerName = autolooPlayerData.Auth0UserInfo.Email.Split("@")[0];
                 newUserSetup = true;
             }
 
@@ -75,7 +76,7 @@ public class MainMenu : MonoBehaviour
 
     private string GetPlayerDisplayName()
     {
-        return String.IsNullOrEmpty(autolooUserInfo.PlayerName) ? autolooUserInfo.UserInfo.Email : autolooUserInfo.PlayerName;
+        return String.IsNullOrEmpty(autolooPlayerData.PlayerName) ? autolooPlayerData.Auth0UserInfo.Email : autolooPlayerData.PlayerName;
     }
 
     private async void OnGUI()
@@ -87,7 +88,7 @@ public class MainMenu : MonoBehaviour
         {
             await ShowNewUserSetupDialogue();
         }
-        if (!string.IsNullOrEmpty(autolooUserInfo.PlayerName))
+        if (!string.IsNullOrEmpty(autolooPlayerData.PlayerName))
         {
             ShowChooseNation();
         }
@@ -114,6 +115,11 @@ public class MainMenu : MonoBehaviour
         if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth, buttonHeight), "Set Name"))
         {
             isSettingUpUser = true; // Start setting up user
+
+            if (playerName == "guest")
+            {
+                playerName = "guest" + autolooPlayerData.Auth0UserInfo.UserId;
+            }
 
             await SetupNewUser();
 
@@ -149,8 +155,8 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame(string playerRoster)
     {
-        autolooUserGameData.PlayerRoster = playerRoster;
-        DontDestroyOnLoad(autolooUserGameData);
+        autolooPlayerData.RosterName = playerRoster;
+        DontDestroyOnLoad(autolooPlayerData);
         SceneManager.LoadScene("SampleScene");
     }
 
@@ -169,7 +175,7 @@ public class MainMenu : MonoBehaviour
         await FriendpasteClient.FriendpasteClient.PutDataAsyncWithTimeout(directoryUrl, $"AutolooUserDirectory{firstChar}", FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(updatedJSON));
 
         Debug.Log($"Player name set to {playerName} and paste is at {newPlayerPostResponse}");
-        autolooUserInfo.PlayerName = playerName;
+        autolooPlayerData.PlayerName = playerName;
         menuMessage = $"Logged in as {GetPlayerDisplayName()}";
         newUserSetup = false;
     }
@@ -177,7 +183,7 @@ public class MainMenu : MonoBehaviour
     private string ExtractPlayerNameFromData(string playerData)
     {
         JObject mainObject = JObject.Parse(playerData);
-        string snippetJsonString = (string)mainObject["snippet"];
+        string snippetJsonString = mainObject["snippet"].ToString();
         JObject snippetObject = JObject.Parse(FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse(snippetJsonString));
         return (string)snippetObject["playername"];
     }

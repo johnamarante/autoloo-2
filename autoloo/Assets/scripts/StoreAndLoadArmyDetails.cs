@@ -3,22 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 public static class StoreAndLoadArmyDetails
 {
-    public static void Store(List<Unit> army)
+    public static void Store(List<UnitDetail> unitDetails)
     {
-        List<UnitDetail> unitDetailsList = new List<UnitDetail>();
-
-        foreach (var unit in army)
-        {
-            unitDetailsList.Add(unit.GetDetail());
-        }
-
-        string strJsonUnitDetails = JsonUtility.ToJson(new UnitDetailListWrapper { UnitDetails = unitDetailsList }, true);
+        string strJsonUnitDetails = JsonUtility.ToJson(new UnitDetailListWrapper { UnitDetails = unitDetails }, true);
         File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "UnitDetails.json"), strJsonUnitDetails);
-        //TODO don't call this if the payer is a guest
-        WriteToFriendPaste(strJsonUnitDetails);
+    }
+
+    public static void Store(AutolooPlayerData autolooPlayerData)
+    {
+        WriteToFriendPaste(autolooPlayerData.PlayerDataPasteURL, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.unitDetails);
     }
 
     public static void Load(List<Unit> unitRoster, GameManager gameManager)
@@ -64,13 +62,21 @@ public static class StoreAndLoadArmyDetails
         }
     }
 
-    private static async void WriteToFriendPaste(string armyDetails)
+    private static async void WriteToFriendPaste(string playerPasteUrl, string userId, string playerName, List<UnitDetail> unitDetails)
     {
-        armyDetails = FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(armyDetails);
-        //var response = await FriendpasteClient.FriendpasteClient.PostDataAsync("https://www.friendpaste.com/", "title", armyDetails);
-        //var response = await FriendpasteClient.FriendpasteClient.PutDataFireAndForget()
-        //Debug.Log(response);
-        await System.Threading.Tasks.Task.CompletedTask;
+        try
+        {
+            JObject jsonObject = new JObject(
+                new JProperty("playername", playerName),
+                new JProperty("UnitDetails", JArray.FromObject(unitDetails)));
+
+            string jsonString = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
+            await FriendpasteClient.FriendpasteClient.PutDataAsyncWithTimeout(playerPasteUrl, userId, FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(jsonString));
+        }
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
 
     [Serializable]

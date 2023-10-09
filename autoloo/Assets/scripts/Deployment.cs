@@ -116,7 +116,17 @@ public class Deployment : MonoBehaviour
                 gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
                 gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right").OrderBy(x => x.QueuePosition).ToList();
 
-                StoreAndLoadArmyDetails.Store(gameManager.LeftQueueUnits);
+                foreach (var unit in gameManager.LeftQueueUnits)
+                {
+                    gameManager.autolooPlayerData.unitDetails.Add(unit.GetDetail());
+                }
+                
+                StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData.unitDetails);
+
+                if (gameManager.autolooPlayerData.PlayerName != "guest")
+                {
+                    StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData);
+                }
 
                 gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
                 gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);

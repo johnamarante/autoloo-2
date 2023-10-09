@@ -57,8 +57,9 @@ public class GameManager : MonoBehaviour
     public Action<Unit> OnSelectedUnitChanged;
     public Action<bool> InBattleModeAndNotDeploymentModeChanged;
     public ResultPopup resultPopup;
-    
+    public AutolooPlayerData autolooPlayerData;
     private int frameCountFromStartOfLastPrebattlePhase = 0;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -68,8 +69,8 @@ public class GameManager : MonoBehaviour
         generalAudioSource = Camera.main.gameObject.AddComponent<AudioSource>();
         generalAudioSource.volume = 0.5f;
         generalAudioSource.loop = false;
-        string sRoster = FindObjectOfType<AutolooUserGameData>().PlayerRoster;
-        switch (sRoster)
+        autolooPlayerData = FindObjectOfType<AutolooPlayerData>();
+        switch (autolooPlayerData.RosterName)
         {
             case "France":
                 PlayAsFrance();

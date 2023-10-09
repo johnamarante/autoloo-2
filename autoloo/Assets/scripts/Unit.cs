@@ -512,7 +512,6 @@ public class Unit : MonoBehaviour
             HideEffect();
         }
     }
-
     private void ShowFlashEffect()
     {
         effectsComponent.enabled = true;

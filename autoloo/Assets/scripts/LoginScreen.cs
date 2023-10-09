@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class LoginScreen : MonoBehaviour
 {
-    public AutolooUserInfo autolooUserInfo;
+    public AutolooPlayerData autolooPlayerData;
     private string usernameOrEmail = "";
     private string password = "";
 
@@ -21,16 +21,15 @@ public class LoginScreen : MonoBehaviour
 
     void Start()
     {
-
     }
     private void Update()
     {
-        if (autolooUserInfo.UserInfo != null && !string.IsNullOrEmpty(autolooUserInfo.UserInfo.UserId))
+        if (autolooPlayerData.Auth0UserInfo != null && !string.IsNullOrEmpty(autolooPlayerData.Auth0UserInfo.UserId))
         {
-            string loginMessage = autolooUserInfo.UserInfo.UserId == "guest"
+            string loginMessage = autolooPlayerData.Auth0UserInfo.UserId == "guest"
                 ? "logged in as guest"
-                : $"logged in with email {autolooUserInfo.UserInfo.Email}";
-            DontDestroyOnLoad(autolooUserInfo);
+                : $"logged in with email {autolooPlayerData.Auth0UserInfo.Email}";
+            DontDestroyOnLoad(autolooPlayerData);
             loginMessage = "in new scene";
             SceneManager.LoadScene("mainmenu");
         }
@@ -74,12 +73,12 @@ public class LoginScreen : MonoBehaviour
         password = GUI.PasswordField(new Rect(centerX, passwordY, fieldWidth, fieldHeight), password, "*"[0]);
         if (GUI.Button(new Rect(centerX, buttonRowY, buttonWidth, buttonHeight), "Login"))
         {
-            autolooUserInfo.UserInfo =  await Login(usernameOrEmail, password);
+            autolooPlayerData.Auth0UserInfo =  await Login(usernameOrEmail, password);
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY, buttonWidth, buttonHeight), "Register"))
         {
-            autolooUserInfo.UserInfo = await RegisterUser(usernameOrEmail, password);
+            autolooPlayerData.Auth0UserInfo = await RegisterUser(usernameOrEmail, password);
         }
 
         if (GUI.Button(new Rect(centerX + buttonWidth + spacing, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Forgot Password"))
@@ -97,8 +96,8 @@ public class LoginScreen : MonoBehaviour
 
         if (GUI.Button(new Rect(centerX, buttonRowY + buttonHeight + spacing, buttonWidth, buttonHeight), "Play as Guest"))
         {
-            autolooUserInfo.PlayerName = "guest";
-            autolooUserInfo.UserInfo = new() { UserId = "guest" };
+            autolooPlayerData.PlayerName = "guest";
+            autolooPlayerData.Auth0UserInfo = new() { UserId = "guest" };
         }
 
         GUI.Label(new Rect(10, Screen.height - 60, 30, 1000), loginMessage, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = fontSize });
