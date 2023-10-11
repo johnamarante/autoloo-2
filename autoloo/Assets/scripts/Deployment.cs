@@ -164,14 +164,12 @@ public class Deployment : MonoBehaviour
 
     public void GenerateShopQueueUnitsFromRoster(List<Unit> roster)
     {
+        System.Random rnd = new System.Random();
         var oldShop = FindObjectsOfType<Unit>().ToList().Where(x => x.side == gameManager.playerSide && !x.Deployed && !x.Freezed);
         foreach (GameObject old in oldShop.Select(x => x.gameObject))
         {
             Destroy(old.gameObject);
         }
-
-        //chose a random element on the roster
-        System.Random rnd = new System.Random();
 
         var shopMarkers = FindObjectsOfType<DeploymentShopMarker>().ToList().Where(x => x.side == gameManager.playerSide);
         var shopQueue = new List<Unit>();
