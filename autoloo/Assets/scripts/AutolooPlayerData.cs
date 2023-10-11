@@ -12,6 +12,7 @@ public class AutolooPlayerData : MonoBehaviour
     public string RosterName;
     public string PlayerData;
     public string PlayerDataPasteURL;
+    public int turnNumber;
 
     private void Awake()
     {

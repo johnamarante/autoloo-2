@@ -159,11 +159,12 @@ public class Unit : MonoBehaviour
 
     void Awake()
     {
-        name = $"unit_{side}_{Guid.NewGuid()}";
         svgsprite = gameObject.transform.Find("svgsprite").GetComponent<SpriteRenderer>();
         svgspritebackground = gameObject.transform.Find("svgbackgroundsprite") != null ? gameObject.transform.Find("svgbackgroundsprite").GetComponent<SpriteRenderer>() : null;
         SetSprite();
         spriteName = GetSpriteName();
+        var uniqueNameValue = Guid.NewGuid().ToString().Substring(0, 8);
+        name = $"{spriteName.Split("_")[0]}_{spriteName.Split("_")[1]}_{uniqueNameValue}";
     }
 
     public string GetSpriteName()
@@ -489,9 +490,7 @@ public class Unit : MonoBehaviour
             HitPoints = HitPoints,
             Name = name,
             QueuePosition = QueuePosition,
-            Rank = Rank,
-            Side = side,
-            SpriteName = spriteName
+            Rank = Rank
         };
     }
     public void ShowFightEffects()

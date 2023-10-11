@@ -6,8 +6,6 @@ public class UnitDetail
     public int Attack;
     public int HitPoints;
     public int Rank;
-    public string Side;
     public int QueuePosition;
-    public string SpriteName;
 }
 
