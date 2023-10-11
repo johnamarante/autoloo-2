@@ -16,7 +16,7 @@ public class AutolooPlayerData : MonoBehaviour
     private void Awake()
     {
         Auth0UserInfo = new UserInfo();
-        unitDetails = new List<UnitDetail>();
+        ClearUnitDetails();
     }
     private void Start()
     {
@@ -25,5 +25,9 @@ public class AutolooPlayerData : MonoBehaviour
     private void Update()
     {
 
+    }
+    public void ClearUnitDetails()
+    {
+        unitDetails = new List<UnitDetail>();
     }
 }

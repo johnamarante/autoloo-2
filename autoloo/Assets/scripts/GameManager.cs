@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
     public Action<bool> InBattleModeAndNotDeploymentModeChanged;
     public ResultPopup resultPopup;
     public AutolooPlayerData autolooPlayerData;
+    public int roundNumber = 1;
+    public int WIN = 0;
+    public int LOSS = 0;
     private int frameCountFromStartOfLastPrebattlePhase = 0;
     
 
@@ -299,15 +302,24 @@ public class GameManager : MonoBehaviour
             string resultText = (LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!";
             preBattlePhaseFired = false;
             Debug.Log("Result is " + resultText);
-
             ShowResultPopup(resultText);
 
+            autolooPlayerData.ClearUnitDetails();
             CleanupBattlefield();
             InBattleModeAndNotDeploymentMode = false;
             Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
             StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
             deployment.Roll(false);
             deployment.coin = 10;
+            roundNumber++;
+            if (resultText.StartsWith('W'))
+            {
+                WIN++;
+            }
+            else
+            {
+                LOSS++;
+            }
         }
     }
 

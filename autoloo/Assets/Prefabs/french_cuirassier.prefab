@@ -795,6 +795,7 @@ MonoBehaviour:
   _hitPoints: 4
   _rank: 0
   side: right
+  tier: 2
   myFont: {fileID: 0}
   effectFrame: 0
   _queuePosition: 0
@@ -820,6 +821,8 @@ MonoBehaviour:
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
   effectsComponent: {fileID: 0}
+  effectPlacementLeft: {x: 0, y: 0, z: 0}
+  effectPlacementRight: {x: 0, y: 0, z: 0}
   acAttackSFX: {fileID: 8300000, guid: 9d1d1a6b5c46d924182e4630b961f1b1, type: 3}
 --- !u!114 &1610057400686584580
 MonoBehaviour:

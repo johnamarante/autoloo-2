@@ -121,16 +121,13 @@ public class Deployment : MonoBehaviour
                     gameManager.autolooPlayerData.unitDetails.Add(unit.GetDetail());
                 }
                 
-                StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData.unitDetails);
-
                 if (gameManager.autolooPlayerData.PlayerName != "guest")
                 {
-                    StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData);
+                    StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
                 }
 
                 gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
                 gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
-                //StartCoroutine("WriteToFriendPaste");
             }
             //FREEZE UNIT
             if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 165, 250, 150), btnFreeze, defaultGuiStyle))
@@ -162,14 +159,7 @@ public class Deployment : MonoBehaviour
             }
             coin--;
         }
-        if (gameManager.playerSide == "left")
-        {
-            GenerateShopQueueUnitsFromRoster(gameManager.LeftUnitRoster.OrderBy(x => x.Chance).ToList());
-        }
-        else //right
-        {
-            GenerateShopQueueUnitsFromRoster(gameManager.RightUnitRoster.OrderBy(x => x.Chance).ToList());
-        }
+        GenerateShopQueueUnitsFromRoster(gameManager.LeftUnitRoster.OrderBy(x => x.Chance).ToList());
     }
 
     public void GenerateShopQueueUnitsFromRoster(List<Unit> roster)
@@ -185,12 +175,13 @@ public class Deployment : MonoBehaviour
 
         var shopMarkers = FindObjectsOfType<DeploymentShopMarker>().ToList().Where(x => x.side == gameManager.playerSide);
         var shopQueue = new List<Unit>();
+        var unitsAvailableInThisTeir = roster.Where(x => x.tier <= gameManager.roundNumber).ToList();
         foreach (var shopMarker in shopMarkers)
         {
             Unit shopItem = null;
             if (!shopMarker.IsFrozenShopUnitAboveMe())
             {
-                shopItem = Instantiate(roster[rnd.Next(roster.Count)]);
+                shopItem = Instantiate(unitsAvailableInThisTeir[rnd.Next(unitsAvailableInThisTeir.Count)]);
             }
             shopQueue.Add(shopItem);
         }

@@ -711,6 +711,7 @@ MonoBehaviour:
   _hitPoints: 2
   _rank: 0
   side: right
+  tier: 2
   myFont: {fileID: 0}
   effectFrame: 0
   _queuePosition: 0

@@ -70,6 +70,7 @@ public class Unit : MonoBehaviour
     public const int maxUnitRank = 9;
     public Action<int> OnRankChanged;
     public string side = "";
+    public int tier = 1;
     public Font myFont;
     public int effectFrame = 0;
     public int _queuePosition = 0;

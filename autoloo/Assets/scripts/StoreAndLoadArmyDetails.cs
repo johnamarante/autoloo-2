@@ -8,15 +8,14 @@ using Newtonsoft.Json.Linq;
 
 public static class StoreAndLoadArmyDetails
 {
-    public static void Store(List<UnitDetail> unitDetails)
+    public static void Store(AutolooPlayerData autolooPlayerData, int round, int wins, int losses)
     {
-        string strJsonUnitDetails = JsonUtility.ToJson(new UnitDetailListWrapper { UnitDetails = unitDetails }, true);
+        string strJsonUnitDetails = JsonUtility.ToJson(new UnitDetailListWrapper { UnitDetails = autolooPlayerData.unitDetails }, true);
         File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "UnitDetails.json"), strJsonUnitDetails);
-    }
-
-    public static void Store(AutolooPlayerData autolooPlayerData)
-    {
-        WriteToFriendPaste(autolooPlayerData.PlayerDataPasteURL, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.unitDetails);
+        if (autolooPlayerData.PlayerName != "guest")
+        {
+            WriteToPlayerPaste(autolooPlayerData.PlayerDataPasteURL, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.unitDetails, round, wins, losses);
+        }
     }
 
     public static void Load(List<Unit> unitRoster, GameManager gameManager)
@@ -62,12 +61,15 @@ public static class StoreAndLoadArmyDetails
         }
     }
 
-    private static async void WriteToFriendPaste(string playerPasteUrl, string userId, string playerName, List<UnitDetail> unitDetails)
+    private static async void WriteToPlayerPaste(string playerPasteUrl, string userId, string playerName, List<UnitDetail> unitDetails, int round, int wins, int losses)
     {
         try
         {
             JObject jsonObject = new JObject(
                 new JProperty("playername", playerName),
+                new JProperty("round", round),
+                new JProperty("wins", wins),
+                new JProperty("losses", losses),
                 new JProperty("UnitDetails", JArray.FromObject(unitDetails)));
 
             string jsonString = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);

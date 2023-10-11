@@ -1364,6 +1364,7 @@ MonoBehaviour:
   _hitPoints: 3
   _rank: 0
   side: left
+  tier: 2
   myFont: {fileID: 0}
   effectFrame: 0
   _queuePosition: 0
@@ -1389,6 +1390,8 @@ MonoBehaviour:
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
   effectsComponent: {fileID: 0}
+  effectPlacementLeft: {x: 0, y: 0, z: 0}
+  effectPlacementRight: {x: 0, y: 0, z: 0}
   acAttackSFX: {fileID: 0}
 --- !u!114 &5226991642516105219
 MonoBehaviour:
