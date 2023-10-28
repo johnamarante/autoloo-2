@@ -88,6 +88,16 @@ public class Deployment : MonoBehaviour
         Roll(false);
     }
 
+    private void Update()
+    {
+        var objhup = GameObject.Find("hupu");
+        if (objhup != null)
+        { 
+            SetupBattle();
+            Destroy(objhup);
+        }
+    }
+
     private void SetResourcePointsDisplay()
     {
         var texMeshProComponent = Camera.main.gameObject.transform.GetComponentInChildren(typeof(TextMeshPro), true);
@@ -103,31 +113,11 @@ public class Deployment : MonoBehaviour
             //START FIGHT end turn
             if (GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 253, 175), btnEndTurn, defaultGuiStyle))
             {
-                gameManager.Deselect();
-                Camera.main.GetComponent<CameraControl>().Move(gameManager.cameraPositions[0]);
-                gameManager.InBattleModeAndNotDeploymentMode = true;
-                gameManager.actionTime = Time.time + (1*gameManager.period);
-
                 //get data about opponent
                 //write data to save between turns
-                OpponentGeneration.Generate();
+                OpponentGeneration.GenerateFromDraftAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+                //OpponentGeneration.GenerateRandom();
 
-                var allUnits = FindObjectsOfType<Unit>().ToList();
-                gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
-                gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right").OrderBy(x => x.QueuePosition).ToList();
-
-                foreach (var unit in gameManager.LeftQueueUnits)
-                {
-                    gameManager.autolooPlayerData.unitDetails.Add(unit.GetDetail());
-                }
-                
-                if (gameManager.autolooPlayerData.PlayerName != "guest")
-                {
-                    StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
-                }
-
-                gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
-                gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
             }
             //FREEZE UNIT
             if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 165, 250, 150), btnFreeze, defaultGuiStyle))
@@ -147,6 +137,31 @@ public class Deployment : MonoBehaviour
                 Roll();
             }
         }
+    }
+
+    private void SetupBattle()
+    {
+        gameManager.Deselect();
+        Camera.main.GetComponent<CameraControl>().Move(gameManager.cameraPositions[0]);
+        gameManager.InBattleModeAndNotDeploymentMode = true;
+        gameManager.actionTime = Time.time + (1 * gameManager.period);
+
+        var allUnits = FindObjectsOfType<Unit>().ToList();
+        gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
+        gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right").OrderBy(x => x.QueuePosition).ToList();
+
+        foreach (var unit in gameManager.LeftQueueUnits)
+        {
+            gameManager.autolooPlayerData.unitDetails.Add(unit.GetDetail());
+        }
+
+        if (gameManager.autolooPlayerData.PlayerName != "guest")
+        {
+            StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+        }
+
+        gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
+        gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
     }
 
     public void Roll(bool costOnePoint = true)

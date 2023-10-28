@@ -15,7 +15,7 @@ public static class StoreAndLoadArmyDetails
         if (autolooPlayerData.PlayerName != "guest")
         {
             WriteToPlayerPaste(autolooPlayerData.PlayerDataPasteURL, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.unitDetails, round, wins, losses);
-            UpdateArmyDraftsByRosterAndTurn(autolooPlayerData.RosterName, 1, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.unitDetails, round, wins, losses);
+            UpdateArmyDraftsByRosterAndTurn(autolooPlayerData.RosterName, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.unitDetails, round, wins, losses);
         }
     }
 
@@ -28,7 +28,7 @@ public static class StoreAndLoadArmyDetails
         {
             try
             {
-                GenerateReloadedUnitFromDetail(unitRoster, gameManager, detail);
+                GenerateReloadedUnitFromDetail(unitRoster, gameManager, detail, "left");
             }
             catch (Exception ex)
             {
@@ -38,7 +38,7 @@ public static class StoreAndLoadArmyDetails
         }
     }
 
-    private static void GenerateReloadedUnitFromDetail(List<Unit> unitRoster, GameManager gameManager, UnitDetail unitDetails)
+    public static void GenerateReloadedUnitFromDetail(List<Unit> unitRoster, GameManager gameManager, UnitDetail unitDetails, string side)
     {
         var spriteB = unitDetails.Name.Split('_')[1];
         var rosterItem = unitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitDetails.Name.Split('_')[1]);
@@ -50,7 +50,7 @@ public static class StoreAndLoadArmyDetails
             unit._attack = unitDetails.Attack;
             unit._hitPoints = unitDetails.HitPoints;
             unit._rank = unitDetails.Rank;
-            unit.side = "left";
+            unit.side = side;
             unit.QueuePosition = unitDetails.QueuePosition;
             unit._deployed = true;
             unit.gameManager = gameManager;
@@ -82,26 +82,29 @@ public static class StoreAndLoadArmyDetails
         }
     }
 
-    private static async void UpdateArmyDraftsByRosterAndTurn(string roster, int turn, string userId, string playerName, List<UnitDetail> unitDetails, int round, int wins, int losses)
+    private static async void UpdateArmyDraftsByRosterAndTurn(string roster, string userId, string playerName, List<UnitDetail> unitDetails, int round, int wins, int losses)
     {
         try
         {
-            var url = GetAutolooArmyDraftURL(roster, turn);
-            var draftData = await FriendpasteClient.FriendpasteClient.GetDataAsync(url);
+            var url = GetAutolooArmyDraftURL(roster, round);
+            var rawData = await FriendpasteClient.FriendpasteClient.GetDataAsync(url);
 
-            JObject outerObject = JObject.Parse(draftData);
-            JObject innerObject = JObject.Parse(FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse(outerObject["snippet"].ToString()));
-            JArray usersArray = (JArray)innerObject["data"];
+            var outerObject = JObject.Parse(rawData);
+            var snippetString = FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse(outerObject["snippet"].ToString());
+            var snippet = JObject.Parse(snippetString);
+            var draftData = (JArray)snippet["data"];
 
-            JObject jsonObject = new JObject(
+            var newJsonObject = new JObject(
                 new JProperty("playername", playerName),
                 new JProperty("round", round),
                 new JProperty("wins", wins),
                 new JProperty("losses", losses),
                 new JProperty("UnitDetails", JArray.FromObject(unitDetails)));
 
-            string jsonString = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
-            await FriendpasteClient.FriendpasteClient.PutDataAsyncWithTimeout(GetAutolooArmyDraftURL(roster, turn), userId, FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(jsonString));
+            draftData.Add(newJsonObject);
+
+            var jsonString = "{ \"data\" : " + JsonConvert.SerializeObject(draftData, Formatting.Indented) + "}";
+            await FriendpasteClient.FriendpasteClient.PutDataAsyncWithTimeout(url, $"Autoloo{roster[0]}{roster[1]}{round}", FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(jsonString));
         }
         catch (Exception ex)
         {
@@ -113,42 +116,40 @@ public static class StoreAndLoadArmyDetails
     {
         string lowerRosterName = rosterName.ToLower();
 
-        if (lowerRosterName.StartsWith("fre"))
+        if (lowerRosterName.StartsWith("fr"))
         {
             if (turnNumber == 1)
             {
-                return "https://friendpaste.com/7PqkEHCArsKsB1BqfcQ5WY"; // AutolooFre1
+                return "https://friendpaste.com/7PqkEHCArsKsB1BqfcQ5WY";
             }
             if (turnNumber == 2) 
             {
-                return "https://friendpaste.com/5ywZxxsN9T7M46MkVW5lua"; // AutolooFre2
+                return "https://friendpaste.com/5ywZxxsN9T7M46MkVW5lua";
             }
             if (turnNumber >= 3)
             {
-                return "https://friendpaste.com/ZTQWDc7yFs5UdBy74Wp3l"; // AutolooFre3
+                return "https://friendpaste.com/ZTQWDc7yFs5UdBy74Wp3l"; 
             }
         }
 
-        if (lowerRosterName.StartsWith("bri"))
+        if (lowerRosterName.StartsWith("br"))
         {
             if (turnNumber == 1)
             {
-                return "https://friendpaste.com/4tqHc6my3iXt8YCKVUnXqx"; // AutolooBri3
+                return "https://friendpaste.com/5ywZxxsN9T7M46MkVVNzDl";
             }
             if (turnNumber == 2)
             {
-                return "https://friendpaste.com/5ywZxxsN9T7M46MkVVfbZd"; // AutolooBri2
+                return "https://friendpaste.com/5ywZxxsN9T7M46MkVVfbZd";
             }
             if (turnNumber >= 3)
             {
-                return "https://friendpaste.com/4tqHc6my3iXt8YCKVUnXqx"; // AutolooBri3
+                return "https://friendpaste.com/4tqHc6my3iXt8YCKVUnXqx";
             }
         }
 
         return "";
     }
-
-
 
     [Serializable]
     private class UnitDetailListWrapper

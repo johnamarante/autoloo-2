@@ -309,9 +309,9 @@ public class GameManager : MonoBehaviour
             InBattleModeAndNotDeploymentMode = false;
             Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
             StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
+            roundNumber++;
             deployment.Roll(false);
             deployment.coin = 10;
-            roundNumber++;
             if (resultText.StartsWith('W'))
             {
                 WIN++;

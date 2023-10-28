@@ -379,6 +379,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: 
   RosterName: 
+  PlayerData: 
+  PlayerDataPasteURL: 
+  turnNumber: 0
 --- !u!4 &506464448
 Transform:
   m_ObjectHideFlags: 0
@@ -492,7 +495,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee71ab3b029317345a3b4de6c2fa8d08, type: 2}
+  - {fileID: 2100000, guid: ef543d584400eda448471448d96ec3e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
