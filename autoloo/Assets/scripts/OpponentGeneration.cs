@@ -34,32 +34,26 @@ public static class OpponentGeneration
             var snippetString = FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse(outerObject["snippet"].ToString());
             var snippet = JObject.Parse(snippetString);
             var draftData = (JArray)snippet["data"];
-
-            var armyDraft = new List<UnitDetail>();
-            foreach (var draft in draftData)
+            var filteredDraftData = new JArray();
+            foreach (var dd in draftData)
             {
-                if (Int32.Parse(draft["round"].ToString()) == round && draft["playername"].ToString() != name)
+                if (Int32.Parse(dd["round"].ToString()) == round && dd["playername"].ToString() != name)
+                    filteredDraftData.Add(dd);
+            }
+
+            System.Random rnd = new System.Random();
+            int randomNumber = rnd.Next(filteredDraftData.Count);
+            var randomfdd = filteredDraftData[randomNumber];
+
+            foreach (var jsonUnitDetail in randomfdd["UnitDetails"])
+            {
+                try
                 {
-                    foreach (var jsonUnitDetail in draft["UnitDetails"])
-                    {
-                        try
-                        {
-                            var unitName = (string)jsonUnitDetail["Name"];
-                            var opposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]));
-                            opposingUnit.GetComponent<Unit>().Deployed = true;
-                            opposingUnit._attack = (int)jsonUnitDetail["Attack"]; ;
-                            opposingUnit._rank = (int)jsonUnitDetail["Rank"];
-                            opposingUnit._hitPoints = (int)jsonUnitDetail["HitPoints"];
-                            opposingUnit._queuePosition = (int)jsonUnitDetail["QueuePosition"];
-                            opposingUnit.name = unitName;
-                            break;
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.Log(ex.ToString());
-                        }
-                    }
-                    break;
+                    InstantiateUnit(gameManager, jsonUnitDetail);
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log(ex.ToString());
                 }
             }
         }
@@ -69,9 +63,21 @@ public static class OpponentGeneration
             Debug.Log("reverting to random opponent generation");
             GenerateRandom();
         }
-        finally 
+        finally
         {
-            GameObject hupuObject = new GameObject("hupu");
+            new GameObject("OpponentGenerationCompleted");
         }
+    }
+
+    private static void InstantiateUnit(GameManager gameManager, JToken jsonUnitDetail)
+    {
+        var unitName = (string)jsonUnitDetail["Name"];
+        var opposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]));
+        opposingUnit.GetComponent<Unit>().Deployed = true;
+        opposingUnit._attack = (int)jsonUnitDetail["Attack"]; ;
+        opposingUnit._rank = (int)jsonUnitDetail["Rank"];
+        opposingUnit._hitPoints = (int)jsonUnitDetail["HitPoints"];
+        opposingUnit._queuePosition = (int)jsonUnitDetail["QueuePosition"];
+        opposingUnit.name = unitName;
     }
 }

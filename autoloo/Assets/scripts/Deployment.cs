@@ -33,6 +33,7 @@ public class Deployment : MonoBehaviour
     public Texture btnFreeze;
     public Texture btnSell;
     public Texture btnRoll;
+    private bool checkOpponentGenerationCompleted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +45,8 @@ public class Deployment : MonoBehaviour
         defaultGuiStyle = new GUIStyle()
         {
             alignment = TextAnchor.MiddleLeft,
-            margin = new RectOffset(2,2,2,2),
-            padding = new RectOffset(2,2,2,2),
+            margin = new RectOffset(2, 2, 2, 2),
+            padding = new RectOffset(2, 2, 2, 2),
             fontSize = 15,
             fontStyle = FontStyle.Bold
         };
@@ -90,11 +91,15 @@ public class Deployment : MonoBehaviour
 
     private void Update()
     {
-        var objhup = GameObject.Find("hupu");
-        if (objhup != null)
-        { 
-            SetupBattle();
-            Destroy(objhup);
+        if (checkOpponentGenerationCompleted)
+        {
+            var objhup = GameObject.Find("OpponentGenerationCompleted");
+            if (objhup != null)
+            {
+                SetupBattle();
+                Destroy(objhup);
+                checkOpponentGenerationCompleted = false;
+            }
         }
     }
 
@@ -113,11 +118,8 @@ public class Deployment : MonoBehaviour
             //START FIGHT end turn
             if (GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 253, 175), btnEndTurn, defaultGuiStyle))
             {
-                //get data about opponent
-                //write data to save between turns
                 OpponentGeneration.GenerateFromDraftAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
-                //OpponentGeneration.GenerateRandom();
-
+                checkOpponentGenerationCompleted = true;
             }
             //FREEZE UNIT
             if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 165, 250, 150), btnFreeze, defaultGuiStyle))
@@ -289,7 +291,7 @@ public class Deployment : MonoBehaviour
     //TODO: refactor TrySnapToDeploymentQueueSpace
     public void TrySnapToDeploymentQueueSpace(Unit unit, DeploymentMarker belowDeploymentMarker, Vector3 startPosition)
     {
-        
+
         if (unit.CanAfford() || unit.Deployed)
         {
             var occupant = belowDeploymentMarker.occupant;
@@ -320,7 +322,8 @@ public class Deployment : MonoBehaviour
                 unit.transform.position = startPosition;
             }
         }
-        else {
+        else
+        {
             //snap back to start position
             //TODO: need a message for the user containing a message if CanAfford() == false
             unit.transform.position = startPosition;
@@ -348,7 +351,8 @@ public class Deployment : MonoBehaviour
                         ShiftPositionKey = closestLesserNeighbor.positionKey;
                         return true;
                     }
-                    else {
+                    else
+                    {
                         idxLesser--;
                     }
                 }
@@ -363,7 +367,8 @@ public class Deployment : MonoBehaviour
                         ShiftPositionKey = closestGreaterNeighbor.positionKey;
                         return true;
                     }
-                    else {
+                    else
+                    {
                         idxGreater++;
                     }
                 }
@@ -379,7 +384,7 @@ public class Deployment : MonoBehaviour
         if (selectedUnit != null && selectedUnit.CanAfford())
         {
             foreach (var deployMarker in listLeftDeploymentMarkers)
-            { 
+            {
                 if (deployMarker.occupant != null && selectedUnit.spriteName == deployMarker.occupant.spriteName)
                 {
                     deployMarker.goCombine.SetActive(true);
@@ -390,7 +395,7 @@ public class Deployment : MonoBehaviour
                 }
             }
         }
-        else 
+        else
         {
             foreach (var deployMarker in listLeftDeploymentMarkers)
             {
