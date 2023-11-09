@@ -93,11 +93,11 @@ public class Deployment : MonoBehaviour
     {
         if (checkOpponentGenerationCompleted)
         {
-            var objhup = GameObject.Find("OpponentGenerationCompleted");
-            if (objhup != null)
+            var completionFlag = GameObject.Find("OpponentGenerationCompleted");
+            if (completionFlag != null)
             {
                 SetupBattle();
-                Destroy(objhup);
+                Destroy(completionFlag);
                 checkOpponentGenerationCompleted = false;
             }
         }
@@ -157,10 +157,7 @@ public class Deployment : MonoBehaviour
             gameManager.autolooPlayerData.unitDetails.Add(unit.GetDetail());
         }
 
-        if (gameManager.autolooPlayerData.PlayerName != "guest")
-        {
-            StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
-        }
+        StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
 
         gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
         gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);

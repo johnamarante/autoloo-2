@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -176,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee71ab3b029317345a3b4de6c2fa8d08, type: 2}
+  - {fileID: 2100000, guid: 383c69d55e17bec4896b14fa57f55dc4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -474,7 +474,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   britainFlag: {fileID: 2800000, guid: 37b74bf52a2dc294c835ac6c9ca1144c, type: 3}
   franceFlag: {fileID: 2800000, guid: 93baaaf498a6c03409272af1eb1a86f7, type: 3}
-  autolooUserGameData: {fileID: 1218551582}
   configManager: {fileID: 0}
   configuration:
     version: 
@@ -548,8 +547,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

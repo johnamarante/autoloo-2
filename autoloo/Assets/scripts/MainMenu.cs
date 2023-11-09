@@ -79,14 +79,14 @@ public class MainMenu : MonoBehaviour
         return String.IsNullOrEmpty(autolooPlayerData.PlayerName) ? autolooPlayerData.Auth0UserInfo.Email : autolooPlayerData.PlayerName;
     }
 
-    private async void OnGUI()
+    private void OnGUI()
     {
         GUI.Label(new Rect(10, Screen.height - 60, 30, 1000), menuMessage, guiStyle);
         GUI.Label(new Rect(10, 0, 30, 1000), $"version {configuration.version}", guiStyle);
 
         if (newUserSetup)
         {
-            await ShowNewUserSetupDialogue();
+            _ = ShowNewUserSetupDialogue();
         }
         if (!string.IsNullOrEmpty(autolooPlayerData.PlayerName))
         {
@@ -169,13 +169,16 @@ public class MainMenu : MonoBehaviour
 
         string jsonString = JsonConvert.SerializeObject(jsonObject, Formatting.Indented);
         var newPlayerPostResponse = await FriendpasteClient.FriendpasteClient.PostDataAsync(FriendpasteClient.FriendpasteClient.BaseUrl, userId, FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(jsonString));
+        var newPlayerPostResponseUrl = JObject.Parse(newPlayerPostResponse).Value<string>("url");
 
-        var updatedJSON = AddUserIdAndPasteIdToDirectoryData(directoryData, userId, JObject.Parse(newPlayerPostResponse).Value<string>("url"));
+        var updatedJSON = AddUserIdAndPasteIdToDirectoryData(directoryData, userId, newPlayerPostResponseUrl);
         char firstChar = char.ToLower(userId[0]);
         await FriendpasteClient.FriendpasteClient.PutDataAsyncWithTimeout(directoryUrl, $"AutolooUserDirectory{firstChar}", FriendpasteClient.FriendpasteClient.PrepareJSONStringForBodyArgument(updatedJSON));
 
         Debug.Log($"Player name set to {playerName} and paste is at {newPlayerPostResponse}");
         autolooPlayerData.PlayerName = playerName;
+        autolooPlayerData.PlayerData = await FriendpasteClient.FriendpasteClient.GetDataAsync(newPlayerPostResponseUrl);
+        autolooPlayerData.PlayerDataPasteURL = newPlayerPostResponseUrl;
         menuMessage = $"Logged in as {GetPlayerDisplayName()}";
         newUserSetup = false;
     }
