@@ -119,6 +119,7 @@ public class Unit : MonoBehaviour
         }
     }
     public Action<bool> OnFreezedChanged;
+    public int cycle = 1;
     public string spriteName;
     //Lerping START
     public Vector3 startMarker;
@@ -156,6 +157,8 @@ public class Unit : MonoBehaviour
     private GameObject mouseHoverOverIndicator;
     private GameObject selectedIndicator;
     public AudioClip acAttackSFX;
+    public bool canFormSquare = false;
+    public bool isCavalry = false;
 
     void Awake()
     {

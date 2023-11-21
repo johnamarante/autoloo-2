@@ -34,6 +34,7 @@ public class Deployment : MonoBehaviour
     public Texture btnSell;
     public Texture btnRoll;
     private bool checkOpponentGenerationCompleted = false;
+    private bool endTurnButtonClicked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +100,7 @@ public class Deployment : MonoBehaviour
                 SetupBattle();
                 Destroy(completionFlag);
                 checkOpponentGenerationCompleted = false;
+                GUI.enabled = true;
             }
         }
     }
@@ -116,10 +118,11 @@ public class Deployment : MonoBehaviour
         if (gameManager.InBattleModeAndNotDeploymentMode == false)
         {
             //START FIGHT end turn
-            if (GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 253, 175), btnEndTurn, defaultGuiStyle))
+            if (!endTurnButtonClicked && GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 253, 175), btnEndTurn, defaultGuiStyle))
             {
-                OpponentGeneration.GenerateFromDraftAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+                endTurnButtonClicked = true;
                 checkOpponentGenerationCompleted = true;
+                OpponentGeneration.GenerateFromDraftAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
             }
             //FREEZE UNIT
             if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 165, 250, 150), btnFreeze, defaultGuiStyle))
@@ -137,6 +140,10 @@ public class Deployment : MonoBehaviour
             if (GUI.Button(new Rect(0, Screen.height - 165, 250, 150), btnRoll, defaultGuiStyle))
             {
                 Roll();
+            }
+            if (endTurnButtonClicked && !checkOpponentGenerationCompleted)
+            {
+                endTurnButtonClicked = false;
             }
         }
     }

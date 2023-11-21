@@ -962,9 +962,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   Chance: 10
   _cost: 3
-  _attack: 4
+  _attack: 8
   _attackBonus: 0
-  _hitPoints: 4
+  _hitPoints: 6
   _rank: 0
   side: right
   tier: 3
@@ -973,6 +973,7 @@ MonoBehaviour:
   _queuePosition: 0
   _deployed: 0
   _freezed: 0
+  cycle: 1
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
@@ -996,6 +997,8 @@ MonoBehaviour:
   effectPlacementLeft: {x: 0, y: 0, z: 0}
   effectPlacementRight: {x: 0, y: 0, z: 0}
   acAttackSFX: {fileID: 8300000, guid: 9d1d1a6b5c46d924182e4630b961f1b1, type: 3}
+  canFormSquare: 0
+  isCavalry: 1
 --- !u!114 &8455096643629723050
 MonoBehaviour:
   m_ObjectHideFlags: 0

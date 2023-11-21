@@ -228,14 +228,16 @@ MonoBehaviour:
   _cost: 3
   _attack: 2
   _attackBonus: 0
-  _hitPoints: 2
+  _hitPoints: 3
   _rank: 0
   side: left
+  tier: 1
   myFont: {fileID: 0}
   effectFrame: 0
   _queuePosition: 0
   _deployed: 0
   _freezed: 0
+  cycle: 1
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
@@ -259,6 +261,7 @@ MonoBehaviour:
   effectPlacementLeft: {x: 7, y: 3, z: 1}
   effectPlacementRight: {x: -7, y: 3, z: 0}
   acAttackSFX: {fileID: 0}
+  canFormSquare: 1
 --- !u!114 &3888868699424191529
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1782,7 +1782,7 @@ MonoBehaviour:
   _cost: 3
   _attack: 1
   _attackBonus: 0
-  _hitPoints: 1
+  _hitPoints: 3
   _rank: 0
   side: left
   tier: 2

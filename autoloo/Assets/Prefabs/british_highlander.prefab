@@ -512,7 +512,7 @@ MonoBehaviour:
   _cost: 3
   _attack: 4
   _attackBonus: 0
-  _hitPoints: 3
+  _hitPoints: 5
   _rank: 0
   side: left
   tier: 2
@@ -521,6 +521,7 @@ MonoBehaviour:
   _queuePosition: 0
   _deployed: 0
   _freezed: 0
+  cycle: 1
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
@@ -544,6 +545,7 @@ MonoBehaviour:
   effectPlacementLeft: {x: 8, y: 2, z: 1}
   effectPlacementRight: {x: -9, y: 2, z: -1}
   acAttackSFX: {fileID: 0}
+  canFormSquare: 1
 --- !u!114 &1685192276980752165
 MonoBehaviour:
   m_ObjectHideFlags: 0

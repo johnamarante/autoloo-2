@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     public ResultPopup resultPopup;
     public AutolooPlayerData autolooPlayerData;
     public int roundNumber = 1;
+    public int cycle = 1;
     public int WIN = 0;
     public int LOSS = 0;
     private int frameCountFromStartOfLastPrebattlePhase = 0;
@@ -207,6 +208,7 @@ public class GameManager : MonoBehaviour
                 frameCountFromStartOfLastPrebattlePhase = 0;
                 BattlePhase();
                 actionTime += period;
+                cycle++;
             }
         }
         else
@@ -227,6 +229,7 @@ public class GameManager : MonoBehaviour
 
     void PreBattlePhase()
     {
+
         //get all units with a prebattle event and fire those prebattle events in the order Artillery, position
         var leftArtillery = GetArtilleryFromQueue(LeftQueueUnits);
         var rightArtillery = GetArtilleryFromQueue(RightQueueUnits);
@@ -303,7 +306,6 @@ public class GameManager : MonoBehaviour
             preBattlePhaseFired = false;
             Debug.Log("Result is " + resultText);
             ShowResultPopup(resultText);
-
             autolooPlayerData.ClearUnitDetails();
             CleanupBattlefield();
             InBattleModeAndNotDeploymentMode = false;
@@ -320,6 +322,8 @@ public class GameManager : MonoBehaviour
             {
                 LOSS++;
             }
+            //reset the cycle
+            cycle = 1;
         }
     }
 

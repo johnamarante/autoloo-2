@@ -917,6 +917,7 @@ MonoBehaviour:
   _queuePosition: 0
   _deployed: 0
   _freezed: 0
+  cycle: 1
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
@@ -940,6 +941,8 @@ MonoBehaviour:
   effectPlacementLeft: {x: 0, y: 0, z: 0}
   effectPlacementRight: {x: 0, y: 0, z: 0}
   acAttackSFX: {fileID: 0}
+  canFormSquare: 0
+  isCavalry: 1
 --- !u!114 &9063886343762718628
 MonoBehaviour:
   m_ObjectHideFlags: 0
