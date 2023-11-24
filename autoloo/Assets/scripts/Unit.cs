@@ -150,6 +150,7 @@ public class Unit : MonoBehaviour
     public GameObject rankComponent;
     public GameObject freezeComponent;
     public SpriteRenderer effectsComponent;
+    public GameObject squareComponent;
     public Vector3 effectPlacementLeft;
     public Vector3 effectPlacementRight;
     private SpriteRenderer spriteRank = new SpriteRenderer();
@@ -159,6 +160,21 @@ public class Unit : MonoBehaviour
     public AudioClip acAttackSFX;
     public bool canFormSquare = false;
     public bool isCavalry = false;
+    public bool _squared = false;
+    public bool Squared
+    {
+        get { return _squared; }
+        set
+        {
+            _squared = value;
+            if (this?.OnSquaredChanged != null)
+            {
+                //the Freezed property is always true for an already deployed unit
+                this?.OnSquaredChanged(_squared);
+            }
+        }
+    }
+    public Action<bool> OnSquaredChanged;
 
     void Awake()
     {
@@ -197,6 +213,18 @@ public class Unit : MonoBehaviour
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
         effectsComponent.flipX = (side == "left") ? false : true;
+        try
+        {
+            squareComponent = transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgsquaresprite").FirstOrDefault().gameObject;
+            if (squareComponent != null)
+            {
+                OnSquaredChanged += (e) => squareComponent.SetActive(Squared);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.Log(ex.ToString());
+        }
     }
 
     private void SetSprite()

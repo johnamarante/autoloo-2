@@ -229,6 +229,45 @@ public class GameManager : MonoBehaviour
 
     void PreBattlePhase()
     {
+        //square check
+        if (cycle <= 1)
+        {
+            if (LeftQueueUnits[0].canFormSquare && RightQueueUnits[0].isCavalry)
+            {
+                LeftQueueUnits[0].Squared = true;
+            }
+            else
+            {
+                LeftQueueUnits[0].Squared = false;
+            }
+            if (RightQueueUnits[0].canFormSquare && LeftQueueUnits[0].isCavalry)
+            {
+                RightQueueUnits[0].Squared = true;
+            }
+            else
+            {
+                RightQueueUnits[0].Squared = false;
+            }
+        }
+        if (cycle > 1)
+        {
+            if (LeftQueueUnits[0].cycle > 1 && LeftQueueUnits[0].canFormSquare && RightQueueUnits[0].isCavalry)
+            {
+                LeftQueueUnits[0].Squared = true;
+            }
+            else
+            {
+                LeftQueueUnits[0].Squared = false;
+            }
+            if (RightQueueUnits[0].cycle > 1 && RightQueueUnits[0].canFormSquare && LeftQueueUnits[0].isCavalry)
+            {
+                RightQueueUnits[0].Squared = true;
+            }
+            else
+            {
+                RightQueueUnits[0].Squared = false;
+            }
+        }
 
         //get all units with a prebattle event and fire those prebattle events in the order Artillery, position
         var leftArtillery = GetArtilleryFromQueue(LeftQueueUnits);
@@ -323,7 +362,7 @@ public class GameManager : MonoBehaviour
                 LOSS++;
             }
             //reset the cycle
-            cycle = 1;
+            cycle = 0;
         }
     }
 
@@ -367,8 +406,25 @@ public class GameManager : MonoBehaviour
     {
         if (leftUnits.Count > 0 && rightUnits.Count > 0)
         {
-            leftUnits[0].HitPoints -= (rightUnits[0].Attack + rightUnits[0].AttackBonus);
-            rightUnits[0].HitPoints -= (leftUnits[0].Attack + leftUnits[0].AttackBonus);
+            //Cavalry attacking in a square case
+            if (leftUnits[0].Squared && rightUnits[0].isCavalry)
+            {
+                leftUnits[0].HitPoints -= 1;
+                rightUnits[0].HitPoints -= (leftUnits[0].Attack + rightUnits[0].AttackBonus + 3);
+            }
+            else if (leftUnits[0].isCavalry && rightUnits[0].Squared)
+            {
+                leftUnits[0].HitPoints -= (rightUnits[0].Attack + rightUnits[0].AttackBonus + 3);
+                rightUnits[0].HitPoints -= 1;
+            }
+            else
+            {
+                //Normative case
+                leftUnits[0].HitPoints -= (rightUnits[0].Attack + rightUnits[0].AttackBonus);
+                rightUnits[0].HitPoints -= (leftUnits[0].Attack + leftUnits[0].AttackBonus);
+            }
+            leftUnits[0].cycle++;
+            rightUnits[0].cycle++;
         }
     }
 

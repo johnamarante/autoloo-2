@@ -345,6 +345,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 273ae2e88921da0439b323c902a10e8d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
+      propertyPath: cycle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: melee8
       value: 
       objectReference: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
