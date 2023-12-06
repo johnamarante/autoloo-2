@@ -150,7 +150,7 @@ public class Unit : MonoBehaviour
     public GameObject rankComponent;
     public GameObject freezeComponent;
     public SpriteRenderer effectsComponent;
-    public GameObject squareComponent;
+    public SpriteRenderer squareComponent;
     public Vector3 effectPlacementLeft;
     public Vector3 effectPlacementRight;
     private SpriteRenderer spriteRank = new SpriteRenderer();
@@ -206,8 +206,6 @@ public class Unit : MonoBehaviour
         OnRankChanged += (e) =>  ChangeRankIcon();
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
-        //costComponent with old hat is going to be hidden, following SAP standard
-        //costComponent.SetActive(!Deployed);
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
@@ -215,10 +213,10 @@ public class Unit : MonoBehaviour
         effectsComponent.flipX = (side == "left") ? false : true;
         try
         {
-            squareComponent = transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgsquaresprite").FirstOrDefault().gameObject;
+            squareComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgsquaresprite").FirstOrDefault();
             if (squareComponent != null)
             {
-                OnSquaredChanged += (e) => squareComponent.SetActive(Squared);
+                OnSquaredChanged += (e) => squareComponent.enabled = Squared;
             }
         }
         catch (Exception ex)

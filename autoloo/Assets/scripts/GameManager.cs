@@ -229,6 +229,8 @@ public class GameManager : MonoBehaviour
 
     void PreBattlePhase()
     {
+
+
         //square check
         if (cycle <= 1)
         {
@@ -268,7 +270,6 @@ public class GameManager : MonoBehaviour
                 RightQueueUnits[0].Squared = false;
             }
         }
-
         //get all units with a prebattle event and fire those prebattle events in the order Artillery, position
         var leftArtillery = GetArtilleryFromQueue(LeftQueueUnits);
         var rightArtillery = GetArtilleryFromQueue(RightQueueUnits);

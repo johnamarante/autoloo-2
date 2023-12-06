@@ -1347,6 +1347,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 646439995818344439, guid: 7dcd936be32270c4e995ccab5c8699ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4454358100141034294, guid: 7dcd936be32270c4e995ccab5c8699ef, type: 3}
       propertyPath: m_Name
       value: french_oldguardgrenadier
