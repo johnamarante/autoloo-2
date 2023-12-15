@@ -529,16 +529,22 @@ public class Unit : MonoBehaviour
             case 1:
                 ShowFlashEffect();
                 break;
-            case 10:
+            case 5:
                 ShowSmokeEffect();
                 break;
         }
 
         effectFrame++;
 
-        if (effectFrame > 60)
+        if (effectFrame > 20)
         {
             HideEffect();
+        }
+        else 
+        {
+            //fade
+            effectsComponent.color = new Color(effectsComponent.color.r, effectsComponent.color.g, effectsComponent.color.b, (float)(20 - effectFrame) / 20);
+
         }
     }
     private void ShowFlashEffect()
@@ -559,5 +565,6 @@ public class Unit : MonoBehaviour
         showEffect = false;
         effectsComponent.enabled = false;
         effectFrame = 0;
+        effectsComponent.color = new Color(255, 255, 255, 255);
     }
 }
