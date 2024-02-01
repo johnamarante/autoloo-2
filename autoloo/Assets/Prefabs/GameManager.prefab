@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 755904350544477791}
   - component: {fileID: 755904350544477789}
   - component: {fileID: 755904350544477790}
+  - component: {fileID: 4073338801934629265}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -106,6 +107,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c461a93515b4a0644b6b8837db97817c, type: 3}
   _selectedUnit: {fileID: 0}
   resultPopup: {fileID: 5818834965362523167, guid: d80b0c52b06658f4d89600e74a7bd916, type: 3}
+  autolooPlayerData: {fileID: 0}
+  roundNumber: 1
+  cycle: 1
+  WIN: 0
+  LOSS: 0
 --- !u!222 &755904350544477790
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -114,3 +120,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755904350544477779}
   m_CullTransparentMesh: 1
+--- !u!114 &4073338801934629265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755904350544477779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b45245f43d6c94d87f5c804a327c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberPrefab: {fileID: 7776559494113499659, guid: aa4a061241374984ba34d12b550f50a9, type: 3}

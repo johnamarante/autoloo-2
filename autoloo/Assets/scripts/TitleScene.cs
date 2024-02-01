@@ -13,6 +13,7 @@ public class TitleScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
         camStartZ = Camera.main.transform.position.z;
         maskingPlaneMaterial = GameObject.Find("Plane1").GetComponent<Renderer>().material; // .material.color.a = 0.5f
         titleAudioSource = GetComponent<AudioSource>();

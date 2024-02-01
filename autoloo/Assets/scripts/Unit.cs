@@ -51,11 +51,12 @@ public class Unit : MonoBehaviour
         get { return _hitPoints; }
         set
         {
+            var delta = value - _hitPoints;
             _hitPoints = value;
-            this?.OnHitPointsChanged(_hitPoints);
+            this?.OnHitPointsChanged(_hitPoints, delta);
         }
     }
-    public Action<int> OnHitPointsChanged;
+    public Action<int,int> OnHitPointsChanged;
 
     public int _rank = 0;
     public int Rank
@@ -113,7 +114,6 @@ public class Unit : MonoBehaviour
             _freezed = value;
             if (this?.OnFreezedChanged != null)
             {
-                //the Freezed property is always true for an already deployed unit
                 this?.OnFreezedChanged(_freezed);
             }
         }
@@ -142,6 +142,8 @@ public class Unit : MonoBehaviour
     public bool showEffect = false;
     public Sprite fightEffect1;
     public Sprite fightEffect2;
+    public Sprite fightEffect3;
+    public Sprite fightEffect4;
     //Stats display START
     public TextMeshPro textAttack = new();
     public TextMeshPro textHitPoints = new();
@@ -169,12 +171,26 @@ public class Unit : MonoBehaviour
             _squared = value;
             if (this?.OnSquaredChanged != null)
             {
-                //the Freezed property is always true for an already deployed unit
                 this?.OnSquaredChanged(_squared);
             }
         }
     }
     public Action<bool> OnSquaredChanged;
+    public AudioClip acFormSquare;
+    public bool _SkirmishMode = false;
+    public bool SkirmishMode
+    {
+        get { return _SkirmishMode; }
+        set
+        {
+            _SkirmishMode = value;
+            if (this?.OnSkirmishModeChanged != null)
+            {
+                this?.OnSkirmishModeChanged(_SkirmishMode);
+            }
+        }
+    }
+    public Action<bool> OnSkirmishModeChanged;
 
     void Awake()
     {
@@ -199,29 +215,47 @@ public class Unit : MonoBehaviour
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         SetUnitStatsDisplay();
         OnAttackChanged += (e) => textAttack.text = (Attack + AttackBonus).ToString();
-        OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
-        OnHitPointsChanged += (e) => textHitPoints.text = HitPoints.ToString();
+        OnAttackBonusChanged += (e) => { if (AttackBonus > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
+        OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); gameManager.floatyNumber.SpawnFloatingNumber(delta, transform.position, (delta < 0)); };
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
         OnRankChanged += (e) =>  ChangeRankIcon();
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
+        OnSkirmishModeChanged += (e) => Debug.Log($"skirmish mode: {SkirmishMode}");
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
-        effectsComponent.flipX = (side == "left") ? false : true;
+        if (!transform.GetComponent<Artillery>())
+        {
+            effectsComponent.flipX = (side == "left") ? false : true;
+        }
         try
         {
             squareComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgsquaresprite").FirstOrDefault();
             if (squareComponent != null)
             {
-                OnSquaredChanged += (e) => squareComponent.enabled = Squared;
+                OnSquaredChanged += (e) => CalledWhenTheSquaredValueChanges();
             }
         }
         catch (Exception ex)
         {
             Debug.Log(ex.ToString());
+        }
+    }
+
+    private void CalledWhenTheSquaredValueChanges()
+    {
+        squareComponent.enabled = Squared; 
+        if (Squared) 
+        { 
+            gameManager.PlayTransientAudioClip(acFormSquare); 
+            AttackBonus += 3; 
+        } 
+        else 
+        { 
+            AttackBonus -= 3; 
         }
     }
 
@@ -524,30 +558,65 @@ public class Unit : MonoBehaviour
     }
     public void ShowFightEffects()
     {
-        switch (effectFrame)
+        if (!isCavalry)
         {
-            case 1:
-                ShowFlashEffect();
-                break;
-            case 5:
-                ShowSmokeEffect();
-                break;
+            switch (effectFrame)
+            {
+                case 1:
+                    ShowEffect1();
+                    break;
+                case 5:
+                    ShowEffect2();
+                    break;
+            }
+        }
+        
+        if (isCavalry)
+        {
+            switch (effectFrame)
+            {
+                case 1:
+                    ShowEffect1();
+                    break;
+                case 5:
+                    ShowEffect2();
+                    break;
+                case 8:
+                    ShowEffect3();
+                    break;
+                case 10:
+                    ShowEffect4();
+                    break;
+            }
         }
 
         effectFrame++;
-
-        if (effectFrame > 20)
+        
+        if (!isCavalry)
         {
-            HideEffect();
+            if (effectFrame > 20)
+            {
+                HideEffect();
+            }
+            else
+            {
+                //fade
+                float effectRatio = (float)(20 - effectFrame) / 20;
+                effectsComponent.color = new Color(effectsComponent.color.r, effectsComponent.color.g, effectsComponent.color.b, effectRatio);
+
+            }
         }
-        else 
-        {
-            //fade
-            effectsComponent.color = new Color(effectsComponent.color.r, effectsComponent.color.g, effectsComponent.color.b, (float)(20 - effectFrame) / 20);
 
+        if (isCavalry)
+        {
+            if (effectFrame > 12)
+            {
+                HideEffect();
+            }
         }
     }
-    private void ShowFlashEffect()
+
+    private void ShowEffect1()
     {
         effectsComponent.enabled = true;
         effectsComponent.sprite = fightEffect1;
@@ -555,7 +624,17 @@ public class Unit : MonoBehaviour
         effectsComponent.transform.position = gameObject.transform.position +  ((side == "left") ? effectPlacementLeft : effectPlacementRight);
     }
 
-    private void ShowSmokeEffect()
+    private void ShowEffect2()
+    {
+        effectsComponent.sprite = fightEffect2;
+    }
+
+    private void ShowEffect3()
+    {
+        effectsComponent.sprite = fightEffect2;
+    }
+
+    private void ShowEffect4()
     {
         effectsComponent.sprite = fightEffect2;
     }

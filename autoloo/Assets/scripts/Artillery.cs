@@ -9,7 +9,6 @@ public class Artillery : MonoBehaviour
 {
     public Unit unit;
     public int range;
-    public bool grapeMode = false;
     public bool showArtilleryEffect = false;
     public int effectFrame = 0;
     public Sprite ball;
@@ -58,7 +57,7 @@ public class Artillery : MonoBehaviour
     public void ShootBall(Unit target)
     {
         ShowEffect();
-        Debug.Log($"Firing a ball at {target.name}");
+        //Debug.Log($"Firing a ball at {target.name}");
 
         // Calculate the distance to the target
         float distanceToTarget = target.transform.position.x - unit.transform.position.x;
@@ -78,7 +77,7 @@ public class Artillery : MonoBehaviour
     {
         //add the voice audio
         unit.gameManager.PlayTransientAudioClip(acLoadGrapShot);
-        Debug.Log($"will fire grape at {target.name}...");
+        //Debug.Log($"will fire grape at {target.name}...");
         //the deduction of enemy HP for grape shot is done in the Battle Phase
     }
 
@@ -86,13 +85,11 @@ public class Artillery : MonoBehaviour
     {
         if (Math.Abs(e) == 1)
         {
-            grapeMode = true;
             unit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = grape;
             unit.AttackBonus = 3;
         }
         else
         {
-            grapeMode = false;
             unit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = ball;
             unit.AttackBonus = 0;
         }
@@ -155,6 +152,12 @@ public class Artillery : MonoBehaviour
         if (effectFrame > 60)
         {
             HideEffect();
+        }
+        else 
+        {
+            //fade
+            float effectRatio = (float)(60 - effectFrame) / 60;
+            unit.effectsComponent.color = new Color(unit.effectsComponent.color.r, unit.effectsComponent.color.g, unit.effectsComponent.color.b, effectRatio);
         }
     }
 

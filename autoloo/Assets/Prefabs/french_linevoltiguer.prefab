@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 2355520097940927225}
   - component: {fileID: 2129210122213833219}
   - component: {fileID: 8271780943982010905}
+  - component: {fileID: 3376937744840713326}
   m_Layer: 0
   m_Name: french_linevoltiguer
   m_TagString: Untagged
@@ -517,6 +518,7 @@ MonoBehaviour:
   _queuePosition: 0
   _deployed: 0
   _freezed: 0
+  cycle: 1
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
@@ -530,6 +532,8 @@ MonoBehaviour:
   showEffect: 0
   fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
   fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
+  fightEffect3: {fileID: 0}
+  fightEffect4: {fileID: 0}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -537,9 +541,15 @@ MonoBehaviour:
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
   effectsComponent: {fileID: 0}
+  squareComponent: {fileID: 0}
   effectPlacementLeft: {x: 6, y: 1, z: 1}
   effectPlacementRight: {x: -9, y: 2, z: 0}
   acAttackSFX: {fileID: 8300000, guid: 9d1d1a6b5c46d924182e4630b961f1b1, type: 3}
+  canFormSquare: 0
+  isCavalry: 0
+  _squared: 0
+  acFormSquare: {fileID: 8300000, guid: 8e0bfb792110ef14e902695dcaa2b802, type: 3}
+  inSkirmishMode: 1
 --- !u!114 &2129210122213833219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +576,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3376937744840713326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695415910660820345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c793db0bd4edb904d914398dbba82f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
+  lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
+  goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}
 --- !u!1 &2746289171665056181
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,14 +984,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5108871404471178417}
-  m_LocalRotation: {x: -0, y: -0, z: 0.21562316, w: 0.9764767}
-  m_LocalPosition: {x: -0.2500031, y: 0.3800001, z: 0}
-  m_LocalScale: {x: 0.25, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2347681565964821723}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 24.904}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
 --- !u!212 &8429913661097237603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1007,7 +1033,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

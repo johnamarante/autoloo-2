@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 3126649275751001086}
   - component: {fileID: 1610057400686584580}
   - component: {fileID: 8727746342336969502}
+  - component: {fileID: 2878411457407353986}
   m_Layer: 0
   m_Name: french_cuirassier
   m_TagString: Untagged
@@ -813,8 +814,10 @@ MonoBehaviour:
   Lspritebackground: {fileID: 0}
   Rspritebackground: {fileID: 0}
   showEffect: 0
-  fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
-  fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
+  fightEffect1: {fileID: 3286163911610860551, guid: 2f963ef8ef7c9e348a03c2329c138056, type: 3}
+  fightEffect2: {fileID: 3286163911610860551, guid: b3459fcac1d6da04391eae2b6cb342c7, type: 3}
+  fightEffect3: {fileID: 3286163911610860551, guid: 485a96084f34ef64e9dadac63ba58801, type: 3}
+  fightEffect4: {fileID: 3286163911610860551, guid: 5055056a9cd7ab4449bd013f0cc8a63a, type: 3}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -822,11 +825,15 @@ MonoBehaviour:
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
   effectsComponent: {fileID: 0}
+  squareComponent: {fileID: 0}
   effectPlacementLeft: {x: 0, y: 0, z: 0}
   effectPlacementRight: {x: 0, y: 0, z: 0}
-  acAttackSFX: {fileID: 8300000, guid: 9d1d1a6b5c46d924182e4630b961f1b1, type: 3}
+  acAttackSFX: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
   canFormSquare: 0
   isCavalry: 1
+  _squared: 0
+  acFormSquare: {fileID: 0}
+  _SkirmishMode: 0
 --- !u!114 &1610057400686584580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,6 +860,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2878411457407353986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367673835385967742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4effa7f38ca8fd4b8da61b3b2f15802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
 --- !u!1 &4356762776936088889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,14 +1149,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5562561844590595510}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.63, y: -0.02, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3116710903660281308}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9162989265481155940
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1180,7 +1200,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 3286163911610860551, guid: efede668ebc244543813fad073ecb3ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 3.5795066}

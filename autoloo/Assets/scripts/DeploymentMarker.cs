@@ -21,6 +21,7 @@ public class DeploymentMarker : MonoBehaviour
     public Action<Unit> OnOccupantChanged;
     public GameObject goArrow;
     public GameObject goCombine;
+    public GameObject goHoverIndicator;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class DeploymentMarker : MonoBehaviour
         }
         goArrow = this.gameObject.transform.Find("arrow").gameObject;
         goCombine = this.gameObject.transform.Find("combine").gameObject;
+        goHoverIndicator = this.gameObject.transform.Find("hover_over_indicator").gameObject;
     }
 
     private void OnMouseEnter()
@@ -53,7 +55,7 @@ public class DeploymentMarker : MonoBehaviour
         //deploymarkers only show mouse hover indicators when unoccupied
         //but is that ^ right? // && (occupant == null)
         var activeValue = (show);
-        transform.Find("hover_over_indicator").gameObject.SetActive(activeValue);
+        goHoverIndicator.SetActive(activeValue);
     }
 
     //Click and Click deployment Part 2

@@ -72,6 +72,7 @@ public class MainMenu : MonoBehaviour
             menuMessage = $"Logged in as {GetPlayerDisplayName()}";
         }
         GUI.enabled = true;
+        Screen.SetResolution(1920, 1080, true);
     }
 
     private string GetPlayerDisplayName()

@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 6}
+  m_AnchoredPosition: {x: -3, y: 7}
   m_SizeDelta: {x: 1, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1541596515769127974
@@ -308,14 +308,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2831118307902067777}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.39, y: -0.01999998, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4670723446216716668}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8144703918887237362
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -359,7 +359,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 3286163911610860551, guid: efede668ebc244543813fad073ecb3ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 3.5795066}
@@ -860,6 +860,7 @@ GameObject:
   - component: {fileID: 4680753786372417374}
   - component: {fileID: 9063886343762718628}
   - component: {fileID: 1337104240977491902}
+  - component: {fileID: 5007936342368452441}
   m_Layer: 0
   m_Name: british_socttsgreys
   m_TagString: Untagged
@@ -931,6 +932,8 @@ MonoBehaviour:
   showEffect: 0
   fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
   fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
+  fightEffect3: {fileID: 0}
+  fightEffect4: {fileID: 0}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -938,11 +941,15 @@ MonoBehaviour:
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
   effectsComponent: {fileID: 0}
+  squareComponent: {fileID: 0}
   effectPlacementLeft: {x: 0, y: 0, z: 0}
   effectPlacementRight: {x: 0, y: 0, z: 0}
   acAttackSFX: {fileID: 0}
   canFormSquare: 0
   isCavalry: 1
+  _squared: 0
+  acFormSquare: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
+  _SkirmishMode: 0
 --- !u!114 &9063886343762718628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,6 +976,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5007936342368452441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4984666429566146782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4effa7f38ca8fd4b8da61b3b2f15802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
 --- !u!1 &5527538588742443612
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public string playerSide = "left";
     //public Unit selectedUnit;
     public Deployment deployment;
+    public NumberFloating floatyNumber;
     public Sprite[] rankSprites;
     public bool _InBattleModeAndNotDeploymentMode;
     public bool InBattleModeAndNotDeploymentMode
@@ -42,8 +43,8 @@ public class GameManager : MonoBehaviour
     public AudioClip[] cannonFire;
     public AudioClip[] cannonballHits;
     private int currentClipIndex;
-    AudioSource generalAudioSource;
-
+    public AudioSource generalAudioSource;
+    public CameraControl cameraControl;
     public Unit _selectedUnit;
     public Unit selectedUnit
     {
@@ -59,11 +60,12 @@ public class GameManager : MonoBehaviour
     public ResultPopup resultPopup;
     public AutolooPlayerData autolooPlayerData;
     public int roundNumber = 1;
-    public int cycle = 1;
+    public int roundCycle = 1;
     public int WIN = 0;
     public int LOSS = 0;
     private int frameCountFromStartOfLastPrebattlePhase = 0;
-    
+    private int leftUnitDamage = 0;
+    private int rightUnitDamage = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
         fightQueuePositions = SetFightQueuePositionLocations();
         cameraPositions = SetCameraPositionLocations();
         generalAudioSource = Camera.main.gameObject.AddComponent<AudioSource>();
+        cameraControl = Camera.main.GetComponent<CameraControl>();
         generalAudioSource.volume = 0.5f;
         generalAudioSource.loop = false;
         autolooPlayerData = FindObjectOfType<AutolooPlayerData>();
@@ -87,10 +90,9 @@ public class GameManager : MonoBehaviour
                 break;
         }
         deployment = Instantiate(deployment);
+        floatyNumber = this.gameObject.GetComponent<NumberFloating>();
         OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
         InBattleModeAndNotDeploymentModeChanged += (e) => { 
-            string mode = InBattleModeAndNotDeploymentMode ? "in battle mode" : "in deployment mode";  
-            Debug.Log($"{mode}");
             if (InBattleModeAndNotDeploymentMode)
             {
                 generalAudioSource.Stop();
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
                 RemoveAudioSourcesOnGameManager();
             }
         };
+        Screen.SetResolution(1920, 1080, true);
     }
 
     private void RemoveAudioSourcesOnGameManager()
@@ -136,7 +139,6 @@ public class GameManager : MonoBehaviour
         {
             un.side = "right";
         }
-
     }
     private void PlayAsFrance()
     {
@@ -198,17 +200,33 @@ public class GameManager : MonoBehaviour
                     CleanupAndMove();
                     CheckForAndHandleBattleResult();
                     preBattlePhaseCleanupFired = true;
+                }
+                if (preBattlePhaseCleanupFired && frameCountFromStartOfLastPrebattlePhase >= cleanupFrame + 1) 
+                {
+                    ComputeDamages();
                     FightEffects(ref LeftQueueUnits, ref RightQueueUnits);
+                    //if (RightQueueUnits[0] != null)
+                    //{
+                    //    floatyNumber.SpawnFloatingNumber(-1 * rightUnitDamage, RightQueueUnits[0].gameObject.transform.position, true);
+                    //}
+
+                    //if (LeftQueueUnits[0] != null)
+                    //{
+                    //    floatyNumber.SpawnFloatingNumber(-1 * leftUnitDamage, LeftQueueUnits[0].gameObject.transform.position, true);
+                    //}
+                    preBattlePhaseCleanupFired = false;
                 }
             }
             if (Time.time > (actionTime + 3*(period / 4)))
             {
                 preBattlePhaseFired = false;
-                preBattlePhaseCleanupFired = false;
                 frameCountFromStartOfLastPrebattlePhase = 0;
-                BattlePhase();
+                ComputeDamages();
+                Fight(ref LeftQueueUnits, ref RightQueueUnits);
+                CleanupAndMove();
+                CheckForAndHandleBattleResult();
                 actionTime += period;
-                cycle++;
+                roundCycle++;
             }
         }
         else
@@ -229,48 +247,37 @@ public class GameManager : MonoBehaviour
 
     void PreBattlePhase()
     {
+        SquareChecks();
+        ArtilleryPhase();
+    }
 
-
-        //square check
-        if (cycle <= 1)
+    private void ComputeDamages()
+    {
+        //TODO: revisit redundant calls
+        if (LeftQueueUnits.Count > 0 && RightQueueUnits.Count > 0)
         {
-            if (LeftQueueUnits[0].canFormSquare && RightQueueUnits[0].isCavalry)
+            // Cavalry attacking in a square case
+            if (LeftQueueUnits[0].Squared && RightQueueUnits[0].isCavalry)
             {
-                LeftQueueUnits[0].Squared = true;
+                leftUnitDamage = 1;
+                rightUnitDamage = LeftQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
+            }
+            else if (LeftQueueUnits[0].isCavalry && RightQueueUnits[0].Squared)
+            {
+                leftUnitDamage = RightQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
+                rightUnitDamage = 1;
             }
             else
             {
-                LeftQueueUnits[0].Squared = false;
-            }
-            if (RightQueueUnits[0].canFormSquare && LeftQueueUnits[0].isCavalry)
-            {
-                RightQueueUnits[0].Squared = true;
-            }
-            else
-            {
-                RightQueueUnits[0].Squared = false;
+                // Normative case
+                leftUnitDamage = RightQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
+                rightUnitDamage = LeftQueueUnits[0].Attack + LeftQueueUnits[0].AttackBonus;
             }
         }
-        if (cycle > 1)
-        {
-            if (LeftQueueUnits[0].cycle > 1 && LeftQueueUnits[0].canFormSquare && RightQueueUnits[0].isCavalry)
-            {
-                LeftQueueUnits[0].Squared = true;
-            }
-            else
-            {
-                LeftQueueUnits[0].Squared = false;
-            }
-            if (RightQueueUnits[0].cycle > 1 && RightQueueUnits[0].canFormSquare && LeftQueueUnits[0].isCavalry)
-            {
-                RightQueueUnits[0].Squared = true;
-            }
-            else
-            {
-                RightQueueUnits[0].Squared = false;
-            }
-        }
-        //get all units with a prebattle event and fire those prebattle events in the order Artillery, position
+    }
+
+    private void ArtilleryPhase()
+    {
         var leftArtillery = GetArtilleryFromQueue(LeftQueueUnits);
         var rightArtillery = GetArtilleryFromQueue(RightQueueUnits);
         var allArtilleryUnits = new List<Unit>();
@@ -285,7 +292,6 @@ public class GameManager : MonoBehaviour
         allArtilleryUnits.OrderBy(item => Math.Abs(item.QueuePosition)).ToList();
         foreach (var item in allArtilleryUnits)
         {
-            Debug.Log(item.name);
             if (item.side == "left")
             {
                 item.gameObject.GetComponent<Artillery>().Fire(RightQueueUnits[0]);
@@ -294,6 +300,24 @@ public class GameManager : MonoBehaviour
             {
                 item.gameObject.GetComponent<Artillery>().Fire(LeftQueueUnits[0]);
             }
+        }
+    }
+
+    private void SquareChecks()
+    {
+        SquareCheck(LeftQueueUnits[0], RightQueueUnits[0]);
+        SquareCheck(RightQueueUnits[0], LeftQueueUnits[0]);
+    }
+
+    public void SquareCheck(Unit unitA, Unit unitB)
+    {
+        //Avoid firing the change event if there is no actual change
+        bool newSquaredValue = (roundCycle <= 1 || unitA.cycle > 1)
+                               && unitA.canFormSquare && !unitA.SkirmishMode
+                               && unitB.isCavalry;
+        if (unitA.Squared != newSquaredValue)
+        {
+            unitA.Squared = newSquaredValue;
         }
     }
 
@@ -310,13 +334,6 @@ public class GameManager : MonoBehaviour
         return artilleryUnits;
     }
 
-    void BattlePhase()
-    {
-        Fight(ref LeftQueueUnits, ref RightQueueUnits);
-        CleanupAndMove();
-        CheckForAndHandleBattleResult();
-    }
-
     public void CleanupAndMove()
     {
         List<int> leftEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref LeftQueueUnits);
@@ -325,8 +342,8 @@ public class GameManager : MonoBehaviour
         CleanupEliminatedUnits(leftEliminatedIndices, ref LeftQueueUnits);
         CleanupEliminatedUnits(rightEliminatedIndices, ref RightQueueUnits);
 
-        SetUpUnitsOnBattlefieldInArrangement(ref LeftQueueUnits, fightQueuePositions);
-        SetUpUnitsOnBattlefieldInArrangement(ref RightQueueUnits, fightQueuePositions);
+        ArrangeUnitsOnBattlefield(ref LeftQueueUnits, fightQueuePositions);
+        ArrangeUnitsOnBattlefield(ref RightQueueUnits, fightQueuePositions);
     }
 
     void CleanupEliminatedUnits(List<int> indices, ref List<Unit> queueUnits)
@@ -344,12 +361,11 @@ public class GameManager : MonoBehaviour
         {
             string resultText = (LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!";
             preBattlePhaseFired = false;
-            Debug.Log("Result is " + resultText);
             ShowResultPopup(resultText);
             autolooPlayerData.ClearUnitDetails();
             CleanupBattlefield();
             InBattleModeAndNotDeploymentMode = false;
-            Camera.main.GetComponent<CameraControl>().Move(cameraPositions[-1]);
+            cameraControl.Move(cameraPositions[-1]);
             StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
             roundNumber++;
             deployment.Roll(false);
@@ -363,7 +379,7 @@ public class GameManager : MonoBehaviour
                 LOSS++;
             }
             //reset the cycle
-            cycle = 0;
+            roundCycle = 0;
         }
     }
 
@@ -395,8 +411,6 @@ public class GameManager : MonoBehaviour
             var screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
             screenPoint.z = 1f; //distance of the plane from the camera
             Camera.main.ScreenToWorldPoint(screenPoint);
-            //GUI.Label(new Rect(10, 10, 300, 300), screenPoint.ToString(), new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
-            //GUI.Label(new Rect(10, 30, 300, 300), $"W: {Screen.width} H: {Screen.height}", new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
             var developerMessage = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
             developerMessage += $" real FPS: {realFPS}";
             GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), developerMessage, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
@@ -407,23 +421,9 @@ public class GameManager : MonoBehaviour
     {
         if (leftUnits.Count > 0 && rightUnits.Count > 0)
         {
-            //Cavalry attacking in a square case
-            if (leftUnits[0].Squared && rightUnits[0].isCavalry)
-            {
-                leftUnits[0].HitPoints -= 1;
-                rightUnits[0].HitPoints -= (leftUnits[0].Attack + rightUnits[0].AttackBonus + 3);
-            }
-            else if (leftUnits[0].isCavalry && rightUnits[0].Squared)
-            {
-                leftUnits[0].HitPoints -= (rightUnits[0].Attack + rightUnits[0].AttackBonus + 3);
-                rightUnits[0].HitPoints -= 1;
-            }
-            else
-            {
-                //Normative case
-                leftUnits[0].HitPoints -= (rightUnits[0].Attack + rightUnits[0].AttackBonus);
-                rightUnits[0].HitPoints -= (leftUnits[0].Attack + leftUnits[0].AttackBonus);
-            }
+            // Apply damage to HitPoints
+            leftUnits[0].HitPoints -= leftUnitDamage;
+            rightUnits[0].HitPoints -= rightUnitDamage;
             leftUnits[0].cycle++;
             rightUnits[0].cycle++;
         }
@@ -453,20 +453,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetUpUnitsOnBattlefieldInArrangement(ref List<Unit> units, Dictionary<int, Vector3> queuePositions)
+    public void ArrangeUnitsOnBattlefield(ref List<Unit> units, Dictionary<int, Vector3> queuePositions)
     {
-        int idx = 1;
-        //go through queue
+        int index = 1;
+
         foreach (Unit unit in units)
         {
-            var indexModifier = 1;
-            if (unit.side == "left")
-            {
-                indexModifier = -1;
-            }
-            unit.QueuePosition = indexModifier * idx;
-            unit.SetIntoMotion(queuePositions[indexModifier * idx]);
-            idx++;
+            int indexModifier = (unit.side == "left") ? -1 : 1;
+            unit.QueuePosition = indexModifier * index;
+            unit.SetIntoMotion(queuePositions[indexModifier * index]);
+            index++;
         }
     }
 
@@ -498,11 +494,11 @@ public class GameManager : MonoBehaviour
         {
             if (unit.HitPoints <= 0 && unit != null)
             {
+                var hupu = unit.name;
                 Destroy(unit.gameObject);
                 eliminatedIndecies.Add(index);
             }
             index++;
-
         }
         return eliminatedIndecies;
     }

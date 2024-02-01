@@ -5,42 +5,26 @@ using UnityEngine;
 
 public class PulseHover : MonoBehaviour
 {
-    int i = 0;
-    bool down = false;
-    int regulate = 1;
+    //int regulate = 1;
     public float yValue = 10.0f;
+    private float lastTime;
+
+    float startTime;
+    float floatSpeed;
+    float floatAmplitude;
+    float floatOffset;
     // Start is called before the first frame update
     void Start()
     {
-        
+        startTime = Time.time;
+        floatSpeed = 5f; // Speed of the floating animation
+        floatAmplitude = 5f; // Amplitude of the floating animation
+        floatOffset = 10f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //probably need to get the framerate in order for this to look consistent across different devices and mchines
-        regulate++;
-        if (regulate % 2 == 0)
-        {
-            regulate = 1;
-            if (down)
-            {
-                i--;
-                yValue -= 0.5f;
-            }
-            else
-            {
-                i++;
-                yValue += 0.5f;
-            }
-            if (i > 12)
-            {
-                down = true;
-            }
-            if (i < 1)
-            {
-                down = false;
-            }
-        }
+        yValue = floatOffset + (Mathf.Sin((Time.time - startTime) * floatSpeed) * floatAmplitude);
     }
 }

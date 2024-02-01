@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class LoginScreen : MonoBehaviour
 {
     public AutolooPlayerData autolooPlayerData;
+    public AudioSource autolooMusic;
     private string usernameOrEmail = "";
     private string password = "";
 
@@ -21,6 +22,8 @@ public class LoginScreen : MonoBehaviour
 
     void Start()
     {
+        Screen.SetResolution(1920, 1080, true);
+        DontDestroyOnLoad(autolooMusic);
     }
     private void Update()
     {
@@ -51,7 +54,7 @@ public class LoginScreen : MonoBehaviour
         float totalWidth = (3 * buttonWidth) + (2 * spacing);
 
         // Calculate positions for UI elements
-        float centerX = (screenWidth - totalWidth) * 0.5f + 50f; // Shifted to the right
+        float centerX = (screenWidth - totalWidth) * 0.5f + 200f; // Shifted to the right
         float centerY = screenHeight * 0.5f;
         float labelY = centerY - fieldHeight - buttonHeight - spacing;
         float usernameY = centerY - fieldHeight - buttonHeight - spacing;
@@ -60,7 +63,7 @@ public class LoginScreen : MonoBehaviour
 
         // Set the larger font size for text in input fields and buttons
         int fontSize = 48;
-        Color fontColor = Color.black;
+        Color fontColor = Color.white;
         GUI.skin.textField.fontSize = fontSize;
         GUI.skin.button.fontSize = fontSize;
         GUI.skin.label.fontSize = fontSize;

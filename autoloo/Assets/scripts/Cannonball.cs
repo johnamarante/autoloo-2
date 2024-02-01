@@ -4,27 +4,39 @@ using UnityEngine;
 
 public class Cannonball : MonoBehaviour
 {
-    int i = 0;
     public List<(double, double)> FlightpathPoints;
     public Unit target;
     public int damage;
     public GameManager manager;
+    private float lastTime;
+    private float timeInterval;
+    private int i = 0;
+
+    private void Start()
+    {
+        timeInterval = manager.period / (FlightpathPoints.Count);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (i == 0)
+        if (Time.time - lastTime >= timeInterval)
         {
-            transform.position = new Vector3(transform.position.x + (float)FlightpathPoints[i].Item1, transform.position.y + (float)FlightpathPoints[i].Item2, transform.position.z);
+            if (i == 0)
+            {
+                transform.position = new Vector3(transform.position.x + (float)FlightpathPoints[i].Item1, transform.position.y + (float)FlightpathPoints[i].Item2, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x + (float)(FlightpathPoints[i].Item1 - FlightpathPoints[i - 1].Item1), transform.position.y + (float)(FlightpathPoints[i].Item2 - FlightpathPoints[i - 1].Item2), transform.position.z);
+            }
+            i++;
         }
-        else
-        {
-            transform.position = new Vector3(transform.position.x + (float)(FlightpathPoints[i].Item1 - FlightpathPoints[i-1].Item1), transform.position.y + (float)(FlightpathPoints[i].Item2 - FlightpathPoints[i - 1].Item2), transform.position.z);
-        }
-        i++;
         if (i == FlightpathPoints.Count)
         {
             target.HitPoints -= damage;
+            //SpawnFloatingNumber should only ever be called when HitPoints changes
+            //manager.floatyNumber.SpawnFloatingNumber(-1*damage, target.transform.position, true);
             target.gameManager.PlayCannonballHit();
             Destroy(this.gameObject);
         }

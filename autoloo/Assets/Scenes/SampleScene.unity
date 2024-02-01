@@ -177,7 +177,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 383c69d55e17bec4896b14fa57f55dc4, type: 2}
+  - {fileID: 2100000, guid: d8412af86d52b5b44a049a818038ea20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -215,8 +215,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165285015}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -23.4, y: 23.4, z: 5}
-  m_LocalScale: {x: 18, y: 1, z: 10.6275}
+  m_LocalPosition: {x: -18.8, y: 14.6, z: 5}
+  m_LocalScale: {x: 19, y: 1, z: 9}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -263,7 +263,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.8443396, b: 0.4198113, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -322,12 +322,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091210801}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 60, y: 3, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 3448913675499897701}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &755904349595165716
 PrefabInstance:
@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.size
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: BritishUnitRoster.Array.size
@@ -527,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[9]
       value: 
-      objectReference: {fileID: 5218138999814808912, guid: f248de271fc78ca46aa0d426d2fc39e5, type: 3}
+      objectReference: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: BritishUnitRoster.Array.data[0]
       value: 
@@ -797,5 +797,11 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3325327104187711965, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
+--- !u!4 &3448913675499897701 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3448913674545245712, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
+  m_PrefabInstance: {fileID: 3448913675499897700}
+  m_PrefabAsset: {fileID: 0}

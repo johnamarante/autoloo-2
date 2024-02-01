@@ -760,14 +760,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4795514603707001592}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.07, y: -0.01999998, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7807272290965818136}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1203156032953396503
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -811,7 +811,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 3286163911610860551, guid: efede668ebc244543813fad073ecb3ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 3.5795066}
@@ -1210,7 +1210,7 @@ Transform:
   m_GameObject: {fileID: 6934837529221830712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 2.75, y: 2.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1486773812599795767}
@@ -1364,6 +1364,7 @@ GameObject:
   - component: {fileID: 7817648852732452154}
   - component: {fileID: 5855201137420719552}
   - component: {fileID: 4469514543289126362}
+  - component: {fileID: 530301599752455791}
   m_Layer: 0
   m_Name: french_hussar
   m_TagString: Untagged
@@ -1433,8 +1434,10 @@ MonoBehaviour:
   Lspritebackground: {fileID: 0}
   Rspritebackground: {fileID: 0}
   showEffect: 0
-  fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
-  fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
+  fightEffect1: {fileID: 3286163911610860551, guid: 2f963ef8ef7c9e348a03c2329c138056, type: 3}
+  fightEffect2: {fileID: 3286163911610860551, guid: b3459fcac1d6da04391eae2b6cb342c7, type: 3}
+  fightEffect3: {fileID: 3286163911610860551, guid: 485a96084f34ef64e9dadac63ba58801, type: 3}
+  fightEffect4: {fileID: 3286163911610860551, guid: 5055056a9cd7ab4449bd013f0cc8a63a, type: 3}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -1442,11 +1445,15 @@ MonoBehaviour:
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
   effectsComponent: {fileID: 0}
-  effectPlacementLeft: {x: 0, y: 0, z: 0}
-  effectPlacementRight: {x: 0, y: 0, z: 0}
-  acAttackSFX: {fileID: 8300000, guid: 9d1d1a6b5c46d924182e4630b961f1b1, type: 3}
+  squareComponent: {fileID: 0}
+  effectPlacementLeft: {x: 20, y: 0, z: 0}
+  effectPlacementRight: {x: -20, y: 0, z: 0}
+  acAttackSFX: {fileID: 8300000, guid: f85f3be6810777644b8c93b8b7d6911f, type: 3}
   canFormSquare: 0
   isCavalry: 1
+  _squared: 0
+  acFormSquare: {fileID: 0}
+  _SkirmishMode: 0
 --- !u!114 &5855201137420719552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1473,6 +1480,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &530301599752455791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612676871071441594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4effa7f38ca8fd4b8da61b3b2f15802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
 --- !u!1 &7697043506225520246
 GameObject:
   m_ObjectHideFlags: 0

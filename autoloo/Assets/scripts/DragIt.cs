@@ -32,7 +32,7 @@ public class DragIt : MonoBehaviour
                 Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
                 Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
                 transform.position = curPosition;
-                ProcessHit();
+                ProcessRayCastHit();
             }
 
         //revisit this point in the code after the dragged-unit-to-front issue is solved
@@ -44,7 +44,7 @@ public class DragIt : MonoBehaviour
         }
     }
 
-    private void ProcessHit()
+    private void ProcessRayCastHit()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * 1000f, out hit, Mathf.Infinity))

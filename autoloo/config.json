@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.3.0",
+  "version": "0.4.0",
   "devMode": false,
-  "comments": "unity does not readily support version/build numbers. DW9K to research a github hook to prompt incrementing this on check inunused for now, we may want to add infinite lives/money for development purposes. friendpaste and similar configurations should probably go in this file as well"
+  "comments": ""
 }

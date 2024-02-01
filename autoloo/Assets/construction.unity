@@ -743,6 +743,10 @@ PrefabInstance:
       propertyPath: Rsprite
       value: 
       objectReference: {fileID: 3286163911610860551, guid: e7449b268e61bc041b169336035385f4, type: 3}
+    - target: {fileID: 200769241835443253, guid: 5492c2c55f0238c4a90c533e9e2581e1, type: 3}
+      propertyPath: acFormSquare
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e0bfb792110ef14e902695dcaa2b802, type: 3}
     - target: {fileID: 509243200443853749, guid: 5492c2c55f0238c4a90c533e9e2581e1, type: 3}
       propertyPath: m_Name
       value: french_chassuer
@@ -769,11 +773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8797373258307189048, guid: 5492c2c55f0238c4a90c533e9e2581e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -71.3
+      value: -91.44
       objectReference: {fileID: 0}
     - target: {fileID: 8797373258307189048, guid: 5492c2c55f0238c4a90c533e9e2581e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.62
+      value: 15.44
       objectReference: {fileID: 0}
     - target: {fileID: 8797373258307189048, guid: 5492c2c55f0238c4a90c533e9e2581e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1205,6 +1209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: french_linevoltiguer
       objectReference: {fileID: 0}
+    - target: {fileID: 3376937744840713326, guid: 32377dcfccfbf5749aaf285179f796e0, type: 3}
+      propertyPath: goNotification
+      value: 
+      objectReference: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}
     - target: {fileID: 6372514159573688308, guid: 32377dcfccfbf5749aaf285179f796e0, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1481,6 +1489,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 631644304311794899, guid: 8bc3520893dfd6e4f87c49a82a8da672, type: 3}
+      propertyPath: acFormSquare
+      value: 
+      objectReference: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
     - target: {fileID: 944764523057185619, guid: 8bc3520893dfd6e4f87c49a82a8da672, type: 3}
       propertyPath: m_Name
       value: british_light
@@ -1529,6 +1541,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9145266765271040577, guid: 8bc3520893dfd6e4f87c49a82a8da672, type: 3}
+      propertyPath: goNotification
+      value: 
+      objectReference: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc3520893dfd6e4f87c49a82a8da672, type: 3}
 --- !u!1001 &5887298061183845264
@@ -1717,6 +1733,10 @@ PrefabInstance:
       propertyPath: _attack
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+      propertyPath: acFormSquare
+      value: 
+      objectReference: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
     - target: {fileID: 3424831784755144799, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
       propertyPath: m_Name
       value: british_highlander
@@ -1871,6 +1891,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 979073091554856390, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 979073091554856390, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.2588191
+      objectReference: {fileID: 0}
+    - target: {fileID: 979073091554856390, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: canFormSquare
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3955508389480066581, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
       propertyPath: m_Name
       value: french_carabinerapied
@@ -1928,6 +1964,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8003467699025217454, guid: f0813e7a15660cb42b4082ab5e49c03d, type: 3}
+      propertyPath: goNotification
+      value: 
+      objectReference: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}
     - target: {fileID: 888089280976205553, guid: f0813e7a15660cb42b4082ab5e49c03d, type: 3}
       propertyPath: m_RootOrder
       value: 25

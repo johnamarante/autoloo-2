@@ -1,31 +1,39 @@
 {
     "UnitDetails": [
         {
-            "Name": "unit_left_ffc20495-c7b6-4b6e-b486-4473f13362dc",
-            "Attack": 3,
-            "HitPoints": 3,
-            "Rank": 0,
-            "Side": "left",
-            "QueuePosition": -1,
-            "SpriteName": "british_highlander_left_2_0_Sprite"
+            "Name": "french_hussar_cca42ea5",
+            "Attack": 5,
+            "HitPoints": 5,
+            "Rank": 1,
+            "QueuePosition": -1
         },
         {
-            "Name": "unit_left_76466e47-a059-45b8-9604-a87dfe1d9db6",
-            "Attack": 4,
+            "Name": "french_line_1d529aef",
+            "Attack": 2,
+            "HitPoints": 3,
+            "Rank": 0,
+            "QueuePosition": -2
+        },
+        {
+            "Name": "french_heavyartillery_81699711",
+            "Attack": 2,
+            "HitPoints": 4,
+            "Rank": 1,
+            "QueuePosition": -3
+        },
+        {
+            "Name": "french_linevoltiguer_97c76b3b",
+            "Attack": 2,
+            "HitPoints": 3,
+            "Rank": 0,
+            "QueuePosition": -4
+        },
+        {
+            "Name": "french_carabinerapied_b8744cd7",
+            "Attack": 3,
             "HitPoints": 4,
             "Rank": 0,
-            "Side": "left",
-            "QueuePosition": -2,
-            "SpriteName": "british_guardgrenadier_left_2_0_Sprite"
-        },
-        {
-            "Name": "unit_left_efb3199b-221f-4af1-8798-89683b6705ac",
-            "Attack": 3,
-            "HitPoints": 3,
-            "Rank": 0,
-            "Side": "left",
-            "QueuePosition": -3,
-            "SpriteName": "british_highlander_left_2_0_Sprite"
+            "QueuePosition": -5
         }
     ]
 }

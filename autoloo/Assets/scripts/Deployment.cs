@@ -117,7 +117,7 @@ public class Deployment : MonoBehaviour
     {
         if (gameManager.InBattleModeAndNotDeploymentMode == false)
         {
-            //START FIGHT end turn
+            //END TURN start fight
             if (!endTurnButtonClicked && GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 253, 175), btnEndTurn, defaultGuiStyle))
             {
                 endTurnButtonClicked = true;
@@ -166,8 +166,8 @@ public class Deployment : MonoBehaviour
 
         StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
 
-        gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
-        gameManager.SetUpUnitsOnBattlefieldInArrangement(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
+        gameManager.ArrangeUnitsOnBattlefield(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
+        gameManager.ArrangeUnitsOnBattlefield(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
     }
 
     public void Roll(bool costOnePoint = true)
@@ -225,12 +225,7 @@ public class Deployment : MonoBehaviour
 
     public int ComputeTotalChance(List<Unit> roster)
     {
-        var totalChance = 0;
-        foreach (var unit in roster)
-        {
-            totalChance += unit.Chance;
-        }
-        return totalChance;
+        return roster.Sum(unit => unit.Chance);
     }
 
     private Dictionary<int, Vector3> SetDrawnHandPositionLocations()
@@ -290,7 +285,6 @@ public class Deployment : MonoBehaviour
             userTargetedDeployMarker.occupant.DeployAndSnapPositionToDeploymentMarker(vaccantDeployMarker);
             gameManager.selectedUnit.DeployAndSnapPositionToDeploymentMarker(userTargetedDeployMarker);
         }
-        //}
     }
     //TODO: refactor TrySnapToDeploymentQueueSpace
     public void TrySnapToDeploymentQueueSpace(Unit unit, DeploymentMarker belowDeploymentMarker, Vector3 startPosition)

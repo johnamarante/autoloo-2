@@ -3,8 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - ArrowHover
     - Artillery
-    - AutolooUserGameData
-    - AutolooUserInfo
+    - AutolooPlayerData
     - Background
     - CameraControl
     - Cannonball
@@ -16,6 +15,7 @@ ScriptsOnlyBuild:
     - GameManager
     - LoginScreen
     - MainMenu
+    - NumberFloating
     - PulseHover
     - ResultPopup
     - TitleScene
@@ -67,8 +67,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -84,27 +82,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2582}
     - Class: 114
-      Script: {instanceID: 2892}
+      Script: {instanceID: 2890}
     - Class: 114
-      Script: {instanceID: 3032}
+      Script: {instanceID: 3030}
     - Class: 114
-      Script: {instanceID: 3742}
+      Script: {instanceID: 3740}
     - Class: 114
-      Script: {instanceID: 4048}
+      Script: {instanceID: 4046}
     - Class: 114
-      Script: {instanceID: 4074}
+      Script: {instanceID: 4072}
     - Class: 114
-      Script: {instanceID: 4194}
+      Script: {instanceID: 4192}
     - Class: 114
-      Script: {instanceID: 4206}
+      Script: {instanceID: 4204}
     - Class: 114
-      Script: {instanceID: 4638}
+      Script: {instanceID: 4636}
     - Class: 114
-      Script: {instanceID: 5420}
+      Script: {instanceID: 5418}
     - Class: 114
-      Script: {instanceID: 5856}
+      Script: {instanceID: 5854}
     - Class: 114
-      Script: {instanceID: 6108}
+      Script: {instanceID: 6106}
+    - Class: 114
+      Script: {instanceID: 6220}
     - Class: 114
       Script: {instanceID: 6584}
     - Class: 115
@@ -146,7 +146,9 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 89
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -155,11 +157,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2492}
     - Class: 114
-      Script: {instanceID: 3742}
+      Script: {instanceID: 3740}
     - Class: 114
-      Script: {instanceID: 5056}
+      Script: {instanceID: 5054}
     - Class: 114
-      Script: {instanceID: 5420}
+      Script: {instanceID: 5418}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -193,8 +195,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -202,13 +202,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2730}
     - Class: 114
-      Script: {instanceID: 2876}
-    - Class: 114
-      Script: {instanceID: 5322}
+      Script: {instanceID: 5320}
     - Class: 114
       Script: {instanceID: 6528}
     - Class: 114
       Script: {instanceID: 7776}
+    - Class: 114
+      Script: {instanceID: 23840}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -244,8 +244,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -255,13 +253,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2546}
     - Class: 114
-      Script: {instanceID: 3742}
+      Script: {instanceID: 3740}
     - Class: 114
-      Script: {instanceID: 4362}
+      Script: {instanceID: 4360}
     - Class: 114
-      Script: {instanceID: 4638}
+      Script: {instanceID: 4636}
     - Class: 114
-      Script: {instanceID: 5420}
+      Script: {instanceID: 5418}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -401,7 +399,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 6af0b5a7ca259f8707454d2f0b813fef
+      Hash: bf41b2c10497b879492c3054ed864586
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LoginScreen
@@ -459,12 +457,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 2ead4dd1c68490ed51fdf762851a69d4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AutolooUserGameData
   - hash:
       serializedVersion: 2
       Hash: 62e040979f1bcc5cfdb183bf34b809bf
@@ -665,13 +657,13 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: d78dcf09ea9a9e1bcc58381e014c2665
+      Hash: a70d6c4b1fb648600bd49174f172854f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Artillery
   - hash:
       serializedVersion: 2
-      Hash: 16a2e18e1033c0420d32fd9f486b1fdd
+      Hash: afa71cb2606b983d603afd517d8d1719
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -683,7 +675,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 26868c9a9e526b4e6b7e688195c4f417
+      Hash: 5aa1c108c082c7f5d79334d2837e19e0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unit
@@ -803,10 +795,10 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: a9d9808116fb06908ae60d7ede624403
+      Hash: 3ff6b608520a83364e32b464df4c2b09
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: AutolooUserInfo
+    className: AutolooPlayerData
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -863,7 +855,7 @@ ScriptsOnlyBuild:
     className: GlobalMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 3b7c68dc5287485404a44202f1c237c6
+      Hash: 0ebb0fc0343be0e86ff52ac6665dbfae
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenu
@@ -969,6 +961,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: ad33c4a57f9ed2e2970d2e733be19473
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NumberFloating
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f

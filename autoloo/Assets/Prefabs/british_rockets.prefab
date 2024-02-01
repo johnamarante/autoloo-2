@@ -1370,6 +1370,7 @@ MonoBehaviour:
   _queuePosition: 0
   _deployed: 0
   _freezed: 0
+  cycle: 1
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
@@ -1383,6 +1384,8 @@ MonoBehaviour:
   showEffect: 0
   fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
   fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
+  fightEffect3: {fileID: 0}
+  fightEffect4: {fileID: 0}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -1390,9 +1393,15 @@ MonoBehaviour:
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
   effectsComponent: {fileID: 0}
+  squareComponent: {fileID: 0}
   effectPlacementLeft: {x: 0, y: 0, z: 0}
   effectPlacementRight: {x: 0, y: 0, z: 0}
   acAttackSFX: {fileID: 0}
+  canFormSquare: 0
+  isCavalry: 0
+  _squared: 0
+  acFormSquare: {fileID: 0}
+  inSkirmishMode: 0
 --- !u!114 &5226991642516105219
 MonoBehaviour:
   m_ObjectHideFlags: 0
