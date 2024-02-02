@@ -85,7 +85,7 @@ public class Skirmish : MonoBehaviour
             WeaponClickHandler clickHandler = attackChild.gameObject.AddComponent<WeaponClickHandler>();
             clickHandler.Initialize(unit, lineMusket, lightMusket);
         }
-        if (unit.canFormSquare && unit.side == unit.gameManager.playerSide) 
+        if (unit.canFormSquare && unit.side == unit.gameManager.playerSide && !unit.Deployed) 
         {
             GameObject goNoti = Instantiate(goNotification, transform); //, attackChild.position + new Vector3(0f, 3f, -1f), new Quaternion(0, 0.71f, -0.71f, 0));
             goNoti.transform.position += new Vector3(3f, -2f, -1f);
@@ -98,6 +98,7 @@ public class Skirmish : MonoBehaviour
     {
         Debug.Log("calling deploy skirmishers");
         unit.AttackBonus = 1;
+        //OR
         //need to generate a new unit and set it to deployed
         //put that unit in the leftqueue[0] space
         //reorder units (very quickly)

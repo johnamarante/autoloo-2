@@ -19,8 +19,7 @@ public class GameManager : MonoBehaviour
     public float period = 1f;
     public int realFPS = 60;
     public int cleanupFrame = 30;
-    public int guiFontSize = 20;
-    public bool multiplayer = false;
+    
     public string playerSide = "left";
     //public Unit selectedUnit;
     public Deployment deployment;
@@ -37,7 +36,11 @@ public class GameManager : MonoBehaviour
         }
     }
     public bool preBattlePhaseFired = false;
-    public bool preBattlePhaseCleanupFired = false;
+    public bool preBattlePhaseProcessAndCleanupFired = false;
+    public bool preBattlePhaseProcessAndCleanupCompleted = false;
+    public bool battlePhaseFired = false;
+    public bool battlePhaseProcessAndCleanupFired = false;
+    public bool battlePhaseProcessAndCleanupCompleted = false;
     public AudioClip melee8;
     public AudioClip[] distBattle1AudioClips;
     public AudioClip[] cannonFire;
@@ -66,6 +69,9 @@ public class GameManager : MonoBehaviour
     private int frameCountFromStartOfLastPrebattlePhase = 0;
     private int leftUnitDamage = 0;
     private int rightUnitDamage = 0;
+    public string developerMessage;
+    public float notificationExpireTime = 0f;
+    public string notification;
 
     // Start is called before the first frame update
     void Start()
@@ -185,48 +191,54 @@ public class GameManager : MonoBehaviour
         realFPS = (int)(1.0f / Time.deltaTime);
         if (InBattleModeAndNotDeploymentMode)
         {
-            if (Time.time > (actionTime + (period / 4)) && !preBattlePhaseFired)
+            if (Time.time > (actionTime + (period / 8)) && !preBattlePhaseFired)
             {
-                //ALL PRE BATTLE PHASE ACTIONS MUST BE FIXED TO COMPLETE IN LESS THAN 22 FRAMES
-                PreBattlePhase();
+                battlePhaseProcessAndCleanupCompleted = false;
+                //DEPLOY SKIRMISHERS
+                //CHECK FOR SQUARE FORMATION
+                SkirmishCheck();
+                SquareChecks();
                 preBattlePhaseFired = true;
-                cleanupFrame = (int)(realFPS / 2);
             }
-            if (preBattlePhaseFired)
+            if (Time.time > (actionTime + (period / 4)) && preBattlePhaseFired && !preBattlePhaseProcessAndCleanupFired)
             {
-                frameCountFromStartOfLastPrebattlePhase++;
-                if (frameCountFromStartOfLastPrebattlePhase == cleanupFrame)
-                {
-                    CleanupAndMove();
-                    CheckForAndHandleBattleResult();
-                    preBattlePhaseCleanupFired = true;
-                }
-                if (preBattlePhaseCleanupFired && frameCountFromStartOfLastPrebattlePhase >= cleanupFrame + 1) 
-                {
-                    ComputeDamages();
-                    FightEffects(ref LeftQueueUnits, ref RightQueueUnits);
-                    //if (RightQueueUnits[0] != null)
-                    //{
-                    //    floatyNumber.SpawnFloatingNumber(-1 * rightUnitDamage, RightQueueUnits[0].gameObject.transform.position, true);
-                    //}
-
-                    //if (LeftQueueUnits[0] != null)
-                    //{
-                    //    floatyNumber.SpawnFloatingNumber(-1 * leftUnitDamage, LeftQueueUnits[0].gameObject.transform.position, true);
-                    //}
-                    preBattlePhaseCleanupFired = false;
-                }
+                //ARTILLERY (FIRE BALL OR PREPARE GRAPE)
+                ArtilleryPhase();
+                preBattlePhaseProcessAndCleanupFired = true;
             }
-            if (Time.time > (actionTime + 3*(period / 4)))
+            if (Time.time > (actionTime + ((period / 4) + (period / 8))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && !preBattlePhaseProcessAndCleanupCompleted)
             {
-                preBattlePhaseFired = false;
-                frameCountFromStartOfLastPrebattlePhase = 0;
-                ComputeDamages();
-                Fight(ref LeftQueueUnits, ref RightQueueUnits);
-                CleanupAndMove();
+                //PRE BATTLE PHASE CLEANUP (FIRST CLEANUP)
+                Cleanup();
                 CheckForAndHandleBattleResult();
-                actionTime += period;
+                var activeCannonballsCount = FindObjectsOfType<Cannonball>().Length;
+                preBattlePhaseProcessAndCleanupCompleted = activeCannonballsCount == 0;
+            }
+            if (Time.time > (actionTime + ((period / 2))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && !battlePhaseFired)
+            {
+                //MAIN START
+                ComputeDamages();
+                Move();
+                battlePhaseFired = true;
+            }
+            if (Time.time > (actionTime + ((period / 2) + (period / 8))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && !battlePhaseProcessAndCleanupFired)
+            {
+                Fight(ref LeftQueueUnits, ref RightQueueUnits);
+                Cleanup();
+                CheckForAndHandleBattleResult();
                 roundCycle++;
+                battlePhaseProcessAndCleanupFired = true;
+            }
+            if (Time.time > (actionTime + ((period / 2) + (period / 4))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && battlePhaseProcessAndCleanupFired && !battlePhaseProcessAndCleanupCompleted)
+            {
+                Move();
+                actionTime += period;
+                battlePhaseProcessAndCleanupCompleted = true;
+                preBattlePhaseFired = false;
+                preBattlePhaseProcessAndCleanupFired = false;
+                preBattlePhaseProcessAndCleanupCompleted = false;
+                battlePhaseFired = false;
+                battlePhaseProcessAndCleanupFired = false;
             }
         }
         else
@@ -321,6 +333,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SkirmishCheck()
+    {
+        var leftSkirmishers = GetSkirmisherFromQueue(LeftQueueUnits);
+        var rightSkirmishers = GetSkirmisherFromQueue(RightQueueUnits);
+        List<Unit> combinedList = leftSkirmishers.Concat(rightSkirmishers).ToList();
+        foreach (var unit in combinedList)
+        {
+            unit.GetComponent<Skirmish>().DeploySkirmishers();
+        }
+    }
+
     List<Unit> GetArtilleryFromQueue(List<Unit> units)
     {
         var artilleryUnits = new List<Unit>();
@@ -334,14 +357,30 @@ public class GameManager : MonoBehaviour
         return artilleryUnits;
     }
 
-    public void CleanupAndMove()
+    List<Unit> GetSkirmisherFromQueue(List<Unit> units)
+    {
+        var skirmisherUnits = new List<Unit>();
+        foreach (Unit unit in units)
+        {
+            if (unit.gameObject.GetComponent<Skirmish>() && unit.Deployed && unit.SkirmishMode && Math.Abs(unit.QueuePosition) == 1)
+            {
+                skirmisherUnits.Add(unit);
+            }
+        }
+        return skirmisherUnits;
+    }
+
+    public void Cleanup()
     {
         List<int> leftEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref LeftQueueUnits);
         List<int> rightEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref RightQueueUnits);
 
         CleanupEliminatedUnits(leftEliminatedIndices, ref LeftQueueUnits);
         CleanupEliminatedUnits(rightEliminatedIndices, ref RightQueueUnits);
+    }
 
+    public void Move()
+    {
         ArrangeUnitsOnBattlefield(ref LeftQueueUnits, fightQueuePositions);
         ArrangeUnitsOnBattlefield(ref RightQueueUnits, fightQueuePositions);
     }
@@ -411,9 +450,27 @@ public class GameManager : MonoBehaviour
             var screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
             screenPoint.z = 1f; //distance of the plane from the camera
             Camera.main.ScreenToWorldPoint(screenPoint);
-            var developerMessage = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
+            developerMessage = (selectedUnit != null) ? selectedUnit.spriteName : "no unit is selected";
             developerMessage += $" real FPS: {realFPS}";
-            GUI.Label(new Rect(10, Screen.height - 30, 30, 1000), developerMessage, new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = guiFontSize });
+            GUI.Label(new Rect(10, Screen.height - 30, 30, Screen.width / 2), developerMessage, new GUIStyle()
+            {
+                normal = new GUIStyleState()
+                {
+                    textColor = Color.green
+                },
+                fontSize = 20
+            });
+        }
+        if (notificationExpireTime > Time.time)
+        {
+            GUI.Label(new Rect(Screen.width / 2, Screen.height - 30, 30, Screen.width / 2), notification, new GUIStyle()
+            {
+                normal = new GUIStyleState()
+                {
+                    textColor = Color.white
+                },
+                fontSize = 30
+            });
         }
     }
 

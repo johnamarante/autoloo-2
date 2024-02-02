@@ -552,7 +552,8 @@ MonoBehaviour:
   canFormSquare: 1
   isCavalry: 0
   _squared: 0
-  acFormSquare: {fileID: 0}
+  acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
+  _SkirmishMode: 0
 --- !u!114 &1685192276980752165
 MonoBehaviour:
   m_ObjectHideFlags: 0

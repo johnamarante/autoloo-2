@@ -120,9 +120,25 @@ public class Deployment : MonoBehaviour
             //END TURN start fight
             if (!endTurnButtonClicked && GUI.Button(new Rect(Screen.width - 250, Screen.height - 150, 253, 175), btnEndTurn, defaultGuiStyle))
             {
-                endTurnButtonClicked = true;
-                checkOpponentGenerationCompleted = true;
-                OpponentGeneration.GenerateFromDraftAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+                var playerDeployedUnitsCount = FindObjectsOfType<Unit>().Where(y => y.side == "left" && y.Deployed).Count();
+                if (playerDeployedUnitsCount > 0)
+                {
+                    endTurnButtonClicked = true;
+                    checkOpponentGenerationCompleted = true;
+                    OpponentGeneration.GenerateFromDraftAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+                }
+                else
+                {
+                    //TODO: Call Notifications class (TODO: actually make a notifications class)
+                    gameManager.notificationExpireTime = Time.time + 5; //5 seconds
+                    gameManager.notification += "*Please deploy at least one unit*";
+                    if (coin < 3)
+                    {
+                        coin = 3;
+                        Roll(false);
+                    }
+                }
+
             }
             //FREEZE UNIT
             if (gameManager.selectedUnit != null && !gameManager.selectedUnit.Deployed && GUI.Button(new Rect(250, Screen.height - 165, 250, 150), btnFreeze, defaultGuiStyle))
@@ -153,11 +169,9 @@ public class Deployment : MonoBehaviour
         gameManager.Deselect();
         Camera.main.GetComponent<CameraControl>().Move(gameManager.cameraPositions[0]);
         gameManager.InBattleModeAndNotDeploymentMode = true;
-        gameManager.actionTime = Time.time + (1 * gameManager.period);
+        gameManager.actionTime = Time.time + gameManager.period;
 
-        var allUnits = FindObjectsOfType<Unit>().ToList();
-        gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
-        gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right").OrderBy(x => x.QueuePosition).ToList();
+        PopulateQueues();
 
         foreach (var unit in gameManager.LeftQueueUnits)
         {
@@ -170,9 +184,16 @@ public class Deployment : MonoBehaviour
         gameManager.ArrangeUnitsOnBattlefield(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
     }
 
-    public void Roll(bool costOnePoint = true)
+    private void PopulateQueues()
     {
-        if (costOnePoint)
+        var allUnits = FindObjectsOfType<Unit>().ToList();
+        gameManager.LeftQueueUnits = allUnits.Where(y => y.side == "left" && y.Deployed).OrderByDescending(x => x.QueuePosition).ToList();
+        gameManager.RightQueueUnits = allUnits.Where(y => y.side == "right").OrderBy(x => x.QueuePosition).ToList();
+    }
+
+    public void Roll(bool costOneCoin = true)
+    {
+        if (costOneCoin)
         {
             if (coin < 1)
             {
