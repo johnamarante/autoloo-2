@@ -795,7 +795,7 @@ MonoBehaviour:
   _attackBonus: 0
   _hitPoints: 6
   _rank: 0
-  side: right
+  side: left
   tier: 2
   myFont: {fileID: 0}
   effectFrame: 0
@@ -806,7 +806,7 @@ MonoBehaviour:
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 60
+  speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: c27775c5ccb8af745a40d0174a0907b9, type: 3}

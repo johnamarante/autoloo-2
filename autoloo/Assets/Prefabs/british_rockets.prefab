@@ -1374,7 +1374,7 @@ MonoBehaviour:
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 60
+  speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: 0c62287d22892d34f9750fd0d03473a6, type: 3}
@@ -1401,7 +1401,7 @@ MonoBehaviour:
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 0}
-  inSkirmishMode: 0
+  _SkirmishMode: 0
 --- !u!114 &5226991642516105219
 MonoBehaviour:
   m_ObjectHideFlags: 0
