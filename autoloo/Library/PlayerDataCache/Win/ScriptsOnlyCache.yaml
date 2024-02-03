@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - Background
     - CameraControl
     - Cannonball
+    - Cavalry
     - ConfigurationManager
     - Deployment
     - DeploymentMarker
@@ -18,6 +19,7 @@ ScriptsOnlyBuild:
     - NumberFloating
     - PulseHover
     - ResultPopup
+    - Skirmish
     - TitleScene
     - Unit
     Unity.Rider.Editor.dll:
@@ -74,39 +76,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1746}
     - Class: 114
-      Script: {instanceID: 1870}
+      Script: {instanceID: 1808}
     - Class: 114
-      Script: {instanceID: 1880}
+      Script: {instanceID: 1872}
     - Class: 114
-      Script: {instanceID: 2272}
+      Script: {instanceID: 1882}
     - Class: 114
-      Script: {instanceID: 2582}
+      Script: {instanceID: 2274}
     - Class: 114
-      Script: {instanceID: 2890}
+      Script: {instanceID: 2494}
     - Class: 114
-      Script: {instanceID: 3030}
+      Script: {instanceID: 2586}
     - Class: 114
-      Script: {instanceID: 3740}
+      Script: {instanceID: 2894}
     - Class: 114
-      Script: {instanceID: 4046}
+      Script: {instanceID: 3034}
     - Class: 114
-      Script: {instanceID: 4072}
+      Script: {instanceID: 3744}
     - Class: 114
-      Script: {instanceID: 4192}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 4204}
+      Script: {instanceID: 4076}
     - Class: 114
-      Script: {instanceID: 4636}
+      Script: {instanceID: 4196}
     - Class: 114
-      Script: {instanceID: 5418}
+      Script: {instanceID: 4208}
     - Class: 114
-      Script: {instanceID: 5854}
+      Script: {instanceID: 4640}
     - Class: 114
-      Script: {instanceID: 6106}
+      Script: {instanceID: 5422}
     - Class: 114
-      Script: {instanceID: 6220}
+      Script: {instanceID: 5858}
     - Class: 114
-      Script: {instanceID: 6584}
+      Script: {instanceID: 6110}
+    - Class: 114
+      Script: {instanceID: 6224}
+    - Class: 114
+      Script: {instanceID: 6588}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -155,13 +161,13 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2492}
+      Script: {instanceID: 2496}
     - Class: 114
-      Script: {instanceID: 3740}
+      Script: {instanceID: 3744}
     - Class: 114
-      Script: {instanceID: 5054}
+      Script: {instanceID: 5058}
     - Class: 114
-      Script: {instanceID: 5418}
+      Script: {instanceID: 5422}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -200,15 +206,15 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2730}
+      Script: {instanceID: 2734}
     - Class: 114
-      Script: {instanceID: 5320}
+      Script: {instanceID: 5324}
     - Class: 114
-      Script: {instanceID: 6528}
+      Script: {instanceID: 6532}
     - Class: 114
-      Script: {instanceID: 7776}
+      Script: {instanceID: 7780}
     - Class: 114
-      Script: {instanceID: 23840}
+      Script: {instanceID: 23730}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -249,17 +255,17 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2272}
+      Script: {instanceID: 2274}
     - Class: 114
-      Script: {instanceID: 2546}
+      Script: {instanceID: 2550}
     - Class: 114
-      Script: {instanceID: 3740}
+      Script: {instanceID: 3744}
     - Class: 114
-      Script: {instanceID: 4360}
+      Script: {instanceID: 4364}
     - Class: 114
-      Script: {instanceID: 4636}
+      Script: {instanceID: 4640}
     - Class: 114
-      Script: {instanceID: 5418}
+      Script: {instanceID: 5422}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -325,6 +331,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Selectable
+  - hash:
+      serializedVersion: 2
+      Hash: 38c73b6263f6e13be79559fb2203b88c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Cavalry
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -399,6 +411,12 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 1502fce07d34544f84cc6ddece9b967d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Skirmish
+  - hash:
+      serializedVersion: 2
       Hash: bf41b2c10497b879492c3054ed864586
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -411,7 +429,7 @@ ScriptsOnlyBuild:
     className: TitleScene
   - hash:
       serializedVersion: 2
-      Hash: b72b16f7c6fd017e159118131a47a9d5
+      Hash: 8881d40ec88523d1e11a9a1f2f518b5e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeploymentMarker
@@ -657,13 +675,13 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a70d6c4b1fb648600bd49174f172854f
+      Hash: 9d70c040718c64e778345be1d38508a7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Artillery
   - hash:
       serializedVersion: 2
-      Hash: afa71cb2606b983d603afd517d8d1719
+      Hash: 55eaa8ba8957bedf2000a4eaf09289e2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -675,7 +693,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 5aa1c108c082c7f5d79334d2837e19e0
+      Hash: 409f19035e2a3b5b2c2517fc05803f08
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unit

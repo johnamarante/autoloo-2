@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class Skirmish : MonoBehaviour
@@ -96,8 +97,21 @@ public class Skirmish : MonoBehaviour
 
     public void DeploySkirmishers()
     {
-        Debug.Log("calling deploy skirmishers");
-        unit.AttackBonus = 1;
+        Debug.Log("deploying skirmishers...");
+        if (unit.side == "left")
+        {
+            if (unit.gameManager.LeftQueueUnits.Count > 4)
+            {
+                Debug.Log("no spac for skirmishers on the battlefield! boost attack...");
+                unit.AttackBonus = 1;
+            }
+            else
+            {
+                //var skirmisher = Instantiate(unit.gameManager.LeftUnitRoster.Where(x => x.spriteName == this.unit.GetSpriteName()).ToList()[0]);
+
+            }
+        }
+        
         //OR
         //need to generate a new unit and set it to deployed
         //put that unit in the leftqueue[0] space

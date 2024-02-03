@@ -66,7 +66,7 @@ public class Artillery : MonoBehaviour
         GameObject flyingBall = Instantiate(cannonball, transform.position, Quaternion.identity);
         Cannonball cannonballComponent = flyingBall.GetComponent<Cannonball>();
 
-        cannonballComponent.FlightpathPoints = CannonballFlightpath(50, 12, distanceToTarget, (int)(unit.gameManager.realFPS/3));
+        cannonballComponent.FlightpathPoints = CannonballFlightpath(50, 12, distanceToTarget, 35);
         cannonballComponent.damage = unit.Attack;
         cannonballComponent.target = target;
         cannonballComponent.manager = unit.gameManager;
@@ -97,6 +97,7 @@ public class Artillery : MonoBehaviour
 
     private static List<(double, double)> CannonballFlightpath(double muzzleVelocity, double weightInPounds, double targetDistance, int cannonballFrames)
     {
+        Debug.Log(cannonballFrames);
         List<(double, double)> flightpathPoints = new List<(double, double)>();
         // Constants
         const double gravitationalAcceleration = 9.81; // m/s^2, approximate value on Earth's surface

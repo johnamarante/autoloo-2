@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour
     public int WIN = 0;
     public int LOSS = 0;
     private int frameCountFromStartOfLastPrebattlePhase = 0;
-    private int leftUnitDamage = 0;
-    private int rightUnitDamage = 0;
+    private int leftUnitTakeDamage = 0;
+    private int rightUnitTakeDamage = 0;
     public string developerMessage;
     public float notificationExpireTime = 0f;
     public string notification;
@@ -257,12 +257,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void PreBattlePhase()
-    {
-        SquareChecks();
-        ArtilleryPhase();
-    }
-
     private void ComputeDamages()
     {
         //TODO: revisit redundant calls
@@ -271,19 +265,19 @@ public class GameManager : MonoBehaviour
             // Cavalry attacking in a square case
             if (LeftQueueUnits[0].Squared && RightQueueUnits[0].isCavalry)
             {
-                leftUnitDamage = 1;
-                rightUnitDamage = LeftQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
+                leftUnitTakeDamage = 1;
+                rightUnitTakeDamage = LeftQueueUnits[0].Attack + LeftQueueUnits[0].AttackBonus;
             }
             else if (LeftQueueUnits[0].isCavalry && RightQueueUnits[0].Squared)
             {
-                leftUnitDamage = RightQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
-                rightUnitDamage = 1;
+                leftUnitTakeDamage = RightQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
+                rightUnitTakeDamage = 1;
             }
             else
             {
                 // Normative case
-                leftUnitDamage = RightQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
-                rightUnitDamage = LeftQueueUnits[0].Attack + LeftQueueUnits[0].AttackBonus;
+                leftUnitTakeDamage = RightQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
+                rightUnitTakeDamage = LeftQueueUnits[0].Attack + LeftQueueUnits[0].AttackBonus;
             }
         }
     }
@@ -479,8 +473,8 @@ public class GameManager : MonoBehaviour
         if (leftUnits.Count > 0 && rightUnits.Count > 0)
         {
             // Apply damage to HitPoints
-            leftUnits[0].HitPoints -= leftUnitDamage;
-            rightUnits[0].HitPoints -= rightUnitDamage;
+            leftUnits[0].HitPoints -= leftUnitTakeDamage;
+            rightUnits[0].HitPoints -= rightUnitTakeDamage;
             leftUnits[0].cycle++;
             rightUnits[0].cycle++;
         }
