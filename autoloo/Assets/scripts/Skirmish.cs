@@ -102,20 +102,27 @@ public class Skirmish : MonoBehaviour
         {
             if (unit.gameManager.LeftQueueUnits.Count > 4)
             {
-                Debug.Log("no spac for skirmishers on the battlefield! boost attack...");
+                Debug.Log("no space for skirmishers on the battlefield! boost attack...");
                 unit.AttackBonus = 1;
             }
             else
             {
-                //var skirmisher = Instantiate(unit.gameManager.LeftUnitRoster.Where(x => x.spriteName == this.unit.GetSpriteName()).ToList()[0]);
-
+                var skirmisherPrefab = unit.gameManager.LeftUnitRoster.Where(x => x.GetSpriteName().Split('_')[1] == unit.GetSpriteName().Split('_')[1]).ToList()[0];
+                var goSkirmisher = Instantiate(skirmisherPrefab);
+                goSkirmisher.Deployed = true;
+                foreach (var alliedUnit in unit.gameManager.LeftQueueUnits)
+                {
+                    alliedUnit.QueuePosition--;
+                }
+                goSkirmisher.QueuePosition = -1;
+                unit.gameManager.LeftQueueUnits.Add(goSkirmisher);
+                unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.LeftQueueUnits, unit.gameManager.fightQueuePositions);
             }
         }
+    }
         
         //OR
         //need to generate a new unit and set it to deployed
         //put that unit in the leftqueue[0] space
         //reorder units (very quickly)
-        //have this unit fight, and the show goes on
-    }
 }

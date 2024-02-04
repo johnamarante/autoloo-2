@@ -193,6 +193,7 @@ public class GameManager : MonoBehaviour
         {
             if (Time.time > (actionTime + (period / 8)) && !preBattlePhaseFired)
             {
+                Debug.Log("A");
                 battlePhaseProcessAndCleanupCompleted = false;
                 //DEPLOY SKIRMISHERS
                 //CHECK FOR SQUARE FORMATION
@@ -202,12 +203,14 @@ public class GameManager : MonoBehaviour
             }
             if (Time.time > (actionTime + (period / 4)) && preBattlePhaseFired && !preBattlePhaseProcessAndCleanupFired)
             {
+                Debug.Log("B");
                 //ARTILLERY (FIRE BALL OR PREPARE GRAPE)
                 ArtilleryPhase();
                 preBattlePhaseProcessAndCleanupFired = true;
             }
             if (Time.time > (actionTime + ((period / 4) + (period / 8))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && !preBattlePhaseProcessAndCleanupCompleted)
             {
+                Debug.Log("C");
                 //PRE BATTLE PHASE CLEANUP (FIRST CLEANUP)
                 Cleanup();
                 CheckForAndHandleBattleResult();
@@ -216,6 +219,7 @@ public class GameManager : MonoBehaviour
             }
             if (Time.time > (actionTime + ((period / 2))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && !battlePhaseFired)
             {
+                Debug.Log("D");
                 //MAIN START
                 ComputeDamages();
                 Move();
@@ -223,6 +227,7 @@ public class GameManager : MonoBehaviour
             }
             if (Time.time > (actionTime + ((period / 2) + (period / 8))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && !battlePhaseProcessAndCleanupFired)
             {
+                Debug.Log("E");
                 Fight(ref LeftQueueUnits, ref RightQueueUnits);
                 Cleanup();
                 CheckForAndHandleBattleResult();
@@ -231,6 +236,7 @@ public class GameManager : MonoBehaviour
             }
             if (Time.time > (actionTime + ((period / 2) + (period / 4))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && battlePhaseProcessAndCleanupFired && !battlePhaseProcessAndCleanupCompleted)
             {
+                Debug.Log("F");
                 Move();
                 actionTime += period;
                 battlePhaseProcessAndCleanupCompleted = true;
@@ -259,7 +265,6 @@ public class GameManager : MonoBehaviour
 
     private void ComputeDamages()
     {
-        //TODO: revisit redundant calls
         if (LeftQueueUnits.Count > 0 && RightQueueUnits.Count > 0)
         {
             // Cavalry attacking in a square case
