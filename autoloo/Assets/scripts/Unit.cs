@@ -370,10 +370,10 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void SetIntoMotion(Vector3 dest)
+    public void SetIntoMotion(Vector3 destination)
     {
         startMarker = transform.position;
-        endMarker = dest;
+        endMarker = destination;
         // Keep a note of the time the movement started.
         startTime = Time.time;
 

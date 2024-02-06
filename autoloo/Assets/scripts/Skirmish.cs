@@ -98,7 +98,7 @@ public class Skirmish : MonoBehaviour
     public void DeploySkirmishers()
     {
         Debug.Log("deploying skirmishers...");
-        if (unit.side == "left")
+        if (unit.side == "left" && unit.cycle == 1)
         {
             if (unit.gameManager.LeftQueueUnits.Count > 4)
             {
@@ -114,9 +114,40 @@ public class Skirmish : MonoBehaviour
                 {
                     alliedUnit.QueuePosition--;
                 }
+                goSkirmisher.name = $"{goSkirmisher.name}_skirmisher";
                 goSkirmisher.QueuePosition = -1;
                 unit.gameManager.LeftQueueUnits.Add(goSkirmisher);
+                unit.gameManager.LeftQueueUnits = unit.gameManager.LeftQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();
                 unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.LeftQueueUnits, unit.gameManager.fightQueuePositions);
+                //increment the unit's cycle so that cycle can be checked to prevent continously deploying skirmishers again and again,
+                ////and because deploing skirmishers is in fact a move on the part of this unit
+                unit.cycle++;
+            }
+        }
+        if (unit.side == "right" && unit.cycle == 1)
+        {
+            if (unit.gameManager.RightQueueUnits.Count > 4)
+            {
+                Debug.Log("no space for skirmishers on the battlefield! boost attack...");
+                unit.AttackBonus = 1;
+            }
+            else
+            {
+                var skirmisherPrefab = unit.gameManager.RightQueueUnits.Where(x => x.GetSpriteName().Split('_')[1] == unit.GetSpriteName().Split('_')[1]).ToList()[0];
+                var goSkirmisher = Instantiate(skirmisherPrefab);
+                goSkirmisher.Deployed = true;
+                foreach (var alliedUnit in unit.gameManager.RightQueueUnits)
+                {
+                    alliedUnit.QueuePosition++;
+                }
+                goSkirmisher.name = $"{goSkirmisher.name}_skirmisher";
+                goSkirmisher.QueuePosition = 1;
+                unit.gameManager.RightQueueUnits.Add(goSkirmisher);
+                unit.gameManager.RightQueueUnits = unit.gameManager.RightQueueUnits.OrderBy(u => u.QueuePosition).ToList();
+                unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.RightQueueUnits, unit.gameManager.fightQueuePositions);
+                //increment the unit's cycle so that cycle can be checked to prevent continously deploying skirmishers again and again,
+                ////and because deploing skirmishers is in fact a move on the part of this unit
+                unit.cycle++;
             }
         }
     }

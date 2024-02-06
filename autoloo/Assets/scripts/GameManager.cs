@@ -19,9 +19,7 @@ public class GameManager : MonoBehaviour
     public float period = 1f;
     public int realFPS = 60;
     public int cleanupFrame = 30;
-    
     public string playerSide = "left";
-    //public Unit selectedUnit;
     public Deployment deployment;
     public NumberFloating floatyNumber;
     public Sprite[] rankSprites;
@@ -511,12 +509,11 @@ public class GameManager : MonoBehaviour
     public void ArrangeUnitsOnBattlefield(ref List<Unit> units, Dictionary<int, Vector3> queuePositions)
     {
         int index = 1;
-
         foreach (Unit unit in units)
         {
             int indexModifier = (unit.side == "left") ? -1 : 1;
             unit.QueuePosition = indexModifier * index;
-            unit.SetIntoMotion(queuePositions[indexModifier * index]);
+            unit.SetIntoMotion(queuePositions[unit.QueuePosition]);
             index++;
         }
     }
