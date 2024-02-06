@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
     public int roundCycle = 1;
     public int WIN = 0;
     public int LOSS = 0;
-    private int frameCountFromStartOfLastPrebattlePhase = 0;
     private int leftUnitTakeDamage = 0;
     private int rightUnitTakeDamage = 0;
     public string developerMessage;
