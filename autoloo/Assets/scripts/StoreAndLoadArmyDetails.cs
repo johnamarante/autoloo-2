@@ -14,8 +14,8 @@ public static class StoreAndLoadArmyDetails
         File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "UnitDetails.json"), strJsonUnitDetails);
         if (autolooPlayerData.PlayerName != "guest")
         {
-            WriteToPlayerPaste(autolooPlayerData.PlayerDataPasteURL, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.unitDetails, round, wins, losses);
-            UpdateArmyDraftsByRosterAndTurn(autolooPlayerData.RosterName, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.unitDetails, round, wins, losses);
+            WriteToPlayerPaste(autolooPlayerData.PlayerDataPasteURL, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.GetUnitDetailsWithAbsoluteQueuePositionsForStorage(), round, wins, losses);
+            UpdateArmyDraftsByRosterAndTurn(autolooPlayerData.RosterName, autolooPlayerData.Auth0UserInfo.UserId, autolooPlayerData.PlayerName, autolooPlayerData.GetUnitDetailsWithAbsoluteQueuePositionsForStorage(), round, wins, losses);
         }
     }
 

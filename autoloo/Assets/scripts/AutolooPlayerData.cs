@@ -31,4 +31,29 @@ public class AutolooPlayerData : MonoBehaviour
     {
         unitDetails = new List<UnitDetail>();
     }
+    public List<UnitDetail> GetUnitDetailsWithAbsoluteQueuePositionsForStorage()
+    {
+        List<UnitDetail> UnitDetailsWithAbsoluteQueuePositions;
+        if (unitDetails == null)
+        {
+            UnitDetailsWithAbsoluteQueuePositions = new List<UnitDetail>();
+        }
+        else
+        {
+            UnitDetailsWithAbsoluteQueuePositions = new List<UnitDetail>(unitDetails.Count);
+            foreach (var unitDetail in unitDetails)
+            {
+                var newUnitDetail = new UnitDetail
+                {
+                    Name = unitDetail.Name,
+                    Attack = unitDetail.Attack,
+                    HitPoints = unitDetail.HitPoints,
+                    Rank = unitDetail.Rank,
+                    QueuePosition = Mathf.Abs(unitDetail.QueuePosition)
+                };
+                UnitDetailsWithAbsoluteQueuePositions.Add(newUnitDetail);
+            }
+        }
+        return UnitDetailsWithAbsoluteQueuePositions;
+    }
 }

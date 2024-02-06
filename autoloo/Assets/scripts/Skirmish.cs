@@ -120,9 +120,4 @@ public class Skirmish : MonoBehaviour
             }
         }
     }
-        
-        //OR
-        //need to generate a new unit and set it to deployed
-        //put that unit in the leftqueue[0] space
-        //reorder units (very quickly)
 }

@@ -556,6 +556,17 @@ public class Unit : MonoBehaviour
             Rank = Rank
         };
     }
+    public UnitDetail GetDetailAbsoluteQueuePosition()
+    {
+        return new UnitDetail()
+        {
+            Attack = Attack,
+            HitPoints = HitPoints,
+            Name = name,
+            QueuePosition = Math.Abs(QueuePosition),
+            Rank = Rank
+        };
+    }
     public void ShowFightEffects()
     {
         if (!isCavalry)

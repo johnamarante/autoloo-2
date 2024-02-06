@@ -59,7 +59,7 @@ public static class OpponentGeneration
         }
         catch (Exception ex)
         {
-            Debug.Log($"there was an exception {ex.ToString()} generating the opponet from the friendpaste data");
+            Debug.Log($"there was an exception {ex} generating the opponet from the friendpaste data");
             Debug.Log("reverting to random opponent generation");
             GenerateRandom();
         }

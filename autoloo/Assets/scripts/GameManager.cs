@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fightQueuePositions = SetFightQueuePositionLocations();
+        fightQueuePositions = GetFightQueuePositionLocations();
         cameraPositions = SetCameraPositionLocations();
         generalAudioSource = Camera.main.gameObject.AddComponent<AudioSource>();
         cameraControl = Camera.main.GetComponent<CameraControl>();
@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private Dictionary<int, Vector3> SetFightQueuePositionLocations()
+    private Dictionary<int, Vector3> GetFightQueuePositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
         dict.Add(-5, new Vector3(-50, 7, 0.6f));
