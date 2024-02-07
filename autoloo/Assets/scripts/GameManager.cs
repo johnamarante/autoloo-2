@@ -233,15 +233,8 @@ public class GameManager : MonoBehaviour
             }
             if (Time.time > (actionTime + ((period / 2) + (period / 4))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && battlePhaseProcessAndCleanupFired && !battlePhaseProcessAndCleanupCompleted)
             {
-                Debug.Log("F");
                 Move();
-                actionTime += period;
-                battlePhaseProcessAndCleanupCompleted = true;
-                preBattlePhaseFired = false;
-                preBattlePhaseProcessAndCleanupFired = false;
-                preBattlePhaseProcessAndCleanupCompleted = false;
-                battlePhaseFired = false;
-                battlePhaseProcessAndCleanupFired = false;
+                BattleModeBoolSwitchesReset();
             }
         }
         else
@@ -258,6 +251,18 @@ public class GameManager : MonoBehaviour
                 generalAudioSource.Play();
             }
         }
+    }
+
+    private void BattleModeBoolSwitchesReset()
+    {
+        Debug.Log("F");
+        actionTime += period;
+        battlePhaseProcessAndCleanupCompleted = true;
+        preBattlePhaseFired = false;
+        preBattlePhaseProcessAndCleanupFired = false;
+        preBattlePhaseProcessAndCleanupCompleted = false;
+        battlePhaseFired = false;
+        battlePhaseProcessAndCleanupFired = false;
     }
 
     private void ComputeDamages()
@@ -395,7 +400,6 @@ public class GameManager : MonoBehaviour
         if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
         {
             string resultText = (LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!";
-            preBattlePhaseFired = false;
             ShowResultPopup(resultText);
             autolooPlayerData.ClearUnitDetails();
             CleanupBattlefield();
@@ -415,6 +419,7 @@ public class GameManager : MonoBehaviour
             }
             //reset the cycle
             roundCycle = 0;
+            BattleModeBoolSwitchesReset();
         }
     }
 
