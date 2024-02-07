@@ -116,6 +116,7 @@ public class Skirmish : MonoBehaviour
                 }
                 goSkirmisher.name = $"{goSkirmisher.name}_skirmisher";
                 goSkirmisher.QueuePosition = -1;
+                goSkirmisher.transform.position = unit.transform.position;
                 unit.gameManager.LeftQueueUnits.Add(goSkirmisher);
                 unit.gameManager.LeftQueueUnits = unit.gameManager.LeftQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();
                 unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.LeftQueueUnits, unit.gameManager.fightQueuePositions);
@@ -133,7 +134,7 @@ public class Skirmish : MonoBehaviour
             }
             else
             {
-                var skirmisherPrefab = unit.gameManager.RightQueueUnits.Where(x => x.GetSpriteName().Split('_')[1] == unit.GetSpriteName().Split('_')[1]).ToList()[0];
+                var skirmisherPrefab = unit.gameManager.RightUnitRoster.Where(x => x.GetSpriteName().Split('_')[1] == unit.GetSpriteName().Split('_')[1]).ToList()[0];
                 var goSkirmisher = Instantiate(skirmisherPrefab);
                 goSkirmisher.Deployed = true;
                 foreach (var alliedUnit in unit.gameManager.RightQueueUnits)
@@ -142,6 +143,7 @@ public class Skirmish : MonoBehaviour
                 }
                 goSkirmisher.name = $"{goSkirmisher.name}_skirmisher";
                 goSkirmisher.QueuePosition = 1;
+                goSkirmisher.transform.position = unit.transform.position;
                 unit.gameManager.RightQueueUnits.Add(goSkirmisher);
                 unit.gameManager.RightQueueUnits = unit.gameManager.RightQueueUnits.OrderBy(u => u.QueuePosition).ToList();
                 unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.RightQueueUnits, unit.gameManager.fightQueuePositions);
