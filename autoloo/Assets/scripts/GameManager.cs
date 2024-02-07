@@ -221,6 +221,8 @@ public class GameManager : MonoBehaviour
                 ComputeDamages();
                 Move();
                 battlePhaseFired = true;
+                //force into E and not F
+                battlePhaseProcessAndCleanupFired = false;
             }
             if (Time.time > (actionTime + ((period / 2) + (period / 8))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && !battlePhaseProcessAndCleanupFired)
             {
@@ -255,7 +257,6 @@ public class GameManager : MonoBehaviour
 
     private void BattleModeBoolSwitchesReset()
     {
-        Debug.Log("F");
         actionTime += period;
         battlePhaseProcessAndCleanupCompleted = true;
         preBattlePhaseFired = false;
@@ -263,6 +264,7 @@ public class GameManager : MonoBehaviour
         preBattlePhaseProcessAndCleanupCompleted = false;
         battlePhaseFired = false;
         battlePhaseProcessAndCleanupFired = false;
+        Debug.Log("F");
     }
 
     private void ComputeDamages()
