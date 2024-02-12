@@ -1315,7 +1315,7 @@ GameObject:
   - component: {fileID: 2807945245168683804}
   - component: {fileID: -8003467699025217454}
   m_Layer: 0
-  m_Name: british_brunswickjager
+  m_Name: british_brunswickjagerL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1360,11 +1360,11 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   Chance: 10
   _cost: 3
-  _attack: 4
+  _attack: 1
   _attackBonus: 0
-  _hitPoints: 3
+  _hitPoints: 1
   _rank: 0
-  side: right
+  side: left
   tier: 2
   myFont: {fileID: 0}
   effectFrame: 0
@@ -1442,9 +1442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  skirmisherL1: {fileID: 8398345442847202300, guid: a7afd429aa7762a4ab48ad5bf4c2baf8, type: 3}
-  skirmisherL2: {fileID: 8398345442847202300, guid: 1fa740f0634222247bb570dc2e1f30fe, type: 3}
-  skirmisherL3: {fileID: 8398345442847202300, guid: bab1f4d2db9a33f4dba0209cc293de52, type: 3}
+  skirmisherL1: {fileID: 0}
+  skirmisherL2: {fileID: 0}
+  skirmisherL3: {fileID: 0}
   lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
   lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
   goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}

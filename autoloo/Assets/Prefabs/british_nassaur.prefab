@@ -1779,6 +1779,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
+  skirmisherL1: {fileID: 8813113358586556008, guid: ac7feb575ce269a4fadb56acce6cfdf4, type: 3}
+  skirmisherL2: {fileID: 8813113358586556008, guid: fc88b16afe322274bb571999cd900500, type: 3}
+  skirmisherL3: {fileID: 8813113358586556008, guid: c9e19cb73364c944e82c6beb567b6de9, type: 3}
   lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
   lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
   goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}

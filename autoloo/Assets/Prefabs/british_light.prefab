@@ -310,6 +310,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
+  skirmisherL1: {fileID: 631644304311794899, guid: 1e9e755fd41150340b449d8de0974d41, type: 3}
+  skirmisherL2: {fileID: 631644304311794899, guid: 346f4a89c14d3fa409444ebb64ab209e, type: 3}
+  skirmisherL3: {fileID: 631644304311794899, guid: 5728617315da2794187f5767638456d5, type: 3}
   lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
   lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
   goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}

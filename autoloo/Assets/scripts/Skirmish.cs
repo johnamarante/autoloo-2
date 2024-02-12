@@ -5,6 +5,9 @@ using UnityEngine;
 public class Skirmish : MonoBehaviour
 {
     public Unit unit;
+    public Unit skirmisherL1;
+    public Unit skirmisherL2;
+    public Unit skirmisherL3;
     public Sprite lineMusket;
     public Sprite lightMusket;
     public GameObject goNotification;
@@ -107,7 +110,21 @@ public class Skirmish : MonoBehaviour
             }
             else
             {
-                var skirmisherPrefab = unit.gameManager.LeftUnitRoster.Where(x => x.GetSpriteName().Split('_')[1] == unit.GetSpriteName().Split('_')[1]).ToList()[0];
+                Unit skirmisherPrefab;
+                float skimisherLevel = (unit.Rank / 3);
+                if (skimisherLevel > 2)
+                {
+                    skirmisherPrefab = skirmisherL3;
+                }
+                else if (skimisherLevel > 1)
+                {
+                    skirmisherPrefab = skirmisherL2;
+                }
+                else 
+                {
+                    skirmisherPrefab = skirmisherL1;
+                }
+                skirmisherPrefab.side = "left";
                 var goSkirmisher = Instantiate(skirmisherPrefab);
                 goSkirmisher.Deployed = true;
                 foreach (var alliedUnit in unit.gameManager.LeftQueueUnits)
@@ -134,7 +151,21 @@ public class Skirmish : MonoBehaviour
             }
             else
             {
-                var skirmisherPrefab = unit.gameManager.RightUnitRoster.Where(x => x.GetSpriteName().Split('_')[1] == unit.GetSpriteName().Split('_')[1]).ToList()[0];
+                Unit skirmisherPrefab;
+                float skimisherLevel = (unit.Rank / 3);
+                if (skimisherLevel > 2)
+                {
+                    skirmisherPrefab = skirmisherL3;
+                }
+                else if (skimisherLevel > 1)
+                {
+                    skirmisherPrefab = skirmisherL2;
+                }
+                else
+                {
+                    skirmisherPrefab = skirmisherL1;
+                }
+                skirmisherPrefab.side = "right";
                 var goSkirmisher = Instantiate(skirmisherPrefab);
                 goSkirmisher.Deployed = true;
                 foreach (var alliedUnit in unit.gameManager.RightQueueUnits)
