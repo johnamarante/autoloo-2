@@ -266,7 +266,7 @@ MonoBehaviour:
   effectPlacementLeft: {x: 7, y: 3, z: 1}
   effectPlacementRight: {x: -7, y: 3, z: 0}
   acAttackSFX: {fileID: 0}
-  canFormSquare: 1
+  canFormSquare: 0
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}

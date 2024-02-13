@@ -1649,7 +1649,6 @@ GameObject:
   - component: {fileID: 8813113358586556008}
   - component: {fileID: 5148304560002590354}
   - component: {fileID: 2897307809079525000}
-  - component: {fileID: 9020743080367418228}
   m_Layer: 0
   m_Name: british_nassaur
   m_TagString: Untagged
@@ -1699,7 +1698,7 @@ MonoBehaviour:
   _cost: 3
   _attack: 2
   _attackBonus: 0
-  _hitPoints: 3
+  _hitPoints: 2
   _rank: 0
   side: right
   tier: 1
@@ -1708,6 +1707,7 @@ MonoBehaviour:
   _queuePosition: 0
   _deployed: 0
   _freezed: 0
+  defection: 1
   cycle: 1
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
@@ -1766,25 +1766,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9020743080367418228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193536334375752168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c793db0bd4edb904d914398dbba82f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 0}
-  skirmisherL1: {fileID: 8813113358586556008, guid: ac7feb575ce269a4fadb56acce6cfdf4, type: 3}
-  skirmisherL2: {fileID: 8813113358586556008, guid: fc88b16afe322274bb571999cd900500, type: 3}
-  skirmisherL3: {fileID: 8813113358586556008, guid: c9e19cb73364c944e82c6beb567b6de9, type: 3}
-  lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
-  lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
-  goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}
 --- !u!1001 &5780945337310834140
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -912,7 +912,7 @@ MonoBehaviour:
   _hitPoints: 4
   _rank: 0
   side: right
-  tier: 2
+  tier: 3
   myFont: {fileID: 0}
   effectFrame: 0
   _queuePosition: 0

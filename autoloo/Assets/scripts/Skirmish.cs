@@ -25,19 +25,11 @@ public class Skirmish : MonoBehaviour
             _lineMusket = lineMusket;
             _lightMusket = lightMusket;
 
-            // Check if the parent unit is not null and inSkirmishMode is valid
-            if (_parentUnit != null && (_parentUnit.SkirmishMode ? _lightMusket : _lineMusket) != null)
+            UpdateWeaponSprite();
+            Transform hoverIndicatorTransform = transform.Find("hover_over_indicator");
+            if (hoverIndicatorTransform != null)
             {
-                UpdateWeaponSprite(_parentUnit.SkirmishMode ? _lightMusket : _lineMusket);
-
-                // Attempt to find "hover_over_indicator" transform
-                Transform hoverIndicatorTransform = transform.Find("hover_over_indicator");
-
-                // Assign _goHoverCorners only if the transform is found
-                if (hoverIndicatorTransform != null)
-                {
-                    _goHoverCorners = hoverIndicatorTransform.gameObject;
-                }
+                _goHoverCorners = hoverIndicatorTransform.gameObject;
             }
         }
 
@@ -46,12 +38,13 @@ public class Skirmish : MonoBehaviour
             if (!_parentUnit.gameManager.InBattleModeAndNotDeploymentMode && _parentUnit.canFormSquare)
             {
                 _parentUnit.SkirmishMode = !_parentUnit.SkirmishMode;
-                UpdateWeaponSprite(_parentUnit.SkirmishMode ? _lightMusket : _lineMusket);
+                UpdateWeaponSprite();
             }
         }
 
-        private void UpdateWeaponSprite(Sprite sprite)
+        private void UpdateWeaponSprite()
         {
+            Sprite sprite = _parentUnit.SkirmishMode ? _lightMusket : _lineMusket;
             _parentUnit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
             SetSpriteRendererTransform(sprite);
         }
@@ -127,6 +120,7 @@ public class Skirmish : MonoBehaviour
                 skirmisherPrefab.side = "left";
                 var goSkirmisher = Instantiate(skirmisherPrefab);
                 goSkirmisher.Deployed = true;
+                goSkirmisher.SkirmishMode = true;
                 foreach (var alliedUnit in unit.gameManager.LeftQueueUnits)
                 {
                     alliedUnit.QueuePosition--;
@@ -168,6 +162,7 @@ public class Skirmish : MonoBehaviour
                 skirmisherPrefab.side = "right";
                 var goSkirmisher = Instantiate(skirmisherPrefab);
                 goSkirmisher.Deployed = true;
+                goSkirmisher.SkirmishMode = true;
                 foreach (var alliedUnit in unit.gameManager.RightQueueUnits)
                 {
                     alliedUnit.QueuePosition++;

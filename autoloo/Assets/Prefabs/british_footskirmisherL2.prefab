@@ -1396,6 +1396,7 @@ GameObject:
   - component: {fileID: 8341030069883936618}
   - component: {fileID: 5691792332634970000}
   - component: {fileID: 2430381780287868810}
+  - component: {fileID: -8100288039381801261}
   m_Layer: 0
   m_Name: british_footskirmisherL2
   m_TagString: Untagged
@@ -1512,6 +1513,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8100288039381801261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509900960353001706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c793db0bd4edb904d914398dbba82f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  skirmisherL1: {fileID: 8341030069883936618, guid: d3f5b003a3e73fc4489631e428e2b859, type: 3}
+  skirmisherL2: {fileID: 8341030069883936618}
+  skirmisherL3: {fileID: 8341030069883936618, guid: 0419366520798b44cba57b0c58196f43, type: 3}
+  lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
+  lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
+  goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}
 --- !u!1 &8968889316792649149
 GameObject:
   m_ObjectHideFlags: 0
