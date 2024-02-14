@@ -177,16 +177,16 @@ public class Unit : MonoBehaviour
     }
     public Action<bool> OnSquaredChanged;
     public AudioClip acFormSquare;
-    public bool _SkirmishMode = false;
+    public bool _skirmishMode = false;
     public bool SkirmishMode
     {
-        get { return _SkirmishMode; }
+        get { return _skirmishMode; }
         set
         {
-            _SkirmishMode = value;
+            _skirmishMode = value;
             if (this?.OnSkirmishModeChanged != null)
             {
-                this?.OnSkirmishModeChanged(_SkirmishMode);
+                this?.OnSkirmishModeChanged(_skirmishMode);
             }
         }
     }
@@ -553,18 +553,8 @@ public class Unit : MonoBehaviour
             HitPoints = HitPoints,
             Name = name,
             QueuePosition = QueuePosition,
-            Rank = Rank
-        };
-    }
-    public UnitDetail GetDetailAbsoluteQueuePosition()
-    {
-        return new UnitDetail()
-        {
-            Attack = Attack,
-            HitPoints = HitPoints,
-            Name = name,
-            QueuePosition = Math.Abs(QueuePosition),
-            Rank = Rank
+            Rank = Rank,
+            SkirmishMode = SkirmishMode
         };
     }
     public void ShowFightEffects()

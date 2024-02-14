@@ -49,7 +49,8 @@ public class AutolooPlayerData : MonoBehaviour
                     Attack = unitDetail.Attack,
                     HitPoints = unitDetail.HitPoints,
                     Rank = unitDetail.Rank,
-                    QueuePosition = Mathf.Abs(unitDetail.QueuePosition)
+                    QueuePosition = Mathf.Abs(unitDetail.QueuePosition),
+                    SkirmishMode = unitDetail.SkirmishMode
                 };
                 UnitDetailsWithAbsoluteQueuePositions.Add(newUnitDetail);
             }

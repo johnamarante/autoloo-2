@@ -40,7 +40,7 @@ public static class StoreAndLoadArmyDetails
 
     public static void GenerateReloadedUnitFromDetail(List<Unit> unitRoster, GameManager gameManager, UnitDetail unitDetails, string side)
     {
-        var spriteB = unitDetails.Name.Split('_')[1];
+        var sprite = unitDetails.Name.Split('_')[1];
         var rosterItem = unitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitDetails.Name.Split('_')[1]);
 
         if (rosterItem != null)
@@ -52,6 +52,7 @@ public static class StoreAndLoadArmyDetails
             unit._rank = unitDetails.Rank;
             unit.side = side;
             unit.QueuePosition = unitDetails.QueuePosition;
+            unit._skirmishMode = unitDetails.SkirmishMode;
             unit._deployed = true;
             unit.gameManager = gameManager;
             unit.DeployAndSnapPositionToDeploymentMarker(UnityEngine.Object.FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition).First());

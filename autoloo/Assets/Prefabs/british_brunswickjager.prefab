@@ -1402,7 +1402,7 @@ MonoBehaviour:
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 0}
-  _SkirmishMode: 0
+  _skirmishMode: 1
 --- !u!114 &5310006677986792198
 MonoBehaviour:
   m_ObjectHideFlags: 0

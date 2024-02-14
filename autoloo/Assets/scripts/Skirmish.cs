@@ -73,8 +73,6 @@ public class Skirmish : MonoBehaviour
     private void Start()
     {
         unit = GetComponent<Unit>();
-        // By virtue of this class being attached, the unit should be in skirmish mode by default
-        unit.SkirmishMode = true;
         Transform attackChild = transform.Find("Attack");
         if (attackChild != null)
         {
