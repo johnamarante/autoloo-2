@@ -102,7 +102,7 @@ public class Skirmish : MonoBehaviour
             else
             {
                 Unit skirmisherPrefab;
-                float skimisherLevel = (unit.Rank / 3);
+                float skimisherLevel = (float)(unit.Rank / 3);
                 if (skimisherLevel > 2)
                 {
                     skirmisherPrefab = skirmisherL3;
