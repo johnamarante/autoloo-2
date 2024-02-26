@@ -14,14 +14,14 @@ public class Skirmish : MonoBehaviour
 
     private class WeaponClickHandler : MonoBehaviour
     {
-        private Unit _parentUnit;
+        private Unit _unit;
         private GameObject _goHoverCorners;
         public Sprite _lineMusket;
         public Sprite _lightMusket;
 
         public void Initialize(Unit unit, Sprite lineMusket, Sprite lightMusket)
         {
-            _parentUnit = unit;
+            _unit = unit;
             _lineMusket = lineMusket;
             _lightMusket = lightMusket;
 
@@ -35,29 +35,29 @@ public class Skirmish : MonoBehaviour
 
         private void OnMouseDown()
         {
-            if (!_parentUnit.gameManager.InBattleModeAndNotDeploymentMode && _parentUnit.canFormSquare)
+            if (!_unit.gameManager.InBattleModeAndNotDeploymentMode && _unit.canFormSquare)
             {
-                _parentUnit.SkirmishMode = !_parentUnit.SkirmishMode;
+                _unit.SkirmishMode = !_unit.SkirmishMode;
                 UpdateWeaponSprite();
             }
         }
 
         private void UpdateWeaponSprite()
         {
-            Sprite sprite = _parentUnit.SkirmishMode ? _lightMusket : _lineMusket;
-            _parentUnit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
+            Sprite sprite = _unit.SkirmishMode ? _lightMusket : _lineMusket;
+            _unit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
             SetSpriteRendererTransform(sprite);
         }
 
         private void SetSpriteRendererTransform(Sprite sprite)
         {
             Vector3 scale = sprite == _lineMusket ? new Vector3(0.5f, 1.5f, 1f) : new Vector3(0.5f, 0.5f, 1f);
-            _parentUnit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().transform.localScale = scale;
+            _unit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().transform.localScale = scale;
         }
 
         private void OnMouseEnterExit(bool show)
         {
-            if (_parentUnit.canFormSquare) ShowHoverIndicator(show);
+            if (_unit.canFormSquare) ShowHoverIndicator(show);
         }
 
         private void OnMouseEnter() => OnMouseEnterExit(true);

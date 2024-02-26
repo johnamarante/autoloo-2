@@ -446,11 +446,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.size
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: BritishUnitRoster.Array.size
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: LeftUnitRoster.Array.data[1]
@@ -495,35 +495,35 @@ PrefabInstance:
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[1]
       value: 
-      objectReference: {fileID: 2789016059675755657, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
+      objectReference: {fileID: 200769241835443253, guid: 5492c2c55f0238c4a90c533e9e2581e1, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[2]
       value: 
-      objectReference: {fileID: 2355520097940927225, guid: 32377dcfccfbf5749aaf285179f796e0, type: 3}
+      objectReference: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[3]
       value: 
-      objectReference: {fileID: 200769241835443253, guid: 5492c2c55f0238c4a90c533e9e2581e1, type: 3}
+      objectReference: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[4]
       value: 
-      objectReference: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      objectReference: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[5]
       value: 
-      objectReference: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      objectReference: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[6]
       value: 
-      objectReference: {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      objectReference: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[7]
       value: 
-      objectReference: {fileID: 3126649275751001086, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
+      objectReference: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[8]
       value: 
-      objectReference: {fileID: 4037890922184864950, guid: 7dcd936be32270c4e995ccab5c8699ef, type: 3}
+      objectReference: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[9]
       value: 
@@ -563,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: BritishUnitRoster.Array.data[8]
       value: 
-      objectReference: {fileID: 631644304311794899, guid: 8bc3520893dfd6e4f87c49a82a8da672, type: 3}
+      objectReference: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: BritishUnitRoster.Array.data[9]
       value: 
