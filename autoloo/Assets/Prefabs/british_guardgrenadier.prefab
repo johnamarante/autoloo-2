@@ -1401,7 +1401,7 @@ MonoBehaviour:
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
-  _SkirmishMode: 0
+  _skirmishMode: 0
 --- !u!114 &5339757392773342966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,8 +1621,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8891801775657003790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: -1, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 2.75, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1151073779514114817}

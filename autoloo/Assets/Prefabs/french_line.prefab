@@ -1294,7 +1294,7 @@ Transform:
   m_GameObject: {fileID: 7194075052281981793}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2, y: 1, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalScale: {x: 2.75, y: 2.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1677894595843310446}
@@ -1341,12 +1341,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: a81155992ea86cc4b9fe34f0bc500627, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 203da24dea03f2d408ceb31195efbec6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.5386982, y: 3.91}
+  m_Size: {x: 3.629223, y: 3.6399996}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1629,8 +1629,8 @@ MonoBehaviour:
   speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
-  Lsprite: {fileID: 3286163911610860551, guid: 57648fa2c8b7c6140b5768f763f07149, type: 3}
-  Rsprite: {fileID: 3286163911610860551, guid: a81155992ea86cc4b9fe34f0bc500627, type: 3}
+  Lsprite: {fileID: 3286163911610860551, guid: b9995acff736b714e91c23bb0cbd4a17, type: 3}
+  Rsprite: {fileID: 3286163911610860551, guid: 203da24dea03f2d408ceb31195efbec6, type: 3}
   Lspritebackground: {fileID: 0}
   Rspritebackground: {fileID: 0}
   showEffect: 0
@@ -1653,7 +1653,7 @@ MonoBehaviour:
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: 8e0bfb792110ef14e902695dcaa2b802, type: 3}
-  _SkirmishMode: 0
+  _skirmishMode: 0
 --- !u!114 &5956813910743459481
 MonoBehaviour:
   m_ObjectHideFlags: 0
