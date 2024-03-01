@@ -68,7 +68,7 @@ public class Unit : MonoBehaviour
             this?.OnRankChanged(_rank);
         }
     }
-    public const int maxUnitRank = 9;
+    public int MaxUnitRank = 9;
     public Action<int> OnRankChanged;
     public string side = "";
     public int tier = 1;
@@ -437,7 +437,7 @@ public class Unit : MonoBehaviour
                 && Deployed
                 && selectedUnitSpriteName == thisUnitSpriteName
                 && CanAfford()
-                && Rank < maxUnitRank)
+                && Rank < MaxUnitRank)
             {
                 RankUp(selectedUnit);
                 gameManager.Deselect();
@@ -446,7 +446,7 @@ public class Unit : MonoBehaviour
             else if (selectedUnit != null && selectedUnit.Deployed
                 && Deployed
                 && selectedUnitSpriteName == thisUnitSpriteName
-                && Rank < maxUnitRank)
+                && Rank < MaxUnitRank)
             {
                 RankUp(selectedUnit);
                 gameManager.Deselect();

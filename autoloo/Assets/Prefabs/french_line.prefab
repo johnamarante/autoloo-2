@@ -1615,6 +1615,7 @@ MonoBehaviour:
   _attackBonus: 0
   _hitPoints: 3
   _rank: 0
+  MaxUnitRank: 6
   side: left
   tier: 1
   myFont: {fileID: 0}

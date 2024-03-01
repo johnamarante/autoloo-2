@@ -318,7 +318,7 @@ public class Deployment : MonoBehaviour
             {
                 unit.DeployAndSnapPositionToDeploymentMarker(belowDeploymentMarker);
             }
-            else if (occupant.spriteName == unit.spriteName && occupant.Rank < Unit.maxUnitRank)
+            else if (occupant.spriteName == unit.spriteName && occupant.Rank < occupant.MaxUnitRank)
             {
                 occupant.RankUp(unit);
             }
