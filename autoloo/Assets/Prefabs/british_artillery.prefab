@@ -1248,6 +1248,7 @@ MonoBehaviour:
   _attackBonus: 0
   _hitPoints: 3
   _rank: 0
+  MaxUnitRank: 3
   side: right
   tier: 3
   myFont: {fileID: 0}
@@ -1286,7 +1287,7 @@ MonoBehaviour:
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 0}
-  _SkirmishMode: 0
+  _skirmishMode: 0
 --- !u!114 &7350330291660393393
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -340,10 +340,13 @@ public class GameManager : MonoBehaviour
     {
         var leftSkirmishers = GetSkirmisherFromQueue(LeftQueueUnits);
         var rightSkirmishers = GetSkirmisherFromQueue(RightQueueUnits);
-        List<Unit> combinedList = leftSkirmishers.Concat(rightSkirmishers).ToList();
-        foreach (var unit in combinedList)
+        foreach (var unit in leftSkirmishers)
         {
-            unit.GetComponent<Skirmish>().DeploySkirmishers();
+            unit.GetComponent<Skirmish>().DeploySkirmishers("left",LeftQueueUnits);
+        }
+        foreach (var unit in rightSkirmishers)
+        {
+            unit.GetComponent<Skirmish>().DeploySkirmishers("right", RightQueueUnits);
         }
     }
 
