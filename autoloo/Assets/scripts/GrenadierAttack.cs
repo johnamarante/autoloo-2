@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Skirmish : MonoBehaviour
+public class GrenadierAttack : MonoBehaviour
 {
     public Unit unit;
-    public Unit skirmisherPrefab;
+    public Unit grenadierL1;
+    public Unit grenadierL2;
+    public Unit grenadierL3;
     public Sprite lineMusket;
     public Sprite lightMusket;
     public GameObject goNotification;
@@ -88,56 +90,8 @@ public class Skirmish : MonoBehaviour
         }
     }
 
-    public void DeploySkirmishers(string side, List<Unit> unitQueue)
+    public void DeployGrenadiers()
     {
-        Debug.Log("deploying skirmishers...");
-        if (unit.cycle == 1 && skirmisherPrefab != null)
-        {
-            if (unitQueue.Count > 4)
-            {
-                Debug.Log("no space for skirmishers on the battlefield! boost attack...");
-                unit.AttackBonus = 1;
-            }
-            else
-            {
-                skirmisherPrefab.side = side;
-                skirmisherPrefab._hitPoints = skirmisherPrefab.ComputeHitPointsFromFoumulaString(unit.Rank);
-                skirmisherPrefab._attack = skirmisherPrefab.ComputeAttackFromFoumulaString(unit.Rank);
-                var goSkirmisher = Instantiate(skirmisherPrefab);
-                goSkirmisher.Deployed = true;
-                goSkirmisher.SkirmishMode = true;
-                foreach (var alliedUnit in unit.gameManager.LeftQueueUnits)
-                {
-                    if (side == "left")
-                    { 
-                        alliedUnit.QueuePosition--;
-                        goSkirmisher.QueuePosition = -1;
-                    }
-                    if (side == "right")
-                    { 
-                        alliedUnit.QueuePosition++;
-                        goSkirmisher.QueuePosition = 1;
-                    }
-                }
-                goSkirmisher.name = $"{goSkirmisher.name}_skirmisher";
-                goSkirmisher.transform.position = unit.transform.position;
-                unitQueue = unitQueue.OrderByDescending(u => u.QueuePosition).ToList();
-                if (side == "left")
-                {
-                    unit.gameManager.LeftQueueUnits.Add(goSkirmisher);
-                    unit.gameManager.LeftQueueUnits = unit.gameManager.LeftQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();
-                    unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.LeftQueueUnits, unit.gameManager.fightQueuePositions);
-                }
-                if (side == "right")
-                {
-                    unit.gameManager.RightQueueUnits.Add(goSkirmisher);
-                    unit.gameManager.RightQueueUnits = unit.gameManager.RightQueueUnits.OrderBy(u => u.QueuePosition).ToList();
-                    unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.RightQueueUnits, unit.gameManager.fightQueuePositions);
-                }
-                //increment the unit's cycle so that cycle can be checked to prevent continously deploying skirmishers again and again,
-                ////and because deploing skirmishers is in fact a move on the part of this unit
-                unit.cycle++;
-            }
-        }
+        Debug.Log("deploying grenadiers...");        
     }
 }

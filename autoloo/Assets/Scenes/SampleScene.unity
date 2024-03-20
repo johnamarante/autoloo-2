@@ -495,7 +495,7 @@ PrefabInstance:
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[1]
       value: 
-      objectReference: {fileID: 200769241835443253, guid: 5492c2c55f0238c4a90c533e9e2581e1, type: 3}
+      objectReference: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
     - target: {fileID: 755904350544477789, guid: 6f7de5ecf65d75c40a93e418f4980315, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[2]
       value: 

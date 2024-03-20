@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: e2dc92b71e69bcd4fac3e4886fb3425b, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 2ec0cf97441c9694687b691949922079, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -231,6 +231,11 @@ MonoBehaviour:
   _attackBonus: 0
   _hitPoints: 3
   _rank: 0
+  MaxUnitRank: 9
+  SkirmisherUnlockRank: 99
+  GrenadierUnlockRank: 99
+  hitPointsFormula: 1
+  attackFormula: PARENT RANK + 1
   side: left
   tier: 2
   myFont: {fileID: 0}
@@ -245,8 +250,8 @@ MonoBehaviour:
   speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
-  Lsprite: {fileID: 3286163911610860551, guid: 2e93623f6fe613644ae3f338418902c1, type: 3}
-  Rsprite: {fileID: 3286163911610860551, guid: e2dc92b71e69bcd4fac3e4886fb3425b, type: 3}
+  Lsprite: {fileID: 3286163911610860551, guid: 88d4f3874ffaa90498ed7de75222c802, type: 3}
+  Rsprite: {fileID: 3286163911610860551, guid: 2ec0cf97441c9694687b691949922079, type: 3}
   Lspritebackground: {fileID: 0}
   Rspritebackground: {fileID: 0}
   showEffect: 0
@@ -309,9 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  skirmisherL1: {fileID: 931321288335271879, guid: dd5fcaf512e16094aa07a64398f09e04, type: 3}
-  skirmisherL2: {fileID: 931321288335271879, guid: c6ca7497bfb17804c820f0fd8a51d984, type: 3}
-  skirmisherL3: {fileID: 931321288335271879, guid: 4bec434c95cb7c948ac13db62cba75bb, type: 3}
+  skirmisherPrefab: {fileID: 0}
   lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
   lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
   goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}

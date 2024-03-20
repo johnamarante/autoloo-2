@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 
@@ -69,6 +70,10 @@ public class Unit : MonoBehaviour
         }
     }
     public int MaxUnitRank = 9;
+    public int SkirmisherUnlockRank = 99;
+    public int GrenadierUnlockRank = 99;
+    public string hitPointsFormula = "1";
+    public string attackFormula = "1";
     public Action<int> OnRankChanged;
     public string side = "";
     public int tier = 1;
@@ -219,7 +224,7 @@ public class Unit : MonoBehaviour
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); gameManager.floatyNumber.SpawnFloatingNumber(delta, transform.position, (delta < 0)); };
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
-        OnRankChanged += (e) =>  ChangeRankIcon();
+        OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocks(); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
         OnSkirmishModeChanged += (e) => Debug.Log($"skirmish mode: {SkirmishMode}");
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
@@ -242,6 +247,18 @@ public class Unit : MonoBehaviour
         catch (Exception ex)
         {
             Debug.Log(ex.ToString());
+        }
+    }
+
+    private void CheckUnlocks()
+    {
+        if (Rank == SkirmisherUnlockRank)
+        {
+            Debug.Log($"skirmisher attached to {name}");
+        }
+        if (Rank == GrenadierUnlockRank)
+        {
+            Debug.Log($"grenadier attached to {name}");
         }
     }
 
@@ -647,4 +664,52 @@ public class Unit : MonoBehaviour
         effectFrame = 0;
         effectsComponent.color = new Color(255, 255, 255, 255);
     }
+
+    public int ComputeHitPointsFromFoumulaString(int baseUnitRank)
+    {
+        return ComputeSumFromFormulaString(hitPointsFormula, baseUnitRank);
+    }
+
+    public int ComputeAttackFromFoumulaString(int baseUnitRank)
+    {
+        return ComputeSumFromFormulaString(attackFormula, baseUnitRank);
+    }
+
+    private static int ComputeSumFromFormulaString(string formula, int baseUnitRank)
+    {
+        // Define a regex pattern to match different components of the formula
+        string pattern = @"(?:PARENT RANK)|(\d+)|([+\-*/])";
+        MatchCollection matches = Regex.Matches(formula, pattern);
+
+        int sum = 0;
+        int factor = 1; // To handle addition and subtraction operations
+
+        foreach (Match match in matches)
+        {
+            if (match.Groups[1].Success) // Matches a number
+            {
+                int value = int.Parse(match.Groups[1].Value);
+                sum += factor * value;
+            }
+            else if (match.Groups[2].Success) // Matches an operator
+            {
+                string op = match.Groups[2].Value;
+                if (op == "+")
+                    factor = 1;
+                else if (op == "-")
+                    factor = -1;
+                else if (op == "*")
+                    factor *= 1; // Multiplication does not change factor
+                else if (op == "/")
+                    factor /= 1; // Division does not change factor
+            }
+            else // Matches "PARENT RANK"
+            {
+                sum += factor * baseUnitRank;
+            }
+        }
+
+        return sum;
+    }
+
 }

@@ -81,6 +81,7 @@
     <Compile Include="Assets\scripts\DragIt.cs" />
     <Compile Include="Assets\scripts\NumberFloating.cs" />
     <Compile Include="Assets\scripts\Cannonball.cs" />
+    <Compile Include="Assets\scripts\GrenadierAttack.cs" />
     <Compile Include="Assets\scripts\ConfigurationManager.cs" />
     <Compile Include="Assets\scripts\StoreAndLoadArmyDetails.cs" />
   </ItemGroup>

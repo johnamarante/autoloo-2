@@ -1616,6 +1616,10 @@ MonoBehaviour:
   _hitPoints: 3
   _rank: 0
   MaxUnitRank: 6
+  SkirmisherUnlockRank: 1
+  GrenadierUnlockRank: 2
+  hitPointsFormula: 1
+  attackFormula: 1
   side: left
   tier: 1
   myFont: {fileID: 0}
