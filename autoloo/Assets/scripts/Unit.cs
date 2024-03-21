@@ -182,20 +182,20 @@ public class Unit : MonoBehaviour
     }
     public Action<bool> OnSquaredChanged;
     public AudioClip acFormSquare;
-    public bool _skirmishMode = false;
-    public bool SkirmishMode
+    public bool _IsSkirmisher = false;
+    public bool isSkirmisher
     {
-        get { return _skirmishMode; }
+        get { return _IsSkirmisher; }
         set
         {
-            _skirmishMode = value;
-            if (this?.OnSkirmishModeChanged != null)
+            _IsSkirmisher = value;
+            if (this?.OnIsSkirmisherChanged != null)
             {
-                this?.OnSkirmishModeChanged(_skirmishMode);
+                this?.OnIsSkirmisherChanged(_IsSkirmisher);
             }
         }
     }
-    public Action<bool> OnSkirmishModeChanged;
+    public Action<bool> OnIsSkirmisherChanged;
 
     void Awake()
     {
@@ -226,7 +226,7 @@ public class Unit : MonoBehaviour
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocks(); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
-        OnSkirmishModeChanged += (e) => Debug.Log($"skirmish mode: {SkirmishMode}");
+        OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {isSkirmisher}");
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
         rankComponent.SetActive(Deployed);
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
@@ -571,7 +571,7 @@ public class Unit : MonoBehaviour
             Name = name,
             QueuePosition = QueuePosition,
             Rank = Rank,
-            SkirmishMode = SkirmishMode
+            IsSkirmisher = isSkirmisher
         };
     }
     public void ShowFightEffects()

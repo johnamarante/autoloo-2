@@ -79,6 +79,6 @@ public static class OpponentGeneration
         opposingUnit._hitPoints = (int)jsonUnitDetail["HitPoints"];
         opposingUnit._queuePosition = (int)jsonUnitDetail["QueuePosition"];
         opposingUnit.name = unitName;
-        try { opposingUnit._skirmishMode = (bool)jsonUnitDetail["SkirmishMode"]; } catch (Exception ex) { Debug.Log(ex.Message); }
+        try { opposingUnit._IsSkirmisher = (bool)jsonUnitDetail["SkirmishMode"]; } catch (Exception ex) { Debug.Log(ex.Message); }
     }
 }

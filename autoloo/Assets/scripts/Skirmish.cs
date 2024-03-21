@@ -9,9 +9,9 @@ public class Skirmish : MonoBehaviour
     public Unit skirmisherPrefab;
     public Sprite lineMusket;
     public Sprite lightMusket;
-    public GameObject goNotification;
+    //public GameObject goNotification;
 
-    private class WeaponClickHandler : MonoBehaviour
+    private class WeaponSpriteHandler : MonoBehaviour
     {
         private Unit _unit;
         private GameObject _goHoverCorners;
@@ -25,25 +25,11 @@ public class Skirmish : MonoBehaviour
             _lightMusket = lightMusket;
 
             UpdateWeaponSprite();
-            Transform hoverIndicatorTransform = transform.Find("hover_over_indicator");
-            if (hoverIndicatorTransform != null)
-            {
-                _goHoverCorners = hoverIndicatorTransform.gameObject;
-            }
-        }
-
-        private void OnMouseDown()
-        {
-            if (!_unit.gameManager.InBattleModeAndNotDeploymentMode && _unit.canFormSquare)
-            {
-                _unit.SkirmishMode = !_unit.SkirmishMode;
-                UpdateWeaponSprite();
-            }
         }
 
         private void UpdateWeaponSprite()
         {
-            Sprite sprite = _unit.SkirmishMode ? _lightMusket : _lineMusket;
+            Sprite sprite = _unit.isSkirmisher ? _lightMusket : _lineMusket;
             _unit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
             SetSpriteRendererTransform(sprite);
         }
@@ -52,20 +38,6 @@ public class Skirmish : MonoBehaviour
         {
             Vector3 scale = sprite == _lineMusket ? new Vector3(0.5f, 1.5f, 1f) : new Vector3(0.5f, 0.5f, 1f);
             _unit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().transform.localScale = scale;
-        }
-
-        private void OnMouseEnterExit(bool show)
-        {
-            if (_unit.canFormSquare) ShowHoverIndicator(show);
-        }
-
-        private void OnMouseEnter() => OnMouseEnterExit(true);
-
-        private void OnMouseExit() => OnMouseEnterExit(false);
-
-        public void ShowHoverIndicator(bool show)
-        {
-            _goHoverCorners.SetActive(show);
         }
     }
 
@@ -76,16 +48,16 @@ public class Skirmish : MonoBehaviour
         if (attackChild != null)
         {
             // Attach a click event to the "Attack" child object and pass the Unit instance
-            WeaponClickHandler clickHandler = attackChild.gameObject.AddComponent<WeaponClickHandler>();
+            WeaponSpriteHandler clickHandler = attackChild.gameObject.AddComponent<WeaponSpriteHandler>();
             clickHandler.Initialize(unit, lineMusket, lightMusket);
         }
-        if (unit.canFormSquare && unit.side == unit.gameManager.playerSide && !unit.Deployed) 
-        {
-            GameObject goNoti = Instantiate(goNotification, transform); //, attackChild.position + new Vector3(0f, 3f, -1f), new Quaternion(0, 0.71f, -0.71f, 0));
-            goNoti.transform.position += new Vector3(3f, -2f, -1f);
-            goNoti.transform.rotation = new Quaternion(0, 0.71f, -0.71f, 0);
-            Destroy(goNoti, 5);
-        }
+        //if (unit.canFormSquare && unit.side == unit.gameManager.playerSide && !unit.Deployed) 
+        //{
+        //    GameObject goNoti = Instantiate(goNotification, transform); //, attackChild.position + new Vector3(0f, 3f, -1f), new Quaternion(0, 0.71f, -0.71f, 0));
+        //    goNoti.transform.position += new Vector3(3f, -2f, -1f);
+        //    goNoti.transform.rotation = new Quaternion(0, 0.71f, -0.71f, 0);
+        //    Destroy(goNoti, 5);
+        //}
     }
 
     public void DeploySkirmishers(string side, List<Unit> unitQueue)
@@ -105,7 +77,7 @@ public class Skirmish : MonoBehaviour
                 skirmisherPrefab._attack = skirmisherPrefab.ComputeAttackFromFoumulaString(unit.Rank);
                 var goSkirmisher = Instantiate(skirmisherPrefab);
                 goSkirmisher.Deployed = true;
-                goSkirmisher.SkirmishMode = true;
+                goSkirmisher.isSkirmisher = true;
                 foreach (var alliedUnit in unit.gameManager.LeftQueueUnits)
                 {
                     if (side == "left")

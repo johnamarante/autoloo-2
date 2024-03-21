@@ -52,7 +52,7 @@ public static class StoreAndLoadArmyDetails
             unit._rank = unitDetails.Rank;
             unit.side = side;
             unit.QueuePosition = unitDetails.QueuePosition;
-            unit._skirmishMode = unitDetails.SkirmishMode;
+            unit._IsSkirmisher = unitDetails.IsSkirmisher;
             unit._deployed = true;
             unit.gameManager = gameManager;
             unit.DeployAndSnapPositionToDeploymentMarker(UnityEngine.Object.FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition).First());

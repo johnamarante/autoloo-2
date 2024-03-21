@@ -328,7 +328,7 @@ public class GameManager : MonoBehaviour
     {
         //Avoid firing the change event if there is no actual change
         bool newSquaredValue = (roundCycle <= 1 || unitA.cycle > 1)
-                               && unitA.canFormSquare && !unitA.SkirmishMode
+                               && unitA.canFormSquare && !unitA.isSkirmisher
                                && unitB.isCavalry;
         if (unitA.Squared != newSquaredValue)
         {
@@ -338,15 +338,23 @@ public class GameManager : MonoBehaviour
 
     public void SkirmishCheck()
     {
-        var leftSkirmishers = GetSkirmisherFromQueue(LeftQueueUnits);
-        var rightSkirmishers = GetSkirmisherFromQueue(RightQueueUnits);
+        var leftSkirmishers = GetFrontRankBaseUnitsThatCanDeploySkirmishers(LeftQueueUnits);
+        var rightSkirmishers = GetFrontRankBaseUnitsThatCanDeploySkirmishers(RightQueueUnits);
         foreach (var unit in leftSkirmishers)
         {
-            unit.GetComponent<Skirmish>().DeploySkirmishers("left",LeftQueueUnits);
+            //Units with skirmishers should not deploy skirmishers when faced with cavalry.
+            //Rather, they should form a square.
+            if (!RightQueueUnits[0].isCavalry)
+            {
+                unit.GetComponent<Skirmish>().DeploySkirmishers("left", LeftQueueUnits);
+            }
         }
         foreach (var unit in rightSkirmishers)
         {
-            unit.GetComponent<Skirmish>().DeploySkirmishers("right", RightQueueUnits);
+            if (!LeftQueueUnits[0].isCavalry)
+            {
+                unit.GetComponent<Skirmish>().DeploySkirmishers("right", RightQueueUnits);
+            }
         }
     }
 
@@ -363,12 +371,12 @@ public class GameManager : MonoBehaviour
         return artilleryUnits;
     }
 
-    List<Unit> GetSkirmisherFromQueue(List<Unit> units)
+    List<Unit> GetFrontRankBaseUnitsThatCanDeploySkirmishers(List<Unit> units)
     {
         var skirmisherUnits = new List<Unit>();
         foreach (Unit unit in units)
         {
-            if (unit.gameObject.GetComponent<Skirmish>() && unit.Deployed && unit.SkirmishMode && Math.Abs(unit.QueuePosition) == 1)
+            if (unit.gameObject.GetComponent<Skirmish>() && unit.Deployed && Math.Abs(unit.QueuePosition) == 1)
             {
                 skirmisherUnits.Add(unit);
             }

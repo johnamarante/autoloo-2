@@ -7,6 +7,6 @@ public class UnitDetail
     public int HitPoints;
     public int Rank;
     public int QueuePosition;
-    public bool SkirmishMode;
+    public bool IsSkirmisher;
 }
 

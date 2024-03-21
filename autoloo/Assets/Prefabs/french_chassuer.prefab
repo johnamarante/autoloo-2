@@ -1339,7 +1339,7 @@ MonoBehaviour:
   hitPointsFormula: 1
   attackFormula: 1
   side: left
-  tier: 2
+  tier: 1
   myFont: {fileID: 0}
   effectFrame: 0
   _queuePosition: 0
@@ -1376,7 +1376,7 @@ MonoBehaviour:
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: 8e0bfb792110ef14e902695dcaa2b802, type: 3}
-  _skirmishMode: 1
+  _IsSkirmisher: 0
 --- !u!114 &6753784595835829940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,7 +1419,6 @@ MonoBehaviour:
   skirmisherPrefab: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
   lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
   lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
-  goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}
 --- !u!1 &7361975193158087938
 GameObject:
   m_ObjectHideFlags: 0
