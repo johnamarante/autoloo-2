@@ -221,7 +221,8 @@ public class Unit : MonoBehaviour
         SetUnitStatsDisplay();
         OnAttackChanged += (e) => textAttack.text = (Attack + AttackBonus).ToString();
         OnAttackBonusChanged += (e) => { if (AttackBonus > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
-        OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); gameManager.floatyNumber.SpawnFloatingNumber(delta, transform.position, (delta < 0)); };
+        OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); };
+        //formerly in OnHitPointsChanged:  gameManager.floatyNumber.SpawnFloatingNumber(delta, transform.position, (delta < 0));
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocks(); };
@@ -513,6 +514,7 @@ public class Unit : MonoBehaviour
         Destroy(consumeUnit.gameObject);
         HitPoints++;
         Attack++;
+        gameManager.floatyNumber.SpawnFloatingString($"+1/1", Color.green, transform.position);
         Rank++;
     }
 

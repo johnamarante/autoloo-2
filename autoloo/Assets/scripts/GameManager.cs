@@ -495,6 +495,8 @@ public class GameManager : MonoBehaviour
             // Apply damage to HitPoints
             leftUnits[0].HitPoints -= leftUnitTakeDamage;
             rightUnits[0].HitPoints -= rightUnitTakeDamage;
+            floatyNumber.SpawnFloatingNumber(-leftUnitTakeDamage, leftUnits[0].transform.position);
+            floatyNumber.SpawnFloatingNumber(-rightUnitTakeDamage, rightUnits[0].transform.position);
             leftUnits[0].cycle++;
             rightUnits[0].cycle++;
         }

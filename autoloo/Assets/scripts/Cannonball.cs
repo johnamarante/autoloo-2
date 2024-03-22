@@ -35,7 +35,14 @@ public class Cannonball : MonoBehaviour
         if (i == FlightpathPoints.Count)
         {
             if (target.Squared)
+            {
+                manager.floatyNumber.SpawnFloatingString($"{damage} × 2!", Color.red, target.transform.position);
                 damage = damage * 2;
+            }
+            else
+            {
+                manager.floatyNumber.SpawnFloatingNumber(-damage,target.transform.position);
+            }
 
             target.HitPoints -= damage;
             //SpawnFloatingNumber should only ever be called when HitPoints changes

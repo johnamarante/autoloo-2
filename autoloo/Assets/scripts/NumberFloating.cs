@@ -10,7 +10,7 @@ public class NumberFloating : MonoBehaviour
         numberPrefab.SetActive(true);
     }
 
-    public void SpawnFloatingNumber(int? valueToDisplay = null, Vector3? spawnPosition = null, bool? red = null)
+    public void SpawnFloatingNumber(int? valueToDisplay = null, Vector3? spawnPosition = null, bool red = true)
     {
         // Use the provided spawnPosition if available, otherwise generate a random position
         var finalSpawnPosition = spawnPosition ?? new Vector3(UnityEngine.Random.Range(1, 10), UnityEngine.Random.Range(1, 10), 0f);
@@ -24,7 +24,6 @@ public class NumberFloating : MonoBehaviour
         textMesh.text = theNumber.ToString();
 
         // Set the color based on the pattern
-        int spawnIndex = UnityEngine.Random.Range(0, 100);
         Color textColor = (bool)(red) ? Color.red : Color.green;
         textMesh.color = textColor;
 
@@ -33,6 +32,28 @@ public class NumberFloating : MonoBehaviour
 
         // Destroy the number after 1 second
         Destroy(numberObject, 1);
+    }
+
+    public void SpawnFloatingString(string valueToDisplay,  Color col, Vector3? spawnPosition = null, int lifetimeInSeconds = 1)
+    {
+        // Use the provided spawnPosition if available, otherwise generate a random position
+        var finalSpawnPosition = spawnPosition ?? new Vector3(UnityEngine.Random.Range(1, 10), UnityEngine.Random.Range(1, 10), 0f);
+
+        // Instantiate the number prefab
+        GameObject numberObject = Instantiate(numberPrefab, finalSpawnPosition, Quaternion.identity);
+
+        // Set the number value
+        TMPro.TextMeshPro textMesh = numberObject.GetComponent<TMPro.TextMeshPro>();
+        textMesh.text = valueToDisplay.ToString();
+
+        // Set the color based on the pattern
+        textMesh.color = col;
+
+        // Start the floating animation
+        StartCoroutine(Pulse(numberObject.transform));
+
+        // Destroy the number after 1 second
+        Destroy(numberObject, lifetimeInSeconds);
     }
 
     private System.Collections.IEnumerator Pulse(Transform numberTransform)

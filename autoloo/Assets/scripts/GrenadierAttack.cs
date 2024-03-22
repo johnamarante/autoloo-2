@@ -38,14 +38,14 @@ public class GrenadierAttack : MonoBehaviour
         {
             if (!_unit.gameManager.InBattleModeAndNotDeploymentMode && _unit.canFormSquare)
             {
-                _unit.SkirmishMode = !_unit.SkirmishMode;
+                _unit.isSkirmisher = !_unit.isSkirmisher;
                 UpdateWeaponSprite();
             }
         }
 
         private void UpdateWeaponSprite()
         {
-            Sprite sprite = _unit.SkirmishMode ? _lightMusket : _lineMusket;
+            Sprite sprite = _unit.isSkirmisher ? _lightMusket : _lineMusket;
             _unit.textAttack.gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
             SetSpriteRendererTransform(sprite);
         }
