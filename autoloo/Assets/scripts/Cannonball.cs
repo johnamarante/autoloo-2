@@ -36,7 +36,7 @@ public class Cannonball : MonoBehaviour
         {
             if (target.Squared)
             {
-                manager.floatyNumber.SpawnFloatingString($"{damage} × 2!", Color.red, target.transform.position);
+                manager.floatyNumber.SpawnFloatingString($"{damage} × 2 \nCRIT!", Color.red, target.transform.position);
                 damage = damage * 2;
             }
             else
