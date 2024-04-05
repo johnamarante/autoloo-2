@@ -230,6 +230,7 @@ public class Unit : MonoBehaviour
         OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {isSkirmisher}");
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
         rankComponent.SetActive(Deployed);
+        CheckUnlocks();
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
