@@ -627,6 +627,11 @@ MonoBehaviour:
   _attackBonus: 0
   _hitPoints: 5
   _rank: 0
+  MaxUnitRank: 9
+  SkirmisherUnlockRank: 99
+  GrenadierUnlockRank: 99
+  hitPointsFormula: 1
+  attackFormula: 1
   side: left
   tier: 2
   myFont: {fileID: 0}
@@ -665,7 +670,7 @@ MonoBehaviour:
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: 8e0bfb792110ef14e902695dcaa2b802, type: 3}
-  _SkirmishMode: 0
+  _IsSkirmisher: 0
 --- !u!114 &1984001713188768883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,7 +806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3095152307535233419}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -849,7 +854,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: f89522ddfcfdb264d84b29fec98f7b7d, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 17309370597e90d4a94c102da8783a3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

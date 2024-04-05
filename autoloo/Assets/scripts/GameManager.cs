@@ -376,7 +376,7 @@ public class GameManager : MonoBehaviour
         var skirmisherUnits = new List<Unit>();
         foreach (Unit unit in units)
         {
-            if (unit.gameObject.GetComponent<Skirmish>() && unit.Deployed && Math.Abs(unit.QueuePosition) == 1)
+            if (unit.gameObject.GetComponent<Skirmish>() && unit.gameObject.GetComponent<Skirmish>().enabled && unit.Deployed && Math.Abs(unit.QueuePosition) == 1)
             {
                 skirmisherUnits.Add(unit);
             }

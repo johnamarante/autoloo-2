@@ -256,10 +256,12 @@ public class Unit : MonoBehaviour
         if (Rank == SkirmisherUnlockRank)
         {
             Debug.Log($"skirmisher attached to {name}");
+            gameObject.GetComponent<Skirmish>().enabled = true;
         }
         if (Rank == GrenadierUnlockRank)
         {
             Debug.Log($"grenadier attached to {name}");
+            //gameObject.GetComponent<Grenadier>().enabled = true;
         }
     }
 

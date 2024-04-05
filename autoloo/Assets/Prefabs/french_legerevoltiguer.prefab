@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 931321288335271879}
   - component: {fileID: 3589566371438849853}
   - component: {fileID: 6816072944298555175}
-  - component: {fileID: 6533158137258257411}
   m_Layer: 0
   m_Name: french_legerevoltiguer
   m_TagString: Untagged
@@ -274,7 +273,7 @@ MonoBehaviour:
   isCavalry: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: 8e0bfb792110ef14e902695dcaa2b802, type: 3}
-  _skirmishMode: 1
+  _IsSkirmisher: 0
 --- !u!114 &3589566371438849853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,23 +300,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6533158137258257411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663366937025943623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c793db0bd4edb904d914398dbba82f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 0}
-  skirmisherPrefab: {fileID: 0}
-  lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
-  lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
-  goNotification: {fileID: 2235842690490418429, guid: eb657862892b4564494f066e07918a75, type: 3}
 --- !u!1 &738605426948220043
 GameObject:
   m_ObjectHideFlags: 0

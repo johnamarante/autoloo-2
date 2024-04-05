@@ -78,7 +78,7 @@ public class Skirmish : MonoBehaviour
                 var goSkirmisher = Instantiate(skirmisherPrefab);
                 goSkirmisher.Deployed = true;
                 goSkirmisher.isSkirmisher = true;
-                foreach (var alliedUnit in unit.gameManager.LeftQueueUnits)
+                foreach (var alliedUnit in unitQueue)
                 {
                     if (side == "left")
                     { 
@@ -111,5 +111,16 @@ public class Skirmish : MonoBehaviour
                 unit.cycle++;
             }
         }
+    }
+
+    private void OnEnable()
+    {
+
+        transform.Find("skirmisher_Badge").gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        transform.Find("skirmisher_Badge").gameObject.SetActive(false);
     }
 }
