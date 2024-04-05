@@ -566,7 +566,6 @@ public class GameManager : MonoBehaviour
         {
             if (unit.HitPoints <= 0 && unit != null)
             {
-                var hupu = unit.name;
                 Destroy(unit.gameObject);
                 eliminatedIndecies.Add(index);
             }
