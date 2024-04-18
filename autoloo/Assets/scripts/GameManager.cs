@@ -209,6 +209,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("C");
                 //PRE BATTLE PHASE CLEANUP (FIRST CLEANUP)
+                GrenadiersCheck();
                 Cleanup();
                 CheckForAndHandleBattleResult();
                 var activeCannonballsCount = FindObjectsOfType<Cannonball>().Length;
@@ -218,7 +219,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("D");
                 //MAIN START
-                ComputeDamages();
+                ComputeAttackStrengths();
                 Move();
                 battlePhaseFired = true;
                 //force into E and not F
@@ -228,6 +229,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("E");
                 Fight(ref LeftQueueUnits, ref RightQueueUnits);
+                GrenadiersCheck();
                 Cleanup();
                 CheckForAndHandleBattleResult();
                 roundCycle++;
@@ -255,6 +257,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void GrenadiersCheck()
+    {
+        List<Unit> allUnits = GetFrontRankBaseUnitsThatCanDeployGrenadiers(LeftQueueUnits);
+        allUnits.AddRange(GetFrontRankBaseUnitsThatCanDeployGrenadiers(RightQueueUnits));
+        foreach (var unit in allUnits)
+        {
+            if (unit.HitPoints <= 0)
+            {
+                unit.GetComponent<GrenadierAttack>().DeployGrenadiers(unit.side);
+            }
+        }
+    }
+
     private void BattleModeBoolSwitchesReset()
     {
         actionTime += period;
@@ -267,7 +282,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("F");
     }
 
-    private void ComputeDamages()
+    private void ComputeAttackStrengths()
     {
         if (LeftQueueUnits.Count > 0 && RightQueueUnits.Count > 0)
         {
@@ -382,6 +397,19 @@ public class GameManager : MonoBehaviour
             }
         }
         return skirmisherUnits;
+    }
+
+    List<Unit> GetFrontRankBaseUnitsThatCanDeployGrenadiers(List<Unit> units)
+    {
+        var grenadierUnits = new List<Unit>();
+        foreach (Unit unit in units)
+        {
+            if (unit.gameObject.GetComponent<GrenadierAttack>() && unit.gameObject.GetComponent<GrenadierAttack>().enabled && unit.Deployed && Math.Abs(unit.QueuePosition) == 1)
+            {
+                grenadierUnits.Add(unit);
+            }
+        }
+        return grenadierUnits;
     }
 
     public void Cleanup()

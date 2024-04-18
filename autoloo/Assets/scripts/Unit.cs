@@ -225,12 +225,12 @@ public class Unit : MonoBehaviour
         //formerly in OnHitPointsChanged:  gameManager.floatyNumber.SpawnFloatingNumber(delta, transform.position, (delta < 0));
         OnCostChanged += (e) => textCost.text = Cost.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
-        OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocks(); };
+        OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
         OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {isSkirmisher}");
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
         rankComponent.SetActive(Deployed);
-        CheckUnlocks();
+        CheckUnlocksOnStart();
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
@@ -252,7 +252,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void CheckUnlocks()
+    private void CheckUnlocksOnRankUp()
     {
         if (Rank == SkirmisherUnlockRank)
         {
@@ -262,6 +262,22 @@ public class Unit : MonoBehaviour
         if (Rank == GrenadierUnlockRank)
         {
             Debug.Log($"grenadier attached to {name}");
+            gameObject.GetComponent<GrenadierAttack>().enabled = true;
+            //gameObject.GetComponent<Grenadier>().enabled = true;
+        }
+    }
+
+    private void CheckUnlocksOnStart()
+    {
+        if (Rank >= SkirmisherUnlockRank)
+        {
+            Debug.Log($"skirmisher attached to {name}");
+            gameObject.GetComponent<Skirmish>().enabled = true;
+        }
+        if (Rank >= GrenadierUnlockRank)
+        {
+            Debug.Log($"grenadier attached to {name}");
+            gameObject.GetComponent<GrenadierAttack>().enabled = true;
             //gameObject.GetComponent<Grenadier>().enabled = true;
         }
     }
@@ -508,17 +524,21 @@ public class Unit : MonoBehaviour
 
     public void RankUp(Unit consumeUnit)
     {
-        if (!consumeUnit.Deployed)
+        //do not allow the unit to "lose" veterancy by stacking a higher rank unit onto a lower rank unit
+        if (Rank >= consumeUnit.Rank)
         {
-            gameManager.deployment.coin -= consumeUnit.Cost;
-            FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == consumeUnit.QueuePosition ).First().ShowHoverIndicator(false);
+            if (!consumeUnit.Deployed)
+            {
+                gameManager.deployment.coin -= consumeUnit.Cost;
+                FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == consumeUnit.QueuePosition ).First().ShowHoverIndicator(false);
+            }
+            gameManager.deployment.coin += CurrencyBumpBasedOnRank(consumeUnit.Rank);
+            Destroy(consumeUnit.gameObject);
+            HitPoints++;
+            Attack++;
+            gameManager.floatyNumber.SpawnFloatingString($"+1/1", Color.green, transform.position);
+            Rank++;
         }
-        gameManager.deployment.coin += CurrencyBumpBasedOnRank(consumeUnit.Rank);
-        Destroy(consumeUnit.gameObject);
-        HitPoints++;
-        Attack++;
-        gameManager.floatyNumber.SpawnFloatingString($"+1/1", Color.green, transform.position);
-        Rank++;
     }
 
     public int CurrencyBumpBasedOnRank(int rank)

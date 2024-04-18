@@ -630,8 +630,8 @@ MonoBehaviour:
   MaxUnitRank: 9
   SkirmisherUnlockRank: 99
   GrenadierUnlockRank: 99
-  hitPointsFormula: 1
-  attackFormula: 1
+  hitPointsFormula: PARENT RANK+1
+  attackFormula: PARENT RANK+1
   side: left
   tier: 2
   myFont: {fileID: 0}
