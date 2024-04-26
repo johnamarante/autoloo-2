@@ -361,14 +361,18 @@ public class GameManager : MonoBehaviour
             //Rather, they should form a square.
             if (!RightQueueUnits[0].isCavalry)
             {
-                unit.GetComponent<Skirmish>().DeploySkirmishers("left", LeftQueueUnits);
+                var skirmisherComponent = unit.GetComponent<Skirmish>();
+                skirmisherComponent.DeploySkirmishers("left", LeftQueueUnits);
+                skirmisherComponent.enabled = false;
             }
         }
         foreach (var unit in rightSkirmishers)
         {
             if (!LeftQueueUnits[0].isCavalry)
             {
-                unit.GetComponent<Skirmish>().DeploySkirmishers("right", RightQueueUnits);
+                var skirmisherComponent = unit.GetComponent<Skirmish>();
+                skirmisherComponent.DeploySkirmishers("right", RightQueueUnits);
+                skirmisherComponent.enabled = false;
             }
         }
     }

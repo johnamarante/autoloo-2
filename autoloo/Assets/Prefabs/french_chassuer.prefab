@@ -1526,6 +1526,7 @@ GameObject:
   - component: {fileID: 6753784595835829940}
   - component: {fileID: 3674232427092420270}
   - component: {fileID: 8909429268390310327}
+  - component: {fileID: 7151448820047091055}
   m_Layer: 0
   m_Name: french_chassuer
   m_TagString: Untagged
@@ -1665,6 +1666,20 @@ MonoBehaviour:
   skirmisherPrefab: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
   lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
   lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
+--- !u!114 &7151448820047091055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304328838042601934}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb350eb202c5564fbc23e5b7eb36845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenadierPrefab: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+  unit: {fileID: 0}
 --- !u!1 &7361975193158087938
 GameObject:
   m_ObjectHideFlags: 0
