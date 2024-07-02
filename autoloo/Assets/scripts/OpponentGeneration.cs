@@ -37,7 +37,8 @@ public static class OpponentGeneration
             var filteredDraftData = new JArray();
             foreach (var dd in draftData)
             {
-                if (Int32.Parse(dd["round"].ToString()) == round && dd["playername"].ToString() != name)
+                if (Int32.Parse(dd["round"].ToString()) == round) 
+                    //&& dd["playername"].ToString() != name) TODO: this may work better as a setting called "allow me to play against my previous rosters"
                     filteredDraftData.Add(dd);
             }
 
@@ -79,6 +80,13 @@ public static class OpponentGeneration
         opposingUnit._hitPoints = (int)jsonUnitDetail["HitPoints"];
         opposingUnit._queuePosition = (int)jsonUnitDetail["QueuePosition"];
         opposingUnit.name = unitName;
-        try { opposingUnit._IsSkirmisher = (bool)jsonUnitDetail["SkirmishMode"]; } catch (Exception ex) { Debug.Log(ex.Message); }
+        try 
+        { 
+            opposingUnit._IsSkirmisher = (bool)jsonUnitDetail["SkirmishMode"]; 
+        } 
+        catch (Exception ex) 
+        { 
+            Debug.Log(ex.Message); 
+        }
     }
 }

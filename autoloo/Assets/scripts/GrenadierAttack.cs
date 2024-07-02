@@ -33,14 +33,13 @@ public class GrenadierAttack : MonoBehaviour
                 goGrenadier.QueuePosition = -1;
                 unit.gameManager.LeftQueueUnits.Add(goGrenadier);
                 unit.gameManager.LeftQueueUnits = unit.gameManager.LeftQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();
-                unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.LeftQueueUnits, unit.gameManager.fightQueuePositions);
+                //unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.LeftQueueUnits, unit.gameManager.fightQueuePositions);
             }
             else{
                 goGrenadier.QueuePosition = 1;
                 unit.gameManager.RightQueueUnits.Add(goGrenadier);
                 unit.gameManager.RightQueueUnits = unit.gameManager.RightQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();
-                unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.RightQueueUnits, unit.gameManager.fightQueuePositions);
-
+                //unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.RightQueueUnits, unit.gameManager.fightQueuePositions);
             }
         }
     }
