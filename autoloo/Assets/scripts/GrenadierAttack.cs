@@ -26,20 +26,18 @@ public class GrenadierAttack : MonoBehaviour
             grenadierPrefab.side = side;
             grenadierPrefab._hitPoints = grenadierPrefab.ComputeHitPointsFromFoumulaString(unit.Rank);
             grenadierPrefab._attack = grenadierPrefab.ComputeAttackFromFoumulaString(unit.Rank);
-            var goGrenadier = Instantiate(grenadierPrefab);
-            goGrenadier.Deployed = true;
-            goGrenadier.transform.position = unit.transform.position;
+            var goUnitGrenadier = Instantiate(grenadierPrefab);
+            goUnitGrenadier.Deployed = true;
+            goUnitGrenadier.transform.position = unit.transform.position;
             if (side == "left") {
-                goGrenadier.QueuePosition = -1;
-                unit.gameManager.LeftQueueUnits.Add(goGrenadier);
+                goUnitGrenadier.QueuePosition = -1;
+                unit.gameManager.LeftQueueUnits.Add(goUnitGrenadier);
                 unit.gameManager.LeftQueueUnits = unit.gameManager.LeftQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();
-                //unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.LeftQueueUnits, unit.gameManager.fightQueuePositions);
             }
             else{
-                goGrenadier.QueuePosition = 1;
-                unit.gameManager.RightQueueUnits.Add(goGrenadier);
-                unit.gameManager.RightQueueUnits = unit.gameManager.RightQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();
-                //unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.RightQueueUnits, unit.gameManager.fightQueuePositions);
+                goUnitGrenadier.QueuePosition = 1;
+                unit.gameManager.RightQueueUnits.Add(goUnitGrenadier);
+                unit.gameManager.RightQueueUnits = unit.gameManager.RightQueueUnits.OrderBy(u => u.QueuePosition).ToList();
             }
         }
     }

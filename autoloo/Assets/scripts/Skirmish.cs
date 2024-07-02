@@ -75,34 +75,34 @@ public class Skirmish : MonoBehaviour
                 skirmisherPrefab.side = side;
                 skirmisherPrefab._hitPoints = skirmisherPrefab.ComputeHitPointsFromFoumulaString(unit.Rank);
                 skirmisherPrefab._attack = skirmisherPrefab.ComputeAttackFromFoumulaString(unit.Rank);
-                var goSkirmisher = Instantiate(skirmisherPrefab);
-                goSkirmisher.Deployed = true;
-                goSkirmisher.isSkirmisher = true;
+                var goUnitSkirmisher = Instantiate(skirmisherPrefab);
+                goUnitSkirmisher.Deployed = true;
+                goUnitSkirmisher.isSkirmisher = true;
                 foreach (var alliedUnit in unitQueue)
                 {
                     if (side == "left")
                     { 
                         alliedUnit.QueuePosition--;
-                        goSkirmisher.QueuePosition = -1;
+                        goUnitSkirmisher.QueuePosition = -1;
                     }
                     if (side == "right")
                     { 
                         alliedUnit.QueuePosition++;
-                        goSkirmisher.QueuePosition = 1;
+                        goUnitSkirmisher.QueuePosition = 1;
                     }
                 }
-                goSkirmisher.name = $"{goSkirmisher.name}_skirmisher";
-                goSkirmisher.transform.position = unit.transform.position;
+                goUnitSkirmisher.name = $"{goUnitSkirmisher.name}_skirmisher";
+                goUnitSkirmisher.transform.position = unit.transform.position;
                 unitQueue = unitQueue.OrderByDescending(u => u.QueuePosition).ToList();
                 if (side == "left")
                 {
-                    unit.gameManager.LeftQueueUnits.Add(goSkirmisher);
+                    unit.gameManager.LeftQueueUnits.Add(goUnitSkirmisher);
                     unit.gameManager.LeftQueueUnits = unit.gameManager.LeftQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();
                     unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.LeftQueueUnits, unit.gameManager.fightQueuePositions);
                 }
                 if (side == "right")
                 {
-                    unit.gameManager.RightQueueUnits.Add(goSkirmisher);
+                    unit.gameManager.RightQueueUnits.Add(goUnitSkirmisher);
                     unit.gameManager.RightQueueUnits = unit.gameManager.RightQueueUnits.OrderBy(u => u.QueuePosition).ToList();
                     unit.gameManager.ArrangeUnitsOnBattlefield(ref unit.gameManager.RightQueueUnits, unit.gameManager.fightQueuePositions);
                 }
