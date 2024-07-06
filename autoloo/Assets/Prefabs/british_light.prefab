@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 631644304311794899}
   - component: {fileID: 3888868699424191529}
   - component: {fileID: 6539003287290276915}
-  - component: {fileID: 9145266765271040577}
   m_Layer: 0
   m_Name: british_light
   m_TagString: Untagged
@@ -302,22 +301,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9145266765271040577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944764523057185619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c793db0bd4edb904d914398dbba82f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 0}
-  skirmisherPrefab: {fileID: 0}
-  lineMusket: {fileID: 3286163911610860551, guid: 376a3b328eb613b4d9d6a3d4a1dfbf83, type: 3}
-  lightMusket: {fileID: 3286163911610860551, guid: 4ac6f460881033a4985ce48cdf41e856, type: 3}
 --- !u!1 &962973680713877875
 GameObject:
   m_ObjectHideFlags: 0

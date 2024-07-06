@@ -381,6 +381,7 @@
 "Assets/scripts/DragIt.cs"
 "Assets/scripts/FriendpasteClient.cs"
 "Assets/scripts/GameManager.cs"
+"Assets/scripts/GrenadierAttack.cs"
 "Assets/scripts/keytest.cs"
 "Assets/scripts/LoginScreen.cs"
 "Assets/scripts/MainMenu.cs"
