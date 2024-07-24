@@ -1866,10 +1866,10 @@ MonoBehaviour:
   _rank: 0
   MaxUnitRank: 3
   SkirmisherUnlockRank: 99
-  GrenadierUnlockRank: 99
+  GrenadierUnlockRank: 3
   hitPointsFormula: 1
   attackFormula: 1
-  side: right
+  side: left
   tier: 1
   myFont: {fileID: 0}
   effectFrame: 0

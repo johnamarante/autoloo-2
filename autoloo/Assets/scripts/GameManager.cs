@@ -444,7 +444,7 @@ public class GameManager : MonoBehaviour
     {
         if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
         {
-            string resultText = (LeftQueueUnits.Count == 0) ? "LOSS" : "WIN!";
+            string resultText = (LeftQueueUnits.Count == 0) ? (RightQueueUnits.Count == 0 ? "DRAW" : "LOSS") : "WIN!";
             ShowResultPopup(resultText);
             autolooPlayerData.ClearUnitDetails();
             CleanupBattlefield();
