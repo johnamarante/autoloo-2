@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ public class Deployment : MonoBehaviour
     public Texture btnFreeze;
     public Texture btnSell;
     public Texture btnRoll;
+    public JArray opponentDraftData;
     private bool checkOpponentGenerationCompleted = false;
     private bool endTurnButtonClicked = false;
 
@@ -88,6 +90,7 @@ public class Deployment : MonoBehaviour
             deplomentShopMarker.deployment = gameObject.GetComponent<Deployment>();
         }
         Roll(false);
+        StartCoroutine(GetOpponentDraftData());
     }
 
     private void Update()
@@ -125,7 +128,7 @@ public class Deployment : MonoBehaviour
                 {
                     endTurnButtonClicked = true;
                     checkOpponentGenerationCompleted = true;
-                    OpponentGeneration.GenerateFromDraftAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+                    OpponentGeneration.GenerateFromDraftData(gameManager, opponentDraftData);
                 }
                 else
                 {
@@ -161,6 +164,16 @@ public class Deployment : MonoBehaviour
             {
                 endTurnButtonClicked = false;
             }
+        }
+    }
+
+    private IEnumerator GetOpponentDraftData()
+    {
+        if (opponentDraftData == null)
+        {
+            var draftDataTask = OpponentGeneration.GetDraftDataAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+            yield return new WaitUntil(() => draftDataTask.IsCompleted);
+            opponentDraftData = draftDataTask.Result;
         }
     }
 

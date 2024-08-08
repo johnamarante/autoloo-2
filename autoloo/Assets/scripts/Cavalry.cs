@@ -24,7 +24,7 @@ public class Cavalry : MonoBehaviour
         {
             Unit opposingUnit = (unit.side == "left") ? unit.gameManager.RightQueueUnits[0] : unit.gameManager.LeftQueueUnits[0];
             //below logic assumes that this cavalry unit has already been removed from the queue.
-            //this assumption is correct because Gamemanager.CleanupAndMove() will cleanup the L&R queues in the same frame as the objects are destroyed. 
+            //this assumption is correct because Gamemanager.CleanupAndMove() will cleanup the left and right queues in the same frame as the objects are destroyed. 
             //That frame will complete before this OnDestroy is called.
             Unit behindUnit = (unit.side == "left") ? unit.gameManager.LeftQueueUnits[0] : unit.gameManager.RightQueueUnits[0];
             if (opposingUnit.Squared)

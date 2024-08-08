@@ -21,30 +21,36 @@ public static class OpponentGeneration
         }
     }
 
-    public static async void GenerateFromDraftAsync(string name, int round, int wins, int losses)
+    public static async Task<JArray> GetDraftDataAsync(string name, int round, int wins, int losses)
+    {
+        var gameManager = (GameManager)UnityEngine.Object.FindObjectOfType(typeof(GameManager));
+        var rosterName = gameManager.RightUnitRoster[0].name.Split('_')[0];
+        var url = StoreAndLoadArmyDetails.GetAutolooArmyDraftURL(rosterName, round);
+        var rawData = await FriendpasteClient.FriendpasteClient.GetDataAsync(url);
+
+        var outerObject = JObject.Parse(rawData);
+        var snippetString = FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse(outerObject["snippet"].ToString());
+        var snippet = JObject.Parse(snippetString);
+        var draftData = (JArray)snippet["data"];
+
+        var filteredDraftData = new JArray();
+        foreach (var dd in draftData)
+        {
+            if (Int32.Parse(dd["round"].ToString()) == round)
+                //&& dd["playername"].ToString() != name) TODO: this may work better as a setting called "allow me to play against my previous rosters"
+                filteredDraftData.Add(dd);
+        }
+
+        return filteredDraftData;
+    }
+
+    public static void GenerateFromDraftData(GameManager gameManager, JArray draftData)
     {
         try
         {
-            var gameManager = (GameManager)UnityEngine.Object.FindObjectOfType(typeof(GameManager));
-            var rosterName = gameManager.RightUnitRoster[0].name.Split('_')[0];
-            var url = StoreAndLoadArmyDetails.GetAutolooArmyDraftURL(rosterName, round);
-            var rawData = await FriendpasteClient.FriendpasteClient.GetDataAsync(url);
-
-            var outerObject = JObject.Parse(rawData);
-            var snippetString = FriendpasteClient.FriendpasteClient.PrepareFriendPasteSnippetForCSharpJSONParse(outerObject["snippet"].ToString());
-            var snippet = JObject.Parse(snippetString);
-            var draftData = (JArray)snippet["data"];
-            var filteredDraftData = new JArray();
-            foreach (var dd in draftData)
-            {
-                if (Int32.Parse(dd["round"].ToString()) == round) 
-                    //&& dd["playername"].ToString() != name) TODO: this may work better as a setting called "allow me to play against my previous rosters"
-                    filteredDraftData.Add(dd);
-            }
-
             System.Random rnd = new System.Random();
-            int randomNumber = rnd.Next(filteredDraftData.Count);
-            var randomfdd = filteredDraftData[randomNumber];
+            int randomNumber = rnd.Next(draftData.Count);
+            var randomfdd = draftData[randomNumber];
 
             foreach (var jsonUnitDetail in randomfdd["UnitDetails"])
             {
@@ -60,8 +66,8 @@ public static class OpponentGeneration
         }
         catch (Exception ex)
         {
-            Debug.Log($"there was an exception {ex} generating the opponet from the friendpaste data");
-            Debug.Log("reverting to random opponent generation");
+            Debug.Log($"There was an exception {ex} generating the opponent from the friendpaste data");
+            Debug.Log("Reverting to random opponent generation");
             GenerateRandom();
         }
         finally
