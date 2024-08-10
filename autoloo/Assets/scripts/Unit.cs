@@ -143,12 +143,6 @@ public class Unit : MonoBehaviour
     public Sprite Rsprite;
     public Sprite Lspritebackground;
     public Sprite Rspritebackground;
-    //for infantry fight effects, left/right is decided dynamically by fliping the sprite renderer x property
-    public bool showEffect = false;
-    public Sprite fightEffect1;
-    public Sprite fightEffect2;
-    public Sprite fightEffect3;
-    public Sprite fightEffect4;
     //Stats display START
     public TextMeshPro textAttack = new();
     public TextMeshPro textHitPoints = new();
@@ -224,7 +218,7 @@ public class Unit : MonoBehaviour
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); };
         //formerly in OnHitPointsChanged:  gameManager.floatyNumber.SpawnFloatingNumber(delta, transform.position, (delta < 0));
         OnCostChanged += (e) => textCost.text = Cost.ToString();
-        OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); };
+        OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); if (Deployed && GetComponent<Scout>() != null && side == gameManager.playerSide) { GetComponent<Scout>().Report(); } };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
         OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {isSkirmisher}");
@@ -374,10 +368,6 @@ public class Unit : MonoBehaviour
         if (inMoveMode)
         { 
             Move();
-        }
-        if (showEffect)
-        {
-            ShowFightEffects();
         }
     }
 
@@ -598,96 +588,6 @@ public class Unit : MonoBehaviour
             Rank = Rank,
             IsSkirmisher = isSkirmisher
         };
-    }
-    public void ShowFightEffects()
-    {
-        if (!isCavalry)
-        {
-            switch (effectFrame)
-            {
-                case 1:
-                    ShowEffect1();
-                    break;
-                case 5:
-                    ShowEffect2();
-                    break;
-            }
-        }
-        
-        if (isCavalry)
-        {
-            switch (effectFrame)
-            {
-                case 1:
-                    ShowEffect1();
-                    break;
-                case 5:
-                    ShowEffect2();
-                    break;
-                case 8:
-                    ShowEffect3();
-                    break;
-                case 10:
-                    ShowEffect4();
-                    break;
-            }
-        }
-
-        effectFrame++;
-        
-        if (!isCavalry)
-        {
-            if (effectFrame > 20)
-            {
-                HideEffect();
-            }
-            else
-            {
-                //fade
-                float effectRatio = (float)(20 - effectFrame) / 20;
-                effectsComponent.color = new Color(effectsComponent.color.r, effectsComponent.color.g, effectsComponent.color.b, effectRatio);
-
-            }
-        }
-
-        if (isCavalry)
-        {
-            if (effectFrame > 12)
-            {
-                HideEffect();
-            }
-        }
-    }
-
-    private void ShowEffect1()
-    {
-        effectsComponent.enabled = true;
-        effectsComponent.sprite = fightEffect1;
-        var uniteffectscomponentspritename = effectsComponent.sprite.name;
-        effectsComponent.transform.position = gameObject.transform.position +  ((side == "left") ? effectPlacementLeft : effectPlacementRight);
-    }
-
-    private void ShowEffect2()
-    {
-        effectsComponent.sprite = fightEffect2;
-    }
-
-    private void ShowEffect3()
-    {
-        effectsComponent.sprite = fightEffect2;
-    }
-
-    private void ShowEffect4()
-    {
-        effectsComponent.sprite = fightEffect2;
-    }
-
-    private void HideEffect()
-    {
-        showEffect = false;
-        effectsComponent.enabled = false;
-        effectFrame = 0;
-        effectsComponent.color = new Color(255, 255, 255, 255);
     }
 
     public int ComputeHitPointsFromFoumulaString(int baseUnitRank)

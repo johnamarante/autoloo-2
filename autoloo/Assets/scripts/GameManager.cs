@@ -465,6 +465,7 @@ public class GameManager : MonoBehaviour
             //reset the cycle
             roundCycle = 0;
             BattleModeBoolSwitchesReset();
+            StartCoroutine(deployment.GetOpponentDraftData());
         }
     }
 
@@ -531,30 +532,6 @@ public class GameManager : MonoBehaviour
             floatyNumber.SpawnFloatingNumber(-rightUnitTakeDamage, rightUnits[0].transform.position);
             leftUnits[0].cycle++;
             rightUnits[0].cycle++;
-        }
-    }
-
-    private void FightEffects(ref List<Unit> leftUnits, ref List<Unit> rightUnits)
-    {
-        if (leftUnits.Count == 0 || rightUnits.Count == 0) return;
-
-        ApplyEffect(leftUnits[0]);
-        ApplyEffect(rightUnits[0]);
-    }
-
-    private void ApplyEffect(Unit unit)
-    {
-        if (unit.GetComponent<Artillery>())
-        {
-            unit.GetComponent<Artillery>().ShowEffect();
-        }
-        else
-        {
-            PlayTransientAudioClip(unit.acAttackSFX);
-            if (!unit.GetComponent<Artillery>())
-            {
-                unit.showEffect = true;
-            }
         }
     }
 

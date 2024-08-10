@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &616919038 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7776559494113499659, guid: aa4a061241374984ba34d12b550f50a9, type: 3}
-  m_PrefabInstance: {fileID: 7776559493513934325}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &958270543
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +228,7 @@ GameObject:
   - component: {fileID: 1520822398}
   - component: {fileID: 1520822397}
   - component: {fileID: 1520822396}
-  - component: {fileID: 1520822395}
+  - component: {fileID: 1520822399}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -241,19 +236,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1520822395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520822394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b45245f43d6c94d87f5c804a327c18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberPrefab: {fileID: 616919038}
 --- !u!81 &1520822396
 AudioListener:
   m_ObjectHideFlags: 0
@@ -288,7 +270,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -320,6 +302,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520822399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520822394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0beda8ea937abd4e9d4f9c6023fb371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteQuestionMark: {fileID: 3286163911610860551, guid: 952bafd4371aa7643b52df87fa2cbf9e, type: 3}
+  spriteOne: {fileID: 3286163911610860551, guid: 6fc777eccdeb310408faca1f8075206b, type: 3}
+  spriteTwo: {fileID: 3286163911610860551, guid: 0fbf39a2d8ae82f4aaa7b3a584273e59, type: 3}
 --- !u!1001 &2235842690795075155
 PrefabInstance:
   m_ObjectHideFlags: 0

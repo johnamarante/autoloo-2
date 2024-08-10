@@ -389,6 +389,8 @@
 "Assets/scripts/OpponentGeneration.cs"
 "Assets/scripts/PulseHover.cs"
 "Assets/scripts/ResultPopup.cs"
+"Assets/scripts/Scout.cs"
+"Assets/scripts/ScoutReportItem.cs"
 "Assets/scripts/Skirmish.cs"
 "Assets/scripts/StoreAndLoadArmyDetails.cs"
 "Assets/scripts/TitleScene.cs"

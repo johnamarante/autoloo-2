@@ -861,6 +861,7 @@ GameObject:
   - component: {fileID: 9063886343762718628}
   - component: {fileID: 1337104240977491902}
   - component: {fileID: 5007936342368452441}
+  - component: {fileID: 2842950336271301404}
   m_Layer: 0
   m_Name: british_socttsgreys
   m_TagString: Untagged
@@ -934,11 +935,6 @@ MonoBehaviour:
   Rsprite: {fileID: 3286163911610860551, guid: d8f390eb3a4806c48b46e0c7a05d3842, type: 3}
   Lspritebackground: {fileID: 0}
   Rspritebackground: {fileID: 0}
-  showEffect: 0
-  fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
-  fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
-  fightEffect3: {fileID: 0}
-  fightEffect4: {fileID: 0}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -994,6 +990,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
+--- !u!114 &2842950336271301404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4984666429566146782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0beda8ea937abd4e9d4f9c6023fb371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  questionMark: {fileID: 3286163911610860551, guid: 952bafd4371aa7643b52df87fa2cbf9e, type: 3}
 --- !u!1 &5527538588742443612
 GameObject:
   m_ObjectHideFlags: 0

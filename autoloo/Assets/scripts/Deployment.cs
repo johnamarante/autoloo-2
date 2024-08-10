@@ -34,7 +34,7 @@ public class Deployment : MonoBehaviour
     public Texture btnFreeze;
     public Texture btnSell;
     public Texture btnRoll;
-    public JArray opponentDraftData;
+    public JToken opponentDraftData;
     private bool checkOpponentGenerationCompleted = false;
     private bool endTurnButtonClicked = false;
 
@@ -129,6 +129,13 @@ public class Deployment : MonoBehaviour
                     endTurnButtonClicked = true;
                     checkOpponentGenerationCompleted = true;
                     OpponentGeneration.GenerateFromDraftData(gameManager, opponentDraftData);
+                    opponentDraftData = null;
+                    //clear the scout report
+                    var report = Camera.main.gameObject.transform.Find("ScoutReport");
+                    for (int i = 0; i < report.childCount; i++)
+                    {
+                        report.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;
+                    }
                 }
                 else
                 {
@@ -167,7 +174,7 @@ public class Deployment : MonoBehaviour
         }
     }
 
-    private IEnumerator GetOpponentDraftData()
+    public IEnumerator GetOpponentDraftData()
     {
         if (opponentDraftData == null)
         {

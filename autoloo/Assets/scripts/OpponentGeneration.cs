@@ -21,7 +21,7 @@ public static class OpponentGeneration
         }
     }
 
-    public static async Task<JArray> GetDraftDataAsync(string name, int round, int wins, int losses)
+    public static async Task<JToken> GetDraftDataAsync(string name, int round, int wins, int losses)
     {
         var gameManager = (GameManager)UnityEngine.Object.FindObjectOfType(typeof(GameManager));
         var rosterName = gameManager.RightUnitRoster[0].name.Split('_')[0];
@@ -41,17 +41,17 @@ public static class OpponentGeneration
                 filteredDraftData.Add(dd);
         }
 
-        return filteredDraftData;
+        //return filteredDraftData;
+        System.Random rnd = new System.Random();
+        int randomNumber = rnd.Next(draftData.Count);
+        var randomfdd = draftData[randomNumber];
+        return randomfdd;
     }
 
-    public static void GenerateFromDraftData(GameManager gameManager, JArray draftData)
+    public static void GenerateFromDraftData(GameManager gameManager, JToken randomfdd)
     {
         try
         {
-            System.Random rnd = new System.Random();
-            int randomNumber = rnd.Next(draftData.Count);
-            var randomfdd = draftData[randomNumber];
-
             foreach (var jsonUnitDetail in randomfdd["UnitDetails"])
             {
                 try
