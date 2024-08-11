@@ -218,8 +218,8 @@ public class Unit : MonoBehaviour
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); };
         //formerly in OnHitPointsChanged:  gameManager.floatyNumber.SpawnFloatingNumber(delta, transform.position, (delta < 0));
         OnCostChanged += (e) => textCost.text = Cost.ToString();
-        OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); if (Deployed && GetComponent<Scout>() != null && side == gameManager.playerSide) { GetComponent<Scout>().Report(); } };
-        OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); };
+        OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); ScoutCheckAndReport(); };
+        OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
         OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {isSkirmisher}");
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
@@ -243,6 +243,14 @@ public class Unit : MonoBehaviour
         catch (Exception ex)
         {
             Debug.Log(ex.ToString());
+        }
+    }
+
+    private void ScoutCheckAndReport()
+    {
+        var scoutComponent = GetComponent<Scout>();
+        if (Deployed && scoutComponent != null && side == gameManager.playerSide) {
+            scoutComponent.Report(); 
         }
     }
 

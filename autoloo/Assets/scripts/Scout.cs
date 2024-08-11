@@ -30,7 +30,7 @@ public class Scout : MonoBehaviour
         //    var opposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]));
         //}
         int iterationCount = 0;
-        foreach (var unitDetail in opponentDraftData["UnitDetails"])
+        foreach (var opposingUnitDetail in opponentDraftData["UnitDetails"])
         {
             iterationCount++;
             if (iterationCount > report.childCount)
@@ -38,10 +38,18 @@ public class Scout : MonoBehaviour
                 break;
             }
 
-            string unitName = unitDetail["Name"].ToString();
-            Debug.Log(unitName);
-            var opposingUnit = unit.gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]);
-            report.Find(iterationCount.ToString()).GetComponent<SpriteRenderer>().sprite = (opposingUnit.Rspritebackground == null ? opposingUnit.Rsprite : opposingUnit.Rspritebackground);
+            string opposingUnitName = opposingUnitDetail["Name"].ToString();
+            int opposingunitRank = (int)opposingUnitDetail["Rank"];
+            var opposingUnit = unit.gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == opposingUnitName.Split('_')[1]);
+            Debug.Log($"fount {opposingUnitName} of rank {opposingunitRank}");            
+            if (opposingunitRank > unit.Rank)
+            {
+                report.Find(iterationCount.ToString()).GetComponent<SpriteRenderer>().sprite = questionMark;
+            }
+            else {
+                report.Find(iterationCount.ToString()).GetComponent<SpriteRenderer>().sprite = (opposingUnit.Rspritebackground == null ? opposingUnit.Rsprite : opposingUnit.Rspritebackground);
+            }
+            
         }
     }
 }

@@ -131,11 +131,7 @@ public class Deployment : MonoBehaviour
                     OpponentGeneration.GenerateFromDraftData(gameManager, opponentDraftData);
                     opponentDraftData = null;
                     //clear the scout report
-                    var report = Camera.main.gameObject.transform.Find("ScoutReport");
-                    for (int i = 0; i < report.childCount; i++)
-                    {
-                        report.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;
-                    }
+                    ClearScoutReport();
                 }
                 else
                 {
@@ -171,6 +167,15 @@ public class Deployment : MonoBehaviour
             {
                 endTurnButtonClicked = false;
             }
+        }
+    }
+
+    private static void ClearScoutReport()
+    {
+        var report = Camera.main.gameObject.transform.Find("ScoutReport");
+        for (int i = 0; i < report.childCount; i++)
+        {
+            report.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;
         }
     }
 
