@@ -95,15 +95,14 @@ public class Unit : MonoBehaviour
     public Action<int> OnQueuePositionChanged;
 
     public bool _deployed = false;
-    public bool Deployed 
+    public bool Deployed
     {
         get { return _deployed; }
         set
         {
-            _deployed = value;
-            if (this?.OnDeployedChanged != null)
+            if (_deployed != value)
             {
-                //the Deployed property is always true for an already deployed unit
+                _deployed = value;
                 this?.OnDeployedChanged(_deployed);
             }
         }
