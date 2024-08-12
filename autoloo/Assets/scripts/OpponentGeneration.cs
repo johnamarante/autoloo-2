@@ -78,17 +78,16 @@ public static class OpponentGeneration
 
     private static void InstantiateUnit(GameManager gameManager, JToken jsonUnitDetail)
     {
-        var unitName = (string)jsonUnitDetail["Name"];
-        var opposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]));
-        opposingUnit.GetComponent<Unit>().Deployed = true;
-        opposingUnit._attack = (int)jsonUnitDetail["Attack"]; ;
-        opposingUnit._rank = (int)jsonUnitDetail["Rank"];
-        opposingUnit._hitPoints = (int)jsonUnitDetail["HitPoints"];
-        opposingUnit._queuePosition = (int)jsonUnitDetail["QueuePosition"];
-        opposingUnit.name = unitName;
-        try 
-        { 
-            opposingUnit._IsSkirmisher = (bool)jsonUnitDetail["SkirmishMode"]; 
+        try
+        {
+            var unitName = (string)jsonUnitDetail["Name"];
+            var opposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]));
+            opposingUnit.GetComponent<Unit>().Deployed = true;
+            opposingUnit._attack = (int)jsonUnitDetail["Attack"]; ;
+            opposingUnit._rank = (int)jsonUnitDetail["Rank"];
+            opposingUnit._hitPoints = (int)jsonUnitDetail["HitPoints"];
+            opposingUnit._queuePosition = (int)jsonUnitDetail["QueuePosition"];
+            opposingUnit.name = unitName;
         } 
         catch (Exception ex) 
         { 
