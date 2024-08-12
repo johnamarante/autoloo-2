@@ -85,9 +85,9 @@ public class Unit : MonoBehaviour
         get {return _queuePosition;}
         set
         {
-            _queuePosition = value;
-            if (this?.OnQueuePositionChanged != null)
+            if (_queuePosition != value)
             {
+                _queuePosition = value;
                 this?.OnQueuePositionChanged(_queuePosition);
             }
         }
@@ -115,9 +115,9 @@ public class Unit : MonoBehaviour
         get { return _freezed;  }
         set 
         {
-            _freezed = value;
-            if (this?.OnFreezedChanged != null)
+            if (_freezed != value)
             {
+                _freezed = value;
                 this?.OnFreezedChanged(_freezed);
             }
         }
@@ -166,9 +166,9 @@ public class Unit : MonoBehaviour
         get { return _squared; }
         set
         {
-            _squared = value;
-            if (this?.OnSquaredChanged != null)
+            if (_squared != value)
             {
+                _squared = value;
                 this?.OnSquaredChanged(_squared);
             }
         }
@@ -181,9 +181,9 @@ public class Unit : MonoBehaviour
         get { return _IsSkirmisher; }
         set
         {
-            _IsSkirmisher = value;
-            if (this?.OnIsSkirmisherChanged != null)
+            if (_IsSkirmisher != value)
             {
+                _IsSkirmisher = value;
                 this?.OnIsSkirmisherChanged(_IsSkirmisher);
             }
         }
