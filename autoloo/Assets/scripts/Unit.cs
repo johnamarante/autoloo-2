@@ -10,42 +10,49 @@ public class Unit : MonoBehaviour
 {
     public GameManager gameManager;
     public int Chance = 0;
+    public Action<int> OnCostChanged;
     public int _cost;
     public int Cost
     {
         get { return _cost; }
         set
         {
+            if (OnCostChanged != null)
+            {
+                this?.OnCostChanged(value);
+            }
             _cost = value;
-            this?.OnCostChanged(_cost);
         }
     }
-    public Action<int> OnCostChanged;
-
+    public Action<int> OnAttackChanged;
     public int _attack;
     public int Attack
     {
         get { return _attack; }
         set
         {
+            if (OnAttackChanged != null)
+            {
+                this?.OnAttackChanged(value);
+            }
             _attack = value;
-            this?.OnAttackChanged(_attack);
         }
     }
-    public Action<int> OnAttackChanged;
-
+    public Action<int> OnAttackBonusChanged;
     public int _attackBonus;
     public int AttackBonus
     {
         get { return _attackBonus; }
         set
         {
+            if (OnAttackBonusChanged != null)
+            {
+                this?.OnAttackBonusChanged(value);
+            }
             _attackBonus = value;
-            this?.OnAttackBonusChanged(_attackBonus);
         }
     }
-    public Action<int> OnAttackBonusChanged;
-
+    public Action<int, int> OnHitPointsChanged;
     public int _hitPoints;
     public int HitPoints
     {
@@ -53,20 +60,25 @@ public class Unit : MonoBehaviour
         set
         {
             var delta = value - _hitPoints;
+            if (OnHitPointsChanged != null)
+            {
+                this?.OnHitPointsChanged(value, delta);
+            }
             _hitPoints = value;
-            this?.OnHitPointsChanged(_hitPoints, delta);
         }
     }
-    public Action<int,int> OnHitPointsChanged;
-
+    public Action<int> OnRankChanged;
     public int _rank = 0;
     public int Rank
     {
         get { return _rank; }
         set
         {
+            if (OnRankChanged != null)
+            {
+                this?.OnRankChanged(value);
+            }
             _rank = value;
-            this?.OnRankChanged(_rank);
         }
     }
     public int MaxUnitRank = 9;
@@ -74,26 +86,25 @@ public class Unit : MonoBehaviour
     public int GrenadierUnlockRank = 99;
     public string hitPointsFormula = "1";
     public string attackFormula = "1";
-    public Action<int> OnRankChanged;
     public string side = "";
     public int tier = 1;
     public Font myFont;
     public int effectFrame = 0;
+    public Action<int> OnQueuePositionChanged;
     public int _queuePosition = 0;
     public int QueuePosition
     {
         get {return _queuePosition;}
         set
         {
-            if (_queuePosition != value)
+            if (OnQueuePositionChanged != null && _queuePosition != value)
             {
-                _queuePosition = value;
-                this?.OnQueuePositionChanged(_queuePosition);
+                this?.OnQueuePositionChanged(value);
             }
+            _queuePosition = value;
         }
     }
-    public Action<int> OnQueuePositionChanged;
-
+    public Action<bool> OnDeployedChanged;
     public bool _deployed = false;
     public bool Deployed
     {
@@ -102,13 +113,12 @@ public class Unit : MonoBehaviour
         {
             if (_deployed != value)
             {
-                _deployed = value;
-                this?.OnDeployedChanged(_deployed);
+                this?.OnDeployedChanged(value);
             }
+            _deployed = value;
         }
     }
-    public Action<bool> OnDeployedChanged;
-
+    public Action<bool> OnFreezedChanged;
     public bool _freezed = false;
     public bool Freezed
     {
@@ -117,12 +127,12 @@ public class Unit : MonoBehaviour
         {
             if (_freezed != value)
             {
-                _freezed = value;
-                this?.OnFreezedChanged(_freezed);
+                this?.OnFreezedChanged(value);
             }
+            _freezed = value;
         }
     }
-    public Action<bool> OnFreezedChanged;
+
     public int cycle = 1;
     public string spriteName;
     //Lerping START
@@ -160,6 +170,7 @@ public class Unit : MonoBehaviour
     public AudioClip acAttackSFX;
     public bool canFormSquare = false;
     public bool isCavalry = false;
+    public Action<bool> OnSquaredChanged;
     public bool _squared = false;
     public bool Squared
     {
@@ -168,13 +179,14 @@ public class Unit : MonoBehaviour
         {
             if (_squared != value)
             {
-                _squared = value;
-                this?.OnSquaredChanged(_squared);
+                this?.OnSquaredChanged(value);
             }
+            _squared = value;
         }
     }
-    public Action<bool> OnSquaredChanged;
+
     public AudioClip acFormSquare;
+    public Action<bool> OnIsSkirmisherChanged;
     public bool _IsSkirmisher = false;
     public bool isSkirmisher
     {
@@ -183,12 +195,12 @@ public class Unit : MonoBehaviour
         {
             if (_IsSkirmisher != value)
             {
-                _IsSkirmisher = value;
-                this?.OnIsSkirmisherChanged(_IsSkirmisher);
+                this?.OnIsSkirmisherChanged(value);
             }
+            _IsSkirmisher = value;
         }
     }
-    public Action<bool> OnIsSkirmisherChanged;
+
 
     void Awake()
     {
@@ -216,10 +228,9 @@ public class Unit : MonoBehaviour
         OnAttackChanged += (e) => textAttack.text = (Attack + AttackBonus).ToString();
         OnAttackBonusChanged += (e) => { if (AttackBonus > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); };
-        //formerly in OnHitPointsChanged:  gameManager.floatyNumber.SpawnFloatingNumber(delta, transform.position, (delta < 0));
         OnCostChanged += (e) => textCost.text = Cost.ToString();
-        OnDeployedChanged += (e) => { costComponent.SetActive(!Deployed); rankComponent.SetActive(Deployed); ScoutCheckAndReport(); };
-        OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(); };
+        OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); };
+        OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(Deployed); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
         OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {isSkirmisher}");
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
@@ -246,10 +257,10 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void ScoutCheckAndReport()
+    private void ScoutCheckAndReport(bool isDeployed)
     {
         var scoutComponent = GetComponent<Scout>();
-        if (Deployed && scoutComponent != null && side == gameManager.playerSide) {
+        if (isDeployed && scoutComponent != null && side == gameManager.playerSide) {
             scoutComponent.Report(); 
         }
     }
@@ -359,6 +370,7 @@ public class Unit : MonoBehaviour
                 costComponent = component.gameObject;
                 textCost = (TextMeshPro)component;
                 textCost.text = Cost.ToString();
+                costComponent.gameObject.SetActive(false);
             }
             if (component.name == "Rank")
             {

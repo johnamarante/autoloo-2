@@ -69,7 +69,8 @@ public class GameManager : MonoBehaviour
     public string developerMessage;
     public float notificationExpireTime = 0f;
     public float unitLerpSpeed = 90.0F;
-    public float resultDisplayTime = 3.0f;
+    public float postRoundWaitTime = 3.0f;
+    public float fadeHandlerWaitTime = 0.5f;
     public string notification;
 
     // Start is called before the first frame update
@@ -135,27 +136,27 @@ public class GameManager : MonoBehaviour
     private void PlayAsBritian()
     {
         LeftUnitRoster = BritishUnitRoster;
-        foreach (var un in LeftUnitRoster)
+        foreach (var unit in LeftUnitRoster)
         {
-            un.side = "left";
+            unit.side = "left";
         }
         RightUnitRoster = FrenchUnitRoster;
-        foreach (var un in RightUnitRoster)
+        foreach (var unit in RightUnitRoster)
         {
-            un.side = "right";
+            unit.side = "right";
         }
     }
     private void PlayAsFrance()
     {
         LeftUnitRoster = FrenchUnitRoster;
-        foreach (var un in LeftUnitRoster)
+        foreach (var unit in LeftUnitRoster)
         {
-            un.side = "left";
+            unit.side = "left";
         }
         RightUnitRoster = BritishUnitRoster;
-        foreach (var un in RightUnitRoster)
+        foreach (var unit in RightUnitRoster)
         {
-            un.side = "right";
+            unit.side = "right";
         }
     }
 
@@ -217,6 +218,7 @@ public class GameManager : MonoBehaviour
                 {
                     ShowResultPopup(potentialResult);
                     InBattleModeAndNotDeploymentMode = false;
+                    StartCoroutine(FadeOutHandler());
                     StartCoroutine(PostRoundCleanup(potentialResult));
                 }
                 var activeCannonballsCount = FindObjectsOfType<Cannonball>().Length;
@@ -242,6 +244,7 @@ public class GameManager : MonoBehaviour
                 {
                     ShowResultPopup(potentialResult);
                     InBattleModeAndNotDeploymentMode = false;
+                    StartCoroutine(FadeOutHandler());
                     StartCoroutine(PostRoundCleanup(potentialResult));
                 }
                 roundCycle++;
@@ -465,10 +468,21 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    public IEnumerator FadeOutHandler()
+    {
+        yield return new WaitForSeconds(fadeHandlerWaitTime);
+        cameraControl.FadeOut();
+    }
+
+    public IEnumerator FadeInHandler()
+    {
+        yield return new WaitForSeconds(fadeHandlerWaitTime);
+        cameraControl.FadeIn();
+    }
+
     public IEnumerator PostRoundCleanup(string resultText)
     {
-        cameraControl.FadeOut();
-        yield return new WaitForSeconds(resultDisplayTime);
+        yield return new WaitForSeconds(postRoundWaitTime);
         autolooPlayerData.ClearUnitDetails();
         CleanupBattlefield();        
         cameraControl.Move(cameraPositions[-1]);
@@ -487,8 +501,8 @@ public class GameManager : MonoBehaviour
         //reset the cycle
         roundCycle = 0;
         BattleModeBoolSwitchesReset();
+        StartCoroutine(FadeInHandler());
         StartCoroutine(deployment.GetOpponentDraftData());
-        cameraControl.FadeIn();
     }
 
     void ShowResultPopup(string resultText)
@@ -497,7 +511,7 @@ public class GameManager : MonoBehaviour
         var result = Instantiate(resultPopup);
         result.displayText = resultText;
         result.gameManager = this;
-        result.delayBeforeSelfDestruct = resultDisplayTime;
+        result.delayBeforeSelfDestruct = postRoundWaitTime;
     }
 
     void AdjustSelectedUnitPosition()

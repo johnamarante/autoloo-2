@@ -192,7 +192,7 @@ public class Deployment : MonoBehaviour
     private void SetupBattle()
     {
         gameManager.Deselect();
-        Camera.main.GetComponent<CameraControl>().Move(gameManager.cameraPositions[0]);
+        gameManager.cameraControl.Move(gameManager.cameraPositions[0]);
         gameManager.InBattleModeAndNotDeploymentMode = true;
         gameManager.actionTime = Time.time + gameManager.period;
 

@@ -9,7 +9,7 @@ public class CameraControl : MonoBehaviour
     public Vector3 startMarker;
     public Vector3 endMarker;
     // Movement speed in units per second.
-    public float speed = 40.0F;
+    public float speed = 200.0F;
     // Time when the movement started.
     private float startTime;
     // Total distance between the markers.
@@ -85,7 +85,7 @@ public class CameraControl : MonoBehaviour
 
     private IEnumerator Fade(float startAlpha, float endAlpha)
     {
-        float duration = 0.5f; // 0.5 second fade
+        float duration = 0.5f;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)

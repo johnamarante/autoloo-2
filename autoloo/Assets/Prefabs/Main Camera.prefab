@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 40
+  speed: 200
   gameManager: {fileID: 0}
 --- !u!114 &3325327104187711965
 MonoBehaviour:
