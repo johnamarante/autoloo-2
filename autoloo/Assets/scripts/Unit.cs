@@ -130,7 +130,7 @@ public class Unit : MonoBehaviour
     public Vector3 startMarker;
     public Vector3 endMarker;
     // Movement speed in units per second.
-    public float speed = 40.0F;
+    
     // Time when the movement started.
     private float startTime;
     // Total distance between the markers.
@@ -213,6 +213,7 @@ public class Unit : MonoBehaviour
     {
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         SetUnitStatsDisplay();
+        isCavalry = GetComponent<Cavalry>();
         OnAttackChanged += (e) => textAttack.text = (Attack + AttackBonus).ToString();
         OnAttackBonusChanged += (e) => { if (AttackBonus > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); };
@@ -382,7 +383,7 @@ public class Unit : MonoBehaviour
     private void Move()
     {
         // Distance moved equals elapsed time times speed..
-        float distCovered = (Time.time - startTime) * speed;
+        float distCovered = (Time.time - startTime) * gameManager.unitLerpSpeed;
 
         // Fraction of journey completed equals current distance divided by total distance.
         // Only compute if journeyLength > 0, otherwise take out of move mode

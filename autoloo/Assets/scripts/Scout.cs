@@ -22,13 +22,6 @@ public class Scout : MonoBehaviour
         Debug.Log("Scout report");
         var report = Camera.main.gameObject.transform.Find("ScoutReport");
         var opponentDraftData = unit.gameManager.deployment.opponentDraftData;
-        //for (int i = 0; i < report.childCount; i++)
-        //{
-        //    var opponentDraftData = unit.gameManager.deployment.opponentDraftData;
-        //    Debug.Log(opponentDraftData);
-        //    var unitName = (string)opponentDraftData["Name"];
-        //    var opposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]));
-        //}
         int iterationCount = 0;
         foreach (var opposingUnitDetail in opponentDraftData["UnitDetails"])
         {

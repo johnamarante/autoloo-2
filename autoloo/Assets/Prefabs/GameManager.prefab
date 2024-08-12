@@ -66,10 +66,9 @@ MonoBehaviour:
   period: 4
   realFPS: 60
   cleanupFrame: 30
-  guiFontSize: 20
-  multiplayer: 0
   playerSide: 
   deployment: {fileID: 6085394689305071435, guid: c9f1ca05ce67d8144b451342644b7de2, type: 3}
+  floatyNumber: {fileID: 0}
   rankSprites:
   - {fileID: 3286163911610860551, guid: 0a4407356777fe84a9b16d72bce7f362, type: 3}
   - {fileID: 3286163911610860551, guid: 6fc777eccdeb310408faca1f8075206b, type: 3}
@@ -83,7 +82,11 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: 0fda0ebd5d589fe4880e945e8f325f0e, type: 3}
   _InBattleModeAndNotDeploymentMode: 0
   preBattlePhaseFired: 0
-  preBattlePhaseCleanupFired: 0
+  preBattlePhaseProcessAndCleanupFired: 0
+  preBattlePhaseProcessAndCleanupCompleted: 0
+  battlePhaseFired: 0
+  battlePhaseProcessAndCleanupFired: 0
+  battlePhaseProcessAndCleanupCompleted: 0
   melee8: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
   distBattle1AudioClips:
   - {fileID: 8300000, guid: d56976a342f3c214a8f53b668c689087, type: 3}
@@ -105,13 +108,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 273ae2e88921da0439b323c902a10e8d, type: 3}
   - {fileID: 8300000, guid: ff47899cd9ff7f348b3d85859efc6e38, type: 3}
   - {fileID: 8300000, guid: c461a93515b4a0644b6b8837db97817c, type: 3}
+  generalAudioSource: {fileID: 0}
+  cameraControl: {fileID: 0}
   _selectedUnit: {fileID: 0}
   resultPopup: {fileID: 5818834965362523167, guid: d80b0c52b06658f4d89600e74a7bd916, type: 3}
   autolooPlayerData: {fileID: 0}
   roundNumber: 1
-  cycle: 1
+  roundCycle: 1
   WIN: 0
   LOSS: 0
+  developerMessage: 
+  notificationExpireTime: 0
+  unitLerpSpeed: 100
+  notification: 
 --- !u!222 &755904350544477790
 CanvasRenderer:
   m_ObjectHideFlags: 0

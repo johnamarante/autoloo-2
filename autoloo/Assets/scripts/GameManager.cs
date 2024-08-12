@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
     private int rightUnitTakeDamage = 0;
     public string developerMessage;
     public float notificationExpireTime = 0f;
+    public float unitLerpSpeed = 90.0F;
+    public float resultDisplayTime = 3.0f;
     public string notification;
 
     // Start is called before the first frame update
@@ -210,10 +212,15 @@ public class GameManager : MonoBehaviour
                 Debug.Log("C");
                 //PRE BATTLE PHASE CLEANUP (FIRST CLEANUP)
                 GrenadiersCheck();
-                Cleanup();
-                CheckForAndHandleBattleResult();
+                PostCycleCleanup();
+                if (CheckForAndHandleBattleResult(out string potentialResult) && potentialResult != null)
+                {
+                    ShowResultPopup(potentialResult);
+                    InBattleModeAndNotDeploymentMode = false;
+                    StartCoroutine(PostRoundCleanup(potentialResult));
+                }
                 var activeCannonballsCount = FindObjectsOfType<Cannonball>().Length;
-                preBattlePhaseProcessAndCleanupCompleted = activeCannonballsCount == 0;
+                preBattlePhaseProcessAndCleanupCompleted = (activeCannonballsCount == 0);
             }
             if (Time.time > (actionTime + ((period / 2))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && !battlePhaseFired)
             {
@@ -230,8 +237,13 @@ public class GameManager : MonoBehaviour
                 Debug.Log("E");
                 Fight(ref LeftQueueUnits, ref RightQueueUnits);
                 GrenadiersCheck();
-                Cleanup();
-                CheckForAndHandleBattleResult();
+                PostCycleCleanup();
+                if (CheckForAndHandleBattleResult(out string potentialResult) && potentialResult != null)
+                {
+                    ShowResultPopup(potentialResult);
+                    InBattleModeAndNotDeploymentMode = false;
+                    StartCoroutine(PostRoundCleanup(potentialResult));
+                }
                 roundCycle++;
                 battlePhaseProcessAndCleanupFired = true;
             }
@@ -342,6 +354,7 @@ public class GameManager : MonoBehaviour
     public void SquareCheck(Unit unitA, Unit unitB)
     {
         //Avoid firing the change event if there is no actual change
+        //there is a round, weithin a round several cycles, and to each unit, several cycles, the first starting when that unit is at the front
         bool newSquaredValue = (roundCycle <= 1 || unitA.cycle > 1)
                                && unitA.canFormSquare && !unitA.isSkirmisher
                                && unitB.isCavalry;
@@ -416,7 +429,7 @@ public class GameManager : MonoBehaviour
         return grenadierUnits;
     }
 
-    public void Cleanup()
+    public void PostCycleCleanup()
     {
         List<int> leftEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref LeftQueueUnits);
         List<int> rightEliminatedIndices = EliminateUnitsWithZeroHitPoints(ref RightQueueUnits);
@@ -440,33 +453,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckForAndHandleBattleResult()
+    public bool CheckForAndHandleBattleResult(out string result)
     {
         if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
         {
-            string resultText = (LeftQueueUnits.Count == 0) ? (RightQueueUnits.Count == 0 ? "DRAW" : "LOSS") : "WIN!";
-            ShowResultPopup(resultText);
-            autolooPlayerData.ClearUnitDetails();
-            CleanupBattlefield();
-            InBattleModeAndNotDeploymentMode = false;
-            cameraControl.Move(cameraPositions[-1]);
-            StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
-            roundNumber++;
-            deployment.Roll(false);
-            deployment.coin = 10;
-            if (resultText.StartsWith('W'))
-            {
-                WIN++;
-            }
-            else
-            {
-                LOSS++;
-            }
-            //reset the cycle
-            roundCycle = 0;
-            BattleModeBoolSwitchesReset();
-            StartCoroutine(deployment.GetOpponentDraftData());
+            result = (LeftQueueUnits.Count == 0) ? (RightQueueUnits.Count == 0 ? "DRAW" : "LOSS") : "WIN!";
+            return true;
+
         }
+        result = null;
+        return false;
+    }
+
+    public IEnumerator PostRoundCleanup(string resultText)
+    {
+        yield return new WaitForSeconds(resultDisplayTime);  // Wait for 1 second
+        autolooPlayerData.ClearUnitDetails();
+        CleanupBattlefield();        
+        cameraControl.Move(cameraPositions[-1]);
+        StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
+        roundNumber++;
+        deployment.Roll(false);
+        deployment.coin = 10;
+        if (resultText.StartsWith('W'))
+        {
+            WIN++;
+        }
+        else
+        {
+            LOSS++;
+        }
+        //reset the cycle
+        roundCycle = 0;
+        BattleModeBoolSwitchesReset();
+        StartCoroutine(deployment.GetOpponentDraftData());
     }
 
     void ShowResultPopup(string resultText)
@@ -475,6 +495,7 @@ public class GameManager : MonoBehaviour
         var result = Instantiate(resultPopup);
         result.displayText = resultText;
         result.gameManager = this;
+        result.delayBeforeSelfDestruct = resultDisplayTime;
     }
 
     void AdjustSelectedUnitPosition()

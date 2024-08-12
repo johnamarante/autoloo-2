@@ -97,7 +97,6 @@ public class Artillery : MonoBehaviour
 
     private static List<(double, double)> CannonballFlightpath(double muzzleVelocity, double weightInPounds, double targetDistance, int cannonballFrames)
     {
-        Debug.Log(cannonballFrames);
         List<(double, double)> flightpathPoints = new List<(double, double)>();
         // Constants
         const double gravitationalAcceleration = 9.81; // m/s^2, approximate value on Earth's surface
