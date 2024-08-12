@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour
@@ -17,11 +18,17 @@ public class CameraControl : MonoBehaviour
     //Lerping END
 
     public GameManager gameManager;
+    private SpriteRenderer fadeMask;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
+        fadeMask = gameObject.transform.Find("FadeMask").GetComponent<SpriteRenderer>();
+        // Ensure the CanvasGroup is fully visible at the start
+        Color color = fadeMask.color;
+        color.a = 0; // Set the alpha value
+        fadeMask.color = color;
     }
 
     // Update is called once per frame
@@ -63,4 +70,35 @@ public class CameraControl : MonoBehaviour
         journeyLength = Vector3.Distance(startMarker, endMarker);
         move = true;
     }
+
+    // Coroutine to fade out the screen
+    public void FadeOut()
+    {
+        StartCoroutine(Fade(0f, 1f)); // Fade from transparent to black
+    }
+
+    // Coroutine to fade in the screen
+    public void FadeIn()
+    {
+        StartCoroutine(Fade(1f, 0f)); // Fade from black to transparent
+    }
+
+    private IEnumerator Fade(float startAlpha, float endAlpha)
+    {
+        float duration = 0.5f; // 0.5 second fade
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            Color color1 = fadeMask.color;
+            color1.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+            fadeMask.color = color1;
+            yield return null;
+        }
+        Color color2 = fadeMask.color;
+        color2.a = endAlpha;
+        fadeMask.color = color2;
+    }
+
 }

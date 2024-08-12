@@ -467,7 +467,8 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator PostRoundCleanup(string resultText)
     {
-        yield return new WaitForSeconds(resultDisplayTime);  // Wait for 1 second
+        cameraControl.FadeOut();
+        yield return new WaitForSeconds(resultDisplayTime);
         autolooPlayerData.ClearUnitDetails();
         CleanupBattlefield();        
         cameraControl.Move(cameraPositions[-1]);
@@ -487,6 +488,7 @@ public class GameManager : MonoBehaviour
         roundCycle = 0;
         BattleModeBoolSwitchesReset();
         StartCoroutine(deployment.GetOpponentDraftData());
+        cameraControl.FadeIn();
     }
 
     void ShowResultPopup(string resultText)

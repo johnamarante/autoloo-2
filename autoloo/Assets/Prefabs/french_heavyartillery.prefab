@@ -1800,18 +1800,12 @@ MonoBehaviour:
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: 6e162aec88b1455468aca09ab0a8c861, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: 5b42d49d82d315c4889a94e471cbf23f, type: 3}
   Lspritebackground: {fileID: 3286163911610860551, guid: 531282701fe12ae42a353da1a36a8db3, type: 3}
   Rspritebackground: {fileID: 3286163911610860551, guid: bf9185c827f4cd347bd554ef8f9332bc, type: 3}
-  showEffect: 0
-  fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
-  fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
-  fightEffect3: {fileID: 0}
-  fightEffect4: {fileID: 0}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
