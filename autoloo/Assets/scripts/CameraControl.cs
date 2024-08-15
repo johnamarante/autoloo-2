@@ -69,21 +69,10 @@ public class CameraControl : MonoBehaviour
         // Calculate the journey length.
         journeyLength = Vector3.Distance(startMarker, endMarker);
         move = true;
+
     }
 
-    // Coroutine to fade out the screen
-    public void FadeOut()
-    {
-        StartCoroutine(Fade(0f, 1f)); // Fade from transparent to black
-    }
-
-    // Coroutine to fade in the screen
-    public void FadeIn()
-    {
-        StartCoroutine(Fade(1f, 0f)); // Fade from black to transparent
-    }
-
-    private IEnumerator Fade(float startAlpha, float endAlpha)
+    public IEnumerator FadeOutMoveFadeIn(Vector3 destination)
     {
         float duration = 0.5f;
         float elapsedTime = 0f;
@@ -91,14 +80,37 @@ public class CameraControl : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            Color color1 = fadeMask.color;
-            color1.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
-            fadeMask.color = color1;
+            Color color = fadeMask.color;
+            color.a = Mathf.Lerp(0f, 1f, elapsedTime / duration);
+            fadeMask.color = color;
             yield return null;
         }
-        Color color2 = fadeMask.color;
-        color2.a = endAlpha;
-        fadeMask.color = color2;
-    }
 
+        Color finalColor = fadeMask.color;
+        finalColor.a = 1f;
+        fadeMask.color = finalColor;
+
+
+        Move(destination);
+        while (move)
+        {
+            yield return null;
+        }
+
+        duration = 0.5f;
+        elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            Color color = fadeMask.color;
+            color.a = Mathf.Lerp(1f, 0f, elapsedTime / duration);
+            fadeMask.color = color;
+            yield return null;
+        }
+             
+        finalColor = fadeMask.color;
+        finalColor.a = 0f;
+        fadeMask.color = finalColor;
+
+    }
 }

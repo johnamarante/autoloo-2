@@ -45,11 +45,11 @@ public class Unit : MonoBehaviour
         get { return _attackBonus; }
         set
         {
+            _attackBonus = value;
             if (OnAttackBonusChanged != null)
             {
                 this?.OnAttackBonusChanged(value);
             }
-            _attackBonus = value;
         }
     }
     public Action<int, int> OnHitPointsChanged;
@@ -97,11 +97,11 @@ public class Unit : MonoBehaviour
         get {return _queuePosition;}
         set
         {
-            if (OnQueuePositionChanged != null && _queuePosition != value)
+            _queuePosition = value;
+            if (OnQueuePositionChanged != null)
             {
                 this?.OnQueuePositionChanged(value);
             }
-            _queuePosition = value;
         }
     }
     public Action<bool> OnDeployedChanged;
@@ -111,7 +111,7 @@ public class Unit : MonoBehaviour
         get { return _deployed; }
         set
         {
-            if (_deployed != value)
+            if (_deployed != value && OnDeployedChanged != null)
             {
                 this?.OnDeployedChanged(value);
             }
@@ -193,7 +193,7 @@ public class Unit : MonoBehaviour
         get { return _IsSkirmisher; }
         set
         {
-            if (_IsSkirmisher != value)
+            if (_IsSkirmisher != value && OnIsSkirmisherChanged != null)
             {
                 this?.OnIsSkirmisherChanged(value);
             }
@@ -225,14 +225,14 @@ public class Unit : MonoBehaviour
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         SetUnitStatsDisplay();
         isCavalry = GetComponent<Cavalry>();
-        OnAttackChanged += (e) => textAttack.text = (Attack + AttackBonus).ToString();
-        OnAttackBonusChanged += (e) => { if (AttackBonus > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
-        OnHitPointsChanged += (e, delta) => { textHitPoints.text = HitPoints.ToString(); };
-        OnCostChanged += (e) => textCost.text = Cost.ToString();
+        OnAttackChanged += (e) => textAttack.text = (e + AttackBonus).ToString();
+        OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
+        OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); };
+        OnCostChanged += (e) => textCost.text = e.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(Deployed); };
-        OnFreezedChanged += (e) => freezeComponent.SetActive(Freezed);
-        OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {isSkirmisher}");
+        OnFreezedChanged += (e) => freezeComponent.SetActive(e);
+        OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {e}");
         OnQueuePositionChanged += (e) => { ApplyQueuePositionChangeEffect(e); };
         rankComponent.SetActive(Deployed);
         CheckUnlocksOnStart();
@@ -248,7 +248,7 @@ public class Unit : MonoBehaviour
             squareComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgsquaresprite").FirstOrDefault();
             if (squareComponent != null)
             {
-                OnSquaredChanged += (e) => CalledWhenTheSquaredValueChanges();
+                OnSquaredChanged += (e) => CalledWhenTheSquaredValueChanges(e);
             }
         }
         catch (Exception ex)
@@ -295,10 +295,10 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void CalledWhenTheSquaredValueChanges()
+    private void CalledWhenTheSquaredValueChanges(bool e)
     {
-        squareComponent.enabled = Squared; 
-        if (Squared) 
+        squareComponent.enabled = e; 
+        if (e) 
         { 
             gameManager.PlayTransientAudioClip(acFormSquare); 
             AttackBonus += 3; 

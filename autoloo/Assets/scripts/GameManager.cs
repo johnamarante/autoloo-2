@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
     public string developerMessage;
     public float notificationExpireTime = 0f;
     public float unitLerpSpeed = 90.0F;
-    public float postRoundWaitTime = 3.0f;
-    public float fadeHandlerWaitTime = 0.5f;
+    public float postRoundWaitTime = 1.0f;
+    public float fadeHandlerWaitTime = 1.0f;
     public string notification;
 
     // Start is called before the first frame update
@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
                 {
                     ShowResultPopup(potentialResult);
                     InBattleModeAndNotDeploymentMode = false;
-                    StartCoroutine(FadeOutHandler());
+                    StartCoroutine(FadeOutAndMoveAndFadeInHandler(cameraPositions[-1]));
                     StartCoroutine(PostRoundCleanup(potentialResult));
                 }
                 var activeCannonballsCount = FindObjectsOfType<Cannonball>().Length;
@@ -244,7 +244,7 @@ public class GameManager : MonoBehaviour
                 {
                     ShowResultPopup(potentialResult);
                     InBattleModeAndNotDeploymentMode = false;
-                    StartCoroutine(FadeOutHandler());
+                    StartCoroutine(FadeOutAndMoveAndFadeInHandler(cameraPositions[-1]));
                     StartCoroutine(PostRoundCleanup(potentialResult));
                 }
                 roundCycle++;
@@ -468,24 +468,17 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public IEnumerator FadeOutHandler()
+    public IEnumerator FadeOutAndMoveAndFadeInHandler(Vector3 dest)
     {
         yield return new WaitForSeconds(fadeHandlerWaitTime);
-        cameraControl.FadeOut();
-    }
-
-    public IEnumerator FadeInHandler()
-    {
-        yield return new WaitForSeconds(fadeHandlerWaitTime);
-        cameraControl.FadeIn();
+        StartCoroutine(cameraControl.FadeOutMoveFadeIn(dest));
     }
 
     public IEnumerator PostRoundCleanup(string resultText)
     {
         yield return new WaitForSeconds(postRoundWaitTime);
         autolooPlayerData.ClearUnitDetails();
-        CleanupBattlefield();        
-        cameraControl.Move(cameraPositions[-1]);
+        CleanupBattlefield();       
         StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
         roundNumber++;
         deployment.Roll(false);
@@ -501,7 +494,6 @@ public class GameManager : MonoBehaviour
         //reset the cycle
         roundCycle = 0;
         BattleModeBoolSwitchesReset();
-        StartCoroutine(FadeInHandler());
         StartCoroutine(deployment.GetOpponentDraftData());
     }
 

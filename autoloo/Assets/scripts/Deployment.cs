@@ -130,7 +130,6 @@ public class Deployment : MonoBehaviour
                     checkOpponentGenerationCompleted = true;
                     OpponentGeneration.GenerateFromDraftData(gameManager, opponentDraftData);
                     opponentDraftData = null;
-                    //clear the scout report
                     ClearScoutReport();
                 }
                 else
@@ -192,7 +191,7 @@ public class Deployment : MonoBehaviour
     private void SetupBattle()
     {
         gameManager.Deselect();
-        gameManager.cameraControl.Move(gameManager.cameraPositions[0]);
+        StartCoroutine(gameManager.cameraControl.FadeOutMoveFadeIn(gameManager.cameraPositions[0]));
         gameManager.InBattleModeAndNotDeploymentMode = true;
         gameManager.actionTime = Time.time + gameManager.period;
 
