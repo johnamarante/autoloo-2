@@ -72,10 +72,12 @@ public class CameraControl : MonoBehaviour
 
     }
 
-    public IEnumerator FadeOutMoveFadeIn(Vector3 destination)
+    public IEnumerator FadeOutMoveFadeIn(Vector3 destination, bool returnToDeploy = false)
     {
         float duration = 0.5f;
         float elapsedTime = 0f;
+        //in some cases, the gameManager.roundnumber will increment up after this is set, and that will be the cue to break a yielding loop and move forward
+        int roundNumber = gameManager.roundNumber;
 
         while (elapsedTime < duration)
         {
@@ -92,11 +94,20 @@ public class CameraControl : MonoBehaviour
 
 
         Move(destination);
-        while (move)
+        if (returnToDeploy)
         {
-            yield return null;
+            while (move || gameManager.roundNumber == roundNumber)
+            {
+                yield return null;
+            }
         }
-
+        else
+        {
+            while (move)
+            {
+                yield return null;
+            }
+        }
         duration = 0.5f;
         elapsedTime = 0f;
         while (elapsedTime < duration)

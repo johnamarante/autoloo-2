@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, Vector3> SetCameraPositionLocations()
     {
         var dict = new Dictionary<int, Vector3>();
-        dict.Add(-1, new Vector3(-60, 3, -10));
+        dict.Add(-1, new Vector3(-90, 3, -10));
         dict.Add(0, new Vector3(0, 16, -10));
         dict.Add(1, new Vector3(60, 0, -10));
         return dict;
@@ -470,7 +470,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator FadeOutAndMoveAndFadeInHandler(Vector3 dest)
     {
         yield return new WaitForSeconds(fadeHandlerWaitTime);
-        StartCoroutine(cameraControl.FadeOutMoveFadeIn(dest));
+        StartCoroutine(cameraControl.FadeOutMoveFadeIn(dest,true));
     }
 
     public IEnumerator PostRoundCleanup(string resultText)

@@ -8,7 +8,6 @@ public class Cannonball : MonoBehaviour
     public Unit target;
     public int damage;
     public GameManager manager;
-    private float lastTime;
     private float timeInterval;
     private int i = 0;
 
@@ -20,7 +19,7 @@ public class Cannonball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastTime >= timeInterval)
+        if (Time.time >= timeInterval)
         {
             if (i == 0)
             {
