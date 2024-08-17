@@ -74,29 +74,45 @@ public class CameraControl : MonoBehaviour
 
     public IEnumerator FadeOutMoveFadeIn(Vector3 destination, bool returnToDeploy = false)
     {
-        float duration = 0.5f;
-        float elapsedTime = 0f;
-        //in some cases, the gameManager.roundnumber will increment up after this is set, and that will be the cue to break a yielding loop and move forward
-        int roundNumber = gameManager.roundNumber;
+        float fadeDuration = 0.5f;
+        int initialRoundNumber = gameManager.roundNumber;
 
+        // Fade out
+        yield return Fade(0f, 1f, fadeDuration);
+
+        // Move to the destination
+        Move(destination);
+
+        // Wait until movement is complete or round number changes
+        yield return WaitForMovementOrRoundChange(returnToDeploy, initialRoundNumber);
+
+        // Fade in
+        yield return Fade(1f, 0f, fadeDuration);
+    }
+
+    private IEnumerator Fade(float startAlpha, float endAlpha, float duration)
+    {
+        float elapsedTime = 0f;
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             Color color = fadeMask.color;
-            color.a = Mathf.Lerp(0f, 1f, elapsedTime / duration);
+            color.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
             fadeMask.color = color;
             yield return null;
         }
 
+        // Ensure the final color is set
         Color finalColor = fadeMask.color;
-        finalColor.a = 1f;
+        finalColor.a = endAlpha;
         fadeMask.color = finalColor;
+    }
 
-
-        Move(destination);
+    private IEnumerator WaitForMovementOrRoundChange(bool returnToDeploy, int initialRoundNumber)
+    {
         if (returnToDeploy)
         {
-            while (move || gameManager.roundNumber == roundNumber)
+            while (move || gameManager.roundNumber == initialRoundNumber)
             {
                 yield return null;
             }
@@ -108,20 +124,6 @@ public class CameraControl : MonoBehaviour
                 yield return null;
             }
         }
-        duration = 0.5f;
-        elapsedTime = 0f;
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            Color color = fadeMask.color;
-            color.a = Mathf.Lerp(1f, 0f, elapsedTime / duration);
-            fadeMask.color = color;
-            yield return null;
-        }
-             
-        finalColor = fadeMask.color;
-        finalColor.a = 0f;
-        fadeMask.color = finalColor;
-
     }
+
 }
