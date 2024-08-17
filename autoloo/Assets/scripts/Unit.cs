@@ -74,11 +74,11 @@ public class Unit : MonoBehaviour
         get { return _rank; }
         set
         {
+            _rank = value;
             if (OnRankChanged != null)
             {
                 this?.OnRankChanged(value);
             }
-            _rank = value;
         }
     }
     public int MaxUnitRank = 9;
