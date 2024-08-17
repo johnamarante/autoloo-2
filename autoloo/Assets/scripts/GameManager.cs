@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public float actionTime;
     public float period = 1f;
     public int realFPS = 60;
-    public int cleanupFrame = 30;
     public string playerSide = "left";
     public Deployment deployment;
     public NumberFloating floatyNumber;
