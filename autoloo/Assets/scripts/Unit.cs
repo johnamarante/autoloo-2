@@ -227,7 +227,7 @@ public class Unit : MonoBehaviour
         isCavalry = GetComponent<Cavalry>();
         OnAttackChanged += (e) => textAttack.text = (e + AttackBonus).ToString();
         OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
-        OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); };
+        OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e < 0) { OnDie(); } };
         OnCostChanged += (e) => textCost.text = e.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(Deployed); };
@@ -257,6 +257,32 @@ public class Unit : MonoBehaviour
         }
     }
 
+    private void OnDie()
+    {
+        if (isCavalry)
+        {
+            Unit opposingUnit = (this.side == "left") ?
+                this.gameManager.RightQueueUnits.FirstOrDefault() :
+                this.gameManager.LeftQueueUnits.FirstOrDefault();
+
+            Unit behindUnit = (this.side == "left") ?
+                this.gameManager.LeftQueueUnits.FirstOrDefault() :
+                this.gameManager.RightQueueUnits.FirstOrDefault();
+
+            // Check if opposingUnit and behindUnit are not null
+            if (opposingUnit != null && behindUnit != null)
+            {
+                if (opposingUnit.Squared)
+                {
+                    opposingUnit.gameManager.SquareCheck(opposingUnit, behindUnit);
+                }
+            }
+            else
+            {
+                Debug.Log("Either opposingUnit or behindUnit is null in Unit.OnDestroy");
+            }
+        }
+    }
     private void ScoutCheckAndReport(bool isDeployed)
     {
         var scoutComponent = GetComponent<Scout>();
@@ -655,33 +681,5 @@ public class Unit : MonoBehaviour
         }
 
         return sum;
-    }
-    //TODO this logic ought to be moved out of OnDestroy
-    //this would create a lot of needless calls to OnDestroy (ie in cleanup for every unit, this logic is not intended for every unit every time it is destroyed)
-    private void OnDestroy()
-    {
-        if (isCavalry)
-        {
-            Unit opposingUnit = (this.side == "left") ?
-                this.gameManager.RightQueueUnits.FirstOrDefault() :
-                this.gameManager.LeftQueueUnits.FirstOrDefault();
-
-            Unit behindUnit = (this.side == "left") ?
-                this.gameManager.LeftQueueUnits.FirstOrDefault() :
-                this.gameManager.RightQueueUnits.FirstOrDefault();
-
-            // Check if opposingUnit and behindUnit are not null
-            if (opposingUnit != null && behindUnit != null)
-            {
-                if (opposingUnit.Squared)
-                {
-                    opposingUnit.gameManager.SquareCheck(opposingUnit, behindUnit);
-                }
-            }
-            else
-            {
-                Debug.Log("Either opposingUnit or behindUnit is null in Unit.OnDestroy");
-            }
-        }
     }
 }
