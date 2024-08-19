@@ -212,6 +212,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("C");
                 //PRE BATTLE PHASE CLEANUP (FIRST CLEANUP)
                 GrenadiersCheck();
+
                 PostCycleCleanup();
                 if (CheckForAndHandleBattleResult(out string potentialResult) && potentialResult != null)
                 {
@@ -228,7 +229,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("D");
                 //MAIN START
                 ComputeAttackStrengths();
-                Move();
+                AdvanceBattlefieldQueues();
                 battlePhaseFired = true;
                 //force into E and not F
                 battlePhaseProcessAndCleanupFired = false;
@@ -251,7 +252,7 @@ public class GameManager : MonoBehaviour
             }
             if (Time.time > (actionTime + ((period / 2) + (period / 4))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && battlePhaseProcessAndCleanupFired && !battlePhaseProcessAndCleanupCompleted)
             {
-                Move();
+                AdvanceBattlefieldQueues();
                 BattleModeBoolSwitchesReset();
             }
         }
@@ -356,7 +357,7 @@ public class GameManager : MonoBehaviour
     public void SquareCheck(Unit unitA, Unit unitB)
     {
         //Avoid firing the change event if there is no actual change
-        //there is a round, weithin a round several cycles, and to each unit, several cycles, the first starting when that unit is at the front
+        //there is a round, within a round several cycles, and to each unit, several cycles, the first starting when that unit is at the front
         bool newSquaredValue = (roundCycle <= 1 || unitA.cycle > 1)
                                && unitA.canFormSquare && !unitA.isSkirmisher
                                && unitB.isCavalry;
@@ -440,7 +441,7 @@ public class GameManager : MonoBehaviour
         CleanupEliminatedUnits(rightEliminatedIndices, ref RightQueueUnits);
     }
 
-    public void Move()
+    public void AdvanceBattlefieldQueues()
     {
         ArrangeUnitsOnBattlefield(ref LeftQueueUnits, fightQueuePositions);
         ArrangeUnitsOnBattlefield(ref RightQueueUnits, fightQueuePositions);
@@ -604,6 +605,7 @@ public class GameManager : MonoBehaviour
             if (unit.HitPoints <= 0 && unit != null)
             {
                 Destroy(unit.gameObject);
+
                 eliminatedIndecies.Add(index);
             }
             index++;
