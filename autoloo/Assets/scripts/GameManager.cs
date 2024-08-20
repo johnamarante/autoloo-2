@@ -354,16 +354,16 @@ public class GameManager : MonoBehaviour
         SquareCheck(RightQueueUnits[0], LeftQueueUnits[0]);
     }
 
-    public void SquareCheck(Unit unitA, Unit unitB)
+    public void SquareCheck(Unit subjectUnit, Unit subjectOpponentUnit)
     {
         //Avoid firing the change event if there is no actual change
         //there is a round, within a round several cycles, and to each unit, several cycles, the first starting when that unit is at the front
-        bool newSquaredValue = (roundCycle <= 1 || unitA.cycle > 1)
-                               && unitA.canFormSquare && !unitA.isSkirmisher
-                               && unitB.isCavalry;
-        if (unitA.Squared != newSquaredValue)
+        bool newSquaredValue = (roundCycle <= 1 || subjectUnit.cycle > 1)
+                               && subjectUnit.canFormSquare && !subjectUnit.isSkirmisher
+                               && subjectOpponentUnit.isCavalry;
+        if (subjectUnit.Squared != newSquaredValue)
         {
-            unitA.Squared = newSquaredValue;
+            subjectUnit.Squared = newSquaredValue;
         }
     }
 
