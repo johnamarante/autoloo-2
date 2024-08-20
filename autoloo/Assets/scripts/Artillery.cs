@@ -69,7 +69,7 @@ public class Artillery : MonoBehaviour
         cannonballComponent.FlightpathPoints = CannonballFlightpath(50, 12, distanceToTarget, 35);
         cannonballComponent.damage = unit.Attack;
         cannonballComponent.target = target;
-        cannonballComponent.manager = unit.gameManager;
+        cannonballComponent.gameManager = unit.gameManager;
     }
 
 

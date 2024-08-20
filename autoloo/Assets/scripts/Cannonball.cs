@@ -7,13 +7,13 @@ public class Cannonball : MonoBehaviour
     public List<(double, double)> FlightpathPoints;
     public Unit target;
     public int damage;
-    public GameManager manager;
+    public GameManager gameManager;
     private float timeInterval;
     private int i = 0;
 
     private void Start()
     {
-        timeInterval = manager.period / (FlightpathPoints.Count);
+        timeInterval = gameManager.period / (FlightpathPoints.Count);
     }
 
     // Update is called once per frame
@@ -35,12 +35,12 @@ public class Cannonball : MonoBehaviour
         {
             if (target.Squared)
             {
-                manager.floatyNumber.SpawnFloatingString($"{damage} × 2 \nCRIT!", Color.red, target.transform.position);
+                gameManager.floatyNumber.SpawnFloatingString($"{damage} × 2 \nCRIT!", Color.red, target.transform.position);
                 damage = damage * 2;
             }
             else
             {
-                manager.floatyNumber.SpawnFloatingNumber(-damage,target.transform.position);
+                gameManager.floatyNumber.SpawnFloatingNumber(-damage,target.transform.position);
             }
 
             target.HitPoints -= damage;

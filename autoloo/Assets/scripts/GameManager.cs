@@ -194,8 +194,6 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("A");
                 battlePhaseProcessAndCleanupCompleted = false;
-                //DEPLOY SKIRMISHERS
-                //CHECK FOR SQUARE FORMATION
                 SkirmishCheck();
                 SquareChecks();
                 preBattlePhaseFired = true;

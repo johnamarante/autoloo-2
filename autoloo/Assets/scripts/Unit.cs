@@ -227,7 +227,7 @@ public class Unit : MonoBehaviour
         isCavalry = GetComponent<Cavalry>();
         OnAttackChanged += (e) => textAttack.text = (e + AttackBonus).ToString();
         OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
-        OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e < 0) { OnDie(); } };
+        OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e <= 0) { OnDie(); } };
         OnCostChanged += (e) => textCost.text = e.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(Deployed); };
@@ -259,16 +259,16 @@ public class Unit : MonoBehaviour
 
     private void OnDie()
     {
+        Unit opposingUnit = (this.side == "left") ?
+        this.gameManager.RightQueueUnits.FirstOrDefault() :
+        this.gameManager.LeftQueueUnits.FirstOrDefault();
+
+        Unit behindUnit = (this.side == "left") ?
+        this.gameManager.LeftQueueUnits.FirstOrDefault() :
+        this.gameManager.RightQueueUnits.FirstOrDefault();
+        //OPPOSING UNIT SHOULD HOLD SQUARE FORMATION IF MORE CAVALRY IS COMING
         if (isCavalry)
         {
-            Unit opposingUnit = (this.side == "left") ?
-                this.gameManager.RightQueueUnits.FirstOrDefault() :
-                this.gameManager.LeftQueueUnits.FirstOrDefault();
-
-            Unit behindUnit = (this.side == "left") ?
-                this.gameManager.LeftQueueUnits.FirstOrDefault() :
-                this.gameManager.RightQueueUnits.FirstOrDefault();
-
             // Check if opposingUnit and behindUnit are not null
             if (opposingUnit != null && behindUnit != null)
             {
@@ -281,6 +281,13 @@ public class Unit : MonoBehaviour
             {
                 Debug.Log("Either opposingUnit or behindUnit is null in Unit.OnDestroy");
             }
+        }
+        //WIN BUFF ON A CAVALRY UNIT DEFEATING AN OPPONENT
+        if (opposingUnit.isCavalry && opposingUnit.HitPoints > 0)
+        {
+            opposingUnit.HitPoints = opposingUnit.HitPoints + opposingUnit.Rank + 1;
+            opposingUnit.AttackBonus = opposingUnit.AttackBonus + opposingUnit.Rank + 1;
+            gameManager.floatyNumber.SpawnFloatingString($"+{opposingUnit.Rank + 1}/{opposingUnit.Rank + 1}", Color.green, opposingUnit.transform.position);
         }
     }
     private void ScoutCheckAndReport(bool isDeployed)
