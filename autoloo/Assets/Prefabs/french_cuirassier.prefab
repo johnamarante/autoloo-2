@@ -521,9 +521,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: c27775c5ccb8af745a40d0174a0907b9, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 7b1824984d3954b42bd1261415cf892a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3.5386982, y: 3.91}
@@ -811,18 +811,12 @@ MonoBehaviour:
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: c27775c5ccb8af745a40d0174a0907b9, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: 7b1824984d3954b42bd1261415cf892a, type: 3}
   Lspritebackground: {fileID: 0}
   Rspritebackground: {fileID: 0}
-  showEffect: 0
-  fightEffect1: {fileID: 3286163911610860551, guid: 2f963ef8ef7c9e348a03c2329c138056, type: 3}
-  fightEffect2: {fileID: 3286163911610860551, guid: b3459fcac1d6da04391eae2b6cb342c7, type: 3}
-  fightEffect3: {fileID: 3286163911610860551, guid: 485a96084f34ef64e9dadac63ba58801, type: 3}
-  fightEffect4: {fileID: 3286163911610860551, guid: 5055056a9cd7ab4449bd013f0cc8a63a, type: 3}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -838,7 +832,7 @@ MonoBehaviour:
   isCavalry: 1
   _squared: 0
   acFormSquare: {fileID: 0}
-  _skirmishMode: 0
+  _IsSkirmisher: 0
 --- !u!114 &1610057400686584580
 MonoBehaviour:
   m_ObjectHideFlags: 0

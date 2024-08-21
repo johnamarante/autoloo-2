@@ -170,6 +170,7 @@ public class Unit : MonoBehaviour
     public AudioClip acAttackSFX;
     public bool canFormSquare = false;
     public bool isCavalry = false;
+    public bool isArtillery = false;
     public Action<bool> OnSquaredChanged;
     public bool _squared = false;
     public bool Squared
@@ -225,6 +226,7 @@ public class Unit : MonoBehaviour
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         SetUnitStatsDisplay();
         isCavalry = GetComponent<Cavalry>();
+        isArtillery = GetComponent<Artillery>();
         OnAttackChanged += (e) => textAttack.text = (e + AttackBonus).ToString();
         OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e <= 0) { OnDie(); } };
@@ -239,7 +241,8 @@ public class Unit : MonoBehaviour
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
-        if (!transform.GetComponent<Artillery>())
+        //TODO: refactor "what the hell is going on here?"
+        if (!isArtillery)
         {
             effectsComponent.flipX = (side == "left") ? false : true;
         }
@@ -285,9 +288,7 @@ public class Unit : MonoBehaviour
         //WIN BUFF ON A CAVALRY UNIT DEFEATING AN OPPONENT
         if (opposingUnit.isCavalry && opposingUnit.HitPoints > 0)
         {
-            opposingUnit.HitPoints = opposingUnit.HitPoints + opposingUnit.Rank + 1;
-            opposingUnit.AttackBonus = opposingUnit.AttackBonus + opposingUnit.Rank + 1;
-            gameManager.floatyNumber.SpawnFloatingString($"+{opposingUnit.Rank + 1}/{opposingUnit.Rank + 1}", Color.green, opposingUnit.transform.position);
+            opposingUnit.GetComponent<Cavalry>().WinBuff();
         }
     }
     private void ScoutCheckAndReport(bool isDeployed)
@@ -377,7 +378,7 @@ public class Unit : MonoBehaviour
 
     private void ApplyQueuePositionChangeEffect(int queuePosition)
     {
-        if (gameObject.GetComponent<Artillery>()) 
+        if (isArtillery) 
         { 
             gameObject.GetComponent<Artillery>().SetAttackByQueue(queuePosition); 
         }

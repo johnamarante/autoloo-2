@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 5007936342368452441}
   - component: {fileID: 2842950336271301404}
   m_Layer: 0
-  m_Name: british_socttsgreys
+  m_Name: british_socttsgreysdragoons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
