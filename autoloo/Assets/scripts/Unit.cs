@@ -241,11 +241,6 @@ public class Unit : MonoBehaviour
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
-        //TODO: refactor "what the hell is going on here?"
-        if (!isArtillery)
-        {
-            effectsComponent.flipX = (side == "left") ? false : true;
-        }
         try
         {
             squareComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgsquaresprite").FirstOrDefault();

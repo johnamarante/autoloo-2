@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5235097638683755679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5235097638683755667}
+  - component: {fileID: 5235097638683755665}
+  - component: {fileID: 5235097638683755666}
+  - component: {fileID: 8816964637636133725}
+  m_Layer: 0
+  m_Name: GameManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5235097638683755667
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235097638683755679}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 32.177246}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.4840362, y: -1.9228878}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5235097638683755665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235097638683755679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e26bcde7e8259a478de92ff0112999c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftQueueUnits: []
+  RightQueueUnits: []
+  LeftUnitRoster: []
+  RightUnitRoster: []
+  FrenchUnitRoster:
+  - {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+  - {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+  - {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+  - {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+  - {fileID: 3126649275751001086, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
+  BritishUnitRoster:
+  - {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+  - {fileID: 6574580541872489291, guid: f6de32be7297117438f7067a82acbd66, type: 3}
+  - {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+  actionTime: 0
+  period: 3
+  realFPS: 60
+  playerSide: left
+  deployment: {fileID: 6085394689305071435, guid: c9f1ca05ce67d8144b451342644b7de2, type: 3}
+  floatyNumber: {fileID: 0}
+  rankSprites:
+  - {fileID: 3286163911610860551, guid: 0a4407356777fe84a9b16d72bce7f362, type: 3}
+  - {fileID: 3286163911610860551, guid: 6fc777eccdeb310408faca1f8075206b, type: 3}
+  - {fileID: 3286163911610860551, guid: 0fbf39a2d8ae82f4aaa7b3a584273e59, type: 3}
+  - {fileID: 3286163911610860551, guid: 7a1894976aa671344b6e17c3807b9c15, type: 3}
+  - {fileID: 3286163911610860551, guid: e514b8ec852fde24d93ec82cf86967ee, type: 3}
+  - {fileID: 3286163911610860551, guid: 249e196b7ed7fd64ebe695d056326718, type: 3}
+  - {fileID: 3286163911610860551, guid: 75d3a8c7c1a1831498ce3f1d3051cfd4, type: 3}
+  - {fileID: 3286163911610860551, guid: 3bc746b515782ea4db258a232993ab9a, type: 3}
+  - {fileID: 3286163911610860551, guid: eb7610a3d07b6cb43b6f620079093d8f, type: 3}
+  - {fileID: 3286163911610860551, guid: 0fda0ebd5d589fe4880e945e8f325f0e, type: 3}
+  _InBattleModeAndNotDeploymentMode: 0
+  preBattlePhaseFired: 0
+  preBattlePhaseProcessAndCleanupFired: 0
+  preBattlePhaseProcessAndCleanupCompleted: 0
+  battlePhaseFired: 0
+  battlePhaseProcessAndCleanupFired: 0
+  battlePhaseProcessAndCleanupCompleted: 0
+  melee8: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
+  distBattle1AudioClips:
+  - {fileID: 8300000, guid: d56976a342f3c214a8f53b668c689087, type: 3}
+  - {fileID: 8300000, guid: 9d91387a3c7e83c47bd2d10b65aa3992, type: 3}
+  cannonFire:
+  - {fileID: 8300000, guid: de5c401f30117364daf7f86ea12b6334, type: 3}
+  - {fileID: 8300000, guid: a65eaab026525d547b2c7e2c3abb6980, type: 3}
+  - {fileID: 8300000, guid: fd3b31e11955d0f4d9a0ea1487b322f9, type: 3}
+  - {fileID: 8300000, guid: 2219586ef177ca14cac6e77917927cba, type: 3}
+  - {fileID: 8300000, guid: 2cab19993c0c7f54cb4d232ef9f997ca, type: 3}
+  - {fileID: 8300000, guid: c80a4f982c9b0524e837f069f4420bfd, type: 3}
+  - {fileID: 8300000, guid: 6418cfd0a5a8af84ab4a75e376083505, type: 3}
+  cannonballHits:
+  - {fileID: 8300000, guid: 99f6ac29d9975a0428beb54bb02ca9c7, type: 3}
+  - {fileID: 8300000, guid: 7dd8b0299167cd248a476e51fe601dd1, type: 3}
+  generalAudioSource: {fileID: 0}
+  cameraControl: {fileID: 0}
+  _selectedUnit: {fileID: 0}
+  resultPopup: {fileID: 5818834965362523167, guid: d80b0c52b06658f4d89600e74a7bd916, type: 3}
+  autolooPlayerData: {fileID: 0}
+  roundNumber: 1
+  roundCycle: 1
+  WIN: 0
+  LOSS: 0
+  developerMessage: 
+  notificationExpireTime: 0
+  unitLerpSpeed: 100
+  postRoundWaitTime: 1
+  fadeHandlerWaitTime: 1
+  notification: 
+--- !u!222 &5235097638683755666
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235097638683755679}
+  m_CullTransparentMesh: 1
+--- !u!114 &8816964637636133725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235097638683755679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b45245f43d6c94d87f5c804a327c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberPrefab: {fileID: 7776559494113499659, guid: aa4a061241374984ba34d12b550f50a9, type: 3}
