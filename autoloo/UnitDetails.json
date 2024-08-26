@@ -1,35 +1,27 @@
 {
     "UnitDetails": [
         {
-            "Name": "british_foot_53c9b50b",
-            "Attack": 2,
-            "HitPoints": 3,
-            "Rank": 0,
+            "Name": "british_foot_554b646d",
+            "Attack": 5,
+            "HitPoints": 6,
+            "Rank": 3,
             "QueuePosition": -1,
             "IsSkirmisher": false
         },
         {
-            "Name": "british_foot_a9894241",
-            "Attack": 2,
-            "HitPoints": 3,
-            "Rank": 0,
+            "Name": "british_foot_bc2374e3",
+            "Attack": 5,
+            "HitPoints": 6,
+            "Rank": 3,
             "QueuePosition": -2,
             "IsSkirmisher": false
         },
         {
-            "Name": "british_artillery_7cf3c815",
-            "Attack": 2,
-            "HitPoints": 4,
-            "Rank": 1,
+            "Name": "british_artillery_2a9cc473",
+            "Attack": 3,
+            "HitPoints": 5,
+            "Rank": 2,
             "QueuePosition": -3,
-            "IsSkirmisher": false
-        },
-        {
-            "Name": "british_scottsgreysdragoons_cf509026",
-            "Attack": 4,
-            "HitPoints": 4,
-            "Rank": 0,
-            "QueuePosition": -4,
             "IsSkirmisher": false
         }
     ]
