@@ -1249,8 +1249,12 @@ MonoBehaviour:
   _hitPoints: 3
   _rank: 0
   MaxUnitRank: 3
+  SkirmisherUnlockRank: 99
+  GrenadierUnlockRank: 99
+  hitPointsFormula: 1
+  attackFormula: 1
   side: right
-  tier: 3
+  tier: 1
   myFont: {fileID: 0}
   effectFrame: 0
   _queuePosition: 0
@@ -1260,18 +1264,12 @@ MonoBehaviour:
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: fae362648379a8d4b955a4044bd9dac4, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: 9641b29b48badd842898981c808fc121, type: 3}
   Lspritebackground: {fileID: 3286163911610860551, guid: 210f2815ef8830d4391757393bd5d6e2, type: 3}
   Rspritebackground: {fileID: 3286163911610860551, guid: 049c533e21945f64fb8b96952e94a0e9, type: 3}
-  showEffect: 0
-  fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
-  fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
-  fightEffect3: {fileID: 0}
-  fightEffect4: {fileID: 0}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -1285,9 +1283,10 @@ MonoBehaviour:
   acAttackSFX: {fileID: 8300000, guid: fd3b31e11955d0f4d9a0ea1487b322f9, type: 3}
   canFormSquare: 0
   isCavalry: 0
+  isArtillery: 0
   _squared: 0
   acFormSquare: {fileID: 0}
-  _skirmishMode: 0
+  _IsSkirmisher: 0
 --- !u!114 &7350330291660393393
 MonoBehaviour:
   m_ObjectHideFlags: 0

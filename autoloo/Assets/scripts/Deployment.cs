@@ -239,16 +239,32 @@ public class Deployment : MonoBehaviour
 
         var shopMarkers = FindObjectsOfType<DeploymentShopMarker>().ToList().Where(x => x.side == gameManager.playerSide);
         var shopQueue = new List<Unit>();
-        var unitsAvailableInThisTeir = roster.Where(x => x.tier <= gameManager.roundNumber).ToList();
+        var unitsAvailableInThisTier = roster.Where(x => x.tier <= gameManager.roundNumber).ToList();
+
+        // Calculate the total chance sum
+        int totalChance = unitsAvailableInThisTier.Sum(x => x.Chance);
+
         foreach (var shopMarker in shopMarkers)
         {
             Unit shopItem = null;
             if (!shopMarker.IsFrozenShopUnitAboveMe())
             {
-                shopItem = Instantiate(unitsAvailableInThisTeir[rnd.Next(unitsAvailableInThisTeir.Count)]);
+                // Weighted random selection
+                int roll = rnd.Next(0, totalChance);
+                int cumulative = 0;
+                foreach (var unit in unitsAvailableInThisTier)
+                {
+                    cumulative += unit.Chance;
+                    if (roll < cumulative)
+                    {
+                        shopItem = Instantiate(unit);
+                        break;
+                    }
+                }
             }
             shopQueue.Add(shopItem);
         }
+
         gameManager.ArrangeUnitsInstantly(ref shopQueue, deploymentShopQueuePositions);
     }
 

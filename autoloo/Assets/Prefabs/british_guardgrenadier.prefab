@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  Chance: 10
+  Chance: 5
   _cost: 3
   _attack: 5
   _attackBonus: 0
@@ -1379,18 +1379,12 @@ MonoBehaviour:
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: 7a1d15bf25c872345bad8ab5548d5143, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: f07f262320ff3414f8671959934fd736, type: 3}
   Lspritebackground: {fileID: 0}
   Rspritebackground: {fileID: 0}
-  showEffect: 0
-  fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
-  fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
-  fightEffect3: {fileID: 0}
-  fightEffect4: {fileID: 0}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -1404,6 +1398,7 @@ MonoBehaviour:
   acAttackSFX: {fileID: 0}
   canFormSquare: 1
   isCavalry: 0
+  isArtillery: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
   _IsSkirmisher: 0
