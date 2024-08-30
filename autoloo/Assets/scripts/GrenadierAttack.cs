@@ -18,18 +18,18 @@ public class GrenadierAttack : MonoBehaviour
         // This method will be called when the GameObject or script is destroyed
         Debug.Log($"{gameObject.name} destroyed");
     }
-    public void DeployGrenadiers(string side)
+    public void DeployGrenadiers()
     {
         Debug.Log("deploying grenadiers...");
         if (grenadierPrefab != null)
         {
-            grenadierPrefab.side = side;
+            grenadierPrefab.side = unit.side;
             grenadierPrefab._hitPoints = grenadierPrefab.ComputeHitPointsFromFoumulaString(unit.Rank);
             grenadierPrefab._attack = grenadierPrefab.ComputeAttackFromFoumulaString(unit.Rank);
             var goUnitGrenadier = Instantiate(grenadierPrefab);
             goUnitGrenadier.Deployed = true;
             goUnitGrenadier.transform.position = unit.transform.position;
-            if (side == "left") {
+            if (unit.side == "left") {
                 goUnitGrenadier.QueuePosition = -1;
                 unit.gameManager.LeftQueueUnits.Add(goUnitGrenadier);
                 unit.gameManager.LeftQueueUnits = unit.gameManager.LeftQueueUnits.OrderByDescending(u => u.QueuePosition).ToList();

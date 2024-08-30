@@ -375,6 +375,7 @@
 "Assets/scripts/Cannonball.cs"
 "Assets/scripts/Cavalry.cs"
 "Assets/scripts/ConfigurationManager.cs"
+"Assets/scripts/DeployFootDragoons.cs"
 "Assets/scripts/Deployment.cs"
 "Assets/scripts/DeploymentMarker.cs"
 "Assets/scripts/DeploymentShopMarker.cs"

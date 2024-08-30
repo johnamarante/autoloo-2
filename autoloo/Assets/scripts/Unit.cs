@@ -257,13 +257,8 @@ public class Unit : MonoBehaviour
 
     private void OnDie()
     {
-        Unit opposingUnit = (this.side == "left") ?
-        this.gameManager.RightQueueUnits.FirstOrDefault() :
-        this.gameManager.LeftQueueUnits.FirstOrDefault();
-
-        Unit behindUnit = (this.side == "left") ?
-        this.gameManager.LeftQueueUnits.FirstOrDefault() :
-        this.gameManager.RightQueueUnits.FirstOrDefault();
+        Unit opposingUnit = (this.side == "left") ? this.gameManager.RightQueueUnits.FirstOrDefault() : this.gameManager.LeftQueueUnits.FirstOrDefault();
+        Unit behindUnit = (this.side == "left") ? this.gameManager.LeftQueueUnits.FirstOrDefault() :this.gameManager.RightQueueUnits.FirstOrDefault();
         //OPPOSING UNIT SHOULD HOLD SQUARE FORMATION IF MORE CAVALRY IS COMING
         if (isCavalry)
         {

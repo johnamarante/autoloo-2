@@ -457,12 +457,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: FrenchUnitRoster.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[4]
       value: 
       objectReference: {fileID: 3126649275751001086, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
+    - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
+      propertyPath: FrenchUnitRoster.Array.data[5]
+      value: 
+      objectReference: {fileID: 6337201509501665544, guid: 8b369f6bfb44e4c428993fb502cc2c65, type: 3}
     - target: {fileID: 5235097638683755667, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

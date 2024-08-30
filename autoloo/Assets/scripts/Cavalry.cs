@@ -6,7 +6,7 @@ using UnityEngine;
 public class Cavalry : MonoBehaviour
 {
     public Unit unit;
-
+    public string spriteNameLower;
     // Constants for cavalry names
     private const string CARABINERACHEVAL = "carabineracheval";
     private const string CUIRASSIER = "cuirassier";
@@ -18,17 +18,17 @@ public class Cavalry : MonoBehaviour
     void Start()
     {
         unit = GetComponent<Unit>();
+        spriteNameLower = unit.spriteName.ToLower();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void WinBuff()
     {
-        var spriteNameLower = unit.GetSpriteName().ToLower();
         var rankBonus = unit.Rank + 1;
         var minorBonus = 1;
 

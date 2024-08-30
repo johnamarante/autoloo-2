@@ -278,7 +278,7 @@ public class GameManager : MonoBehaviour
         {
             if (unit.HitPoints <= 0)
             {
-                unit.GetComponent<GrenadierAttack>().DeployGrenadiers(unit.side);
+                unit.GetComponent<GrenadierAttack>().DeployGrenadiers();
             }
         }
     }
@@ -359,7 +359,16 @@ public class GameManager : MonoBehaviour
         bool newSquaredValue = (roundCycle <= 1 || subjectUnit.cycle > 1)
                                && subjectUnit.canFormSquare && !subjectUnit.isSkirmisher
                                && subjectOpponentUnit.isCavalry;
-        if (subjectUnit.Squared != newSquaredValue)
+
+        DeployFootDragoons mountedDragoon = subjectOpponentUnit.GetComponent<DeployFootDragoons>();
+        if (mountedDragoon != null && newSquaredValue)
+        {
+            mountedDragoon.Dismount();
+            subjectOpponentUnit.HitPoints = 0;
+            DisableAllSpriteRenderers(subjectOpponentUnit.gameObject);
+            PostCycleCleanup();
+        }
+        else if (subjectUnit.Squared != newSquaredValue)
         {
             subjectUnit.Squared = newSquaredValue;
         }
@@ -644,5 +653,16 @@ public class GameManager : MonoBehaviour
         boomAudio.loop = false;
         boomAudio.clip = transientAudioClip;
         boomAudio.Play();
+    }
+    public void DisableAllSpriteRenderers(GameObject obj)
+    {
+        // Get all SpriteRenderer components in the object and its children
+        SpriteRenderer[] spriteRenderers = obj.GetComponentsInChildren<SpriteRenderer>();
+
+        // Disable each SpriteRenderer
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            sr.enabled = false;
+        }
     }
 }

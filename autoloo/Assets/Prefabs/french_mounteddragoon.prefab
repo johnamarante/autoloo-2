@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 7696167350363343346}
   - component: {fileID: 398985074579722728}
   - component: {fileID: 4383022211299023453}
-  - component: {fileID: 3573163281693307833}
+  - component: {fileID: 6995310605293701424}
   m_Layer: 0
   m_Name: french_mounteddragoon
   m_TagString: Untagged
@@ -1049,7 +1049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5920602124717833864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -194.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1080,9 +1080,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   Chance: 10
   _cost: 3
-  _attack: 4
+  _attack: 5
   _attackBonus: 0
-  _hitPoints: 4
+  _hitPoints: 5
   _rank: 0
   MaxUnitRank: 6
   SkirmisherUnlockRank: 99
@@ -1162,7 +1162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
---- !u!114 &3573163281693307833
+  spriteNameLower: 
+--- !u!114 &6995310605293701424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1171,11 +1172,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5920602124717833864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0beda8ea937abd4e9d4f9c6023fb371, type: 3}
+  m_Script: {fileID: 11500000, guid: 6997f4a3ce7be384a977fe3d87296627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
-  questionMark: {fileID: 3286163911610860551, guid: 952bafd4371aa7643b52df87fa2cbf9e, type: 3}
+  footDragoonPrefab: {fileID: 4636470332075927690, guid: ce5f01844a7c9a441a885671ed88d482, type: 3}
 --- !u!1 &6360468908878257119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1287,7 @@ Transform:
   m_GameObject: {fileID: 6607590966685697034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 2.25, y: 2.25, z: 1}
+  m_LocalScale: {x: 2.25, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3399524904325622789}
