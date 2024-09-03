@@ -34,7 +34,7 @@ public class Scout : MonoBehaviour
             string opposingUnitName = opposingUnitDetail["Name"].ToString();
             int opposingunitRank = (int)opposingUnitDetail["Rank"];
             var opposingUnit = unit.gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == opposingUnitName.Split('_')[1]);
-            Debug.Log($"fount {opposingUnitName} of rank {opposingunitRank}");            
+            Debug.Log($"found {opposingUnitName} of rank {opposingunitRank}");            
             if (opposingunitRank > unit.Rank)
             {
                 report.Find(iterationCount.ToString()).GetComponent<SpriteRenderer>().sprite = questionMark;

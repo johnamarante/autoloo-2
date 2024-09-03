@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +22,8 @@ public class DeployFootDragoons : MonoBehaviour
         if (footDragoonPrefab != null)
         {
             footDragoonPrefab.side = unit.side;
-            footDragoonPrefab._hitPoints = unit.HitPoints;
-            footDragoonPrefab._attack = unit.Attack;
+            footDragoonPrefab._hitPoints = footDragoonPrefab.ComputeHitPointsFromFoumulaString(unit.Rank);
+            footDragoonPrefab._attack = footDragoonPrefab.ComputeAttackFromFoumulaString(unit.Rank);
             var goFootDragoon = Instantiate(footDragoonPrefab);
             goFootDragoon.Deployed = true;
             goFootDragoon.transform.position = unit.transform.position;
@@ -42,4 +42,3 @@ public class DeployFootDragoons : MonoBehaviour
         }
     }
 }
-
