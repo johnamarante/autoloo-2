@@ -19,7 +19,6 @@ public class Scout : MonoBehaviour
 
     internal void Report()
     {
-        Debug.Log("Scout report");
         var report = Camera.main.gameObject.transform.Find("ScoutReport");
         var opponentDraftData = unit.gameManager.deployment.opponentDraftData;
         int iterationCount = 0;
@@ -30,19 +29,26 @@ public class Scout : MonoBehaviour
             {
                 break;
             }
-
-            string opposingUnitName = opposingUnitDetail["Name"].ToString();
-            int opposingunitRank = (int)opposingUnitDetail["Rank"];
-            var opposingUnit = unit.gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == opposingUnitName.Split('_')[1]);
-            Debug.Log($"found {opposingUnitName} of rank {opposingunitRank}");            
-            if (opposingunitRank > unit.Rank)
+            try
             {
+                string opposingUnitName = opposingUnitDetail["Name"].ToString();
+                int opposingunitRank = (int)opposingUnitDetail["Rank"];
+                var opposingUnit = unit.gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == opposingUnitName.Split('_')[1]);
+                Debug.Log($"found {opposingUnitName} of rank {opposingunitRank}");
+                if (opposingunitRank > unit.Rank)
+                {
+                    report.Find(iterationCount.ToString()).GetComponent<SpriteRenderer>().sprite = questionMark;
+                }
+                else
+                {
+                    report.Find(iterationCount.ToString()).GetComponent<SpriteRenderer>().sprite = (opposingUnit.Rspritebackground == null ? opposingUnit.Rsprite : opposingUnit.Rspritebackground);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Log(ex);
                 report.Find(iterationCount.ToString()).GetComponent<SpriteRenderer>().sprite = questionMark;
             }
-            else {
-                report.Find(iterationCount.ToString()).GetComponent<SpriteRenderer>().sprite = (opposingUnit.Rspritebackground == null ? opposingUnit.Rsprite : opposingUnit.Rspritebackground);
-            }
-            
         }
     }
 }
