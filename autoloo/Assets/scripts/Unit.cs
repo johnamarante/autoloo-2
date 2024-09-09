@@ -684,6 +684,6 @@ public class Unit : MonoBehaviour
 
     private void SameKindDeploymentBonus()
     {
-        gameManager.deployment.SetInputBlocker(true);
+        
     }
 }
