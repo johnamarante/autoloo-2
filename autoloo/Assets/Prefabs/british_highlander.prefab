@@ -554,6 +554,8 @@ MonoBehaviour:
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
   _IsSkirmisher: 0
+  KindTags:
+  - scots
 --- !u!114 &1685192276980752165
 MonoBehaviour:
   m_ObjectHideFlags: 0

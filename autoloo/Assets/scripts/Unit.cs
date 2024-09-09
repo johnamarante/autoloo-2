@@ -201,6 +201,7 @@ public class Unit : MonoBehaviour
             _IsSkirmisher = value;
         }
     }
+    public string[] KindTags;
 
 
     void Awake()
@@ -231,7 +232,7 @@ public class Unit : MonoBehaviour
         OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e <= 0) { OnDie(); } };
         OnCostChanged += (e) => textCost.text = e.ToString();
-        OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); };
+        OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e);};
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(Deployed); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(e);
         OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {e}");
@@ -679,5 +680,10 @@ public class Unit : MonoBehaviour
         }
 
         return sum;
+    }
+
+    private void SameKindDeploymentBonus()
+    {
+        gameManager.deployment.SetInputBlocker(true);
     }
 }

@@ -629,6 +629,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+      propertyPath: KindTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+      propertyPath: KindTags.Array.data[0]
+      value: scots
+      objectReference: {fileID: 0}
     - target: {fileID: 4984666429566146782, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
       propertyPath: m_Name
       value: british_scottsgreys
