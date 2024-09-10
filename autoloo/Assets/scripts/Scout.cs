@@ -51,4 +51,18 @@ public class Scout : MonoBehaviour
             }
         }
     }
+
+    public IEnumerator WaitAndReport()
+    {
+        // Wait for opponentDraftData to be populated
+        while (unit.gameManager.deployment.opponentDraftData == null)
+        {
+            Debug.Log("Waiting for opponentDraftData...");
+            yield return null; // Wait for the next frame and check again
+        }
+
+        // opponentDraftData is now populated, run Report()
+        Report();
+    }
+
 }

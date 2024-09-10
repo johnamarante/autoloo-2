@@ -232,7 +232,7 @@ public class Unit : MonoBehaviour
         OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e <= 0) { OnDie(); } };
         OnCostChanged += (e) => textCost.text = e.ToString();
-        OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e);};
+        OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); SameKindDeploymentBonus(); };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(Deployed); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(e);
         OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {e}");
@@ -286,7 +286,7 @@ public class Unit : MonoBehaviour
     {
         var scoutComponent = GetComponent<Scout>();
         if (isDeployed && scoutComponent != null && side == gameManager.playerSide) {
-            scoutComponent.Report(); 
+            StartCoroutine(scoutComponent.WaitAndReport()); 
         }
     }
 
@@ -684,6 +684,26 @@ public class Unit : MonoBehaviour
 
     private void SameKindDeploymentBonus()
     {
-        
+        if (!gameManager.InBattleModeAndNotDeploymentMode 
+            && gameManager.LeftQueueUnits.Count > 2 
+            && KindTags.Length > 0)
+        {
+            //check if any other deployed units have a common kind tag
+            var listDeployedAllyUnits = FindObjectsOfType<Unit>().Where(y => y.side == "left" && y.Deployed).ToList();
+            foreach (Unit alliedUnit in listDeployedAllyUnits)
+            {
+                if (HasCommonTags(alliedUnit))
+                {
+                    Debug.Log($"{this.spriteName} has some common tag with {alliedUnit.spriteName}");
+                }
+            }
+        }
     }
+
+    private bool HasCommonTags(Unit unitB)
+    {
+        // Check if there is at least one common element between the KindTags arrays
+        return this.KindTags.Intersect(unitB.KindTags).Any();
+    }
+
 }
