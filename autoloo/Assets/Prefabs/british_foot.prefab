@@ -1858,7 +1858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  Chance: 60
+  Chance: 30
   _cost: 3
   _attack: 2
   _attackBonus: 0
@@ -1903,6 +1903,7 @@ MonoBehaviour:
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
   _IsSkirmisher: 0
+  KindTags: []
 --- !u!114 &5691792332634970000
 MonoBehaviour:
   m_ObjectHideFlags: 0

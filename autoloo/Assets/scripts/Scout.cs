@@ -57,7 +57,7 @@ public class Scout : MonoBehaviour
         // Wait for opponentDraftData to be populated
         while (unit.gameManager.deployment.opponentDraftData == null)
         {
-            Debug.Log("Waiting for opponentDraftData...");
+            Debug.Log("Waiting for opponentDraftData for scout report");
             yield return null; // Wait for the next frame and check again
         }
 

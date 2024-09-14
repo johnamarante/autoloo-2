@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  Chance: 10
+  Chance: 30
   _cost: 3
   _attack: 3
   _attackBonus: 0

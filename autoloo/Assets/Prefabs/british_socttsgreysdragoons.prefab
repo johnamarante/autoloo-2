@@ -928,7 +928,6 @@ MonoBehaviour:
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
   Lsprite: {fileID: 3286163911610860551, guid: c4a2a93892623314cbf6193a4421b881, type: 3}
@@ -948,9 +947,12 @@ MonoBehaviour:
   acAttackSFX: {fileID: 0}
   canFormSquare: 0
   isCavalry: 1
+  isArtillery: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: 32f6bc801aa97c0419878a02abe001e0, type: 3}
   _IsSkirmisher: 0
+  KindTags:
+  - scots
 --- !u!114 &9063886343762718628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,6 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
+  spriteNameLower: 
 --- !u!114 &2842950336271301404
 MonoBehaviour:
   m_ObjectHideFlags: 0

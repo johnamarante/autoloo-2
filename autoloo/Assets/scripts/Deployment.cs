@@ -105,6 +105,10 @@ public class Deployment : MonoBehaviour
                 checkOpponentGenerationCompleted = false;
                 GUI.enabled = true;
             }
+            else
+            {
+                Debug.Log("waiting on opponent data for battle");
+            }
         }
     }
 

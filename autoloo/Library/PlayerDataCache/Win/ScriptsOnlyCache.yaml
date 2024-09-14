@@ -9,16 +9,19 @@ ScriptsOnlyBuild:
     - Cannonball
     - Cavalry
     - ConfigurationManager
+    - DeployFootDragoons
     - Deployment
     - DeploymentMarker
     - DeploymentShopMarker
     - DragIt
     - GameManager
+    - GrenadierAttack
     - LoginScreen
     - MainMenu
     - NumberFloating
     - PulseHover
     - ResultPopup
+    - Scout
     - Skirmish
     - TitleScene
     - Unit
@@ -69,50 +72,58 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1746}
+      Script: {instanceID: 1634}
     - Class: 114
-      Script: {instanceID: 1808}
+      Script: {instanceID: 1748}
     - Class: 114
-      Script: {instanceID: 1872}
+      Script: {instanceID: 1810}
     - Class: 114
-      Script: {instanceID: 1882}
+      Script: {instanceID: 1874}
     - Class: 114
-      Script: {instanceID: 2274}
+      Script: {instanceID: 1884}
     - Class: 114
-      Script: {instanceID: 2494}
+      Script: {instanceID: 2276}
     - Class: 114
-      Script: {instanceID: 2586}
+      Script: {instanceID: 2496}
     - Class: 114
-      Script: {instanceID: 2894}
+      Script: {instanceID: 2588}
     - Class: 114
-      Script: {instanceID: 3034}
+      Script: {instanceID: 2896}
     - Class: 114
-      Script: {instanceID: 3744}
+      Script: {instanceID: 3036}
     - Class: 114
-      Script: {instanceID: 4050}
+      Script: {instanceID: 3748}
     - Class: 114
-      Script: {instanceID: 4076}
+      Script: {instanceID: 4054}
     - Class: 114
-      Script: {instanceID: 4196}
+      Script: {instanceID: 4080}
     - Class: 114
-      Script: {instanceID: 4208}
+      Script: {instanceID: 4200}
     - Class: 114
-      Script: {instanceID: 4640}
+      Script: {instanceID: 4212}
     - Class: 114
-      Script: {instanceID: 5422}
+      Script: {instanceID: 4644}
     - Class: 114
-      Script: {instanceID: 5858}
+      Script: {instanceID: 5426}
     - Class: 114
-      Script: {instanceID: 6110}
+      Script: {instanceID: 5862}
     - Class: 114
-      Script: {instanceID: 6224}
+      Script: {instanceID: 6114}
     - Class: 114
-      Script: {instanceID: 6588}
+      Script: {instanceID: 6228}
+    - Class: 114
+      Script: {instanceID: 6592}
+    - Class: 114
+      Script: {instanceID: 6692}
+    - Class: 114
+      Script: {instanceID: 7476}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -156,18 +167,24 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2496}
+      Script: {instanceID: 2498}
     - Class: 114
-      Script: {instanceID: 3744}
+      Script: {instanceID: 2736}
     - Class: 114
-      Script: {instanceID: 5058}
+      Script: {instanceID: 3748}
     - Class: 114
-      Script: {instanceID: 5422}
+      Script: {instanceID: 5062}
+    - Class: 114
+      Script: {instanceID: 5426}
+    - Class: 114
+      Script: {instanceID: 6536}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -177,6 +194,8 @@ ScriptsOnlyBuild:
     - Class: 196
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
       Script: {instanceID: 0}
     Assets/mainmenu.unity:
     - Class: 1
@@ -201,20 +220,22 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2734}
+      Script: {instanceID: 2736}
     - Class: 114
-      Script: {instanceID: 5324}
+      Script: {instanceID: 5328}
     - Class: 114
-      Script: {instanceID: 6532}
+      Script: {instanceID: 6536}
     - Class: 114
-      Script: {instanceID: 7780}
+      Script: {instanceID: 7788}
     - Class: 114
-      Script: {instanceID: 23730}
+      Script: {instanceID: 26352}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -250,22 +271,24 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2274}
+      Script: {instanceID: 2276}
     - Class: 114
-      Script: {instanceID: 2550}
+      Script: {instanceID: 2552}
     - Class: 114
-      Script: {instanceID: 3744}
+      Script: {instanceID: 3748}
     - Class: 114
-      Script: {instanceID: 4364}
+      Script: {instanceID: 4368}
     - Class: 114
-      Script: {instanceID: 4640}
+      Script: {instanceID: 4644}
     - Class: 114
-      Script: {instanceID: 5422}
+      Script: {instanceID: 5426}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -283,6 +306,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UIElements
     className: PanelRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: c8b9c0d9659a93860b5de3e0d69cf226
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Scout
   - hash:
       serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
@@ -333,7 +362,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 38c73b6263f6e13be79559fb2203b88c
+      Hash: d02e328eb3bae8069a2809a21cfa6745
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cavalry
@@ -411,7 +440,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 1502fce07d34544f84cc6ddece9b967d
+      Hash: b8f170e8068704cfe0638c06292761b8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Skirmish
@@ -519,7 +548,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 6e7f00b3543e51c8922e03e7e3ac0b1d
+      Hash: b2ffc43c21ddd0a9b858e04573d7d4e8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ResultPopup
@@ -681,7 +710,7 @@ ScriptsOnlyBuild:
     className: Artillery
   - hash:
       serializedVersion: 2
-      Hash: 55eaa8ba8957bedf2000a4eaf09289e2
+      Hash: df85db21c1ddc40d1bdd47adbc8e4161
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -693,7 +722,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 409f19035e2a3b5b2c2517fc05803f08
+      Hash: 521ce75c99ddeeb9963dcafe5a6cf7b0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Unit
@@ -1017,7 +1046,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 57e1163add05077e74db957227bcb042
+      Hash: a05d1248742be5e1074ddcbf4e983e38
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cannonball
@@ -1027,6 +1056,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: 16d2aa5b8abf53cc0838b6eb3783b982
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GrenadierAttack
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -1147,6 +1182,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 45448e58a1f3c20f4fb05acc8d46162b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DeployFootDragoons
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f

@@ -684,26 +684,35 @@ public class Unit : MonoBehaviour
 
     private void SameKindDeploymentBonus()
     {
+        var listDeployedAllyUnits = FindObjectsOfType<Unit>().Where(y => y.side == "left" && y.Deployed).ToList();
         if (!gameManager.InBattleModeAndNotDeploymentMode 
-            && gameManager.LeftQueueUnits.Count > 2 
+            && listDeployedAllyUnits.Count > 0
             && KindTags.Length > 0)
         {
+            string commonTag = null;
             //check if any other deployed units have a common kind tag
-            var listDeployedAllyUnits = FindObjectsOfType<Unit>().Where(y => y.side == "left" && y.Deployed).ToList();
             foreach (Unit alliedUnit in listDeployedAllyUnits)
             {
-                if (HasCommonTags(alliedUnit))
+                commonTag = HasCommonTags(alliedUnit);
+                if (commonTag != null)
                 {
-                    Debug.Log($"{this.spriteName} has some common tag with {alliedUnit.spriteName}");
+                    Debug.Log($"{this.name} has common tag {commonTag} with {alliedUnit.name}");
+                    alliedUnit.HitPoints++;
+                    alliedUnit.Attack++;
+                    gameManager.floatyNumber.SpawnFloatingString($"{commonTag.ToUpper()}\n+1/1", Color.green, alliedUnit.transform.position);
                 }
+            }
+            if (commonTag != null)
+            {
+                gameManager.floatyNumber.SpawnFloatingString($"{commonTag.ToUpper()}\n+1/1", Color.green, this.transform.position);
+                HitPoints++;
+                Attack++;
             }
         }
     }
 
-    private bool HasCommonTags(Unit unitB)
+    private string HasCommonTags(Unit unitB)
     {
-        // Check if there is at least one common element between the KindTags arrays
-        return this.KindTags.Intersect(unitB.KindTags).Any();
+        return this.KindTags.Intersect(unitB.KindTags).FirstOrDefault();
     }
-
 }
