@@ -1,19 +1,43 @@
 {
     "UnitDetails": [
         {
-            "Name": "british_scottsgreysdragoons_a02a4efd",
-            "Attack": 5,
-            "HitPoints": 5,
-            "Rank": 0,
+            "Name": "british_highlander_b3052417",
+            "Attack": 7,
+            "HitPoints": 7,
+            "Rank": 3,
             "QueuePosition": -1,
             "IsSkirmisher": false
         },
         {
-            "Name": "british_scottsgreysdragoons_aed00fb2",
-            "Attack": 5,
-            "HitPoints": 5,
-            "Rank": 0,
+            "Name": "british_highlander_8469c5a9",
+            "Attack": 6,
+            "HitPoints": 6,
+            "Rank": 2,
             "QueuePosition": -2,
+            "IsSkirmisher": false
+        },
+        {
+            "Name": "british_foot_dc33acd5",
+            "Attack": 4,
+            "HitPoints": 5,
+            "Rank": 2,
+            "QueuePosition": -3,
+            "IsSkirmisher": false
+        },
+        {
+            "Name": "british_artillery_b6ff5b8b",
+            "Attack": 3,
+            "HitPoints": 5,
+            "Rank": 2,
+            "QueuePosition": -4,
+            "IsSkirmisher": false
+        },
+        {
+            "Name": "british_scottsgreysdragoons_005db533",
+            "Attack": 6,
+            "HitPoints": 6,
+            "Rank": 0,
+            "QueuePosition": -5,
             "IsSkirmisher": false
         }
     ]
