@@ -300,13 +300,18 @@ public class GameManager : MonoBehaviour
         if (LeftQueueUnits.Count > 0 && RightQueueUnits.Count > 0)
         {
             // Cavalry attacking in a square case
-            if (LeftQueueUnits[0].Squared && RightQueueUnits[0].isCavalry)
+            if (LeftQueueUnits[0].Squared 
+                && RightQueueUnits[0].isCavalry 
+                && !(RightQueueUnits[0].cycle == 1 && RightQueueUnits[0].GetComponent<Cavalry>().isLancer))
             {
                 leftUnitTakeDamage = 1;
                 rightUnitTakeDamage = LeftQueueUnits[0].Attack + LeftQueueUnits[0].AttackBonus;
             }
-            else if (LeftQueueUnits[0].isCavalry && RightQueueUnits[0].Squared)
+            else if (LeftQueueUnits[0].isCavalry 
+                && RightQueueUnits[0].Squared 
+                && !(LeftQueueUnits[0].cycle == 1 && LeftQueueUnits[0].GetComponent<Cavalry>().isLancer))
             {
+
                 leftUnitTakeDamage = RightQueueUnits[0].Attack + RightQueueUnits[0].AttackBonus;
                 rightUnitTakeDamage = 1;
             }

@@ -7,6 +7,7 @@ public class Cavalry : MonoBehaviour
 {
     public Unit unit;
     public string spriteNameLower;
+    public bool isLancer = false;
     // Constants for cavalry names
     private const string CARABINERACHEVAL = "carabineracheval";
     private const string CUIRASSIER = "cuirassier";
@@ -19,6 +20,10 @@ public class Cavalry : MonoBehaviour
     {
         unit = GetComponent<Unit>();
         spriteNameLower = unit.spriteName.ToLower();
+        if (spriteNameLower.Contains(LANCER))
+        {
+            isLancer = true;
+        }
     }
 
     // Update is called once per frame
