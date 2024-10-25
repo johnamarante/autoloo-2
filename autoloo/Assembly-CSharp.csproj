@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -57,7 +56,6 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\keytest.cs" />
     <Compile Include="Assets\scripts\Scout.cs" />
     <Compile Include="Assets\scripts\Deployment.cs" />
     <Compile Include="Assets\scripts\Cavalry.cs" />
@@ -78,6 +76,7 @@
     <Compile Include="Assets\scripts\DeploymentShopMarker.cs" />
     <Compile Include="Assets\scripts\OpponentGeneration.cs" />
     <Compile Include="Assets\scripts\AutolooPlayerData.cs" />
+    <Compile Include="Assets\scripts\keytest.cs" />
     <Compile Include="Assets\scripts\MainMenu.cs" />
     <Compile Include="Assets\scripts\FriendpasteClient.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
