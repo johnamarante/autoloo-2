@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 5339757392773342966}
   - component: {fileID: 2692480418348367596}
   m_Layer: 0
-  m_Name: british_guardgrenadier
+  m_Name: british_footguards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1402,6 +1402,7 @@ MonoBehaviour:
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
   _IsSkirmisher: 0
+  KindTags: []
 --- !u!114 &5339757392773342966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,7 +1670,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 7a1d15bf25c872345bad8ab5548d5143, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: f07f262320ff3414f8671959934fd736, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
