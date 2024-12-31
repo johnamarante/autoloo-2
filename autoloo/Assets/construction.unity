@@ -2310,9 +2310,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6322116358329497855, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: m_Size.x
+      value: 3.4598513
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322116358329497855, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: m_Size.y
+      value: 4.299443
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322116358329497855, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3286163911610860551, guid: 9dc46926da576e643bc84e27e0095aa5, type: 3}
+      objectReference: {fileID: 3286163911610860551, guid: b92521c4c59de074b9d843e3934b9346, type: 3}
+    - target: {fileID: 6322116358329497855, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6927247586833214245, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
       propertyPath: lineMusket
       value: 

@@ -1326,8 +1326,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6923080013829975530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 2, z: 0}
-  m_LocalScale: {x: 3, y: 2.75, z: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1480788785296606693}
@@ -1374,12 +1374,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 27052063d48ae3643be7ac1e77ca5ca0, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: cc53480d83a8af3449e4e7739c52180b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.5386982, y: 3.91}
+  m_Size: {x: 5.4351373, y: 4.0707607}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1632,18 +1632,12 @@ MonoBehaviour:
   spriteName: 
   startMarker: {x: 0, y: 0, z: 0}
   endMarker: {x: 0, y: 0, z: 0}
-  speed: 90
   svgsprite: {fileID: 0}
   svgspritebackground: {fileID: 0}
-  Lsprite: {fileID: 3286163911610860551, guid: 27052063d48ae3643be7ac1e77ca5ca0, type: 3}
+  Lsprite: {fileID: 3286163911610860551, guid: d7409360203887941acc9cf84dc25438, type: 3}
   Rsprite: {fileID: 3286163911610860551, guid: cc53480d83a8af3449e4e7739c52180b, type: 3}
   Lspritebackground: {fileID: 0}
   Rspritebackground: {fileID: 0}
-  showEffect: 0
-  fightEffect1: {fileID: 3286163911610860551, guid: 7d978d27393549f4580a02a27861a935, type: 3}
-  fightEffect2: {fileID: 3286163911610860551, guid: 2ab3642835e55984f95312fb4b006995, type: 3}
-  fightEffect3: {fileID: 0}
-  fightEffect4: {fileID: 0}
   textAttack: {fileID: 0}
   textHitPoints: {fileID: 0}
   textCost: {fileID: 0}
@@ -1657,9 +1651,11 @@ MonoBehaviour:
   acAttackSFX: {fileID: 0}
   canFormSquare: 1
   isCavalry: 0
+  isArtillery: 0
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
   _IsSkirmisher: 0
+  KindTags: []
 --- !u!114 &5867942940248989714
 MonoBehaviour:
   m_ObjectHideFlags: 0
