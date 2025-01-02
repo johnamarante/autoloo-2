@@ -65,6 +65,8 @@ MonoBehaviour:
   - {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
   - {fileID: 6574580541872489291, guid: f6de32be7297117438f7067a82acbd66, type: 3}
   - {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+  - {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+  - {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
   actionTime: 0
   period: 3
   realFPS: 60

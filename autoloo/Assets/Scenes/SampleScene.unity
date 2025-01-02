@@ -461,7 +461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: BritishUnitRoster.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[4]
@@ -479,6 +479,10 @@ PrefabInstance:
       propertyPath: BritishUnitRoster.Array.data[3]
       value: 
       objectReference: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+    - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[4]
+      value: 
+      objectReference: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
     - target: {fileID: 5235097638683755667, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

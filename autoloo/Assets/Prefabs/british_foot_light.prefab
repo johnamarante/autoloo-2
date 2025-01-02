@@ -1620,7 +1620,7 @@ MonoBehaviour:
   SkirmisherUnlockRank: 99
   GrenadierUnlockRank: 99
   hitPointsFormula: 1
-  attackFormula: 1
+  attackFormula: PARENT RANK+1
   side: right
   tier: 1
   myFont: {fileID: 0}
