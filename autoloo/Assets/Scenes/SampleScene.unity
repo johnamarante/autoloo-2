@@ -177,7 +177,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d8412af86d52b5b44a049a818038ea20, type: 2}
+  - {fileID: 2100000, guid: b672509972eb17a418c000249cf9ad23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -461,7 +461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: BritishUnitRoster.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[4]
@@ -476,6 +476,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3126649275751001086, guid: 7778f1f40c416f24cb3e90702cfda4d3, type: 3}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
+      propertyPath: FrenchUnitRoster.Array.data[7]
+      value: 
+      objectReference: {fileID: 3126649275751001086, guid: 7778f1f40c416f24cb3e90702cfda4d3, type: 3}
+    - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: BritishUnitRoster.Array.data[3]
       value: 
       objectReference: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
@@ -483,6 +487,14 @@ PrefabInstance:
       propertyPath: BritishUnitRoster.Array.data[4]
       value: 
       objectReference: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+    - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[5]
+      value: 
+      objectReference: {fileID: 8585731507051703820, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
+    - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
+      propertyPath: BritishUnitRoster.Array.data[6]
+      value: 
+      objectReference: {fileID: 631644304311794899, guid: 8bc3520893dfd6e4f87c49a82a8da672, type: 3}
     - target: {fileID: 5235097638683755667, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

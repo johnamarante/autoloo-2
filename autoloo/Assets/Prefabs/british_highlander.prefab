@@ -521,7 +521,7 @@ MonoBehaviour:
   hitPointsFormula: 1
   attackFormula: 1
   side: right
-  tier: 2
+  tier: 1
   myFont: {fileID: 0}
   effectFrame: 0
   _queuePosition: 0

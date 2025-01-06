@@ -1,11 +1,19 @@
 {
     "UnitDetails": [
         {
-            "Name": "british_nassaurfusilier_bd9bd1bd",
+            "Name": "british_light_419e8f33",
             "Attack": 3,
-            "HitPoints": 2,
-            "Rank": 0,
+            "HitPoints": 4,
+            "Rank": 1,
             "QueuePosition": -1,
+            "IsSkirmisher": false
+        },
+        {
+            "Name": "british_highlander_3f35b230",
+            "Attack": 5,
+            "HitPoints": 5,
+            "Rank": 2,
+            "QueuePosition": -2,
             "IsSkirmisher": false
         }
     ]

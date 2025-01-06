@@ -927,7 +927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8286291403204596108, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
       propertyPath: m_Name
-      value: british_footguardskirmishers
+      value: british_footguardcenter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
@@ -996,6 +996,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
+--- !u!1001 &1174924870115177384
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 29.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125205484111183450, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951730989588425943, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
+      propertyPath: m_Name
+      value: british_footguardgrenadier
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef0e272ad8ce15342b8f987a4065ee60, type: 3}
 --- !u!1001 &1542243873313025104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2546,3 +2603,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce5f01844a7c9a441a885671ed88d482, type: 3}
+--- !u!1001 &8791867045959922946
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 29.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864278606720058603, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266701089368331878, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
+      propertyPath: m_Name
+      value: british_footguardskirmisher
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa0d7678fb7319c4ca7f13b97c21ba00, type: 3}
