@@ -219,8 +219,12 @@ PrefabInstance:
       value: title
       objectReference: {fileID: 0}
     - target: {fileID: 3808707971791483002, guid: b55dd0111478ad04b858831413f247a3, type: 3}
+      propertyPath: m_text
+      value: Autoloo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808707971791483002, guid: b55dd0111478ad04b858831413f247a3, type: 3}
       propertyPath: m_fontSize
-      value: 12
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3808707971791483002, guid: b55dd0111478ad04b858831413f247a3, type: 3}
       propertyPath: m_margin.x
@@ -253,6 +257,10 @@ PrefabInstance:
     - target: {fileID: 3808707971791483002, guid: b55dd0111478ad04b858831413f247a3, type: 3}
       propertyPath: m_fontSizeMin
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808707971791483002, guid: b55dd0111478ad04b858831413f247a3, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3808707971791483002, guid: b55dd0111478ad04b858831413f247a3, type: 3}
       propertyPath: m_fontColor32.rgba

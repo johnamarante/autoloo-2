@@ -715,4 +715,10 @@ public class Unit : MonoBehaviour
     {
         return this.KindTags.Intersect(unitB.KindTags).FirstOrDefault();
     }
+
+    private void OnDestroy()
+    {
+        // This method will be called when the GameObject or script is destroyed
+        Debug.Log($"{gameObject.name} destroyed");
+    }
 }

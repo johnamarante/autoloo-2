@@ -13,11 +13,6 @@ public class GrenadierAttack : MonoBehaviour
         unit = GetComponent<Unit>();
     }
 
-    private void OnDestroy()
-    {
-        // This method will be called when the GameObject or script is destroyed
-        Debug.Log($"{gameObject.name} destroyed");
-    }
     public void DeployGrenadiers()
     {
         Debug.Log("deploying grenadiers...");

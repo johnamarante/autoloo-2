@@ -389,6 +389,7 @@
 "Assets/scripts/NumberFloating.cs"
 "Assets/scripts/OpponentGeneration.cs"
 "Assets/scripts/PulseHover.cs"
+"Assets/scripts/Regroup.cs"
 "Assets/scripts/ResultPopup.cs"
 "Assets/scripts/Scout.cs"
 "Assets/scripts/ScoutReportItem.cs"

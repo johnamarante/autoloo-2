@@ -432,6 +432,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7032452712972958941, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -5894741638133125623, guid: 92f5ad0f8e662b648bbac09028d18b6a, type: 2}
     - target: {fileID: 7523159944113885130, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -440,6 +444,14 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8405739621999656937, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 92f5ad0f8e662b648bbac09028d18b6a, type: 2}
+    - target: {fileID: 8405739621999656937, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5894741638133125623, guid: 92f5ad0f8e662b648bbac09028d18b6a, type: 2}
     m_RemovedComponents:
     - {fileID: 3325327104187711965, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 83f6b60a037959f449cfd9d33ca94d2a, type: 3}
@@ -457,11 +469,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: FrenchUnitRoster.Array.size
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: BritishUnitRoster.Array.size
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[4]
@@ -470,7 +482,7 @@ PrefabInstance:
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[5]
       value: 
-      objectReference: {fileID: 6337201509501665544, guid: 8b369f6bfb44e4c428993fb502cc2c65, type: 3}
+      objectReference: {fileID: 3126649275751001086, guid: 7778f1f40c416f24cb3e90702cfda4d3, type: 3}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: FrenchUnitRoster.Array.data[6]
       value: 
