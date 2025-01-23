@@ -166,6 +166,7 @@ public class Unit : MonoBehaviour
     private SpriteRenderer spriteRank = new SpriteRenderer();
     //Stats display END
     private GameObject mouseHoverOverIndicator;
+    private GameObject unitCard;
     private GameObject selectedIndicator;
     public AudioClip acAttackSFX;
     public bool canFormSquare = false;
@@ -232,7 +233,7 @@ public class Unit : MonoBehaviour
         OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
         OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e <= 0) { OnDie(); } };
         OnCostChanged += (e) => textCost.text = e.ToString();
-        OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); SameKindDeploymentBonus(); };
+        OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); CheckBolsterMorale(); };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(Deployed); };
         OnFreezedChanged += (e) => freezeComponent.SetActive(e);
         OnIsSkirmisherChanged += (e) => Debug.Log($"is Skirmisher: {e}");
@@ -240,6 +241,7 @@ public class Unit : MonoBehaviour
         rankComponent.SetActive(Deployed);
         CheckUnlocksOnStart();
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
+        unitCard = transform.Find("unit_card").gameObject;
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
         try
@@ -616,6 +618,8 @@ public class Unit : MonoBehaviour
     private void ShowHoverIndicator(bool show)
     {
         mouseHoverOverIndicator.SetActive(show && !gameManager.InBattleModeAndNotDeploymentMode);
+        unitCard.SetActive(show && !gameManager.InBattleModeAndNotDeploymentMode);
+        unitCard.transform.position = gameManager.deployment.unitCardPlace.transform.position;
     }
 
     public void ShowSelectionIndicator(bool show)
@@ -682,38 +686,13 @@ public class Unit : MonoBehaviour
         return sum;
     }
 
-    private void SameKindDeploymentBonus()
+    private void CheckBolsterMorale()
     {
-        var listDeployedAllyUnits = FindObjectsOfType<Unit>().Where(y => y.side == "left" && y.Deployed).ToList();
-        if (!gameManager.InBattleModeAndNotDeploymentMode 
-            && listDeployedAllyUnits.Count > 0
-            && KindTags.Length > 0)
+        var bolsterMoraleComponent = GetComponent<BolsterMorale>();
+        if (bolsterMoraleComponent != null && side == gameManager.playerSide)
         {
-            string commonTag = null;
-            //check if any other deployed units have a common kind tag
-            foreach (Unit alliedUnit in listDeployedAllyUnits)
-            {
-                commonTag = HasCommonTags(alliedUnit);
-                if (commonTag != null)
-                {
-                    Debug.Log($"{this.name} has common tag {commonTag} with {alliedUnit.name}");
-                    alliedUnit.HitPoints++;
-                    alliedUnit.Attack++;
-                    gameManager.floatyNumber.SpawnFloatingString($"{commonTag.ToUpper()}\n+1/1", Color.green, alliedUnit.transform.position);
-                }
-            }
-            if (commonTag != null)
-            {
-                gameManager.floatyNumber.SpawnFloatingString($"{commonTag.ToUpper()}\n+1/1", Color.green, this.transform.position);
-                HitPoints++;
-                Attack++;
-            }
+            bolsterMoraleComponent.SameKindDeploymentBonus();
         }
-    }
-
-    private string HasCommonTags(Unit unitB)
-    {
-        return this.KindTags.Intersect(unitB.KindTags).FirstOrDefault();
     }
 
     private void OnDestroy()

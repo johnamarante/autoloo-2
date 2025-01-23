@@ -1734,7 +1734,8 @@ MonoBehaviour:
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
   _IsSkirmisher: 0
-  KindTags: []
+  KindTags:
+  - AngloAlliedLineInfantry
 --- !u!114 &5339757392773342966
 MonoBehaviour:
   m_ObjectHideFlags: 0

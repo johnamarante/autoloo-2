@@ -23,6 +23,7 @@ public class Deployment : MonoBehaviour
     public Action<int> OnCoinChanged;
     public GameObject goDeploymentMarker;
     public GameObject goShopMarker;
+    public GameObject unitCardPlace;
     public List<DeploymentMarker> listLeftDeploymentMarkers;
     public List<DeploymentMarker> listRightDeploymentMarkers;
     public List<DeploymentShopMarker> listLeftDeploymentShopMarkers;
@@ -53,6 +54,7 @@ public class Deployment : MonoBehaviour
             fontSize = 15,
             fontStyle = FontStyle.Bold
         };
+        unitCardPlace = GameObject.Find("unit_card_place");
         //setup deployment queues
         foreach (var position in deploymentQueuePositions)
         {

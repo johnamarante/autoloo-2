@@ -1,35 +1,27 @@
 {
     "UnitDetails": [
         {
-            "Name": "french_chasseur_9ee34b19",
-            "Attack": 3,
+            "Name": "british_highlander_1573c3fa",
+            "Attack": 4,
             "HitPoints": 4,
-            "Rank": 1,
+            "Rank": 0,
             "QueuePosition": -1,
             "IsSkirmisher": false
         },
         {
-            "Name": "french_hussar_6ad8e6a6",
-            "Attack": 5,
-            "HitPoints": 5,
-            "Rank": 1,
+            "Name": "british_highlander_e7b87db9",
+            "Attack": 4,
+            "HitPoints": 4,
+            "Rank": 0,
             "QueuePosition": -2,
             "IsSkirmisher": false
         },
         {
-            "Name": "french_line_392ecd53",
-            "Attack": 3,
-            "HitPoints": 2,
-            "Rank": 0,
-            "QueuePosition": -3,
-            "IsSkirmisher": false
-        },
-        {
-            "Name": "french_heavyartillery_74222f43",
-            "Attack": 1,
+            "Name": "british_footcenter_3c4bdd2f",
+            "Attack": 2,
             "HitPoints": 3,
             "Rank": 0,
-            "QueuePosition": -4,
+            "QueuePosition": -3,
             "IsSkirmisher": false
         }
     ]
