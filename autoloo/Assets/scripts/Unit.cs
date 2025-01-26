@@ -241,7 +241,7 @@ public class Unit : MonoBehaviour
         rankComponent.SetActive(Deployed);
         CheckUnlocksOnStart();
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
-        unitCard = transform.Find("unit_card").gameObject;
+        try { unitCard = transform.Find("unit_card").gameObject; } catch (Exception ex) { Debug.Log(ex.ToString()); }
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
         try
@@ -618,8 +618,11 @@ public class Unit : MonoBehaviour
     private void ShowHoverIndicator(bool show)
     {
         mouseHoverOverIndicator.SetActive(show && !gameManager.InBattleModeAndNotDeploymentMode);
-        unitCard.SetActive(show && !gameManager.InBattleModeAndNotDeploymentMode);
-        unitCard.transform.position = gameManager.deployment.unitCardPlace.transform.position;
+        if (unitCard != null)
+        {
+            unitCard.SetActive(show && !gameManager.InBattleModeAndNotDeploymentMode);
+            unitCard.transform.position = gameManager.deployment.unitCardPlace.transform.position;
+        }
     }
 
     public void ShowSelectionIndicator(bool show)
