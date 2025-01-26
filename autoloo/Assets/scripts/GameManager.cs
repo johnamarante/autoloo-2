@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     public AudioClip[] distBattle1AudioClips;
     public AudioClip[] cannonFire;
     public AudioClip[] cannonballHits;
+    public AudioClip battleMusic;
+    public AudioClip franceBattleMusic;
+    public AudioClip britainBattleMusic;
     private int currentClipIndex;
     public AudioSource generalAudioSource;
     public CameraControl cameraControl;
@@ -124,7 +127,7 @@ public class GameManager : MonoBehaviour
         //This method is used to clear off any audio sources added to the enduring gamemanager object
         //by non-enduring objects like units or cannonballs in the battle phase.
         //This enduring objet gamemanager is used for the audio sources because without it the audio sources will 
-        //not complete playing to the end of theri respective tracks, which is a disruptive effect for the player.
+        //not complete playing to the end of their respective tracks, which is a disruptive effect for the player.
         AudioSource[] componentsToRemove = this.gameObject.GetComponents<AudioSource>();
         foreach (AudioSource component in componentsToRemove)
         {
@@ -144,6 +147,7 @@ public class GameManager : MonoBehaviour
         {
             unit.side = "right";
         }
+        battleMusic = britainBattleMusic;
     }
     private void PlayAsFrance()
     {
@@ -157,6 +161,7 @@ public class GameManager : MonoBehaviour
         {
             unit.side = "right";
         }
+        battleMusic = franceBattleMusic;
     }
 
     private Dictionary<int, Vector3> GetFightQueuePositionLocations()
@@ -657,6 +662,13 @@ public class GameManager : MonoBehaviour
         var boomAudio = this.gameObject.AddComponent<AudioSource>();
         boomAudio.loop = false;
         boomAudio.clip = transientAudioClip;
+        boomAudio.Play();
+    }
+    public void PlayLoopingBattleMusic()
+    {
+        var boomAudio = this.gameObject.AddComponent<AudioSource>();
+        boomAudio.loop = true;
+        boomAudio.clip = battleMusic;
         boomAudio.Play();
     }
     public void DisableAllSpriteRenderers(GameObject obj)
