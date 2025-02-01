@@ -802,6 +802,7 @@ MonoBehaviour:
   _squared: 0
   acFormSquare: {fileID: 8300000, guid: 8e0bfb792110ef14e902695dcaa2b802, type: 3}
   _IsSkirmisher: 0
+  KindTags: []
 --- !u!114 &375342731887459404
 MonoBehaviour:
   m_ObjectHideFlags: 0

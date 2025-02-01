@@ -2078,7 +2078,7 @@ MonoBehaviour:
   squareComponent: {fileID: 0}
   effectPlacementLeft: {x: 7, y: 2, z: 1}
   effectPlacementRight: {x: -8, y: 2, z: 0}
-  acAttackSFX: {fileID: 8300000, guid: 9d1d1a6b5c46d924182e4630b961f1b1, type: 3}
+  acAttackSFX: {fileID: 8300000, guid: 59c7b5ea8ae380343a76b67ea89cb07c, type: 3}
   canFormSquare: 1
   isCavalry: 0
   isArtillery: 0

@@ -664,6 +664,7 @@ public class GameManager : MonoBehaviour
         boomAudio.clip = transientAudioClip;
         boomAudio.Play();
     }
+
     public void PlayLoopingBattleMusic()
     {
         var boomAudio = this.gameObject.AddComponent<AudioSource>();
@@ -671,6 +672,7 @@ public class GameManager : MonoBehaviour
         boomAudio.clip = battleMusic;
         boomAudio.Play();
     }
+
     public void DisableAllSpriteRenderers(GameObject obj)
     {
         // Get all SpriteRenderer components in the object and its children
