@@ -1,4 +1,5 @@
 using Auth0.AuthenticationApi.Models;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -28,6 +29,8 @@ public class MainMenu : MonoBehaviour
     [Header("Player")]
     public string playerName = "";
     //private string playerData = "";
+    public GameObject mainMenuChooseYourSide, playAsFrance, playAsBritain;
+    public GameObject[] frenchCodex, britishCodex;
 
     private void Awake()
     {
@@ -83,8 +86,8 @@ public class MainMenu : MonoBehaviour
     private void OnGUI()
     {
         GUI.Label(new Rect(10, Screen.height - 60, 30, 1000), menuMessage, guiStyle);
-        GUI.Label(new Rect(10, 0, 30, 1000), $"version {configuration.version}", guiStyle);
-
+        GUI.Label(new Rect(10, 10, 30, 1000), $"version {configuration.version}", guiStyle);
+        
         if (newUserSetup)
         {
             _ = ShowNewUserSetupDialogue();
@@ -94,7 +97,19 @@ public class MainMenu : MonoBehaviour
             ShowChooseNation();
         }
     }
-    
+    void ShowT()
+    {
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        GUI.color = Color.white;
+
+        float topLineY = screenHeight * 0.2f; // 20% from the top
+        GUI.DrawTexture(new Rect(0, topLineY, screenWidth, 2), Texture2D.whiteTexture);
+
+        float middleX = screenWidth * 0.5f; // Horizontal center of the screen
+        GUI.DrawTexture(new Rect(middleX - 1, topLineY, 2, screenHeight), Texture2D.whiteTexture); // 2px width for the vertical line
+    }
     private async Task ShowNewUserSetupDialogue()
     {
         float centerX = Screen.width * 0.5f;
@@ -135,23 +150,45 @@ public class MainMenu : MonoBehaviour
         float centerY = Screen.height * 0.5f;
 
         float inputWidth = 500;
-        float inputHeight = 60;
-        float buttonWidth = 500;
+        float inputHeight = -500;
+        float buttonWidth = 250;
         float buttonHeight = 250;
 
         float inputX = centerX - inputWidth * 0.5f;
         float inputY = centerY - inputHeight * 0.5f;
-        float buttonX = centerX - buttonWidth * 0.5f;
+        float buttonX = centerX - buttonWidth;
+        float button2X = (2*centerX) - buttonWidth;
         float buttonY = inputY + inputHeight + 20;
 
-        if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth/2, buttonHeight), franceFlag))
+        if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth, buttonHeight), franceFlag))
         { 
             LoadGame("France");
         }
-        if (GUI.Button(new Rect(buttonX + (buttonWidth / 2), buttonY, buttonWidth/2, buttonHeight), britainFlag))
+        if (GUI.Button(new Rect(button2X, buttonY, buttonWidth, buttonHeight), britainFlag))
         {
             LoadGame("Britain");
         }
+        ShowChooseYourSideTexts();
+        //ShowT();
+    }
+
+    private void ShowChooseYourSideTexts()
+    {
+        // Enable the game objects if they are found
+        if (mainMenuChooseYourSide != null)
+            mainMenuChooseYourSide.SetActive(true);
+        else
+            Debug.LogWarning("MainMenuchooseYourSide not found!");
+
+        if (playAsFrance != null)
+            playAsFrance.SetActive(true);
+        else
+            Debug.LogWarning("PlayAsFrance not found!");
+
+        if (playAsBritain != null)
+            playAsBritain.SetActive(true);
+        else
+            Debug.LogWarning("PlayAsBritain not found!");
     }
 
     public void LoadGame(string playerRoster)
