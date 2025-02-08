@@ -1271,7 +1271,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: fae362648379a8d4b955a4044bd9dac4, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 9641b29b48badd842898981c808fc121, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   _cost: 3
   _attack: 1
   _attackBonus: 0
-  _hitPoints: 3
+  _hitPoints: 1
   _rank: 0
   MaxUnitRank: 3
   SkirmisherUnlockRank: 99
@@ -1794,7 +1794,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3286163911610860551, guid: 210f2815ef8830d4391757393bd5d6e2, type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: 049c533e21945f64fb8b96952e94a0e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

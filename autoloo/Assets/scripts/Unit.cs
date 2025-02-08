@@ -203,7 +203,7 @@ public class Unit : MonoBehaviour
         }
     }
     public string[] KindTags;
-
+    private GameObject goUnitCost;
 
     void Awake()
     {

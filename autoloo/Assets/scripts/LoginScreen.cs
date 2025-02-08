@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 public class LoginScreen : MonoBehaviour
 {
     public AutolooPlayerData autolooPlayerData;
-    public AudioSource autolooMusic;
     private string usernameOrEmail = "";
     private string password = "";
 
@@ -23,7 +22,7 @@ public class LoginScreen : MonoBehaviour
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
-        DontDestroyOnLoad(autolooMusic);
+
     }
     private void Update()
     {

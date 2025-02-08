@@ -371,6 +371,7 @@
 "Assets/scripts/AutolooPlayerData.cs"
 "Assets/scripts/AutolooUserInfoUtil.cs"
 "Assets/scripts/Background.cs"
+"Assets/scripts/BattleMusicController.cs"
 "Assets/scripts/BolsterMorale.cs"
 "Assets/scripts/CameraControl.cs"
 "Assets/scripts/Cannonball.cs"
@@ -400,6 +401,7 @@
 "Assets/scripts/Unit.cs"
 "Assets/scripts/UnitCard.cs"
 "Assets/scripts/UnitDetail.cs"
+"Assets/scripts/UnitPrice.cs"
 -langversion:9.0
 
 /deterministic

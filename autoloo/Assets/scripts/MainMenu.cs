@@ -29,12 +29,12 @@ public class MainMenu : MonoBehaviour
     [Header("Player")]
     public string playerName = "";
     //private string playerData = "";
-    public GameObject mainMenuChooseYourSide, playAsFrance, playAsBritain;
-    public GameObject[] frenchCodex, britishCodex;
+    public GameObject mainMenuChooseYourSide, playAsFrance, playAsBritain, hoverToShowDetails;
+    public GameObject[] frenchRoster, britishRoster;
 
     private void Awake()
     {
-        guiStyle = new GUIStyle() { normal = new GUIStyleState() { textColor = Color.black }, fontSize = 48 };
+        guiStyle = new GUIStyle() { normal = new GUIStyleState() { textColor = Color.white }, fontSize = 24 };
     }
 
     private async void Start()
@@ -127,10 +127,10 @@ public class MainMenu : MonoBehaviour
 
         playerName = GUI.TextField(new Rect(inputX, inputY, inputWidth, inputHeight), playerName);
 
-        GUI.enabled = !isSettingUpUser; // Disable the button while setting up user
+        GUI.enabled = !isSettingUpUser; 
         if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth, buttonHeight), "Set Name"))
         {
-            isSettingUpUser = true; // Start setting up user
+            isSettingUpUser = true; 
 
             if (playerName == "guest")
             {
@@ -139,9 +139,9 @@ public class MainMenu : MonoBehaviour
 
             await SetupNewUser();
 
-            isSettingUpUser = false; // Finish setting up user
+            isSettingUpUser = false;
         }
-        GUI.enabled = true; // Enable the button again
+        GUI.enabled = true;
     }
 
     private void ShowChooseNation()
@@ -149,15 +149,15 @@ public class MainMenu : MonoBehaviour
         float centerX = Screen.width * 0.5f;
         float centerY = Screen.height * 0.5f;
 
-        float inputWidth = 500;
         float inputHeight = -500;
         float buttonWidth = 250;
         float buttonHeight = 250;
+        float buttonMarginX = 25;
+        float buttonMarginY = 50;
 
-        float inputX = centerX - inputWidth * 0.5f;
-        float inputY = centerY - inputHeight * 0.5f;
-        float buttonX = centerX - buttonWidth;
-        float button2X = (2*centerX) - buttonWidth;
+        float inputY = centerY - (inputHeight * 0.5f) - buttonMarginY;
+        float buttonX = centerX - buttonWidth - buttonMarginX;
+        float button2X = (2*centerX) - buttonWidth - buttonMarginX;
         float buttonY = inputY + inputHeight + 20;
 
         if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth, buttonHeight), franceFlag))
@@ -170,6 +170,14 @@ public class MainMenu : MonoBehaviour
         }
         ShowChooseYourSideTexts();
         //ShowT();
+        foreach (GameObject obj in frenchRoster)
+        {
+            obj.SetActive(true);
+        }
+        foreach (GameObject obj in britishRoster)
+        {
+            obj.SetActive(true);
+        }
     }
 
     private void ShowChooseYourSideTexts()
@@ -195,6 +203,8 @@ public class MainMenu : MonoBehaviour
     {
         autolooPlayerData.RosterName = playerRoster;
         DontDestroyOnLoad(autolooPlayerData);
+        //var ag = FindObjectOfType<AudioSource>().gameObject;
+        Destroy(FindObjectOfType<AudioSource>().gameObject);
         SceneManager.LoadScene("SampleScene");
     }
 

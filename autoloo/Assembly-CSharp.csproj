@@ -70,6 +70,7 @@
     <Compile Include="Assets\scripts\ResultPopup.cs" />
     <Compile Include="Assets\scripts\ScoutReportItem.cs" />
     <Compile Include="Assets\scripts\AutolooUserInfoUtil.cs" />
+    <Compile Include="Assets\scripts\UnitPrice.cs" />
     <Compile Include="Assets\scripts\Regroup.cs" />
     <Compile Include="Assets\scripts\Artillery.cs" />
     <Compile Include="Assets\scripts\GameManager.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\scripts\GrenadierAttack.cs" />
     <Compile Include="Assets\scripts\DeployFootDragoons.cs" />
     <Compile Include="Assets\scripts\ConfigurationManager.cs" />
+    <Compile Include="Assets\scripts\BattleMusicController.cs" />
     <Compile Include="Assets\scripts\StoreAndLoadArmyDetails.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1909,6 +1909,7 @@ GameObject:
   - component: {fileID: 2430381780287868810}
   - component: {fileID: 4566128981309507223}
   - component: {fileID: 563626193160677706}
+  - component: {fileID: 9193203342145397008}
   m_Layer: 0
   m_Name: british_foot
   m_TagString: Untagged
@@ -2060,6 +2061,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grenadierPrefab: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
   unit: {fileID: 0}
+--- !u!114 &9193203342145397008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509900960353001706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b345e31caa869b7498b9d5df3e45c07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8968889316792649149
 GameObject:
   m_ObjectHideFlags: 0

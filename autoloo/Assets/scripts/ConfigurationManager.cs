@@ -5,7 +5,6 @@ using System.IO;
 public class Configuration
 {
     public string version;
-    public bool devMode;
 }
 
 public class ConfigurationManager : MonoBehaviour
@@ -16,7 +15,6 @@ public class ConfigurationManager : MonoBehaviour
     {
         LoadConfiguration();
         Debug.Log("Version Number: " + config.version);
-        Debug.Log("Dev Mode: " + config.devMode);
     }
 
     private void LoadConfiguration()

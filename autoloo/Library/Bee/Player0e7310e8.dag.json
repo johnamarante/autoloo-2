@@ -435,13 +435,13 @@
       "DebugActionIndex": 23
     },
     {
-      "Annotation": "CopyFiles build32bit/autoloo_Data/sharedassets3.resource",
+      "Annotation": "CopyFiles build32bit/autoloo_Data/sharedassets3.assets.resS",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "Library/PlayerDataCache/Win/Data/sharedassets3.resource"
+        "Library/PlayerDataCache/Win/Data/sharedassets3.assets.resS"
       ],
       "Outputs": [
-        "build32bit/autoloo_Data/sharedassets3.resource"
+        "build32bit/autoloo_Data/sharedassets3.assets.resS"
       ],
       "DebugActionIndex": 24
     },

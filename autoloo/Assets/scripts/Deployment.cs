@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Deployment : MonoBehaviour
@@ -24,6 +25,7 @@ public class Deployment : MonoBehaviour
     public GameObject goDeploymentMarker;
     public GameObject goShopMarker;
     public GameObject unitCardPlace;
+    public GameObject unitCost;
     public List<DeploymentMarker> listLeftDeploymentMarkers;
     public List<DeploymentMarker> listRightDeploymentMarkers;
     public List<DeploymentShopMarker> listLeftDeploymentShopMarkers;
@@ -216,7 +218,7 @@ public class Deployment : MonoBehaviour
         //play music here
         if (gameManager.autolooPlayerData.RosterName == "France")
         {
-            gameManager.PlayLoopingBattleMusic();
+            gameManager.battleMusicController.PlayLoopingBattleMusic();
         }
         
     }
@@ -271,6 +273,7 @@ public class Deployment : MonoBehaviour
                     if (roll < cumulative)
                     {
                         shopItem = Instantiate(unit);
+                        shopItem.AddComponent<UnitPrice>();
                         break;
                     }
                 }

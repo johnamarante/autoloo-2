@@ -1,39 +1,44 @@
 {
     "UnitDetails": [
         {
-            "Name": "french_hussar_cca42ea5",
-            "Attack": 5,
+            "Name": "french_line_e44b76ae",
+            "Attack": 6,
             "HitPoints": 5,
-            "Rank": 1,
-            "QueuePosition": -1
+            "Rank": 3,
+            "QueuePosition": -1,
+            "IsSkirmisher": false
         },
         {
-            "Name": "french_line_1d529aef",
+            "Name": "french_hussar_2d11962a",
+            "Attack": 7,
+            "HitPoints": 7,
+            "Rank": 3,
+            "QueuePosition": -2,
+            "IsSkirmisher": false
+        },
+        {
+            "Name": "french_chasseur_ec26e6d4",
             "Attack": 2,
             "HitPoints": 3,
             "Rank": 0,
-            "QueuePosition": -2
+            "QueuePosition": -3,
+            "IsSkirmisher": false
         },
         {
-            "Name": "french_heavyartillery_81699711",
+            "Name": "french_cuirassier_91de4a6c",
+            "Attack": 6,
+            "HitPoints": 6,
+            "Rank": 0,
+            "QueuePosition": -4,
+            "IsSkirmisher": false
+        },
+        {
+            "Name": "french_heavyartillery_8875c1e9",
             "Attack": 2,
             "HitPoints": 4,
             "Rank": 1,
-            "QueuePosition": -3
-        },
-        {
-            "Name": "french_linevoltiguer_97c76b3b",
-            "Attack": 2,
-            "HitPoints": 3,
-            "Rank": 0,
-            "QueuePosition": -4
-        },
-        {
-            "Name": "french_carabinerapied_b8744cd7",
-            "Attack": 3,
-            "HitPoints": 4,
-            "Rank": 0,
-            "QueuePosition": -5
+            "QueuePosition": -5,
+            "IsSkirmisher": false
         }
     ]
 }

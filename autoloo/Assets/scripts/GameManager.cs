@@ -42,9 +42,6 @@ public class GameManager : MonoBehaviour
     public AudioClip[] distBattle1AudioClips;
     public AudioClip[] cannonFire;
     public AudioClip[] cannonballHits;
-    public AudioClip battleMusic;
-    public AudioClip franceBattleMusic;
-    public AudioClip britainBattleMusic;
     private int currentClipIndex;
     public AudioSource generalAudioSource;
     public CameraControl cameraControl;
@@ -74,6 +71,7 @@ public class GameManager : MonoBehaviour
     public float postRoundWaitTime = 1.0f;
     public float fadeHandlerWaitTime = 1.0f;
     public string notification;
+    public BattleMusicController battleMusicController;
 
     // Start is called before the first frame update
     void Start()
@@ -147,8 +145,9 @@ public class GameManager : MonoBehaviour
         {
             unit.side = "right";
         }
-        battleMusic = britainBattleMusic;
+        battleMusicController.SetBritainMusic();
     }
+
     private void PlayAsFrance()
     {
         LeftUnitRoster = FrenchUnitRoster;
@@ -161,7 +160,7 @@ public class GameManager : MonoBehaviour
         {
             unit.side = "right";
         }
-        battleMusic = franceBattleMusic;
+        battleMusicController.SetFranceMusic();
     }
 
     private Dictionary<int, Vector3> GetFightQueuePositionLocations()
@@ -662,14 +661,6 @@ public class GameManager : MonoBehaviour
         var boomAudio = this.gameObject.AddComponent<AudioSource>();
         boomAudio.loop = false;
         boomAudio.clip = transientAudioClip;
-        boomAudio.Play();
-    }
-
-    public void PlayLoopingBattleMusic()
-    {
-        var boomAudio = this.gameObject.AddComponent<AudioSource>();
-        boomAudio.loop = true;
-        boomAudio.clip = battleMusic;
         boomAudio.Play();
     }
 
