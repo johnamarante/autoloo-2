@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Unity.VisualScripting;
 
 public static class StoreAndLoadArmyDetails
 {
@@ -55,6 +56,7 @@ public static class StoreAndLoadArmyDetails
             unit._IsSkirmisher = unitDetails.IsSkirmisher;
             unit._deployed = true;
             unit.gameManager = gameManager;
+            unit.AddComponent<UnitPrice>();
             unit.DeployAndSnapPositionToDeploymentMarker(UnityEngine.Object.FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition).First());
         }
         else

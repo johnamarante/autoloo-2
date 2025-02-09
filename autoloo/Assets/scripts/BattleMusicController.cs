@@ -62,4 +62,18 @@ public class BattleMusicController : MonoBehaviour
         yield return new WaitForSeconds(clip.length);
     }
 
+    public void PlaySingleClipAndStop(AudioClip clip)
+    {
+        StopAllCoroutines(); // Stop looping battle music
+        audioSource.Stop(); // Stop any currently playing sound
+        StartCoroutine(PlayAndStopCoroutine(clip));
+    }
+
+    private IEnumerator PlayAndStopCoroutine(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
+        yield return new WaitForSeconds(clip.length);
+        audioSource.Stop();
+    }
 }

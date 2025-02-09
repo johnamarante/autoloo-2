@@ -636,7 +636,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8443396, b: 0.4198113, a: 1}
+  m_Color: {r: 0.9245283, g: 0.9238539, b: 0.7893378, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -840,6 +840,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
+      propertyPath: cymbal
+      value: 
+      objectReference: {fileID: 8300000, guid: 62225637985f20c47b394497e4a946a3, type: 3}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: franceBattleMusic
       value: 

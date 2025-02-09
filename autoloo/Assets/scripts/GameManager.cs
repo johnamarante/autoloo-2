@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     public float fadeHandlerWaitTime = 1.0f;
     public string notification;
     public BattleMusicController battleMusicController;
+    public AudioClip cymbal;
 
     // Start is called before the first frame update
     void Start()
@@ -219,6 +220,7 @@ public class GameManager : MonoBehaviour
                 if (CheckForAndHandleBattleResult(out string potentialResult) && potentialResult != null)
                 {
                     ShowResultPopup(potentialResult);
+                    battleMusicController.PlaySingleClipAndStop(cymbal);
                     InBattleModeAndNotDeploymentMode = false;
                     StartCoroutine(FadeOutAndMoveAndFadeInHandler(cameraPositions[-1]));
                     StartCoroutine(PostRoundCleanup(potentialResult));
@@ -245,6 +247,7 @@ public class GameManager : MonoBehaviour
                 if (CheckForAndHandleBattleResult(out string potentialResult) && potentialResult != null)
                 {
                     ShowResultPopup(potentialResult);
+                    battleMusicController.PlaySingleClipAndStop(cymbal);
                     InBattleModeAndNotDeploymentMode = false;
                     StartCoroutine(FadeOutAndMoveAndFadeInHandler(cameraPositions[-1]));
                     StartCoroutine(PostRoundCleanup(potentialResult));
