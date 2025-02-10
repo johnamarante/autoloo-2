@@ -25,7 +25,7 @@ public class TitleScene : MonoBehaviour
         Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, camStartZ + Time.realtimeSinceStartup);
         var loHiLoAlpha = CalculateLoHiLoAlphaBasedOnPlannedSceneLength();
         ChangeAlpha(maskingPlaneMaterial, loHiLoAlpha);
-        if (Time.timeSinceLevelLoad > plannedSceneLengthInSeconds)
+        if (Time.timeSinceLevelLoad > plannedSceneLengthInSeconds || Input.GetMouseButton(0))
         {
             SceneManager.LoadScene("login");
         }

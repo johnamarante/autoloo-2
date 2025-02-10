@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "C:\\projects\\autoloo-2\\autoloo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\deployment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|c:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\deployment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\deployment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|c:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\battlemusiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\cameracontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cameracontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\opponentgeneration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\opponentgeneration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\battlemusiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\battlemusiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\titlescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\titlescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\unitprice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitprice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\resultpopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,10 +47,6 @@
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bolstermorale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\scout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,32 +55,12 @@
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cavalry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\cameracontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cameracontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\unitprice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitprice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\storeandloadarmydetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\storeandloadarmydetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\titlescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\titlescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\loginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\loginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\opponentgeneration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\opponentgeneration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\unitcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -118,16 +118,17 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 4,
               "Title": "OpponentGeneration.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\OpponentGeneration.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\OpponentGeneration.cs",
               "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\OpponentGeneration.cs",
               "RelativeToolTip": "Assets\\scripts\\OpponentGeneration.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAwwBUAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowBUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-13T19:49:06.866Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -144,51 +145,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Deployment.cs",
-              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Deployment.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\Deployment.cs",
-              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Deployment.cs",
-              "RelativeToolTip": "Assets\\scripts\\Deployment.cs",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAowNoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T21:04:12.418Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BattleMusicController.cs",
-              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\BattleMusicController.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\BattleMusicController.cs",
-              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\BattleMusicController.cs",
-              "RelativeToolTip": "Assets\\scripts\\BattleMusicController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAIAwwB0AAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T20:56:08.53Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\GameManager.cs",
               "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\GameManager.cs",
               "RelativeToolTip": "Assets\\scripts\\GameManager.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAgwJQAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAD4v0cAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-03T22:15:38.231Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
+              "Title": "Deployment.cs",
+              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Deployment.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\Deployment.cs",
+              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Deployment.cs",
+              "RelativeToolTip": "Assets\\scripts\\Deployment.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAADwvzMAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-05T21:04:12.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "CameraControl.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\CameraControl.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\CameraControl.cs",
               "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\CameraControl.cs",
               "RelativeToolTip": "Assets\\scripts\\CameraControl.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAApwDsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAvwDoAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T01:19:08.003Z",
               "EditorCaption": ""
@@ -196,45 +184,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "BattleMusicController.cs",
+              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\BattleMusicController.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\BattleMusicController.cs",
+              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\BattleMusicController.cs",
+              "RelativeToolTip": "Assets\\scripts\\BattleMusicController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwEgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T20:56:08.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Unit.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Unit.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\Unit.cs",
               "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Unit.cs",
               "RelativeToolTip": "Assets\\scripts\\Unit.cs",
-              "ViewState": "AgIAAIwBAAAAAAAAAAApwKIBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAIwDYAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-03T22:15:38.22Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Cavalry.cs",
-              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Cavalry.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\Cavalry.cs",
-              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Cavalry.cs",
-              "RelativeToolTip": "Assets\\scripts\\Cavalry.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAApwCAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T22:15:38.233Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Scout.cs",
-              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Scout.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\Scout.cs",
-              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Scout.cs",
-              "RelativeToolTip": "Assets\\scripts\\Scout.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T22:15:38.224Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "BolsterMorale.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\BolsterMorale.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\BolsterMorale.cs",
@@ -242,12 +217,74 @@
               "RelativeToolTip": "Assets\\scripts\\BolsterMorale.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T19:27:49.632Z",
+              "WhenOpened": "2025-01-22T19:27:49.632Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainMenu.cs",
+              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\MainMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\MainMenu.cs",
+              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\MainMenu.cs",
+              "RelativeToolTip": "Assets\\scripts\\MainMenu.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAAAnwMQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-31T19:22:58.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
+              "Title": "Cavalry.cs",
+              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Cavalry.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\Cavalry.cs",
+              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Cavalry.cs",
+              "RelativeToolTip": "Assets\\scripts\\Cavalry.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAApwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T22:15:38.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TitleScene.cs",
+              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\TitleScene.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\TitleScene.cs",
+              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\TitleScene.cs",
+              "RelativeToolTip": "Assets\\scripts\\TitleScene.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-08T09:19:49.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UnitPrice.cs",
+              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\UnitPrice.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\UnitPrice.cs",
+              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\UnitPrice.cs",
+              "RelativeToolTip": "Assets\\scripts\\UnitPrice.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T19:49:52.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Scout.cs",
+              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Scout.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\Scout.cs",
+              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\Scout.cs",
+              "RelativeToolTip": "Assets\\scripts\\Scout.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T22:15:38.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "ResultPopup.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\ResultPopup.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\ResultPopup.cs",
@@ -255,8 +292,7 @@
               "RelativeToolTip": "Assets\\scripts\\ResultPopup.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T19:51:28.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-06T19:51:28.725Z"
             },
             {
               "$type": "Document",
@@ -272,19 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UnitPrice.cs",
-              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\UnitPrice.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\UnitPrice.cs",
-              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\UnitPrice.cs",
-              "RelativeToolTip": "Assets\\scripts\\UnitPrice.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T19:49:52.878Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "LoginScreen.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\LoginScreen.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\LoginScreen.cs",
@@ -308,19 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MainMenu.cs",
-              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\MainMenu.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\MainMenu.cs",
-              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\MainMenu.cs",
-              "RelativeToolTip": "Assets\\scripts\\MainMenu.cs",
-              "ViewState": "AgIAALQAAAAAAAAAAAAewMoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T19:22:58.606Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "StoreAndLoadArmyDetails.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\StoreAndLoadArmyDetails.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\StoreAndLoadArmyDetails.cs",
@@ -341,18 +353,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T00:51:56.499Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "TitleScene.cs",
-              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\TitleScene.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\TitleScene.cs",
-              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\TitleScene.cs",
-              "RelativeToolTip": "Assets\\scripts\\TitleScene.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T09:19:49.767Z"
             },
             {
               "$type": "Document",
@@ -412,8 +412,7 @@
               "RelativeToolTip": "Assets\\scripts\\GrenadierAttack.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAowCkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T22:15:38.227Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-03T22:15:38.227Z"
             },
             {
               "$type": "Document",

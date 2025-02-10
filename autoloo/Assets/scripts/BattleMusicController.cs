@@ -36,7 +36,7 @@ public class BattleMusicController : MonoBehaviour
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.loop = false; // We handle looping manually
+            audioSource.loop = false;
         }
 
         StopAllCoroutines(); // Prevent multiple loops from overlapping
@@ -64,8 +64,8 @@ public class BattleMusicController : MonoBehaviour
 
     public void PlaySingleClipAndStop(AudioClip clip)
     {
-        StopAllCoroutines(); // Stop looping battle music
-        audioSource.Stop(); // Stop any currently playing sound
+        StopAllCoroutines();
+        audioSource.Stop();
         StartCoroutine(PlayAndStopCoroutine(clip));
     }
 

@@ -37,6 +37,9 @@ public class Deployment : MonoBehaviour
     public Texture btnFreeze;
     public Texture btnSell;
     public Texture btnRoll;
+    public AudioClip singleCoinSound;
+    public AudioClip multipleCoinsSound;
+    public AudioClip bugleSummonsSound;
     public JToken opponentDraftData;
     private bool checkOpponentGenerationCompleted = false;
     private bool endTurnButtonClicked = false;
@@ -97,6 +100,22 @@ public class Deployment : MonoBehaviour
         StartCoroutine(GetOpponentDraftData());
     }
 
+    private void SetResourcePointsDisplay()
+    {
+        var texMeshProComponents = Camera.main.gameObject.transform.GetComponentsInChildren(typeof(TextMeshPro), true);
+        TextMeshPro textResourcePoints;
+        for (int i = 0; i < texMeshProComponents.Length; i++)
+        {
+            if (texMeshProComponents[i].name == "ResourcePoints")
+            {
+                textResourcePoints = texMeshProComponents[i].GetComponent<TextMeshPro>();
+                textResourcePoints.text = coin.ToString();
+                OnCoinChanged += (e) => textResourcePoints.text = coin.ToString();
+                textResourcePoints = (TextMeshPro)texMeshProComponents[i];
+            }
+        }
+    }
+
     private void Update()
     {
         if (checkOpponentGenerationCompleted)
@@ -114,14 +133,6 @@ public class Deployment : MonoBehaviour
                 Debug.Log("waiting on opponent data for battle");
             }
         }
-    }
-
-    private void SetResourcePointsDisplay()
-    {
-        var texMeshProComponent = Camera.main.gameObject.transform.GetComponentInChildren(typeof(TextMeshPro), true);
-        var textResourcePoints = (TextMeshPro)texMeshProComponent;
-        textResourcePoints.text = coin.ToString();
-        OnCoinChanged += (e) => textResourcePoints.text = coin.ToString();
     }
 
     private void OnGUI()
@@ -190,7 +201,7 @@ public class Deployment : MonoBehaviour
     {
         if (opponentDraftData == null)
         {
-            var draftDataTask = OpponentGeneration.GetDraftDataAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+            var draftDataTask = OpponentGeneration.GetDraftDataAsync(gameManager.autolooPlayerData.PlayerName, gameManager.roundNumber, gameManager.win, gameManager.loss);
             yield return new WaitUntil(() => draftDataTask.IsCompleted);
             opponentDraftData = draftDataTask.Result;
         }
@@ -210,7 +221,7 @@ public class Deployment : MonoBehaviour
             gameManager.autolooPlayerData.unitDetails.Add(unit.GetDetail());
         }
 
-        StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData, gameManager.roundNumber, gameManager.WIN, gameManager.LOSS);
+        StoreAndLoadArmyDetails.Store(gameManager.autolooPlayerData, gameManager.roundNumber, gameManager.win, gameManager.loss);
 
         gameManager.ArrangeUnitsOnBattlefield(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
         gameManager.ArrangeUnitsOnBattlefield(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
@@ -234,6 +245,7 @@ public class Deployment : MonoBehaviour
                 return;
             }
             coin--;
+            gameManager.PlayTransientAudioClip(singleCoinSound);
         }
         GenerateShopQueueUnitsFromRoster(gameManager.LeftUnitRoster.OrderBy(x => x.Chance).ToList());
     }
@@ -275,7 +287,7 @@ public class Deployment : MonoBehaviour
             }
             shopQueue.Add(shopItem);
         }
-
+        gameManager.PlayTransientAudioClip(bugleSummonsSound);
         gameManager.ArrangeUnitsInstantly(ref shopQueue, deploymentShopQueuePositions);
     }
 

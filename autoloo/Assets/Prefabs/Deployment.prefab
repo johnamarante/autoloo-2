@@ -126,6 +126,9 @@ MonoBehaviour:
   btnFreeze: {fileID: 2800000, guid: ce561b055d48baa409113c0ba391dbcb, type: 3}
   btnSell: {fileID: 2800000, guid: 5c552bda8e25fbc4c8b53625cc10e3c2, type: 3}
   btnRoll: {fileID: 2800000, guid: 24a3dfdb1da2f3a458d3ff1fe0b37a43, type: 3}
+  singleCoinSound: {fileID: 8300000, guid: f5ef52028fa78944ea011d80ae91249b, type: 3}
+  multipleCoinsSound: {fileID: 0}
+  bugleSummonsSound: {fileID: 8300000, guid: 44b77ef96e6f83144bf5f7cb157bc028, type: 3}
 --- !u!114 &184128715444044455
 MonoBehaviour:
   m_ObjectHideFlags: 0

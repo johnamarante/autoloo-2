@@ -26,11 +26,13 @@ public class UnitPrice : MonoBehaviour
             {
                 goUnitPrice.GetComponent<TextMeshPro>().color = Color.white;
                 goUnitPrice.GetComponent<TextMeshPro>().text = $"Cost:  {unit.Cost}";
+                goUnitPrice.gameObject.transform.parent.gameObject.transform.position = new Vector3(-133.5f, 3f, -10.22048f);
             }
             else
             {
                 goUnitPrice.GetComponent<TextMeshPro>().color = Color.green;
                 goUnitPrice.GetComponent<TextMeshPro>().text = $"Sell:  {1 + unit.CurrencyBumpBasedOnRank(unit.Rank)}";
+                goUnitPrice.gameObject.transform.parent.gameObject.transform.position = new Vector3(-133.5f, 25f, -10.22048f);
             }
             
         }

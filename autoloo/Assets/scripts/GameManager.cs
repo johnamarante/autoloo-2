@@ -61,8 +61,29 @@ public class GameManager : MonoBehaviour
     public AutolooPlayerData autolooPlayerData;
     public int roundNumber = 1;
     public int roundCycle = 1;
-    public int WIN = 0;
-    public int LOSS = 0;
+    public int _win = 0;
+    public int win
+    {
+        get { return _win; }
+        set
+        {
+            _win = value;
+            this?.OnLossChanged(_win);
+        }
+    }
+    public int _loss;
+    public int loss
+    {
+        get { return _loss; }
+        set
+        {
+            _loss = value;
+            this?.OnLossChanged(_loss);
+        }
+    }
+    public int playerHearts = 5;
+    public Action<int> OnLossChanged;
+    public Action<int> OnWinChanged;
     private int leftUnitTakeDamage = 0;
     private int rightUnitTakeDamage = 0;
     public string developerMessage;
@@ -99,6 +120,7 @@ public class GameManager : MonoBehaviour
         deployment = Instantiate(deployment);
         floatyNumber = this.gameObject.GetComponent<NumberFloating>();
         OnSelectedUnitChanged += (e) => { Debug.Log($"selected unit is {e}"); deployment.SetDeployMarkerArrows(e); };
+        SetHeartsAndWinsDisplay();
         InBattleModeAndNotDeploymentModeChanged += (e) => { 
             if (InBattleModeAndNotDeploymentMode)
             {
@@ -119,6 +141,31 @@ public class GameManager : MonoBehaviour
             }
         };
         Screen.SetResolution(1920, 1080, true);
+    }
+
+    private void SetHeartsAndWinsDisplay()
+    {
+        var texMeshProComponents = Camera.main.gameObject.transform.GetComponentsInChildren(typeof(TextMeshPro), true);
+        TextMeshPro textHearts;
+        TextMeshPro textWins;
+        for (int i = 0; i < texMeshProComponents.Length; i++)
+        {
+            if (texMeshProComponents[i].name == "Hearts")
+            {
+                textHearts = texMeshProComponents[i].GetComponent<TextMeshPro>();
+                textHearts.text = (playerHearts - loss).ToString();
+                OnLossChanged += (e) => textHearts.text = (playerHearts - loss).ToString();
+                textHearts = (TextMeshPro)texMeshProComponents[i];
+            }
+
+            if (texMeshProComponents[i].name == "Wins")
+            {
+                textWins = texMeshProComponents[i].GetComponent<TextMeshPro>();
+                textWins.text = win.ToString();
+                OnLossChanged += (e) => textWins.text = win.ToString();
+                textWins = (TextMeshPro)texMeshProComponents[i];
+            }
+        }
     }
 
     private void RemoveAudioSourcesOnGameManager()
@@ -504,11 +551,11 @@ public class GameManager : MonoBehaviour
         deployment.coin = 10;
         if (resultText.StartsWith('W'))
         {
-            WIN++;
+            win++;
         }
         else
         {
-            LOSS++;
+            loss++;
         }
         //reset the cycle
         roundCycle = 0;
