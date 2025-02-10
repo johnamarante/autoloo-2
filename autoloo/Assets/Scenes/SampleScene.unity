@@ -158,9 +158,9 @@ MonoBehaviour:
   franceBattleMusicIntro: {fileID: 8300000, guid: eded0d83e7bf2794d9fdb0d5ef7b4b12, type: 3}
   franceBattleMusicMid: {fileID: 8300000, guid: 055c132250a7ffd41bb366d2269cf331, type: 3}
   franceBattleMusicOutro: {fileID: 8300000, guid: a05f28310ea2291439c7f5c399beb44a, type: 3}
-  britainBattleMusicIntro: {fileID: 0}
-  britainBattleMusicMid: {fileID: 0}
-  britainBattleMusicOutro: {fileID: 0}
+  britainBattleMusicIntro: {fileID: 8300000, guid: 17d793631aa555148b8e3ad4adc1cfb2, type: 3}
+  britainBattleMusicMid: {fileID: 8300000, guid: 12c7e83601e6da4408d7b41a435a6d16, type: 3}
+  britainBattleMusicOutro: {fileID: 8300000, guid: 12c7e83601e6da4408d7b41a435a6d16, type: 3}
 --- !u!4 &11261808
 Transform:
   m_ObjectHideFlags: 0

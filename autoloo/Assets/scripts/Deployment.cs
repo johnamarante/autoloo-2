@@ -214,13 +214,8 @@ public class Deployment : MonoBehaviour
 
         gameManager.ArrangeUnitsOnBattlefield(ref gameManager.LeftQueueUnits, gameManager.fightQueuePositions);
         gameManager.ArrangeUnitsOnBattlefield(ref gameManager.RightQueueUnits, gameManager.fightQueuePositions);
+        gameManager.battleMusicController.PlayLoopingBattleMusic();
 
-        //play music here
-        if (gameManager.autolooPlayerData.RosterName == "France")
-        {
-            gameManager.battleMusicController.PlayLoopingBattleMusic();
-        }
-        
     }
 
     private void PopulateQueues()
