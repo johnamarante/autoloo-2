@@ -60,7 +60,16 @@ public class GameManager : MonoBehaviour
     public Action<bool> InBattleModeAndNotDeploymentModeChanged;
     public ResultPopup resultPopup;
     public AutolooPlayerData autolooPlayerData;
-    public int roundNumber = 1;
+    public int _roundNumber = 1;
+    public int roundNumber
+    {
+        get { return _roundNumber; }
+        set
+        {
+            _roundNumber = value;
+            this?.OnRoundChanged(_roundNumber);
+        }
+    }
     public int roundCycle = 1;
     public int _win = 0;
     public int win
@@ -69,7 +78,7 @@ public class GameManager : MonoBehaviour
         set
         {
             _win = value;
-            this?.OnLossChanged(_win);
+            this?.OnWinChanged(_win);
         }
     }
     public int _loss;
@@ -83,6 +92,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public int playerHearts = 5;
+    public Action<int> OnRoundChanged;
     public Action<int> OnLossChanged;
     public Action<int> OnWinChanged;
     private int leftUnitTakeDamage = 0;
@@ -149,6 +159,7 @@ public class GameManager : MonoBehaviour
         var texMeshProComponents = Camera.main.gameObject.transform.GetComponentsInChildren(typeof(TextMeshPro), true);
         TextMeshPro textHearts;
         TextMeshPro textWins;
+        TextMeshPro textTurn;
         for (int i = 0; i < texMeshProComponents.Length; i++)
         {
             if (texMeshProComponents[i].name == "Hearts")
@@ -163,8 +174,16 @@ public class GameManager : MonoBehaviour
             {
                 textWins = texMeshProComponents[i].GetComponent<TextMeshPro>();
                 textWins.text = win.ToString();
-                OnLossChanged += (e) => textWins.text = win.ToString();
+                OnWinChanged += (e) => textWins.text = win.ToString();
                 textWins = (TextMeshPro)texMeshProComponents[i];
+            }
+
+            if (texMeshProComponents[i].name == "Turn")
+            {
+                textTurn = texMeshProComponents[i].GetComponent<TextMeshPro>();
+                textTurn.text = roundNumber.ToString();
+                OnRoundChanged += (e) => textTurn.text = roundNumber.ToString();
+                textTurn = (TextMeshPro)texMeshProComponents[i];
             }
         }
     }

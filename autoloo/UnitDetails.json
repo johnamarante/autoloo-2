@@ -1,11 +1,19 @@
 {
     "UnitDetails": [
         {
-            "Name": "french_chasseur_22c63714",
+            "Name": "french_line_577d1617",
+            "Attack": 4,
+            "HitPoints": 3,
+            "Rank": 1,
+            "QueuePosition": -1,
+            "IsSkirmisher": false
+        },
+        {
+            "Name": "french_chasseur_0216e5ca",
             "Attack": 2,
             "HitPoints": 3,
             "Rank": 0,
-            "QueuePosition": -1,
+            "QueuePosition": -2,
             "IsSkirmisher": false
         }
     ]

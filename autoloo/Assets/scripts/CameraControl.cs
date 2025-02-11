@@ -60,6 +60,7 @@ public class CameraControl : MonoBehaviour
         this.transform.Find("ResourcePoints").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         this.transform.Find("Hearts").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         this.transform.Find("Wins").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
+        this.transform.Find("Turn").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         //sign that says reinforcements Icon
     }
 
