@@ -54,9 +54,12 @@ public class CameraControl : MonoBehaviour
                 transform.position = endMarker;
             }
         }
+        //TODO this needs to be refactored, this should not be in update()
+        //have gamemanager call a method to set these based on the InBattleModeAndNotDeploymentMode property
         //ResourcePoints Icon
         this.transform.Find("ResourcePoints").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         this.transform.Find("Hearts").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
+        this.transform.Find("Wins").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         //sign that says reinforcements Icon
     }
 

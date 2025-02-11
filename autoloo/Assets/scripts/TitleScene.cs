@@ -22,7 +22,7 @@ public class TitleScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, camStartZ + Time.realtimeSinceStartup);
+        //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, camStartZ + Time.realtimeSinceStartup);
         var loHiLoAlpha = CalculateLoHiLoAlphaBasedOnPlannedSceneLength();
         ChangeAlpha(maskingPlaneMaterial, loHiLoAlpha);
         if (Time.timeSinceLevelLoad > plannedSceneLengthInSeconds || Input.GetMouseButton(0))

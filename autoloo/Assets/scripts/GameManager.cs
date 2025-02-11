@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -544,23 +545,32 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(postRoundWaitTime);
         autolooPlayerData.ClearUnitDetails();
-        CleanupBattlefield();       
+        CleanupBattlefield();
         StoreAndLoadArmyDetails.Load(LeftUnitRoster, this);
         roundNumber++;
         deployment.Roll(false);
         deployment.coin = 10;
-        if (resultText.StartsWith('W'))
-        {
-            win++;
-        }
-        else
-        {
-            loss++;
-        }
+        IncrementResult(resultText);
         //reset the cycle
         roundCycle = 0;
         BattleModeBoolSwitchesReset();
         StartCoroutine(deployment.GetOpponentDraftData());
+    }
+
+    private void IncrementResult(string resultText)
+    {
+        switch (resultText[0])
+        {
+            case 'W':
+                win++;
+                break;
+            case 'L':
+                loss++;
+                break;
+            default:
+                //draw
+                break;
+        }
     }
 
     void ShowResultPopup(string resultText)
