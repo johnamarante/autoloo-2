@@ -48,11 +48,12 @@ public static class OpponentGeneration
         return randomfdd;
     }
 
-    public static void GenerateFromDraftData(GameManager gameManager, JToken randomfdd)
+    public static void GenerateFromDraftData(GameManager gameManager, JToken draftData, out string playerName)
     {
         try
         {
-            foreach (var jsonUnitDetail in randomfdd["UnitDetails"])
+            playerName = draftData["playername"].ToString();
+            foreach (var jsonUnitDetail in draftData["UnitDetails"])
             {
                 try
                 {
@@ -68,10 +69,12 @@ public static class OpponentGeneration
         {
             Debug.Log($"There was an exception {ex} generating the opponent from the friendpaste data");
             Debug.Log("Reverting to random opponent generation");
+            playerName = Guid.NewGuid().ToString().Split("-").First();
             GenerateRandom();
         }
         finally
         {
+
             new GameObject("OpponentGenerationCompleted");
         }
     }

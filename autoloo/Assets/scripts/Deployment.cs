@@ -21,7 +21,18 @@ public class Deployment : MonoBehaviour
             this?.OnCoinChanged(_coin);
         }
     }
+    public string _opponentName;
+    public string opponetName
+    {
+        get { return _opponentName; }
+        set
+        {
+            _opponentName = value;
+            this?.OnOpponentNameChanged(_opponentName);
+        }
+    }
     public Action<int> OnCoinChanged;
+    public Action<string> OnOpponentNameChanged;
     public GameObject goDeploymentMarker;
     public GameObject goShopMarker;
     public GameObject unitCardPlace;
@@ -104,6 +115,7 @@ public class Deployment : MonoBehaviour
     {
         var texMeshProComponents = Camera.main.gameObject.transform.GetComponentsInChildren(typeof(TextMeshPro), true);
         TextMeshPro textResourcePoints;
+        TextMeshPro textOpponentName;
         for (int i = 0; i < texMeshProComponents.Length; i++)
         {
             if (texMeshProComponents[i].name == "ResourcePoints")
@@ -112,6 +124,13 @@ public class Deployment : MonoBehaviour
                 textResourcePoints.text = coin.ToString();
                 OnCoinChanged += (e) => textResourcePoints.text = coin.ToString();
                 textResourcePoints = (TextMeshPro)texMeshProComponents[i];
+            }
+            if (texMeshProComponents[i].name == "OpponentName")
+            {
+                textOpponentName = texMeshProComponents[i].GetComponent<TextMeshPro>();
+                textOpponentName.text = opponetName.ToString();
+                OnOpponentNameChanged += (e) => textOpponentName.text = opponetName.ToString();
+                textOpponentName = (TextMeshPro)texMeshProComponents[i];
             }
         }
     }
@@ -147,7 +166,8 @@ public class Deployment : MonoBehaviour
                 {
                     endTurnButtonClicked = true;
                     checkOpponentGenerationCompleted = true;
-                    OpponentGeneration.GenerateFromDraftData(gameManager, opponentDraftData);
+                    OpponentGeneration.GenerateFromDraftData(gameManager, opponentDraftData, out var passOpponentName); //CS0206: A non ref-returning property or indexer may not be used as an out or ref value
+                    opponetName = passOpponentName;
                     opponentDraftData = null;
                     ClearScoutReport();
                 }

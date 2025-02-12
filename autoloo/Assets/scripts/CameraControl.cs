@@ -57,11 +57,17 @@ public class CameraControl : MonoBehaviour
         //TODO this needs to be refactored, this should not be in update()
         //have gamemanager call a method to set these based on the InBattleModeAndNotDeploymentMode property
         //ResourcePoints Icon
+        //SetHUD();
+        //sign that says reinforcements Icon
+    }
+
+    public void SetHUD()
+    {
         this.transform.Find("ResourcePoints").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         this.transform.Find("Hearts").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         this.transform.Find("Wins").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
         this.transform.Find("Turn").gameObject.SetActive(!gameManager.InBattleModeAndNotDeploymentMode);
-        //sign that says reinforcements Icon
+        this.transform.Find("OpponentName").gameObject.SetActive(gameManager.InBattleModeAndNotDeploymentMode);
     }
 
     public void Move(Vector3 dest)

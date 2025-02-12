@@ -136,48 +136,13 @@ public class Artillery : MonoBehaviour
 
     public void FireCannonEffect()
     {
-        switch (effectFrame)
-        {
-            case 1:
-                unit.gameManager.PlayCannonballFire();
-                ShowFlashEffect();
-                break;
-            case 10:
-                ShowSmokeEffect();
-                break;
-        }
-
-        effectFrame++;
-
-        if (effectFrame > 60)
-        {
-            HideEffect();
-        }
-        else 
-        {
-            //fade
-            float effectRatio = (float)(60 - effectFrame) / 60;
-            unit.effectsComponent.color = new Color(unit.effectsComponent.color.r, unit.effectsComponent.color.g, unit.effectsComponent.color.b, effectRatio);
-        }
-    }
-
-    private void ShowFlashEffect()
-    {
-        unit.effectsComponent.enabled = true;
-        unit.effectsComponent.sprite = (unit.side == "left") ? flashEffectLeft : flashEffectRight;
-        var uniteffectscomponentspritename = unit.effectsComponent.sprite.name;
-        unit.effectsComponent.transform.position = new Vector3(gameObject.transform.position.x + Int32.Parse(uniteffectscomponentspritename.Split("_")[3]), gameObject.transform.position.y + Int32.Parse(uniteffectscomponentspritename.Split("_")[4]), unit.effectsComponent.transform.position.z);
-    }
-
-    private void ShowSmokeEffect()
-    {
-        unit.effectsComponent.sprite = (unit.side == "left") ? smokeEffectLeft : smokeEffectRight;
+        Debug.Log("cannon fire effect needed");
+        HideEffect();
     }
 
     private void HideEffect()
     {
         showArtilleryEffect = false;
-        unit.effectsComponent.enabled = false;
         effectFrame = 0;
     }
 

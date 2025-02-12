@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour
                 generalAudioSource.Play();
                 RemoveAudioSourcesOnGameManager();
             }
+            cameraControl.SetHUD();
         };
         Screen.SetResolution(1920, 1080, true);
     }

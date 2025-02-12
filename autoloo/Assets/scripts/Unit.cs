@@ -132,7 +132,6 @@ public class Unit : MonoBehaviour
             _freezed = value;
         }
     }
-
     public int cycle = 1;
     public string spriteName;
     //Lerping START
@@ -159,7 +158,6 @@ public class Unit : MonoBehaviour
     public GameObject costComponent;
     public GameObject rankComponent;
     public GameObject freezeComponent;
-    public SpriteRenderer effectsComponent;
     public SpriteRenderer squareComponent;
     public Vector3 effectPlacementLeft;
     public Vector3 effectPlacementRight;
@@ -243,7 +241,6 @@ public class Unit : MonoBehaviour
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
         try { unitCard = transform.Find("unit_card").gameObject; } catch (Exception ex) { Debug.Log(ex.ToString()); }
         selectedIndicator = transform.Find("selected_indicator").gameObject;
-        effectsComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgeffectssprite").FirstOrDefault();
         try
         {
             squareComponent = (SpriteRenderer)transform.GetComponentsInChildren(typeof(SpriteRenderer), true).Where(x => x.name == "svgsquaresprite").FirstOrDefault();
