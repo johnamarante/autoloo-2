@@ -239,7 +239,17 @@ public class Unit : MonoBehaviour
         rankComponent.SetActive(Deployed);
         CheckUnlocksOnStart();
         mouseHoverOverIndicator = transform.Find("hover_over_indicator").gameObject;
-        try { unitCard = transform.Find("unit_card").gameObject; } catch (Exception ex) { Debug.Log(ex.ToString()); }
+        //try { unitCard = transform.Find("unit_card").gameObject; } catch (Exception ex) { Debug.Log(ex.ToString()); }
+        Transform unitCardTransform = transform.Find("unit_card");
+        if (unitCardTransform != null)
+        {
+            unitCard = unitCardTransform.gameObject;
+        }
+        else
+        {
+            Debug.LogWarning("unit_card not found.");
+        }
+
         selectedIndicator = transform.Find("selected_indicator").gameObject;
         try
         {

@@ -652,7 +652,9 @@ public class GameManager : MonoBehaviour
         {
             // Apply damage to HitPoints
             leftUnits[0].HitPoints -= leftUnitTakeDamage;
+            Debug.Log($"fight AV effect for {rightUnits[0].name}"); 
             rightUnits[0].HitPoints -= rightUnitTakeDamage;
+            Debug.Log($"fight AV effect for {leftUnits[0].name}");
             floatyNumber.SpawnFloatingNumber(-leftUnitTakeDamage, leftUnits[0].transform.position);
             floatyNumber.SpawnFloatingNumber(-rightUnitTakeDamage, rightUnits[0].transform.position);
             leftUnits[0].cycle++;
