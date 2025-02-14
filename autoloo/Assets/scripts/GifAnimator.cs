@@ -6,7 +6,7 @@ public class GifAnimator : MonoBehaviour
 {
     public Sprite[] frames; // Assign 18 PNG images in the Inspector
     public float frameRate = 0.1f; // Time per frame in seconds
-    public float frameShift = -0.1f; // Time per frame in seconds
+    public float frameShift = -0.1f; 
     private SpriteRenderer imageComponent;
     private int currentFrame = 0;
     private Vector3 startingPosition;

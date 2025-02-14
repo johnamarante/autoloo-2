@@ -6,6 +6,7 @@ public class GunfireEffect : MonoBehaviour
     public GameObject effectPrefab; // The effect to instantiate
     public AudioClip[] gunfireSounds; // Array of gunfire sounds
     public float effectRadius = 1f; // Radius within which effects will be instantiated
+    public bool left;
 
     private AudioSource audioSource;
     private bool isPlaying = false;
@@ -42,8 +43,12 @@ public class GunfireEffect : MonoBehaviour
         {
             Vector3 randomPosition = transform.position + (Random.insideUnitSphere * effectRadius);
             randomPosition.z = transform.position.z; // Keep it on the same plane
-            Instantiate(effectPrefab, randomPosition, Quaternion.identity);
-
+            var goMusketFlash = Instantiate(effectPrefab, randomPosition, Quaternion.identity);
+            goMusketFlash.GetComponent<SpriteRenderer>().flipX = left;
+            if (left)
+            {
+                goMusketFlash.GetComponent<GifAnimator>().frameShift = (-1 * goMusketFlash.GetComponent<GifAnimator>().frameShift);
+            }
             yield return new WaitForSeconds(0.1f); // Small delay before checking if the sound is still playing
         }
 
