@@ -62,6 +62,7 @@
     <Compile Include="Assets\scripts\ArrowHover.cs" />
     <Compile Include="Assets\scripts\PulseHover.cs" />
     <Compile Include="Assets\scripts\UnitDetail.cs" />
+    <Compile Include="Assets\scripts\GunfireEffect.cs" />
     <Compile Include="Assets\scripts\Skirmish.cs" />
     <Compile Include="Assets\scripts\LoginScreen.cs" />
     <Compile Include="Assets\scripts\TitleScene.cs" />

@@ -386,6 +386,7 @@
 "Assets/scripts/GameManager.cs"
 "Assets/scripts/GifAnimator.cs"
 "Assets/scripts/GrenadierAttack.cs"
+"Assets/scripts/GunfireEffect.cs"
 "Assets/scripts/keytest.cs"
 "Assets/scripts/LoginScreen.cs"
 "Assets/scripts/MainMenu.cs"

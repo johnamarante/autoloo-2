@@ -46,7 +46,7 @@ public class Artillery : MonoBehaviour
     {
         if (Math.Abs(unit.QueuePosition) == 1)
         {
-            ShootGrape(target);
+            PrepareToShootGrape(target);
         }
         else if (Math.Abs(unit.QueuePosition) <= range)
         {
@@ -73,7 +73,7 @@ public class Artillery : MonoBehaviour
     }
 
 
-    public void ShootGrape(Unit target)
+    public void PrepareToShootGrape(Unit target)
     {
         //add the voice audio
         unit.gameManager.PlayTransientAudioClip(acLoadGrapShot);
@@ -136,6 +136,7 @@ public class Artillery : MonoBehaviour
 
     public void FireCannonEffect()
     {
+        unit.gameManager.PlayCannonballFire();
         Debug.Log("cannon fire effect needed");
         HideEffect();
     }

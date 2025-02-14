@@ -1,27 +1,11 @@
 {
     "UnitDetails": [
         {
-            "Name": "french_line_a8b0d9bc",
-            "Attack": 5,
+            "Name": "french_hussar_40b35216",
+            "Attack": 4,
             "HitPoints": 4,
-            "Rank": 2,
-            "QueuePosition": -1,
-            "IsSkirmisher": false
-        },
-        {
-            "Name": "french_chasseur_67fbad27",
-            "Attack": 3,
-            "HitPoints": 4,
-            "Rank": 1,
-            "QueuePosition": -2,
-            "IsSkirmisher": false
-        },
-        {
-            "Name": "french_heavyartillery_1ea229e3",
-            "Attack": 1,
-            "HitPoints": 2,
             "Rank": 0,
-            "QueuePosition": -3,
+            "QueuePosition": -1,
             "IsSkirmisher": false
         }
     ]
