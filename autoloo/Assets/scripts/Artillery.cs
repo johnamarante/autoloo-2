@@ -66,7 +66,7 @@ public class Artillery : MonoBehaviour
         GameObject flyingBall = Instantiate(cannonball, transform.position, Quaternion.identity);
         Cannonball cannonballComponent = flyingBall.GetComponent<Cannonball>();
 
-        cannonballComponent.FlightpathPoints = CannonballFlightpath(50, 12, distanceToTarget, 35);
+        cannonballComponent.FlightpathPoints = CannonballFlightpath(50, 12, distanceToTarget, 20);
         cannonballComponent.damage = unit.Attack;
         cannonballComponent.target = target;
         cannonballComponent.gameManager = unit.gameManager;
@@ -98,28 +98,13 @@ public class Artillery : MonoBehaviour
     private static List<(double, double)> CannonballFlightpath(double muzzleVelocity, double weightInPounds, double targetDistance, int cannonballFrames)
     {
         List<(double, double)> flightpathPoints = new List<(double, double)>();
-        // Constants
         const double gravitationalAcceleration = 9.81; // m/s^2, approximate value on Earth's surface
-
-        // Convert weight from pounds to kilograms
         double weightInKilograms = weightInPounds * 0.453592;
-
-        // Calculate the angle of projection (in radians)
         double angleInRadians = Math.Asin((targetDistance * gravitationalAcceleration) / (muzzleVelocity * muzzleVelocity)) / 2;
-
-        // Calculate the initial height
-        double initialHeight = 0; // Assuming the cannon and target are at the same elevation
-
-        // Calculate the maximum height
+        double initialHeight = 0;
         double maxHeight = Math.Pow((muzzleVelocity * Math.Sin(angleInRadians)), 2) / (2 * gravitationalAcceleration);
-
-        // Calculate the horizontal range (arc length)
         double range = (muzzleVelocity * muzzleVelocity * Math.Sin(2 * angleInRadians)) / gravitationalAcceleration;
-
-        // Calculate iteration step
         var interationStep = (int)(100 / cannonballFrames);
-
-        // Calculate and output heights at various horizontal distances
         for (int i = interationStep; i <= 100; i += interationStep)
         {
             double horizontalDistance = Math.Round((i / 100.0) * range, 4);
@@ -130,7 +115,6 @@ public class Artillery : MonoBehaviour
                 break;
             }
         }
-
         return flightpathPoints;
     }
 

@@ -382,6 +382,17 @@ public class Unit : MonoBehaviour
         { 
             gameObject.GetComponent<Artillery>().SetAttackByQueue(queuePosition); 
         }
+        if (!isArtillery && !isCavalry && Math.Abs(queuePosition) == 1 && gameManager.InBattleModeAndNotDeploymentMode)
+        {
+            if (side == "left")
+            {
+                gameManager.leftGunfireEffect.isQueued = true;
+            }
+            if (side == "right")
+            {
+                gameManager.rightGunfireEffect.isQueued = true;
+            }
+        }
     }
 
     private void SetUnitStatsDisplay()

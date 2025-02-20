@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 6650132597463822811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
   - {fileID: 3286163911610860551, guid: ccf38bb9170dda94da065eca8425d822, type: 3}
   - {fileID: 3286163911610860551, guid: 5549960d2444ab84c87165a95e24d643, type: 3}
   - {fileID: 3286163911610860551, guid: 9da859845a025414ab21ec3025a2720f, type: 3}
-  frameRate: 0.02
+  frameRate: 0.01
   frameShift: -0.2
 --- !u!212 &6650132597463822814
 SpriteRenderer:

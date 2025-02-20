@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
     public string notification;
     public BattleMusicController battleMusicController;
     public AudioClip cymbal;
+    public GunfireEffect leftGunfireEffect;
+    public GunfireEffect rightGunfireEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -283,7 +285,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("C");
                 //PRE BATTLE PHASE CLEANUP (FIRST CLEANUP)
                 GrenadiersCheck();
-
                 PostCycleCleanup();
                 if (CheckForAndHandleBattleResult(out string potentialResult) && potentialResult != null)
                 {
@@ -305,6 +306,8 @@ public class GameManager : MonoBehaviour
                 battlePhaseFired = true;
                 //force into E and not F
                 battlePhaseProcessAndCleanupFired = false;
+                leftGunfireEffect.isEnabled = true;
+                rightGunfireEffect.isEnabled = true;
             }
             if (Time.time > (actionTime + ((period / 2) + (period / 8))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && !battlePhaseProcessAndCleanupFired)
             {
@@ -319,7 +322,10 @@ public class GameManager : MonoBehaviour
                     InBattleModeAndNotDeploymentMode = false;
                     StartCoroutine(FadeOutAndMoveAndFadeInHandler(cameraPositions[-1]));
                     StartCoroutine(PostRoundCleanup(potentialResult));
+
                 }
+                leftGunfireEffect.isEnabled = false;
+                rightGunfireEffect.isEnabled = false;
                 roundCycle++;
                 battlePhaseProcessAndCleanupFired = true;
             }
@@ -548,6 +554,8 @@ public class GameManager : MonoBehaviour
         if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
         {
             result = (LeftQueueUnits.Count == 0) ? (RightQueueUnits.Count == 0 ? "DRAW" : "LOSS") : "WIN!";
+            rightGunfireEffect.isEnabled = false;
+            leftGunfireEffect.isEnabled = false;
             return true;
 
         }

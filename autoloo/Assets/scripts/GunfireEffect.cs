@@ -6,8 +6,10 @@ public class GunfireEffect : MonoBehaviour
     public GameObject effectPrefab; // The effect to instantiate
     public AudioClip[] gunfireSounds; // Array of gunfire sounds
     public float effectRadius = 1f; // Radius within which effects will be instantiated
+    public int interationsCap = 4; // sound effect has 4 distinct discharges
     public bool left;
-
+    public bool isEnabled = false;
+    public bool isQueued = false;
     private AudioSource audioSource;
     private bool isPlaying = false;
 
@@ -18,7 +20,16 @@ public class GunfireEffect : MonoBehaviour
 
     private void Start()
     {
-        PlayGunfireEffect();
+        //PlayGunfireEffect();
+    }
+
+    private void Update()
+    {
+        if (isQueued && isEnabled)
+        {
+            isQueued = false;
+            PlayGunfireEffect();
+        }
     }
 
     public void PlayGunfireEffect()
@@ -39,7 +50,8 @@ public class GunfireEffect : MonoBehaviour
 
     private IEnumerator SpawnEffectsWhilePlaying()
     {
-        while (isPlaying && audioSource.isPlaying)
+        int iterations = 0;
+        while (iterations < interationsCap && isPlaying && audioSource.isPlaying)
         {
             Vector3 randomPosition = transform.position + (Random.insideUnitSphere * effectRadius);
             randomPosition.z = transform.position.z; // Keep it on the same plane
@@ -49,6 +61,7 @@ public class GunfireEffect : MonoBehaviour
             {
                 goMusketFlash.GetComponent<GifAnimator>().frameShift = (-1 * goMusketFlash.GetComponent<GifAnimator>().frameShift);
             }
+            iterations++;
             yield return new WaitForSeconds(0.1f); // Small delay before checking if the sound is still playing
         }
 

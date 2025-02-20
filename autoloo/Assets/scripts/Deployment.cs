@@ -401,7 +401,7 @@ public class Deployment : MonoBehaviour
             {
                 unit.DeployAndSnapPositionToDeploymentMarker(belowDeploymentMarker);
             }
-            else if (occupant.spriteName == unit.spriteName && occupant.Rank < occupant.MaxUnitRank)
+            else if (occupant.spriteName == unit.spriteName && occupant.Rank < occupant.MaxUnitRank && unit.Rank < unit.MaxUnitRank) // recarding the last condition (unit.Rank < unit.MaxUnitRank): it doesn't make sense to stack a max rank unit onto a less than max rank unit; so do not allow it
             {
                 occupant.RankUp(unit);
             }
