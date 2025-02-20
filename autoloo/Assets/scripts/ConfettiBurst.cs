@@ -16,7 +16,7 @@ public class ConfettiBurst : MonoBehaviour
         yield return new WaitForSeconds(delay);
         SpawnConfetti(Color.red);
         SpawnConfetti(Color.white);
-        SpawnConfetti(Color.black);
+        SpawnConfetti(Color.blue);
     }
 
     void SpawnConfetti(Color color)
@@ -30,13 +30,20 @@ public class ConfettiBurst : MonoBehaviour
                 particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 var main = particleSystem.main;
                 main.startColor = color;
-                main.startSpeed = 20; // Rapid upward shot
-                main.gravityModifier = 3f; // Flutter down effect
-                main.startLifetime = 10f; // Linger longer
-                main.maxParticles = 100; // Ensure a burst effect
+                main.startSpeed = 100; // Rapid upward shot
+                main.gravityModifier = 25; // Flutter down effect
+                main.startLifetime = 2f; // Linger longer
+                main.maxParticles = 200; // Ensure a burst effect
                 main.duration = 0.1f; // Short burst duration
                 main.loop = false; // Prevent continuous emission
-                particleSystem.Emit(50); // Emit all particles at once
+
+                var colorOverLifetime = particleSystem.colorOverLifetime;
+                colorOverLifetime.enabled = false; // Disable color fading
+
+                var sizeOverLifetime = particleSystem.sizeOverLifetime;
+                sizeOverLifetime.enabled = false; // Prevent particles from shrinking
+
+                particleSystem.Emit(200); // Emit all particles at once
                 particleSystem.Play();
             }
         }
