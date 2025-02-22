@@ -4,19 +4,18 @@ using UnityEngine;
 public class ConfettiBurst : MonoBehaviour
 {
     public GameObject confettiPrefab; // Assign a confetti prefab with a Particle System in the Inspector
-    public float delay = 3f; // Time in seconds before the confetti bursts
 
     void Start()
     {
-        StartCoroutine(BurstConfetti());
+        //StartCoroutine(BurstConfetti());
     }
 
-    IEnumerator BurstConfetti()
+    public IEnumerator BurstConfetti(Color color1, Color color2, Color color3)
     {
-        yield return new WaitForSeconds(delay);
-        SpawnConfetti(Color.red);
-        SpawnConfetti(Color.white);
-        SpawnConfetti(Color.blue);
+        yield return new WaitForSeconds(0);
+        SpawnConfetti(color1);
+        SpawnConfetti(color2);
+        SpawnConfetti(color3);
     }
 
     void SpawnConfetti(Color color)
@@ -30,10 +29,11 @@ public class ConfettiBurst : MonoBehaviour
                 particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 var main = particleSystem.main;
                 main.startColor = color;
-                main.startSpeed = 100; // Rapid upward shot
+                main.startSpeed = new int[] { 50, 75, 100, 150, 200, 300, 400 }[Random.Range(0, 7)];
+                main.startSize = new ParticleSystem.MinMaxCurve(0.3f, 1f);
                 main.gravityModifier = 25; // Flutter down effect
-                main.startLifetime = 2f; // Linger longer
-                main.maxParticles = 200; // Ensure a burst effect
+                main.startLifetime = 10f; // Linger longer
+                main.maxParticles = 30; // Ensure a burst effect
                 main.duration = 0.1f; // Short burst duration
                 main.loop = false; // Prevent continuous emission
 
@@ -43,8 +43,28 @@ public class ConfettiBurst : MonoBehaviour
                 var sizeOverLifetime = particleSystem.sizeOverLifetime;
                 sizeOverLifetime.enabled = false; // Prevent particles from shrinking
 
-                particleSystem.Emit(200); // Emit all particles at once
+                var renderer = confetti.GetComponent<ParticleSystemRenderer>();
+                if (renderer != null)
+                {
+                    renderer.renderMode = ParticleSystemRenderMode.Mesh;
+                    renderer.mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx"); // Use cube mesh for crisp edges
+
+                    // Create a new material dynamically to ensure crisp edges
+                    Material confettiMaterial = new Material(Shader.Find("Unlit/Color"));
+                    confettiMaterial.color = color; // Set the color to match the particle color
+                    renderer.material = confettiMaterial;
+                }
+
+                // Add rotation over lifetime for spinning effect
+                var rotationOverLifetime = particleSystem.rotationOverLifetime;
+                rotationOverLifetime.enabled = true;
+                rotationOverLifetime.z = new ParticleSystem.MinMaxCurve(-360f, 360f); // Random spin speed in degrees per second
+
+                particleSystem.Emit(10); // Emit all particles at once
                 particleSystem.Play();
+
+                // Destroy confetti object after particles are done
+                Destroy(confetti, 2);
             }
         }
     }

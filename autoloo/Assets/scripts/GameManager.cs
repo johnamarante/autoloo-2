@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
     public AudioClip cymbal;
     public GunfireEffect leftGunfireEffect;
     public GunfireEffect rightGunfireEffect;
+    public ConfettiBurst leftConfetti;
+    public ConfettiBurst rightConfetti;
 
     // Start is called before the first frame update
     void Start()
@@ -710,8 +712,15 @@ public class GameManager : MonoBehaviour
         {
             if (unit.HitPoints <= 0 && unit != null)
             {
+                if (unit.side == "left")
+                {
+                    StartCoroutine(leftConfetti.BurstConfetti(Color.red, Color.white, Color.gray));
+                }
+                else 
+                {
+                    StartCoroutine(rightConfetti.BurstConfetti(Color.red, Color.white, Color.black));
+                }
                 Destroy(unit.gameObject);
-
                 eliminatedIndecies.Add(index);
             }
             index++;
