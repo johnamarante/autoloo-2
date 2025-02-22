@@ -45,4 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confettiPrefab: {fileID: 1195260042848415351, guid: dfbd9012be00d50479dffad726492a9a, type: 3}
-  delay: 1
+  shatterSounds:
+  - {fileID: 8300000, guid: 5ca27a6b758434542bc080200d87dadd, type: 3}
+  - {fileID: 8300000, guid: cf4646b77bf47b84e8f791f79522358f, type: 3}
+  - {fileID: 8300000, guid: 2873e33b7d901534d9e00cd3af9bd562, type: 3}

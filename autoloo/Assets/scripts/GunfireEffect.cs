@@ -18,11 +18,6 @@ public class GunfireEffect : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-        //PlayGunfireEffect();
-    }
-
     private void Update()
     {
         if (isQueued && isEnabled)

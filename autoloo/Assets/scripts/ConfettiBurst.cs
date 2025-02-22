@@ -4,21 +4,25 @@ using UnityEngine;
 public class ConfettiBurst : MonoBehaviour
 {
     public GameObject confettiPrefab; // Assign a confetti prefab with a Particle System in the Inspector
+    public AudioClip[] shatterSounds; // Array of shatter sounds
+    private AudioSource audioSource;
 
-    void Start()
+    void Awake()
     {
-        //StartCoroutine(BurstConfetti());
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    public IEnumerator BurstConfetti(Color color1, Color color2, Color color3)
+    public void BurstConfetti(Color color1, Color color2, Color color3)
     {
-        yield return new WaitForSeconds(0);
-        SpawnConfetti(color1);
-        SpawnConfetti(color2);
-        SpawnConfetti(color3);
+        AudioClip selectedClip = shatterSounds[Random.Range(0, shatterSounds.Length)];
+        audioSource.clip = selectedClip;
+        audioSource.Play();
+        StartCoroutine(SpawnConfetti(color1));
+        StartCoroutine(SpawnConfetti(color2));
+        StartCoroutine(SpawnConfetti(color3));
     }
 
-    void SpawnConfetti(Color color)
+    public IEnumerator SpawnConfetti(Color color)
     {
         if (confettiPrefab != null)
         {
@@ -67,5 +71,6 @@ public class ConfettiBurst : MonoBehaviour
                 Destroy(confetti, 2);
             }
         }
+        yield return new WaitForSeconds(0);
     }
 }

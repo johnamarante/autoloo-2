@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\projects\\autoloo-2\\autoloo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\gunfireeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\confettiburst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\confettiburst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|c:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\gunfireeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gunfireeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|c:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\confettiburst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\confettiburst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{012C6BFA-1B82-AA87-10B2-1AA5D6A4C47F}|Assembly-CSharp.csproj|C:\\projects\\autoloo-2\\autoloo\\assets\\scripts\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,15 +66,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ConfettiBurst.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\ConfettiBurst.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\ConfettiBurst.cs",
               "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\ConfettiBurst.cs",
               "RelativeToolTip": "Assets\\scripts\\ConfettiBurst.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACAAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwBUAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-20T20:55:10.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GunfireEffect.cs",
+              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\GunfireEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\GunfireEffect.cs",
+              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\GunfireEffect.cs",
+              "RelativeToolTip": "Assets\\scripts\\GunfireEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T21:33:55.201Z",
               "EditorCaption": ""
             },
             {
@@ -159,31 +172,17 @@
               "RelativeToolTip": "Assets\\scripts\\Unit.cs",
               "ViewState": "AgIAAAcBAAAAAAAAAAAuwCgBAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T21:34:28.203Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T21:34:28.203Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GunfireEffect.cs",
-              "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\GunfireEffect.cs",
-              "RelativeDocumentMoniker": "Assets\\scripts\\GunfireEffect.cs",
-              "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\GunfireEffect.cs",
-              "RelativeToolTip": "Assets\\scripts\\GunfireEffect.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAEwCoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T21:33:55.201Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\scripts\\GameManager.cs",
               "ToolTip": "C:\\projects\\autoloo-2\\autoloo\\Assets\\scripts\\GameManager.cs",
               "RelativeToolTip": "Assets\\scripts\\GameManager.cs",
-              "ViewState": "AgIAALcCAAAAAAAAAAAuwMwCAABjAAAAAAAAAA==",
+              "ViewState": "AgIAALgCAAAAAAAAAAAlwMsCAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-19T21:27:53.108Z",
               "EditorCaption": ""
