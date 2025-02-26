@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrenadierAttack : MonoBehaviour
@@ -34,6 +35,7 @@ public class GrenadierAttack : MonoBehaviour
                 unit.gameManager.RightQueueUnits.Add(goUnitGrenadier);
                 unit.gameManager.RightQueueUnits = unit.gameManager.RightQueueUnits.OrderBy(u => u.QueuePosition).ToList();
             }
+            goUnitGrenadier.AddComponent<BlinkEffect>();
         }
     }
 

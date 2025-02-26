@@ -372,6 +372,8 @@
 "Assets/scripts/AutolooUserInfoUtil.cs"
 "Assets/scripts/Background.cs"
 "Assets/scripts/BattleMusicController.cs"
+"Assets/scripts/BlinkEffect.cs"
+"Assets/scripts/BlinkredEffect.cs"
 "Assets/scripts/BolsterMorale.cs"
 "Assets/scripts/CameraControl.cs"
 "Assets/scripts/Cannonball.cs"

@@ -288,7 +288,7 @@ public class Deployment : MonoBehaviour
 
         foreach (var shopMarker in shopMarkers)
         {
-            Unit shopItem = null;
+            Unit goShopItem = null;
             if (!shopMarker.IsFrozenShopUnitAboveMe())
             {
                 // Weighted random selection
@@ -299,13 +299,14 @@ public class Deployment : MonoBehaviour
                     cumulative += unit.Chance;
                     if (roll < cumulative)
                     {
-                        shopItem = Instantiate(unit);
-                        shopItem.AddComponent<UnitPrice>();
+                        goShopItem = Instantiate(unit);
+                        goShopItem.AddComponent<UnitPrice>();
+                        goShopItem.AddComponent<BlinkEffect>();
                         break;
                     }
                 }
             }
-            shopQueue.Add(shopItem);
+            shopQueue.Add(goShopItem);
         }
         gameManager.PlayTransientAudioClip(bugleSummonsSound);
         gameManager.ArrangeUnitsInstantly(ref shopQueue, deploymentShopQueuePositions);

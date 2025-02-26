@@ -37,6 +37,8 @@ public class BattleMusicController : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.loop = false;
+            // TODO: This should be configurable.
+            audioSource.volume = 0.4f;
         }
 
         StopAllCoroutines(); // Prevent multiple loops from overlapping

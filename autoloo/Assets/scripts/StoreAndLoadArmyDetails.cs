@@ -46,18 +46,19 @@ public static class StoreAndLoadArmyDetails
 
         if (rosterItem != null)
         {
-            Unit unit = UnityEngine.Object.Instantiate(rosterItem);
-            unit.name = unitDetails.Name;
-            unit._attack = unitDetails.Attack;
-            unit._hitPoints = unitDetails.HitPoints;
-            unit._rank = unitDetails.Rank;
-            unit.side = side;
-            unit.QueuePosition = unitDetails.QueuePosition;
-            unit._IsSkirmisher = unitDetails.IsSkirmisher;
-            unit._deployed = true;
-            unit.gameManager = gameManager;
-            unit.AddComponent<UnitPrice>();
-            unit.DeployAndSnapPositionToDeploymentMarker(UnityEngine.Object.FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == unit.QueuePosition).First());
+            Unit goUnit = UnityEngine.Object.Instantiate(rosterItem);
+            goUnit.name = unitDetails.Name;
+            goUnit._attack = unitDetails.Attack;
+            goUnit._hitPoints = unitDetails.HitPoints;
+            goUnit._rank = unitDetails.Rank;
+            goUnit.side = side;
+            goUnit.QueuePosition = unitDetails.QueuePosition;
+            goUnit._IsSkirmisher = unitDetails.IsSkirmisher;
+            goUnit._deployed = true;
+            goUnit.gameManager = gameManager;
+            goUnit.AddComponent<UnitPrice>();
+            goUnit.AddComponent<BlinkEffect>();
+            goUnit.DeployAndSnapPositionToDeploymentMarker(UnityEngine.Object.FindObjectsOfType<DeploymentMarker>().Where(x => x.positionKey == goUnit.QueuePosition).First());
         }
         else
         {

@@ -95,6 +95,8 @@
     <Compile Include="Assets\scripts\ConfigurationManager.cs" />
     <Compile Include="Assets\scripts\BattleMusicController.cs" />
     <Compile Include="Assets\scripts\StoreAndLoadArmyDetails.cs" />
+    <Compile Include="Assets\scripts\BlinkredEffect.cs" />
+    <Compile Include="Assets\scripts\BlinkEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

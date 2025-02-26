@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
+using Unity.VisualScripting;
 
 public static class OpponentGeneration
 {
@@ -16,8 +17,8 @@ public static class OpponentGeneration
         System.Random rnd = new System.Random();
         for (int i = 0; i < 5; i++)
         {
-            var opposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster[rnd.Next(rosterSize)]);
-            opposingUnit.GetComponent<Unit>().Deployed = true;
+            var goOpposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster[rnd.Next(rosterSize)]);
+            goOpposingUnit.GetComponent<Unit>().Deployed = true;
         }
     }
 
@@ -84,13 +85,14 @@ public static class OpponentGeneration
         try
         {
             var unitName = (string)jsonUnitDetail["Name"];
-            var opposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]));
-            opposingUnit.GetComponent<Unit>().Deployed = true;
-            opposingUnit._attack = (int)jsonUnitDetail["Attack"]; ;
-            opposingUnit._rank = (int)jsonUnitDetail["Rank"];
-            opposingUnit._hitPoints = (int)jsonUnitDetail["HitPoints"];
-            opposingUnit._queuePosition = (int)jsonUnitDetail["QueuePosition"];
-            opposingUnit.name = unitName;
+            var goOpposingUnit = UnityEngine.Object.Instantiate(gameManager.RightUnitRoster.Find(x => x.GetSpriteName().Split('_')[1] == unitName.Split('_')[1]));
+            goOpposingUnit.GetComponent<Unit>().Deployed = true;
+            goOpposingUnit._attack = (int)jsonUnitDetail["Attack"]; ;
+            goOpposingUnit._rank = (int)jsonUnitDetail["Rank"];
+            goOpposingUnit._hitPoints = (int)jsonUnitDetail["HitPoints"];
+            goOpposingUnit._queuePosition = (int)jsonUnitDetail["QueuePosition"];
+            goOpposingUnit.name = unitName;
+            goOpposingUnit.AddComponent<BlinkEffect>();
         } 
         catch (Exception ex) 
         { 

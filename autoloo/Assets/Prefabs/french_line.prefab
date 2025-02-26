@@ -2085,6 +2085,9 @@ MonoBehaviour:
   acFormSquare: {fileID: 8300000, guid: 8e0bfb792110ef14e902695dcaa2b802, type: 3}
   _IsSkirmisher: 0
   KindTags: []
+  burstColor1: {r: 1, g: 0, b: 0, a: 1}
+  burstColor2: {r: 1, g: 1, b: 1, a: 1}
+  burstColor3: {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &5956813910743459481
 MonoBehaviour:
   m_ObjectHideFlags: 0
