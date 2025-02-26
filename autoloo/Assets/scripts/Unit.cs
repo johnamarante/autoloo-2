@@ -202,6 +202,9 @@ public class Unit : MonoBehaviour
     }
     public string[] KindTags;
     private GameObject goUnitCost;
+    public Color burstColor1 = Color.red;
+    public Color burstColor2 = Color.white;
+    public Color burstColor3 = Color.blue;
 
     void Awake()
     {
@@ -285,12 +288,12 @@ public class Unit : MonoBehaviour
                 Debug.Log("Either opposingUnit or behindUnit is null in Unit.OnDestroy");
             }
         }
-        //WIN BUFF ON A CAVALRY UNIT DEFEATING AN OPPONENT
-        if (opposingUnit.isCavalry && opposingUnit.HitPoints > 0)
+        if (opposingUnit.isCavalry)
         {
-            opposingUnit.GetComponent<Cavalry>().WinBuff();
+            opposingUnit.GetComponent<Cavalry>().applyWinBuff = true;
         }
     }
+
     private void ScoutCheckAndReport(bool isDeployed)
     {
         var scoutComponent = GetComponent<Scout>();

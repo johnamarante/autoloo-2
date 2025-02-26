@@ -714,11 +714,11 @@ public class GameManager : MonoBehaviour
             {
                 if (unit.side == "left")
                 {
-                    leftConfetti.BurstConfetti(Color.red, Color.white, Color.gray);
+                    leftConfetti.BurstConfetti(unit.burstColor1, unit.burstColor2, unit.burstColor3);
                 }
                 else 
                 {
-                    rightConfetti.BurstConfetti(Color.red, Color.white, Color.black);
+                    rightConfetti.BurstConfetti(unit.burstColor1, unit.burstColor2, unit.burstColor3);
                 }
                 Destroy(unit.gameObject);
                 eliminatedIndecies.Add(index);

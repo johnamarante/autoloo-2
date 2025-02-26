@@ -7,7 +7,9 @@ public class Cavalry : MonoBehaviour
 {
     public Unit unit;
     public string spriteNameLower;
+    public bool applyWinBuff = false;
     public bool isLancer = false;
+    public int minorWinBuffBonus = 1;
     // Constants for cavalry names
     private const string CARABINERACHEVAL = "carabineracheval";
     private const string CUIRASSIER = "cuirassier";
@@ -29,21 +31,23 @@ public class Cavalry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (applyWinBuff)
+        {
+            applyWinBuff = false;
+            WinBuff();
+        }
     }
 
     public void WinBuff()
     {
         var rankBonus = unit.Rank + 1;
-        var minorBonus = 1;
-
         if (spriteNameLower.Contains(CARABINERACHEVAL) || spriteNameLower.Contains(CUIRASSIER))
         {
             ApplyBuff(rankBonus, rankBonus);
         }
         else if (spriteNameLower.Contains(HUSSAR) || spriteNameLower.Contains(DRAGOON) || spriteNameLower.Contains(LANCER))
         {
-            ApplyBuff(minorBonus, minorBonus);
+            ApplyBuff(minorWinBuffBonus, minorWinBuffBonus);
         }
     }
 

@@ -2074,7 +2074,6 @@ MonoBehaviour:
   costComponent: {fileID: 0}
   rankComponent: {fileID: 0}
   freezeComponent: {fileID: 0}
-  effectsComponent: {fileID: 0}
   squareComponent: {fileID: 0}
   effectPlacementLeft: {x: 7, y: 2, z: 1}
   effectPlacementRight: {x: -8, y: 2, z: 0}

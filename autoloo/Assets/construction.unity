@@ -361,6 +361,42 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor1.b
+      value: 0.110711046
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor1.g
+      value: 0.6226415
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor1.r
+      value: 0.09104663
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.3270737
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.8642956
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor3.b
+      value: 0.103773594
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.06901923
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
+      propertyPath: burstColor3.r
+      value: 0.06901923
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813113358586556008, guid: 8da94dd73b053f547b573310d0240a09, type: 3}
       propertyPath: KindTags.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -522,6 +558,30 @@ PrefabInstance:
     - target: {fileID: 7660246515102732771, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
       propertyPath: m_Name
       value: french_line
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+      propertyPath: burstColor1.b
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+      propertyPath: burstColor1.g
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+      propertyPath: burstColor1.r
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+      propertyPath: burstColor3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+      propertyPath: burstColor3.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
+      propertyPath: burstColor3.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8040859303991537251, guid: dc39368ab0d665142a76d67e7a51965a, type: 3}
       propertyPath: GrenadierUnlockRank
@@ -711,6 +771,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+      propertyPath: burstColor3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.96300876
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
+      propertyPath: burstColor3.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680753786372417374, guid: 77fa5081745b00d4eaea9e2e695e395a, type: 3}
       propertyPath: KindTags.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -811,6 +895,30 @@ PrefabInstance:
       propertyPath: Chance
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: burstColor1.b
+      value: 0.033775374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: burstColor1.g
+      value: 0.31132078
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: burstColor1.r
+      value: 0.043429602
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: burstColor2.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: burstColor2.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731642665731895206, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
+      propertyPath: burstColor2.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7968037052961001510, guid: 298c5fcdffd88e644ad531b72b3e2d88, type: 3}
       propertyPath: m_Name
       value: french_heavyartillery
@@ -884,6 +992,30 @@ PrefabInstance:
       propertyPath: attackFormula
       value: PARENT RANK+1
       objectReference: {fileID: 0}
+    - target: {fileID: 7805612661155703016, guid: c537484e17829d841b78375111be73e1, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.12336966
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805612661155703016, guid: c537484e17829d841b78375111be73e1, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.49056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805612661155703016, guid: c537484e17829d841b78375111be73e1, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.06247775
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805612661155703016, guid: c537484e17829d841b78375111be73e1, type: 3}
+      propertyPath: burstColor3.b
+      value: 0.2830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805612661155703016, guid: c537484e17829d841b78375111be73e1, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.2830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805612661155703016, guid: c537484e17829d841b78375111be73e1, type: 3}
+      propertyPath: burstColor3.r
+      value: 0.2830189
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c537484e17829d841b78375111be73e1, type: 3}
 --- !u!1001 &198864127315278831
@@ -948,6 +1080,18 @@ PrefabInstance:
     - target: {fileID: 8286291403204596108, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
       propertyPath: m_Name
       value: british_footguardcenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585731507051703820, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585731507051703820, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585731507051703820, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.5660378
       objectReference: {fileID: 0}
     - target: {fileID: 8585731507051703820, guid: 59c1ab6660027174dbcdf01e954c7af0, type: 3}
       propertyPath: KindTags.Array.size
@@ -1017,6 +1161,30 @@ PrefabInstance:
     - target: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
       propertyPath: attackFormula
       value: PARENT RANK+1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
+      propertyPath: burstColor2.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.9360192
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
+      propertyPath: burstColor3.b
+      value: 0.3301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.3301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
+      propertyPath: burstColor3.r
+      value: 0.3301887
       objectReference: {fileID: 0}
     - target: {fileID: 9156652870289266264, guid: dae792134706fb54da6a36bbf54d5cb4, type: 3}
       propertyPath: hitPointsFormula
@@ -1135,6 +1303,42 @@ PrefabInstance:
     - target: {fileID: 7145547488737194847, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
       propertyPath: m_Name
       value: british_rifles
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor1.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.22556102
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.12758099
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor3.b
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418100271383661791, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
+      propertyPath: burstColor3.r
+      value: 0.47076362
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f2c6de5734d65f4694ec802b70e624d, type: 3}
@@ -1346,6 +1550,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6574580541872489291, guid: f6de32be7297117438f7067a82acbd66, type: 3}
+      propertyPath: burstColor2.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574580541872489291, guid: f6de32be7297117438f7067a82acbd66, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.9267906
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574580541872489291, guid: f6de32be7297117438f7067a82acbd66, type: 3}
+      propertyPath: burstColor2.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6838132583227817163, guid: f6de32be7297117438f7067a82acbd66, type: 3}
       propertyPath: m_Name
       value: british_artillery
@@ -1362,6 +1578,18 @@ PrefabInstance:
     - target: {fileID: 3126649275751001086, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
       propertyPath: Chance
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126649275751001086, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.5987451
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126649275751001086, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.6484027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126649275751001086, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.6509434
       objectReference: {fileID: 0}
     - target: {fileID: 3367673835385967742, guid: 628c5be8cbc8c6246bd47482a441138a, type: 3}
       propertyPath: m_Name
@@ -1472,6 +1700,42 @@ PrefabInstance:
       propertyPath: Chance
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor1.b
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor1.g
+      value: 0.4597288
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor1.r
+      value: 0.19668922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.7736294
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.8769525
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.8962264
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.97164285
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817648852732452154, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
+      propertyPath: burstColor3.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89bc853d9b90a9749b3187f7a2fb134d, type: 3}
 --- !u!1001 &4565459834216138039
@@ -1484,6 +1748,42 @@ PrefabInstance:
     - target: {fileID: 663366937025943623, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
       propertyPath: m_Name
       value: french_legerevoltiguer
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor1.b
+      value: 0.13216448
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor1.g
+      value: 0.7981017
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor1.r
+      value: 0.8490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.6603774
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.09387312
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.08410467
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor3.b
+      value: 0.13536847
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 931321288335271879, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
+      propertyPath: burstColor3.r
+      value: 0.13687013
       objectReference: {fileID: 0}
     - target: {fileID: 8373173669924244170, guid: 05c28e35ea4b0c04f8015700dbe69008, type: 3}
       propertyPath: m_RootOrder
@@ -1629,6 +1929,30 @@ PrefabInstance:
     - target: {fileID: 2552665939498072841, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
       propertyPath: m_Name
       value: french_linegrenadier
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789016059675755657, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
+      propertyPath: burstColor1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789016059675755657, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
+      propertyPath: burstColor1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789016059675755657, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
+      propertyPath: burstColor1.r
+      value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789016059675755657, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
+      propertyPath: burstColor3.b
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789016059675755657, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.11836952
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789016059675755657, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
+      propertyPath: burstColor3.r
+      value: 0.11836952
       objectReference: {fileID: 0}
     - target: {fileID: 4274977815148662523, guid: 21e78511965cd5541901ec1961d30d6a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1897,6 +2221,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: british_nassaugrenadier
       objectReference: {fileID: 0}
+    - target: {fileID: 4935759449276523430, guid: bd01b5de9d26b3d4b921d46868ea88dd, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.2892202
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935759449276523430, guid: bd01b5de9d26b3d4b921d46868ea88dd, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935759449276523430, guid: bd01b5de9d26b3d4b921d46868ea88dd, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.2770114
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935759449276523430, guid: bd01b5de9d26b3d4b921d46868ea88dd, type: 3}
+      propertyPath: burstColor3.b
+      value: 0.504717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935759449276523430, guid: bd01b5de9d26b3d4b921d46868ea88dd, type: 3}
+      propertyPath: burstColor3.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935759449276523430, guid: bd01b5de9d26b3d4b921d46868ea88dd, type: 3}
+      propertyPath: burstColor3.r
+      value: 0.9834424
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd01b5de9d26b3d4b921d46868ea88dd, type: 3}
 --- !u!1001 &5887298061183845264
@@ -2094,6 +2442,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: f31ca319b404cfe4fbe5c119cbe9a014, type: 3}
     - target: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.27128354
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.24029905
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+      propertyPath: burstColor3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+      propertyPath: burstColor3.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
+      propertyPath: burstColor3.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053164764119963615, guid: c22e19930ea601c42a5d15747c49a6e8, type: 3}
       propertyPath: KindTags.Array.data[0]
       value: AngloAlliedLineInfantry
       objectReference: {fileID: 0}
@@ -2161,6 +2533,42 @@ PrefabInstance:
     - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
       propertyPath: _hitPoints
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor1.b
+      value: 0.03203986
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor1.g
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor1.r
+      value: 0.75045705
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.24911803
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.20825918
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor3.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145044337510418028, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
+      propertyPath: burstColor3.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8591681801370938209, guid: 870c8f933c038a8439de9ac4fc42719c, type: 3}
       propertyPath: m_RootOrder
@@ -2323,6 +2731,30 @@ PrefabInstance:
     - target: {fileID: 979073091554856390, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.764151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.40274206
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.378471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: burstColor3.b
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.18262726
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
+      propertyPath: burstColor3.r
+      value: 0.18262726
       objectReference: {fileID: 0}
     - target: {fileID: 3692035378788258197, guid: 4b15f48220bbccb4397e5a898683d154, type: 3}
       propertyPath: canFormSquare
@@ -2495,6 +2927,42 @@ PrefabInstance:
       propertyPath: Chance
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor1.b
+      value: 0.6886792
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor1.g
+      value: 0.24057332
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor1.r
+      value: 0.07471521
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.16019936
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.2330226
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor3.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6955324813900248654, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
+      propertyPath: burstColor3.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7304328838042601934, guid: d3dcb43fc10571e4fa734a01cf4bd696, type: 3}
       propertyPath: m_Name
       value: french_chassuer
@@ -2598,6 +3066,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7937062591711499544, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: burstColor2.b
+      value: 0.5283019
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: burstColor2.g
+      value: 0.5283019
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: burstColor2.r
+      value: 0.5283019
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: burstColor3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: burstColor3.g
+      value: 0.9618754
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
+      propertyPath: burstColor3.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8341030069883936618, guid: c42d3bc4f880f5c43a20fd555321d6ea, type: 3}
