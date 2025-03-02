@@ -232,7 +232,8 @@ public class Unit : MonoBehaviour
         isArtillery = GetComponent<Artillery>();
         OnAttackChanged += (e) => textAttack.text = (e + AttackBonus).ToString();
         OnAttackBonusChanged += (e) => { if (e > 0) { textAttack.fontStyle = FontStyles.Underline; } else { textAttack.fontStyle = FontStyles.Normal; } OnAttackChanged(Attack); };
-        OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e <= 0) { OnDie(); } };
+        BlinkEffect blinkEffect = GetComponent<BlinkEffect>();
+        OnHitPointsChanged += (e, delta) => { textHitPoints.text = e.ToString(); if (e <= 0) { OnDie(); } }; //StartCoroutine(blinkEffect.Blink(delta, 0.1f, Color.red));
         OnCostChanged += (e) => textCost.text = e.ToString();
         OnDeployedChanged += (e) => { costComponent.SetActive(!e); rankComponent.SetActive(e); ScoutCheckAndReport(e); CheckBolsterMorale(); };
         OnRankChanged += (e) => { ChangeRankIcon(); CheckUnlocksOnRankUp(); ScoutCheckAndReport(Deployed); };
@@ -389,11 +390,22 @@ public class Unit : MonoBehaviour
         {
             if (side == "left")
             {
-                gameManager.leftGunfireEffect.isQueued = true;
+                gameManager.leftCombatEffect.isGunfireQueued = true;
             }
             if (side == "right")
             {
-                gameManager.rightGunfireEffect.isQueued = true;
+                gameManager.rightCombatEffect.isGunfireQueued = true;
+            }
+        }
+        if (isCavalry && Math.Abs(queuePosition) == 1 && gameManager.InBattleModeAndNotDeploymentMode)
+        {
+            if (side == "left")
+            {
+                gameManager.leftCombatEffect.isCavalryAttackQueued = true;
+            }
+            if (side == "right")
+            {
+                gameManager.rightCombatEffect.isCavalryAttackQueued = true;
             }
         }
     }

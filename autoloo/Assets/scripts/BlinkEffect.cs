@@ -33,15 +33,16 @@ public class BlinkEffect : MonoBehaviour
         
     }
 
-    IEnumerator Blink(int blinkTimes = 4, float blinkDuration = 0.1f, Color? blinkColor = null)
+    public IEnumerator Blink(int blinkTimes = 4, float blinkDuration = 0.1f, Color? blinkColor = null)
     {
-        if (blinkColor == null)
+        Color color = Color.white;
+        if (blinkColor != null)
         {
-            blinkColor = Color.white;
+            color = blinkColor.Value;
         }
         for (int i = 0; i < blinkTimes; i++)
         {
-            spriteRenderer.color = Color.red;
+            spriteRenderer.color = color;
             yield return new WaitForSeconds(blinkDuration);
             spriteRenderer.color = originalColor;
             yield return new WaitForSeconds(blinkDuration);

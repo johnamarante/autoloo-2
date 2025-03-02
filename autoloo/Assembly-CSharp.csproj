@@ -63,7 +63,7 @@
     <Compile Include="Assets\scripts\ArrowHover.cs" />
     <Compile Include="Assets\scripts\PulseHover.cs" />
     <Compile Include="Assets\scripts\UnitDetail.cs" />
-    <Compile Include="Assets\scripts\GunfireEffect.cs" />
+    <Compile Include="Assets\scripts\CombatEffect.cs" />
     <Compile Include="Assets\scripts\Skirmish.cs" />
     <Compile Include="Assets\scripts\LoginScreen.cs" />
     <Compile Include="Assets\scripts\TitleScene.cs" />
@@ -85,9 +85,11 @@
     <Compile Include="Assets\scripts\UnitCard.cs" />
     <Compile Include="Assets\scripts\FriendpasteClient.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
+    <Compile Include="Assets\scripts\BlinkredEffect.cs" />
     <Compile Include="Assets\scripts\BolsterMorale.cs" />
     <Compile Include="Assets\scripts\DragIt.cs" />
     <Compile Include="Assets\scripts\NumberFloating.cs" />
+    <Compile Include="Assets\scripts\BlinkEffect.cs" />
     <Compile Include="Assets\scripts\GifAnimator.cs" />
     <Compile Include="Assets\scripts\Cannonball.cs" />
     <Compile Include="Assets\scripts\GrenadierAttack.cs" />
@@ -95,8 +97,6 @@
     <Compile Include="Assets\scripts\ConfigurationManager.cs" />
     <Compile Include="Assets\scripts\BattleMusicController.cs" />
     <Compile Include="Assets\scripts\StoreAndLoadArmyDetails.cs" />
-    <Compile Include="Assets\scripts\BlinkredEffect.cs" />
-    <Compile Include="Assets\scripts\BlinkEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

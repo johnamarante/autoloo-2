@@ -105,8 +105,8 @@ public class GameManager : MonoBehaviour
     public string notification;
     public BattleMusicController battleMusicController;
     public AudioClip cymbal;
-    public GunfireEffect leftGunfireEffect;
-    public GunfireEffect rightGunfireEffect;
+    public CombatEffect leftCombatEffect;
+    public CombatEffect rightCombatEffect;
     public ConfettiBurst leftConfetti;
     public ConfettiBurst rightConfetti;
 
@@ -308,8 +308,8 @@ public class GameManager : MonoBehaviour
                 battlePhaseFired = true;
                 //force into E and not F
                 battlePhaseProcessAndCleanupFired = false;
-                leftGunfireEffect.isEnabled = true;
-                rightGunfireEffect.isEnabled = true;
+                leftCombatEffect.isEnabled = true;
+                rightCombatEffect.isEnabled = true;
             }
             if (Time.time > (actionTime + ((period / 2) + (period / 8))) && preBattlePhaseFired && preBattlePhaseProcessAndCleanupFired && preBattlePhaseProcessAndCleanupCompleted && battlePhaseFired && !battlePhaseProcessAndCleanupFired)
             {
@@ -326,8 +326,8 @@ public class GameManager : MonoBehaviour
                     StartCoroutine(PostRoundCleanup(potentialResult));
 
                 }
-                leftGunfireEffect.isEnabled = false;
-                rightGunfireEffect.isEnabled = false;
+                leftCombatEffect.isEnabled = false;
+                rightCombatEffect.isEnabled = false;
                 roundCycle++;
                 battlePhaseProcessAndCleanupFired = true;
             }
@@ -556,8 +556,8 @@ public class GameManager : MonoBehaviour
         if (LeftQueueUnits.Count == 0 || RightQueueUnits.Count == 0)
         {
             result = (LeftQueueUnits.Count == 0) ? (RightQueueUnits.Count == 0 ? "DRAW" : "LOSS") : "WIN!";
-            rightGunfireEffect.isEnabled = false;
-            leftGunfireEffect.isEnabled = false;
+            rightCombatEffect.isEnabled = false;
+            leftCombatEffect.isEnabled = false;
             return true;
 
         }

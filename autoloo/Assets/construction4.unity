@@ -408,7 +408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963491452298034774, guid: 418d08e610ef270439b5f94f0466851c, type: 3}
       propertyPath: m_Name
-      value: gunfireEffect
+      value: combatEffect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 418d08e610ef270439b5f94f0466851c, type: 3}

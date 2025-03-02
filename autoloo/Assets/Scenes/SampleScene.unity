@@ -590,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963491452298034774, guid: 418d08e610ef270439b5f94f0466851c, type: 3}
       propertyPath: m_Name
-      value: gunfireEffectLeft
+      value: combatEffectLeft
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 418d08e610ef270439b5f94f0466851c, type: 3}
@@ -670,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963491452298034774, guid: 418d08e610ef270439b5f94f0466851c, type: 3}
       propertyPath: m_Name
-      value: gunfireEffectRight
+      value: combatEffectRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 418d08e610ef270439b5f94f0466851c, type: 3}
@@ -1173,6 +1173,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 669736232}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
+      propertyPath: leftCombatEffect
+      value: 
+      objectReference: {fileID: 711916376}
+    - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: franceBattleMusic
       value: 
       objectReference: {fileID: 8300000, guid: abc9e3f48751a254a9b1cd9aafeffe34, type: 3}
@@ -1180,6 +1184,10 @@ PrefabInstance:
       propertyPath: leftGunfireEffect
       value: 
       objectReference: {fileID: 711916376}
+    - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
+      propertyPath: rightCombatEffect
+      value: 
+      objectReference: {fileID: 760922266}
     - target: {fileID: 5235097638683755665, guid: 4dfc51df7df15f54bbca6e8f0ef90d8b, type: 3}
       propertyPath: rightGunfireEffect
       value: 
